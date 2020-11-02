@@ -1,0 +1,144 @@
+{
+  "users": [
+    {
+      "_id": "",
+      "First name": "",
+      "Last name": "",
+      "email": "",
+      "password": "",
+      "address": [],
+      "payment": [],
+      "Gift cards": [],
+      "Past orders": [],
+      "Upcoming orders": [],
+      "Saved restaurants": []
+    }
+  ],
+  "data": [
+    {
+      "restaurant_id": "1001",
+      "restaurant_password": "12345",
+      "restaurant_name": "Ciclo Cafe",
+      "restaurant_images": "cafe1.jpg",
+      "menu_items": [
+        {
+          "id": "1",
+          "name": "Black Forrest Cake",
+          "position": 1,
+          "description": "Black Forrest Cake smothered with old-fashioned whipped cream and topped off with juicy cherries",
+          "image": "500x378-black-forest-cake_0_CCD.jpg",
+          "price": "100"
+        },
+        {
+          "id": "2",
+          "name": "Chilli Cheese Toastizza",
+          "position": 1,
+          "description": "Get cheesy with this crispy toast topped with onions, tomatoes and capsicum, loaded with cheese and sprinkled with chilli flakes.",
+          "image": "Chilli-Cheese-Toastizza_2_CCD.jpg",
+          "price": "110"
+        },
+        {
+          "id": "3",
+          "name": "Cocoa Fantasy Pastry",
+          "position": 1,
+          "description": "Classic chocolate pre sliced pastry with cream & cocoa vermicelli.",
+          "image": "836x663-Coco-Slice_CCD.jpg",
+          "price": "120"
+        },
+        {
+          "id": "4",
+          "name": "Crispy Veg Wrap",
+          "position": 1,
+          "description": "We made veggies taste good. You can thank us later.",
+          "image": "CrispyVeg_2_CCD.jpg",
+          "price": "130"
+        },
+        {
+          "id": "5",
+          "name": "Garlic Bread",
+          "position": 1,
+          "description": "Buttery rich goodness infused with garlic. You won't be able to resist it!",
+          "image": "Garlic-Bread_2_CCD.jpg",
+          "price": "140"
+        },
+        {
+          "id": "6",
+          "name": "Munch-On Nachos",
+          "position": 1,
+          "description": "The crispiest of corn chips pampered with salsa from the land of Tex-Mex. Munch hunger away!",
+          "image": "Nachos_CCD.jpg",
+          "price": "150"
+        },
+        {
+          "id": "7",
+          "name": "Peppy Chicken Roll",
+          "position": 1,
+          "description": "Peppery chicken with crunchy juliennes of capsicum and red onion in a delicious Malabar egg paratha. Yes, that's how we roll.",
+          "image": "Peppy-Chicken-Roll_1_CCD.jpg",
+          "price": "160"
+        },
+        {
+          "id": "8",
+          "name": "Smoked Chicken Sandwich",
+          "position": 1,
+          "description": "Succulent smoked chicken topped with crunchy veggies, served in a white bread topped with chipotle.",
+          "image": "Smoked-Chicken-Sandwich_2_CCD.jpg",
+          "price": "170"
+        },
+        {
+          "id": "9",
+          "name": "Sizzle Dazzle Brownie",
+          "position": 1,
+          "description": "Sizzling hot gooey choco brownie served with vanilla ice cream and choco sauce.",
+          "image": "sizzle-dazzle-brownie_(2)_CCD.jpg",
+          "price": "180"
+        },
+        {
+          "id": "10",
+          "name": "Aztec Single Origin Coffee",
+          "position": 1,
+          "description": "A delightful international gourment blend that includes a double shot of espresso brewed from a blend of imported coffee beans topped with steamed and foamed milk.",
+          "image": "Aztec-Ethiopian_0_CCD.jpg",
+          "price": "190"
+        }
+      ],
+      "Country Code": "1",
+      "City": "Chennai",
+      "Address": "47, Gandhi Mandapam Road, Kotturpuram, Chennai",
+      "Locality": "Kotturpuram",
+      "Locality Verbose": "Kotturpuram, Chennai",
+      "Longitude": "80.24243889",
+      "Latitude": "13.02239444",
+      "Cuisines": "Cafe",
+      "average_Cost_for_two": "1100",
+      "Currency": "Indian Rupees(Rs.)",
+      "Has Table booking": "No",
+      "Has Online delivery": "No",
+      "Is delivering now": "No",
+      "Switch to order menu": "No",
+      "Price range": "3",
+      "aggregate_rating": "4.1",
+      "Rating color": "Green",
+      "Rating text": "Very Good",
+      "Votes": "1004"
+    }
+  ],
+  "orders": [
+      {
+    "user_id":"15646574",
+    "id":"422552155",
+    "restaurant_id":"1001",
+    "items":[{
+        "id":4,
+        "qty":5,
+        "price":"160"
+    },
+    {
+        "id":5,
+        "qty":5,
+        "price":"160"
+    }],
+    "timestamp":"1532585256"
+  }
+]
+}
