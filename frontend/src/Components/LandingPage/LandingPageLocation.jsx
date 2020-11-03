@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     //   padding: theme.spacing(2),
     // },
     signInBar:{
-        color:"#009688",
+        color:"#2b8282",
         fontSize:"20px",
         marginTop:"100px",
         marginLeft:"150px"
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         margin:"10px"
     },
     button:{
-        background:"#009688",
+        background:"#2b8282",
         color:"white",
         marginLeft:"5px",
         padding :"15px",

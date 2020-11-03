@@ -6,11 +6,14 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles({
     root: {
         marginTop:"50px",
-        
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+        padding:"30px"        
     },
     headings:{
        textAlign:"left",
-       marginLeft:"50px"
+      
     }
 });
 

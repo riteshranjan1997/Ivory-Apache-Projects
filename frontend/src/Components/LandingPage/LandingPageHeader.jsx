@@ -3,7 +3,7 @@ import Styled from 'styled-components'
 
 const LandingPageHeaderWrapper = Styled.div`
     height:50px;
-    background:#009688;
+    background:#2b8282;
     color:white;
     padding-top:10px;
 `
