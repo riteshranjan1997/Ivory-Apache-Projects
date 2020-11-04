@@ -1,17 +1,17 @@
 {
   "users": [
     {
-      "_id": "",
-      "First name": "",
-      "Last name": "",
+      "user_id": "",
+      "first_name": "",
+      "last_name": "",
       "email": "",
       "password": "",
       "address": [],
       "payment": [],
-      "Gift cards": [],
-      "Past orders": [],
-      "Upcoming orders": [],
-      "Saved restaurants": []
+      "gift_cards": [],
+      "past_orders": [],
+      "upcoming_Orders": [],
+      "saved_restaurants": []
     }
   ],
   "data": [
@@ -120,13 +120,21 @@
       "aggregate_rating": "4.1",
       "Rating color": "Green",
       "Rating text": "Very Good",
-      "Votes": "1004"
+      "Votes": "1004",
+      "Food was good":"in percentage",
+      " Delivery was on time":"in percentage",
+      "Order was correct":"in percentage",
+      "Timings":[{"mon-thu":{"pickup":"","delivery":""}}],
+      "Delivery":"time",
+      "reviews" :[{"user_name":"","rating":"","no_reviews":"","review":"","ordered":"","level":""},{},{}]
+      
     }
+    
   ],
   "orders": [
       {
     "user_id":"15646574",
-    "id":"422552155",
+    "order_id":"422552155",
     "restaurant_id":"1001",
     "items":[{
         "id":4,
