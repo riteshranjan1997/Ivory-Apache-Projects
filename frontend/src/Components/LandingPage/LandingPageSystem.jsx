@@ -34,8 +34,8 @@ function LandingPageSystem(){
     const classes = useStyles();
     return(
 
-        <Grid container className={classes.root} spacing={1}>
-                <Grid item xs={12} sm={4} md={4} >
+        <Grid container className={classes.root}  spacing={1}>
+                <Grid item xs={12} sm={12} md={4} >
                     <Grid className={classes.card} container justify="center" spacing={1}>  
                          <img src="https://res.cloudinary.com/grubhub-assets/image/upload/v1567195464/illustration_1_sl_rg9zhj.svg" alt="System" />                                
                                    
@@ -48,7 +48,7 @@ function LandingPageSystem(){
                         </Typography>                               
                     </Grid>
                 </Grid>
-                <Grid item xs={12} sm={4} md={4}>
+                <Grid item xs={12} sm={12} md={4}>
                     <Grid className={classes.card} container  justify="center" spacing={1}>  
                          <img src="https://res.cloudinary.com/grubhub-marketing/image/upload/f_auto,fl_lossy/v1584729955/HERMES/2020/DINER/BRD/BRD-20200316-COVID-19-RELIEF/DonatethechangeSLunauthenticated.png" height="100px" width="100px" alt="system" style={{marginLeft:"130px"}} />  
                         <Typography gutterBottom variant="h5" component="h5">
@@ -60,7 +60,7 @@ function LandingPageSystem(){
                         </Typography>                               
                     </Grid>
                 </Grid>
-                <Grid item xs={12} sm={4} md={4}>
+                <Grid item xs={12} sm={12} md={4}>
                     <Grid className={classes.card} container justify="center" spacing={1}>  
                         <img src="https://res.cloudinary.com/grubhub-assets/image/upload/v1567195623/illustration_3_sl_ww1kc4.svg" alt="system" />                        
                         <Typography gutterBottom variant="h5" component="h5">
