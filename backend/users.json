@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "_id": "",
+      "user_id": "",
       "First name": "",
       "Last name": "",
       "email": "",
@@ -124,21 +124,23 @@
     }
   ],
   "orders": [
-      {
-    "user_id":"15646574",
-    "id":"422552155",
-    "restaurant_id":"1001",
-    "items":[{
-        "id":4,
-        "qty":5,
-        "price":"160"
-    },
     {
-        "id":5,
-        "qty":5,
-        "price":"160"
-    }],
-    "timestamp":"1532585256"
-  }
-]
+      "user_id": "15646574",
+      "order_id": "422552155",
+      "restaurant_id": "1001",
+      "items": [
+        {
+          "id": 4,
+          "qty": 5,
+          "price": "160"
+        },
+        {
+          "id": 5,
+          "qty": 5,
+          "price": "160"
+        }
+      ],
+      "timestamp": "1532585256"
+    }
+  ]
 }
