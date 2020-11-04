@@ -4,6 +4,7 @@ import LandingPageLocation from './LandingPageLocation'
 import LandingPageSystem from './LandingPageSystem'
 import LandingPageDelivary from './LandingPageDelivary'
 import LandingPageAbout from './LandingPageAbout'
+import LandingPageFooter from './LandinPageFooter'
 
 function LandingPage(){
     return(
@@ -13,6 +14,7 @@ function LandingPage(){
             <LandingPageSystem/>
             <LandingPageDelivary/>
             <LandingPageAbout/>
+            <LandingPageFooter/>
         </div>
     )
 }
