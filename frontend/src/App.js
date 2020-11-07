@@ -1,4 +1,8 @@
-import React from 'react'
+
+
+
+import React from "react"
+// import Routes from "./routes/routes"
 // import LandingPage from './Components/LandingPage/LandingPage'
 // import TestLocation from './Components/TestLocation'
 import {BrowserRouter} from 'react-router-dom'
@@ -9,16 +13,18 @@ import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
+    
         <div className="App">
           {/* <LandingPage/> */}
           {/* <RestaurentMenuItem/> */}
-          <SideBar/>
-          <Routes/>
+          {/* <SideBar/>
+          <Routes/> */}
           {/* <TestLocation/> */}
         </div>
-    </BrowserRouter>
+   
+    // <div className="App">
+    //   <Routes/>
+    // </div>
   );
 }
-
 export default App;

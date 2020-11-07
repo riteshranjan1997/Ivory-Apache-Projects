@@ -1,0 +1,13 @@
+.main {
+    width: 420px;
+    margin: 2em auto;
+    padding:2em;
+    text-align: left;
+    font-family:Poppins;
+}
+
+.title {
+    font-weight: 700;
+    margin-top: 0px;
+    margin-bottom:16px;
+}
