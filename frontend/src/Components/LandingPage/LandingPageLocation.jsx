@@ -1,6 +1,7 @@
 import React from 'react'
 import {useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+// import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
@@ -73,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
 
 function LandingPageLocation(){
     const classes = useStyles();
+    // const matches = useMediaQuery('(min-width:600px )')
     const [query,setQuery] = React.useState("")
     const [data,setData] = React.useState([])
     console.log(data)
