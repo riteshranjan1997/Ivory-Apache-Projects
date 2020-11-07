@@ -1,0 +1,19 @@
+.main {
+    width: 420px;
+    margin: 2em auto;
+    padding:2em;
+    text-align: left;
+    font-family:Poppins;
+}
+
+label{
+    font-size: 14px;
+    color: #8D8DA0;
+    margin: 0px;
+}
+
+.title {
+    font-weight: 700;
+    margin-top: 0px;
+    margin-bottom:16px;
+}
