@@ -1,6 +1,7 @@
 import React from 'react'
 import {useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from "react-router-dom" 
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
@@ -107,7 +108,7 @@ function LandingPageLocation(){
                     <Grid container justify="center" spacing={2}>     
                         <div className={`d-flex ${classes.signInBar} justify-content-end `}>
                             <div className="p-2">Get Perks in the App</div>
-                            <div className="p-2">Sign in</div>
+                            <Link to="/login"><div className="p-2">Sign in</div></Link>
                         </div>                           
                             <Typography className={classes.location} variant="h3" gutterBottom>
                                 <b>Seamless food delivary every time</b>

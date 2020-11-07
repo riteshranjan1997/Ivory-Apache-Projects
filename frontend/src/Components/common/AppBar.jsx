@@ -1,5 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
+import axios from "axios"
+import Styled from 'styled-components';
 import { fade, makeStyles } from "@material-ui/core/styles";
+import { TextField, Button } from "@material-ui/core"; 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -14,11 +17,27 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import Modal from '@material-ui/core/Modal';
-
-
+import Modal from "@material-ui/core/Modal";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import Avatar from "@material-ui/core/Avatar";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import LocalMallIcon from "@material-ui/icons/LocalMall";
+import CloseIcon from "@material-ui/icons/Close";
+import Fade from "@material-ui/core/Fade";
 
 const useStyles = makeStyles((theme) => ({
+  logo: {
+    width: "105px",
+  },
+  addressModel: {
+    width: "576px",
+    height: "407px",
+    backgroundColor: "white",
+    margin: "auto",
+    border: "none",
+    outline: "none",
+    padding: "16px 12px",
+  },
   grow: {
     flexGrow: 1,
   },
@@ -87,11 +106,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+const LocationWrapper = Styled.div`    
+    width:250px;
+    
+    li{
+        width:248px;
+        padding:10px;
+        border:1px solid #E0E0E0;
+        border-top:none;
+    }
+    ul{        
+        position:relative;
+        left:-38px;
+        top :-3px;
+    }
+    ul li:hover {
+        background : #2b8282;
+        color : white;
+    }
+`;
+
+export default function Bar(props) {
   const classes = useStyles();
-  const [modelStatus, setModelStatus] = React.useState(false);
+  const [addressmodelStatus, setAddressModelStatus] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [addressquery, setAddressQuery] = React.useState("");
+  const [suggestedAddress, setsuggestedAddress] = React.useState([]);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -170,85 +211,123 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
-  const handleModelOpen = () => {
-    setModelStatus(true);
+  const handleAddressModelOpen = () => {
+    setAddressModelStatus(true);
   };
 
-  const handleModelClose = () => {
-    setModelStatus(false);
+  const handleAddressModelclose = () => {
+    setAddressModelStatus(false);
   };
+
+  let selectedAddress = "Mumbai";
+  let userFirstname = "Ritesh";
+
+  const addressModel = (
+    <Fade in={addressmodelStatus}>
+      <div className={classes.addressModel}>
+        <CloseIcon onClick={handleAddressModelclose} />
+        <h5>Your order settings</h5>
+        <p>When would you like your order?</p>
+        <p>ASAP</p>
+
+        <h6>Delivery address</h6>
+
+        <form>
+          <TextField
+            id="outlined-basic"
+            label="Enter street address or zipcode"
+            variant="outlined"
+            value={addressquery}
+            onChange={(e) => setAddressQuery(e.target.value)}
+            style={{ width: "250px" }}
+          />
+
+          <Button variant="contained" className={classes.button}>
+            Update
+          </Button>
+        </form>
+        <LocationWrapper>
+          <ul style={{ listStyleType: "none", textAlign: "left" }}>
+            {addressquery &&
+              suggestedAddress &&
+              suggestedAddress.map((item, i) => (
+                <>
+                  {/* {i>=active && i<=active+4? */}
+                  <li
+                    className={`dropDown`}
+                    // data-toggle="modal"
+                    // data-target="#exampleModal"
+                    key={item.id}
+                    onClick={(e) => {
+                      setAddressQuery(item.place_name);
+                    }}
+                  >
+                    {item.place_name}
+                  </li>
+                </>
+              ))}
+          </ul>
+        </LocationWrapper>
+      </div>
+    </Fade>
+  );
+
+  useEffect(() => {
+    return axios
+      .get(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${addressquery}.json?limit=5&access_token=pk.eyJ1Ijoic291bmRhcnlhbWVjc2UiLCJhIjoiY2toMmUxZHBoMGJtdDJ3cGNqOWhmbTJqaiJ9.sZeF_rzMTfs2fPBA4JsHxQ`
+      )
+      .then((res) => setsuggestedAddress(res.data.features))
+      .catch((err) => console.log(err));
+  }, [addressquery]);
 
   return (
     <div className={classes.grow}>
       <AppBar position="static" className={classes.navbar}>
-        <Toolbar>
-            <img src="https://res.cloudinary.com/grubhub-assets/image/upload/v1576524886/Seamless_logo_flxqyg.svg" alt="company logo"/>
-          <Typography onClick={handleModelOpen} variant="h6" noWrap>
-            
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
+        <div className="row">
+          <div className="col">
+            <img
+              className={classes.logo}
+              src="https://res.cloudinary.com/grubhub-assets/image/upload/v1576524886/Seamless_logo_flxqyg.svg"
+              alt="company logo"
             />
           </div>
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+          <div className="col">
+            {props.addressModel ? (
+              <h6 onClick={handleAddressModelOpen}>
+                <LocationOnIcon />
+                Delivery ASAP <spam>to</spam>{" "}
+                {selectedAddress == "" ? "Enter an address" : selectedAddress}
+                <ExpandMoreIcon />
+              </h6>
+            ) : null}
           </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
+          <div className="col">
+            <p>
+              <Avatar>{userFirstname[0]}</Avatar>Hi,{" " + userFirstname}!{" "}
+              <ExpandMoreIcon />
+            </p>
           </div>
-        </Toolbar>
+
+          <div className="col">
+            <NotificationsIcon />
+          </div>
+
+          <div className="col">
+            <LocalMallIcon />
+          </div>
+        </div>
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
       <Modal
-        open={modelStatus}
-        onClose={handleModelClose}
+        open={addressmodelStatus}
+        onClose={handleAddressModelclose}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
+        closeAfterTransition
       >
-        <div>
-          <h2 id="simple-modal-title">Text in a modal</h2>
-          <p id="simple-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </p>
-        </div>
+        {addressModel}
       </Modal>
     </div>
   );
