@@ -6,7 +6,7 @@ function SigninLandingPage() {
 
   return (
     <div>
-      <AppBar />
+      <AppBar addressModel="true" notifications="true"/>
       <SearchComponent/>
     </div>
   );

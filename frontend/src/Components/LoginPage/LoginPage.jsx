@@ -5,7 +5,7 @@ import LoginModel from "../common/LoginModel"
 function LoginPage(){
     return(
         <div>
-            <AppBar addressModel="true"/>
+            <AppBar/>
             <LoginModel/>
         </div>
     )

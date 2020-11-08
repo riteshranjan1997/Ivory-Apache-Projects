@@ -1,7 +1,7 @@
 import React from 'react'
 import {useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from "react-router-dom" 
+import { Link,Redirect } from "react-router-dom" 
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
@@ -123,9 +123,9 @@ function LandingPageLocation(){
                                          onChange={(e)=>setQuery(e.target.value)}
                                          style={{ width:"250px"}} />
                                          
-                                    <Button variant="contained" className={classes.button}>
+                                    <Link to="/search"><Button variant="contained" className={classes.button}>
                                         Find Food
-                                    </Button>
+                                    </Button></Link>
                                 </form>
                                 <LocationWrapper>
                                     <ul style={{listStyleType:"none",textAlign:"left"}} >{query && data && data.map((item,i) => (
