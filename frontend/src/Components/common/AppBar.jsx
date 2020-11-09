@@ -197,6 +197,7 @@ export default function Bar(props) {
 
       <nav class="navbar navbar-light bg-white">
         <div class="d-flex bd-highlight mb-3 container-fluid">
+          
           <div class="p-2 bd-highlight terms-link">
             <Link to="/">
               <img
