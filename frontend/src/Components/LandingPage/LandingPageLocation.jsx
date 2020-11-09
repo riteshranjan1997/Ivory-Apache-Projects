@@ -74,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
 
 function LandingPageLocation(){
     const classes = useStyles();
+    // const matches = useMediaQuery('(min-width:600px )')
     const [query,setQuery] = React.useState("")
     const [data,setData] = React.useState([])
     console.log(data)
