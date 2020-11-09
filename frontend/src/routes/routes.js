@@ -5,7 +5,6 @@ import SigninLandinngPage from "../components/SigninLandingPage/SigninLandingPag
 import LoginPage from "../components/LoginPage/LoginPage"
 import RegisterPage from "../components/RegisterPage/RegisterPage"
 import RestaurantListingPage from "../components/RestaurantsListingPage/RestaurantsListingPage"
-import MenuListingPage from "../components/MenuListingPage/MenulistingPage"
 import CheckoutPage from "../components/CheckoutPage/CheckoutPage" 
 
     function Routes() {
