@@ -1,22 +1,15 @@
-import React, {useEffect} from "react";
-import axios from "axios"
-import Styled from 'styled-components';
+import React, { useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { UpdateUserAppAddress } from "../../redux/app/action";
+import LoginModel from "./LoginModel";
+import Styled from "styled-components";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import { TextField, Button } from "@material-ui/core"; 
+import { TextField, Button } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import Badge from "@material-ui/core/Badge";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
+import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import MoreIcon from "@material-ui/icons/MoreVert";
 import Modal from "@material-ui/core/Modal";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import Avatar from "@material-ui/core/Avatar";
@@ -24,6 +17,8 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
 import CloseIcon from "@material-ui/icons/Close";
 import Fade from "@material-ui/core/Fade";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Popover from "react-bootstrap/Popover";
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -55,55 +50,6 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
   },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto",
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  inputRoot: {
-    color: "inherit",
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
-  },
-  sectionDesktop: {
-    display: "none",
-    [theme.breakpoints.up("md")]: {
-      display: "flex",
-    },
-  },
-  sectionMobile: {
-    display: "flex",
-    [theme.breakpoints.up("md")]: {
-      display: "none",
-    },
-  },
 }));
 
 const LocationWrapper = Styled.div`    
@@ -128,88 +74,16 @@ const LocationWrapper = Styled.div`
 
 export default function Bar(props) {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [addressmodelStatus, setAddressModelStatus] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [logingModelStatus, setlogingModelStatus] = React.useState(false);
+
   const [addressquery, setAddressQuery] = React.useState("");
   const [suggestedAddress, setsuggestedAddress] = React.useState([]);
 
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const menuId = "primary-search-account-menu";
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
-
-  const mobileMenuId = "primary-search-account-menu-mobile";
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
-  );
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  const userData = useSelector((state) => state.auth.user_data);
+  const selectedAddress = useSelector((state) => state.app.userAddress);
 
   const handleAddressModelOpen = () => {
     setAddressModelStatus(true);
@@ -219,8 +93,20 @@ export default function Bar(props) {
     setAddressModelStatus(false);
   };
 
-  let selectedAddress = "Mumbai";
-  let userFirstname = "Ritesh";
+  const handleLoginModelOpen = () => {
+    setlogingModelStatus(true);
+  };
+
+  const handleLoginModelClose = () => {
+    setlogingModelStatus(false);
+  };
+
+  const handleLocationUpdate = () => {
+    dispatch(UpdateUserAppAddress(addressquery));
+    handleAddressModelclose();
+  };
+
+
 
   const addressModel = (
     <Fade in={addressmodelStatus}>
@@ -229,9 +115,7 @@ export default function Bar(props) {
         <h5>Your order settings</h5>
         <p>When would you like your order?</p>
         <p>ASAP</p>
-
         <h6>Delivery address</h6>
-
         <form>
           <TextField
             id="outlined-basic"
@@ -242,7 +126,11 @@ export default function Bar(props) {
             style={{ width: "250px" }}
           />
 
-          <Button variant="contained" className={classes.button}>
+          <Button
+            variant="contained"
+            className={classes.button}
+            onClick={handleLocationUpdate}
+          >
             Update
           </Button>
         </form>
@@ -272,6 +160,8 @@ export default function Bar(props) {
     </Fade>
   );
 
+  const loginModel = <LoginModel />;
+
   useEffect(() => {
     return axios
       .get(
@@ -282,44 +172,8 @@ export default function Bar(props) {
   }, [addressquery]);
 
   return (
-    <div className={classes.grow}>
-      <AppBar position="static" className={classes.navbar}>
-        <div className="row">
-          <div className="col">
-            <img
-              className={classes.logo}
-              src="https://res.cloudinary.com/grubhub-assets/image/upload/v1576524886/Seamless_logo_flxqyg.svg"
-              alt="company logo"
-            />
-          </div>
-          <div className="col">
-            {props.addressModel ? (
-              <h6 onClick={handleAddressModelOpen}>
-                <LocationOnIcon />
-                Delivery ASAP <spam>to</spam>{" "}
-                {selectedAddress == "" ? "Enter an address" : selectedAddress}
-                <ExpandMoreIcon />
-              </h6>
-            ) : null}
-          </div>
-          <div className="col">
-            <p>
-              <Avatar>{userFirstname[0]}</Avatar>Hi,{" " + userFirstname}!{" "}
-              <ExpandMoreIcon />
-            </p>
-          </div>
+    <div>
 
-          <div className="col">
-            <NotificationsIcon />
-          </div>
-
-          <div className="col">
-            <LocalMallIcon />
-          </div>
-        </div>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
       <Modal
         open={addressmodelStatus}
         onClose={handleAddressModelclose}
@@ -329,6 +183,115 @@ export default function Bar(props) {
       >
         {addressModel}
       </Modal>
+      <Modal
+        open={logingModelStatus}
+        onClose={handleLoginModelClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+        closeAfterTransition
+      >
+        {loginModel}
+      </Modal>
+
+
+
+      <nav class="navbar navbar-light bg-white">
+        <div class="d-flex bd-highlight mb-3 container-fluid">
+          
+          <div class="p-2 bd-highlight terms-link">
+            <Link to="/">
+              <img
+                className={classes.logo}
+                src="https://res.cloudinary.com/grubhub-assets/image/upload/v1576524886/Seamless_logo_flxqyg.svg"
+                alt="company logo"
+              />
+            </Link>
+          </div>
+
+          <div class="p-2 bd-highlight terms-link">
+            {props.addressModel ? (
+              <h6 onClick={handleAddressModelOpen}>
+                <LocationOnIcon />
+                Delivery ASAP <spam>to</spam>{" "}
+                {selectedAddress == "" ? "Enter an address" : selectedAddress}
+                <ExpandMoreIcon />
+              </h6>
+            ) : null}
+          </div>
+
+          <div class="ml-auto p-2 bd-highlight">
+            <div className="d-flex">
+              <div>
+                {isAuth ? (
+                  <>
+                    {" "}
+                    <PopupState variant="popover" popupId="demo-popup-popover">
+                      {(popupState) => (
+                        <div>
+                          <Avatar {...bindTrigger(popupState)}>
+                            {userData.first_name[0]}
+                          </Avatar>
+                          <spam {...bindTrigger(popupState)}>
+                            Hi,{" " + userData.first_name}!{" "}
+                          </spam>
+                          <ExpandMoreIcon {...bindTrigger(popupState)} />
+                          <Popover
+                            {...bindPopover(popupState)}
+                            anchorOrigin={{
+                              vertical: "bottom",
+                              horizontal: "center",
+                            }}
+                            transformOrigin={{
+                              vertical: "top",
+                              horizontal: "center",
+                            }}
+                          >
+                            <div>abcd</div>
+                          </Popover>
+                        </div>
+                      )}
+                    </PopupState>{" "}
+                  </>
+                ) : props.login ? (
+                  <button
+                    className="btn btn-outline-success"
+                    onClick={handleLoginModelOpen}
+                  >
+                    Sign in
+                  </button>
+                ) : null}
+              </div>
+
+                <div>{props.notifications ? (
+                <NotificationsIcon />
+            ) : null}</div>
+              
+                <div >{["bottom"].map((placement) => (
+                <OverlayTrigger
+                  trigger="click"
+                  key={placement}
+                  placement={placement}
+                  className="p-2 bd-highlight m-2"
+                  overlay={
+                    <Popover style={{ height: "300px", width: "160px" }}>
+                      <Popover.Content>
+                        <div style={{ fontSize: "18px" }}>
+                          cart is empty
+                        </div>
+                      </Popover.Content>
+                    </Popover>
+                  }
+                >
+                  <div variant="secondary">
+                    <LocalMallIcon />
+                  </div>
+                </OverlayTrigger>
+              ))}</div>
+              
+            </div>
+          </div>
+        </div>
+      </nav>
     </div>
   );
 }

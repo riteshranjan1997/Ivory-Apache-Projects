@@ -53,9 +53,9 @@ export const loginUserFailure = (payload) => ({
     payload
 })
 
-export const loginRequest = payload => dispatch => {
+export const loginRequest =  payload => dispatch => {
     dispatch(loginUserRequest())
-    fetch("http://localhost:5000/api/user/login", {
+    return fetch("http://localhost:5000/api/user/login", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
