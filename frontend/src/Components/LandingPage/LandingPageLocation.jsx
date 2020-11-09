@@ -1,5 +1,7 @@
 import React from 'react'
+import {useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from "react-router-dom" 
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
@@ -8,6 +10,28 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import axios from 'axios';
+import Styled from 'styled-components';
+
+const LocationWrapper = Styled.div`    
+    width:250px;
+    
+    li{
+        width:248px;
+        padding:10px;
+        border:1px solid #E0E0E0;
+        border-top:none;
+    }
+    ul{        
+        position:relative;
+        left:-38px;
+        top :-3px;
+    }
+    ul li:hover {
+        background : #2b8282;
+        color : white;
+    }
+`
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     //   padding: theme.spacing(2),
     // },
     signInBar:{
-        color:"#009688",
+        color:"#2b8282",
         fontSize:"20px",
         marginTop:"100px",
         marginLeft:"150px"
@@ -32,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
         margin:"10px"
     },
     button:{
-        background:"#009688",
+        background:"#2b8282",
         color:"white",
         marginLeft:"5px",
         padding :"15px",
@@ -50,6 +74,16 @@ const useStyles = makeStyles((theme) => ({
 
 function LandingPageLocation(){
     const classes = useStyles();
+    // const matches = useMediaQuery('(min-width:600px )')
+    const [query,setQuery] = React.useState("")
+    const [data,setData] = React.useState([])
+    console.log(data)
+    useEffect(()=>{
+        return axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?limit=5&access_token=pk.eyJ1Ijoic291bmRhcnlhbWVjc2UiLCJhIjoiY2toMmUxZHBoMGJtdDJ3cGNqOWhmbTJqaiJ9.sZeF_rzMTfs2fPBA4JsHxQ`)
+        .then(res=>setData(res.data.features))
+        .catch((err)=>console.log(err))
+    },[query])
+
     return (
    
             <Grid container className={classes.root} spacing={1}>
@@ -75,7 +109,7 @@ function LandingPageLocation(){
                     <Grid container justify="center" spacing={2}>     
                         <div className={`d-flex ${classes.signInBar} justify-content-end `}>
                             <div className="p-2">Get Perks in the App</div>
-                            <div className="p-2">Sign in</div>
+                            <Link to="/login"><div className="p-2">Sign in</div></Link>
                         </div>                           
                             <Typography className={classes.location} variant="h3" gutterBottom>
                                 <b>Seamless food delivary every time</b>
@@ -86,11 +120,30 @@ function LandingPageLocation(){
                                         id="outlined-basic" 
                                         label="Enter street address or zipcode"
                                          variant="outlined" 
+                                         value={query}
+                                         onChange={(e)=>setQuery(e.target.value)}
                                          style={{ width:"250px"}} />
+                                         
                                     <Button variant="contained" className={classes.button}>
                                         Find Food
                                     </Button>
                                 </form>
+                                <LocationWrapper>
+                                    <ul style={{listStyleType:"none",textAlign:"left"}} >{query && data && data.map((item,i) => (
+                                        <>   
+                                        {/* {i>=active && i<=active+4? */}
+                                        <li  className={`dropDown`}
+                                            // data-toggle="modal" 
+                                            // data-target="#exampleModal" 
+                                            key={item.id}
+                                            onClick={(e)=>{setQuery(item.place_name)}} >
+                                            {item.place_name}</li>
+                                        </>   
+                                            ))
+                                            
+                                        }
+                                    </ul>   
+                                </LocationWrapper>
                             </div>     
                     </Grid>                    
                 </Grid>

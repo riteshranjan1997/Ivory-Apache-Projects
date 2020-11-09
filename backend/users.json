@@ -127,7 +127,6 @@
       "Timings":[{"mon-thu":{"pickup":"","delivery":""}}],
       "Delivery":"time",
       "reviews" :[{"user_name":"","rating":"","no_reviews":"","review":"","ordered":"","level":""},{},{}]
-      
     }
     
   ],
@@ -142,11 +141,22 @@
         "price":"160"
     },
     {
-        "id":5,
-        "qty":5,
-        "price":"160"
-    }],
-    "timestamp":"1532585256"
-  }
-]
+      "user_id": "15646574",
+      "order_id": "422552155",
+      "restaurant_id": "1001",
+      "items": [
+        {
+          "id": 4,
+          "qty": 5,
+          "price": "160"
+        },
+        {
+          "id": 5,
+          "qty": 5,
+          "price": "160"
+        }
+      ],
+      "timestamp": "1532585256"
+    }
+  ]
 }
