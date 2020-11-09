@@ -1,5 +1,7 @@
 import React from "react";
+import axios from "axios"
 import Styles from "./LoginModel.module.css";
+import GoogleLogin from 'react-google-login'
 import { useDispatch, useSelector } from "react-redux";
 import { loginRequest } from "../../redux/Auth/action";
 import { Redirect, Link } from "react-router-dom";
@@ -25,6 +27,17 @@ export default function LoginModel() {
     dispatch(loginRequest(payload));
   };
 
+  const responseGoogle = (response) => {
+    console.log(response)
+    const fullName = response.profileObj.name;
+    axios({
+      method:"POST",
+      url:"http://localhost:5000/api/user/googleLogin",
+      data:{tokenId:response.tokenId}
+    }).then(response=>{
+      console.log("Response from backend",response)
+    })
+  }
   
 
   return (
@@ -94,9 +107,14 @@ export default function LoginModel() {
 
         <div className="row">
           <div className="col">
-            <Button variant="contained" color="primary">
-              Google
-            </Button>
+          <GoogleLogin
+        clientId="1069087639484-chisqt1vcpiq2rqcbk2dvr8u3lr2k9hk.apps.googleusercontent.com"
+        buttonText="L O G I N"
+        onSuccess={responseGoogle}
+        onFailure={responseGoogle}
+      >
+
+      </GoogleLogin>
           </div>
         </div>
 
