@@ -2,39 +2,18 @@ const Restaurants = require("../models/Restaurant")
 const express = require("express")
 const router = express.Router();
 
-router.get("/lets-eat",paginatedResults(Restaurants),async (req,res)=>{
-    console.log("in lets-eat",req.body)
-    // const data = getNearByRestaurants(req.body.lattitude,req.body.longitude)
-    // try{
-    //   var restaurants = await Restaurants.find( { location:
-    //     { $near :
-    //       { $geometry :
-    //          { type : "Point" ,
-    //            coordinates : [ req.body.lattitude, req.body.longitude] } ,
-    //         $maxDistance : 1000
-    //  } } } )
-    // var restaurants = await Restaurants.find()
-    // }catch(error){
-    //   res.status({error:true,message:error})
-    //   return
-    // }
-    // console.log("in lets-eat else",data.data)
-    res.status(200).json({error:false,data:res.pagination,message:"test3"})
-    return
-    // console.log(" in get near by restaurants")
-    // console.log("in getnearby restaurants",restaurants)
-    //  return {error:false,data:restaurants}
-    // console.log("Restaurants data is",data,data.data)
-    // if(data.error){
-    //   res.status({error:true,message:data.message})
-    // }
-    // else{
-    //   if(data.data){
-    //     console.log(data)
-    //   }
-    //   console.log("in lets-eat else",data.data)
-    //   res.status(200).json({error:false,data:data.data,message:"test3"})
-    // }
+router.get("/lets-eat",async (req,res)=>{
+    try{
+    const data = await getNearByRestaurants(req.body.lattitude,req.body.longitude)
+    }catch(err){
+      return  res.status(400).json({error:true,message:err})
+    }
+    if(data.error){
+      res.status(400).json({error:true,message:error})
+    }
+    else{
+      res.status(200).json({error:false,data:data.data})
+    }
 })
 
 
@@ -47,12 +26,10 @@ router.get("/lets-eat",paginatedResults(Restaurants),async (req,res)=>{
              coordinates : [ lattitude, longitude] } ,
           $maxDistance : 1000
    } } } )
+   return {error:false,data:restaurants}
   }catch(error){
     return {error:true,message:error}
-  }
-  console.log(" in get near by restaurants")
-  console.log("in getnearby restaurants",restaurants)
-   return {error:false,data:restaurants}
+  }   
 }
 
 function authenticateToken(req, res, next) {
