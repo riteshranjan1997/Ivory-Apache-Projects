@@ -55,7 +55,7 @@ function LandingPageFooter(){
         <div>
         <Grid container className={classes.root} spacing={1}>
                 <Grid item xs={12} md={6}>
-                    <Grid container  spacing={1}>  
+                    <Grid item  spacing={1}>  
                     {matches?
                         <div>
                            <Typography gutterBottom variant="h5" component="h2">
@@ -87,7 +87,7 @@ function LandingPageFooter(){
                     </Grid>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <Grid container className={classes.headings} spacing={1}> 
+                    <Grid item className={classes.headings}> 
                     {matches?
                         <div>
                             <Typography gutterBottom variant="h5" component="h2">
@@ -120,7 +120,7 @@ function LandingPageFooter(){
                     </Grid>
                 </Grid> 
                 <Grid item xs={12} md={6}>
-                    <Grid container className={classes.headings} spacing={1}> 
+                    <Grid item className={classes.headings}> 
                     {matches?
                         <div>
                             <Typography gutterBottom variant="h5" component="h2">
@@ -157,7 +157,7 @@ function LandingPageFooter(){
                     </Grid>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <Grid container className={classes.headings} spacing={1}> 
+                    <Grid item className={classes.headings}> 
                     {matches?
                         <div>
                             <Typography gutterBottom variant="h5" component="h2">
