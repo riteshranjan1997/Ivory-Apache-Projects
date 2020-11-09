@@ -2,7 +2,7 @@ import React from "react"
 import {useState,useEffect} from "react"
 
 import {useDispatch, useSelector} from "react-redux"
-import {registerRequest} from "../../redux/app/action"
+import {restaurantsRequest} from "../../redux/app/action"
 
 import Filter from "./Filter";
 import Bar from "../common/AppBar"
@@ -15,7 +15,7 @@ export default function RestaurantListingPage() {
 
 
   useEffect(()=>{
-    dispatch(registerRequest())
+    dispatch(restaurantsRequest())
 },[])
 
   return (

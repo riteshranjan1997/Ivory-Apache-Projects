@@ -13,7 +13,6 @@ const useStyles = makeStyles({});
 export default function LoginModel() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const isAuth = useSelector((state) => state.auth.isAuth);
   const isError = useSelector((state) => state.auth.isError);
   const message = useSelector((state) => state.auth.message);
   const [user_data, setAddData] = React.useState({});
@@ -26,29 +25,32 @@ export default function LoginModel() {
     dispatch(loginRequest(payload));
   };
 
-  if (isAuth) {
-    return <Redirect to="/lets-eat" />;
-  }
+  
 
   return (
     <>
       <div className={`card ${Styles.main}`}>
         <h5 className={Styles.title}>Sign in with your Seamless account</h5>
 
-        <div className="row">
+        <div className="row my-2">
           <div className="col">
-            <label>Email</label>
-            <br />
-            <TextField
-              id="email"
-              type="text"
-              required
-              // value={user_data.email}
-              onChange={(e) =>
-                setAddData({ ...user_data, email: e.target.value })
-              }
-              variant="outlined"
-            />
+            <div class="form-group">
+              <label>Email</label>
+              <br />
+              <input
+                className={Styles.input}
+                id="email"
+                type="text"
+                required
+                onChange={(e) =>
+                  setAddData({ ...user_data, email: e.target.value })
+                }
+                variant="outlined"
+              />
+              {/* <small id="emailHelp" class="form-text text-muted">
+                We'll never share your email with anyone else.
+              </small> */}
+            </div>
           </div>
         </div>
 
@@ -56,11 +58,11 @@ export default function LoginModel() {
           <div className="col">
             <label>Password</label>
             <br />
-            <TextField
+            <input
+              className={Styles.input}
               id="password"
-              type="text"
+              type="password"
               required
-              // value={user_data.password}
               onChange={(e) =>
                 setAddData({ ...user_data, password: e.target.value })
               }
@@ -69,47 +71,45 @@ export default function LoginModel() {
           </div>
         </div>
 
-        <div className="row">
-          <div className="col justify-content-start">
-            <Checkbox
-              value="true"
-              label="Keep me signed in"
-              inputProps={{ "aria-label": "Checkbox A" }}
-            />
-            <label>Keep me signed in</label>
-          </div>
-
-          <div className="col justify-content-end">
-            <Link to="/">Reset password</Link>
+        <div className="row my-1">
+          <div className="col">
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" />
+              <label class="form-check-label" for="exampleCheck1">
+                Keep me signed in
+              </label>
+            </div>
           </div>
         </div>
 
         <div className="row">
           <div className="col">
-          <button type="button" class="btn btn-danger" onClick={handleLogin}>Sign in</button>
+            <button type="button" class="btn btn-danger" onClick={handleLogin}>
+              Sign in
+            </button>
           </div>
         </div>
 
-        <p>or</p>
+        <p style={{ textAlign: "center", marginTop: "10px" }}>or</p>
 
         <div className="row">
           <div className="col">
             <Button variant="contained" color="primary">
-              Primary
+              Google
             </Button>
           </div>
         </div>
 
-        <div className="row">
+        <div className="row my-3">
           <div className="col">
             <Button variant="contained" color="primary">
-              Primary
+              Facebook
             </Button>
           </div>
         </div>
 
-        <div className="row">
-          <div className="col">
+        <div className="row my-4">
+          <div className="col" style={{ textAlign: "center" }}>
             <Link to="/create-account">Create your account</Link>
           </div>
         </div>

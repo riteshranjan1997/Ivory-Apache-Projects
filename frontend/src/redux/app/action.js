@@ -39,7 +39,7 @@ export const restaurantsDataFailure = (payload) => ({
 })
 
 
-export const registerRequest = payload => dispatch => {
+export const restaurantsRequest = payload => dispatch => {
     dispatch(restaurantsDataRequest())
     axios.get("http://localhost:5000/api/")
         .then((res) => {

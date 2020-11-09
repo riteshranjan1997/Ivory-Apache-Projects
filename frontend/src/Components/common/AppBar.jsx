@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { UpdateUserAppAddress } from "../../redux/app/action";
 import LoginModel from "./LoginModel";
 import Styled from "styled-components";
 import { fade, makeStyles } from "@material-ui/core/styles";
@@ -79,8 +80,10 @@ export default function Bar(props) {
 
   const [addressquery, setAddressQuery] = React.useState("");
   const [suggestedAddress, setsuggestedAddress] = React.useState([]);
+
   const isAuth = useSelector((state) => state.auth.isAuth);
-  const userData = useSelector((status) => status.auth.userData);
+  const userData = useSelector((state) => state.auth.user_Data);
+  const selectedAddress = useSelector((state) => state.app.userAddress);
 
   const handleAddressModelOpen = () => {
     setAddressModelStatus(true);
@@ -98,8 +101,12 @@ export default function Bar(props) {
     setlogingModelStatus(false);
   };
 
-  let selectedAddress = "Mumbai";
-  let userFirstname = "Ritesh";
+  const handleLocationUpdate = () => {
+    dispatch(UpdateUserAppAddress(addressquery));
+    handleAddressModelclose();
+  };
+
+
 
   const addressModel = (
     <Fade in={addressmodelStatus}>
@@ -119,7 +126,11 @@ export default function Bar(props) {
             style={{ width: "250px" }}
           />
 
-          <Button variant="contained" className={classes.button}>
+          <Button
+            variant="contained"
+            className={classes.button}
+            onClick={handleLocationUpdate}
+          >
             Update
           </Button>
         </form>
@@ -162,112 +173,6 @@ export default function Bar(props) {
 
   return (
     <div>
-      <AppBar position="static" className={classes.navbar}>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col">
-              <img
-                className={classes.logo}
-                src="https://res.cloudinary.com/grubhub-assets/image/upload/v1576524886/Seamless_logo_flxqyg.svg"
-                alt="company logo"
-              />
-            </div>
-            <div className="col">
-              {props.addressModel ? (
-                <h6 onClick={handleAddressModelOpen}>
-                  <LocationOnIcon />
-                  Delivery ASAP <spam>to</spam>{" "}
-                  {selectedAddress == "" ? "Enter an address" : selectedAddress}
-                  <ExpandMoreIcon />
-                </h6>
-              ) : null}
-            </div>
-            <div className={classes.grow}></div>
-            <div className="col">
-              {isAuth ? (
-                <>
-                  {" "}
-                  <PopupState variant="popover" popupId="demo-popup-popover">
-                    {(popupState) => (
-                      <div>
-                        <Avatar {...bindTrigger(popupState)}>
-                          {userFirstname[0]}
-                        </Avatar>
-                        <spam {...bindTrigger(popupState)}>
-                          Hi,{" " + userFirstname}!{" "}
-                        </spam>
-                        <ExpandMoreIcon {...bindTrigger(popupState)} />
-                        <Popover
-                          {...bindPopover(popupState)}
-                          anchorOrigin={{
-                            vertical: "bottom",
-                            horizontal: "center",
-                          }}
-                          transformOrigin={{
-                            vertical: "top",
-                            horizontal: "center",
-                          }}
-                        >
-                          <div>abcd</div>
-                        </Popover>
-                      </div>
-                    )}
-                  </PopupState>{" "}
-                </>
-              ) : props.login ? (
-                <button
-                  className="btn btn-outline-success"
-                  onClick={handleLoginModelOpen}
-                >
-                  Sign in
-                </button>
-              ) : null}
-            </div>
-            {props.notifications ? (
-              <div className="col">
-                <NotificationsIcon />
-              </div>
-            ) : null}
-            <div className="col">
-              {["bottom"].map((placement) => (
-                <OverlayTrigger
-                  trigger="click"
-                  key={placement}
-                  placement={placement}
-                  className="p-2 bd-highlight m-2"
-                  overlay={
-                    <Popover style={{ height: "300px", width: "160px" }}>
-                      <Popover.Content>
-                        <div style={{ fontSize: "18px" }}>
-                          English
-                          <br />
-                          Turkce
-                          <br />
-                          हिंदी
-                          <br />
-                          Portugues
-                          <br /> Espanol
-                          <br /> Cestina
-                          <br /> Slovencina
-                          <br /> Polish
-                          <br />
-                          Italian
-                          <br />
-                          Vietnamese
-                        </div>
-                      </Popover.Content>
-                    </Popover>
-                  }
-                >
-                  <div variant="secondary">
-                    <LocalMallIcon />
-                  </div>
-                </OverlayTrigger>
-              ))}
-            </div>
-          </div>
-        </div>
-      </AppBar>
 
       <Modal
         open={addressmodelStatus}
@@ -288,111 +193,104 @@ export default function Bar(props) {
         {loginModel}
       </Modal>
 
-      <>
-        <nav class="navbar navbar-light bg-light">
-          <div className="row">
-            <div className="col">
-              <Link to="/">
-                <img
-                  className={classes.logo}
-                  src="https://res.cloudinary.com/grubhub-assets/image/upload/v1576524886/Seamless_logo_flxqyg.svg"
-                  alt="company logo"
-                />
-              </Link>
-            </div>
 
-            <div className="col">
-              {props.addressModel ? (
-                <h6 onClick={handleAddressModelOpen}>
-                  <LocationOnIcon />
-                  Delivery ASAP <spam>to</spam>{" "}
-                  {selectedAddress == "" ? "Enter an address" : selectedAddress}
-                  <ExpandMoreIcon />
-                </h6>
-              ) : null}
-            </div>
 
-            <div className="col">
-              {isAuth ? (
-                <>
-                  {" "}
-                  <PopupState variant="popover" popupId="demo-popup-popover">
-                    {(popupState) => (
-                      <div>
-                        <Avatar {...bindTrigger(popupState)}>
-                          {userFirstname[0]}
-                        </Avatar>
-                        <spam {...bindTrigger(popupState)}>
-                          Hi,{" " + userFirstname}!{" "}
-                        </spam>
-                        <ExpandMoreIcon {...bindTrigger(popupState)} />
-                        <Popover
-                          {...bindPopover(popupState)}
-                          anchorOrigin={{
-                            vertical: "bottom",
-                            horizontal: "center",
-                          }}
-                          transformOrigin={{
-                            vertical: "top",
-                            horizontal: "center",
-                          }}
-                        >
-                          <div>abcd</div>
-                        </Popover>
-                      </div>
-                    )}
-                  </PopupState>{" "}
-                </>
-              ) : props.login ? (
-                <button
-                  className="btn btn-outline-success"
-                  onClick={handleLoginModelOpen}
-                >
-                  Sign in
-                </button>
-              ) : null}
-            </div>
+      <nav class="navbar navbar-light bg-white">
+        <div class="d-flex bd-highlight mb-3 container-fluid">
+          <div class="p-2 bd-highlight terms-link">
+            <Link to="/">
+              <img
+                className={classes.logo}
+                src="https://res.cloudinary.com/grubhub-assets/image/upload/v1576524886/Seamless_logo_flxqyg.svg"
+                alt="company logo"
+              />
+            </Link>
           </div>
 
-          {props.notifications ? <NotificationsIcon /> : null}
+          <div class="p-2 bd-highlight terms-link">
+            {props.addressModel ? (
+              <h6 onClick={handleAddressModelOpen}>
+                <LocationOnIcon />
+                Delivery ASAP <spam>to</spam>{" "}
+                {selectedAddress == "" ? "Enter an address" : selectedAddress}
+                <ExpandMoreIcon />
+              </h6>
+            ) : null}
+          </div>
 
-          {["bottom"].map((placement) => (
-            <OverlayTrigger
-              trigger="click"
-              key={placement}
-              placement={placement}
-              className="p-2 bd-highlight m-2"
-              overlay={
-                <Popover style={{ height: "300px", width: "160px" }}>
-                  <Popover.Content>
-                    <div style={{ fontSize: "18px" }}>
-                      English
-                      <br />
-                      Turkce
-                      <br />
-                      हिंदी
-                      <br />
-                      Portugues
-                      <br /> Espanol
-                      <br /> Cestina
-                      <br /> Slovencina
-                      <br /> Polish
-                      <br />
-                      Italian
-                      <br />
-                      Vietnamese
-                    </div>
-                  </Popover.Content>
-                </Popover>
-              }
-            >
-              <div variant="secondary">
-                <LocalMallIcon />
+          <div class="ml-auto p-2 bd-highlight">
+            <div className="d-flex">
+              <div>
+                {isAuth ? (
+                  <>
+                    {" "}
+                    <PopupState variant="popover" popupId="demo-popup-popover">
+                      {(popupState) => (
+                        <div>
+                          <Avatar {...bindTrigger(popupState)}>
+                            {userData.first_name[0]}
+                          </Avatar>
+                          <spam {...bindTrigger(popupState)}>
+                            Hi,{" " + userData.first_name}!{" "}
+                          </spam>
+                          <ExpandMoreIcon {...bindTrigger(popupState)} />
+                          <Popover
+                            {...bindPopover(popupState)}
+                            anchorOrigin={{
+                              vertical: "bottom",
+                              horizontal: "center",
+                            }}
+                            transformOrigin={{
+                              vertical: "top",
+                              horizontal: "center",
+                            }}
+                          >
+                            <div>abcd</div>
+                          </Popover>
+                        </div>
+                      )}
+                    </PopupState>{" "}
+                  </>
+                ) : props.login ? (
+                  <button
+                    className="btn btn-outline-success"
+                    onClick={handleLoginModelOpen}
+                  >
+                    Sign in
+                  </button>
+                ) : null}
               </div>
-            </OverlayTrigger>
-          ))}
-        </nav>
-      </>
+
+                <div>{props.notifications ? (
+                <NotificationsIcon />
+            ) : null}</div>
+              
+                <div >{["bottom"].map((placement) => (
+                <OverlayTrigger
+                  trigger="click"
+                  key={placement}
+                  placement={placement}
+                  className="p-2 bd-highlight m-2"
+                  overlay={
+                    <Popover style={{ height: "300px", width: "160px" }}>
+                      <Popover.Content>
+                        <div style={{ fontSize: "18px" }}>
+                          cart is empty
+                        </div>
+                      </Popover.Content>
+                    </Popover>
+                  }
+                >
+                  <div variant="secondary">
+                    <LocalMallIcon />
+                  </div>
+                </OverlayTrigger>
+              ))}</div>
+              
+            </div>
+          </div>
+        </div>
+      </nav>
     </div>
   );
 }
