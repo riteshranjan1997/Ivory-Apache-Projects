@@ -85,11 +85,78 @@ router.post("/login", async (req, res, next) => {
       .status(200)
       .json({
         error: false,
-        data: { accessToken },
+        data: { accessToken,userData },
         message: "Login Successful",
       });
   }
 });
+
+router.post("/googleLogin", (req, res) => {
+  const { tokenId } = req.body;
+  client
+    .verifyIdToken({
+      idToken: tokenId,
+      audience:
+        "1069087639484-chisqt1vcpiq2rqcbk2dvr8u3lr2k9hk.apps.googleusercontent.com",
+    })
+    .then((response) => {
+      const { email_verified, name, email } = response.payload;
+      console.log(response.payload);
+      if (email_verified) {
+        User.findOne({ email }).then(async (userData) => {
+          if (userData) {
+            const name = userData.name;
+            const user = { id: userData["_id"], name: name };
+            const accessToken = jwt.sign(
+              user,
+              process.env.SECRET_KEY_TO_ACCESS
+            );
+            return res.status(200).json({
+              error: false,
+              data: { accessToken,userData },
+              message: "Login Successful",
+            });
+          } else {
+            try {
+              hashedPassword = await bcrypt.hash(
+                email,
+                await bcrypt.genSalt(10)
+              );
+            } catch (err) {
+              res.status(500).json({
+                error: true,
+                message: "something went wrong, try again after some time",
+              });
+              return;
+            }
+
+            const user = new User({
+              name: name,
+              email: email,
+              password: hashedPassword,
+            });
+
+            try {
+              const savedUser = await user.save();
+              res.status(200).json({
+                error: false,
+                data: savedUser,
+                message: "Register Successful",
+              });
+            } catch (err) {
+              res.status(400).json({ error: true, message: err });
+            }
+          }
+        });
+      }
+    })
+    .catch((error) => {
+      return res
+        .status(400)
+        .json({ error: true, message: "Something went wrong" });
+    });
+});
+
 
 function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
