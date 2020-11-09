@@ -82,7 +82,7 @@ export default function Bar(props) {
   const [suggestedAddress, setsuggestedAddress] = React.useState([]);
 
   const isAuth = useSelector((state) => state.auth.isAuth);
-  const userData = useSelector((state) => state.auth.user_Data);
+  const userData = useSelector((state) => state.auth.user_data);
   const selectedAddress = useSelector((state) => state.app.userAddress);
 
   const handleAddressModelOpen = () => {
