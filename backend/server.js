@@ -9,7 +9,7 @@ app.use(cors());
 dotenv.config()
 
 mongoose.connect(
-  process.env.ATLAS_URI,
+  "mongodb://localhost/auth",
   {
     useUnifiedTopology: true,
     useNewUrlParser: true,
