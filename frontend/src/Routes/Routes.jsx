@@ -3,6 +3,8 @@ import {Switch,Route} from 'react-router-dom'
 import LandingPage from "../Components/LandingPage/LandingPage"
 import Profile from '../Components/Account/Profile'
 import Address from "../Components/Account/Address"
+import RestaurentPage from "../Components/RestaurantsListingPage/RestaurantsListingPage"
+import MenuPage from "../Components/RestaurentMenuItem/MenuPage"
 import Payments from '../Components/Account/Payments'
 import PastOrders from '../Components/Account/PastOrders'
 import UpcomingOrders from '../Components/Account/UpcomingOrders'
@@ -18,6 +20,8 @@ export default function Routes(){
             <Route path = '/lets-eat' exact render={() => <SigninLandinngPage/>} />
             <Route path = "/login" exact render ={() => <LoginPage/> } />
             <Route path = "/create-account" exact render = {() => <RegisterPage/>} />
+            <Route path = "/search" exact render={(props)=><RestaurentPage props={props}/>} />
+            <Route path = "/menu" exact render={(props)=><MenuPage props={props}/>} />
             <Route path = "/account" exact render={(props)=><Profile props={props}/>} />
             <Route path="/account/Profile" render={(props)=><Profile props={props}/>} />
             <Route path="/account/Address and Phone" render={(props)=><Address props={props}/>} />

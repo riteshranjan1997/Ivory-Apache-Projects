@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react'
+import Bar from "../common/AppBar"
 import SideBar from "./SideBar"
 import Typography from '@material-ui/core/Typography';
 import { makeStyles} from '@material-ui/core/styles';
@@ -15,7 +16,6 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import Styled from 'styled-components'
 import axios from 'axios'
-import SideBar from './SideBar'
 
 
 const LocationWrapper = Styled.div`    
@@ -159,9 +159,9 @@ function PastOrders(){
     
     return(
         <div>
+            <Bar/>
             <SideBar/>
         <div className={classes.root}>
-            <SideBar />
             <main className={classes.content}>
                 <div className={classes.toolbar} />
                 <Card className={classes.root}>

@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import Bar from "../common/AppBar"
 import SideBar from "./SideBar"
 import {} from "../../redux/Auth/action";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +15,6 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
-import SideBar from './SideBar'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -110,6 +110,7 @@ function Address() {
   };
   return (
     <div>
+      <Bar/>
       <SideBar/>
     <div className={classes.root}>
       <SideBar />

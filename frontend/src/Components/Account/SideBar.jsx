@@ -1,4 +1,5 @@
 import React from 'react'
+import Bar from "../common/AppBar"
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
@@ -109,6 +110,7 @@ function SideBar(props){
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
           <Drawer
+          
             container={container}
             variant="temporary"
             anchor={theme.direction === 'rtl' ? 'right' : 'left'}

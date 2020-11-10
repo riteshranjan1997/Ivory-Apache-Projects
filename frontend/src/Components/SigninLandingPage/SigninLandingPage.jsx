@@ -9,7 +9,7 @@ function SigninLandingPage() {
   return (
 
     <div>
-      <AppBar addressModel="true" notifications="true"/>
+      <AppBar addressModel="true" notifications="true" login/>
       <SearchComponent/>
     </div>
   );

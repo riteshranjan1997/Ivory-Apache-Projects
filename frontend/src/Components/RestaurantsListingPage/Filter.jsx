@@ -37,7 +37,7 @@ export default function Filter() {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid" >
       <div className="row">
         <div className="col">
           <h4>Filters</h4>
@@ -47,7 +47,7 @@ export default function Filter() {
 
       <div className="row">
         <div className="col">
-        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1bh-content"

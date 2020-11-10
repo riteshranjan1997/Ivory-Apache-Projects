@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import {useDispatch,useSelector} from "react-redux"
+import Bar from "../common/AppBar"
 import SideBar from "./SideBar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -6,7 +8,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import {} from "../../redux/Auth/action";
-import SideBar from './SideBar'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -103,6 +104,7 @@ function Profile() {
 
   return (
     <div className={classes.root}>
+      <Bar/>
       <SideBar />
       <main className={classes.content}>
         <div className={classes.toolbar} />

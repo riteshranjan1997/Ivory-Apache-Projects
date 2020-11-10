@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
 import SideBar from "./SideBar"
+import Bar from "../common/AppBar"
 import CardContent from "@material-ui/core/CardContent";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -12,7 +13,6 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import SideBar from './SideBar'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -119,9 +119,9 @@ function Payments() {
 
   return (
     <div>
+      <Bar/>
       <SideBar/>
     <div className={classes.root}>
-      <SideBar />
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Card className={classes.root}>
