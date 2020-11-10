@@ -11,6 +11,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
+import SideBar from './SideBar'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -76,6 +77,8 @@ function Address() {
     setOpen(false);
   };
   return (
+    <div>
+      <SideBar/>
     <div className={classes.root}>
       <main className={classes.content}>
         <div className={classes.toolbar} />
@@ -245,6 +248,7 @@ function Address() {
           </CardContent>
         </Card>
       </main>
+    </div>
     </div>
   );
 }

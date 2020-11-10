@@ -1,40 +1,80 @@
 import React from "react";
-import Styles from "./LoginModel.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { loginRequest } from "../../redux/Auth/action";
-import { Redirect, Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import { Card, TextField, Checkbox, Button } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import CardContent from "@material-ui/core/CardContent";
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
-const useStyles = makeStyles({});
+
+function a11yProps(index) {
+  return {
+    id: `scrollable-auto-tab-${index}`,
+    'aria-controls': `scrollable-auto-tabpanel-${index}`,
+  };
+}
+
+
+const useStyles = makeStyles(theme=>({
+  root: {
+    flexGrow: 1,
+    width: '100%',
+    backgroundColor: theme.palette.background.paper,
+  },
+  icon:{
+    background:'url("imgIcon/aadharCard backside.ico")',
+    height:"30px",
+    width:"30px",
+    display:"block",
+  }
+}));
 
 export default function BrowseByCuisine() {
   const classes = useStyles();
-  const dispatch = useDispatch();
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const seeAll=()=>{
+    return(
+      <div>
+        <i class="fas fa-utensils"></i>
+      </div>
+    )
+  }
+
+  const cusine=()=>{
+    <div>
+      <i className={classes.icon}></i>
+    </div>
+  }
 
   return (
-      <div className="container">
-        <h5 className={Styles.title}>Sign in with your Seamless account</h5>
-        <div className="row">
-          <div className="col">
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="..." class="d-block w-100" alt="..."/>
-                </div>
-                <div class="carousel-item">
-                  <img src="..." class="d-block w-100" alt="..."/>
-                </div>
-                <div class="carousel-item">
-                  <img src="..." class="d-block w-100" alt="..."/>
-                </div>
-              </div>
-            </div>
+     <div className="container"> 
+        <div className={classes.root}>
+            <AppBar position="static" color="default">
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                indicatorColor="primary"
+                textColor="primary"
+                variant="scrollable"
+                scrollButtons="auto"
+                aria-label="scrollable auto tabs example"
+              >
+                <Tab label="see all restaurent" icon={seeAll()} {...a11yProps(0)} />
+                <Tab label="dessert" icon={cusine()} {...a11yProps(1)} />
+                <Tab label="Item Three" {...a11yProps(2)} />
+                <Tab label="Item Four" {...a11yProps(3)} />
+                <Tab label="Item Five" {...a11yProps(4)} />
+                <Tab label="Item Six" {...a11yProps(5)} />
+                <Tab label="Item Seven" {...a11yProps(6)} />
+              </Tabs>
+            </AppBar>
           </div>
-        </div>
-
-      </div>
+     </div>
   );
 }
