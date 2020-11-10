@@ -69,4 +69,4 @@ const RestaurantSchema = new Schema({
 
 });
 
-module.exports = mongoose.model("restaurants_data", RestaurantSchema);
+module.exports = mongoose.model("restaurants-data", RestaurantSchema);
