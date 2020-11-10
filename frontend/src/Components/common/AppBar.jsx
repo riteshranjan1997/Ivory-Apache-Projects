@@ -5,9 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { UpdateUserAppAddress } from "../../redux/app/action";
 import LoginModel from "./LoginModel";
 import Styled from "styled-components";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button } from "@material-ui/core";
-import AppBar from "@material-ui/core/AppBar";
+// import AppBar from "@material-ui/core/AppBar";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import Modal from "@material-ui/core/Modal";
@@ -255,7 +255,7 @@ export default function Bar(props) {
   }, [addressquery]);
 
   return (
-    <div>
+    <div style={{zIndex:30,position:"fixed"}}>
      <div className={classes.dialog}>
           <Dialog
             fullScreen={fullScreen}
