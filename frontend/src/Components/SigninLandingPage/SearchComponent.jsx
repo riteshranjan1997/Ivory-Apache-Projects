@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { colors } from "@material-ui/core";
 import BrowseByCuisine from "../common/BrowseByCuisine"
 import FreeDelivary from "./FreeDelivary"
+import LandingPageFooter from "../LandingPage/LandinPageFooter";
 
 const useStyles = makeStyles({
   root: {
@@ -76,7 +77,8 @@ export default function SearchComponent() {
             <div className={classes.tagBottom}><p>Most popular</p><p> near you </p></div>
             <button style={{background:"white",color:"black",border:"none",width:"200px"}} className={classes.seeAllButton}>See all</button></div>          
         </div> */}
-        <div className="col-5 mr-5">
+
+         <div className="col-5 mr-5">
             <img src="https://res.cloudinary.com/grubhub/image/upload/d_search:browse-images:default.jpg/w_600,h_300,f_auto,g_auto,q_auto:eco,dpr_auto,c_fill/topics_umami_homepage/assets_new_on_gh.jpg" height="300px" width="550px"alt=""/>
             <div className={classes.tag}>New on Seamless</div>
           </div>
@@ -85,11 +87,11 @@ export default function SearchComponent() {
             <div className={classes.tag}>45 minutes or less</div>
           </div>
       </div>
-      </div>
-
-
-      </> 
-
-
-  );
+      
+  </div>
+  <div>
+      <LandingPageFooter/>
+  </div>
+  </> 
+ );
 }
