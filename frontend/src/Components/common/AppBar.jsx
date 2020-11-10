@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { UpdateUserAppAddress } from "../../redux/app/action";
+import { UpdateUserAppAddress,UpdateUserGioLocation } from "../../redux/app/action";
 import {logoutUser} from "../../redux/Auth/action"
 import LoginModel from "./LoginModel";
 import Styled from "styled-components";
@@ -142,6 +142,7 @@ export default function Bar(props) {
 
   const handleLocationUpdate = () => {
     dispatch(UpdateUserAppAddress(addressquery));
+    dispatch(UpdateUserGioLocation(addressquery))
     setOpen(false);
   };
 

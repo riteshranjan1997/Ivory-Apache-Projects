@@ -41,6 +41,7 @@ router.post("/register", async (req, res, next) => {
 
   const user = new User({
     first_name: req.body.first_name,
+    last_name:req.body.last_name,
     email: req.body.email,
     password: hashedPassword,
   });
@@ -60,9 +61,10 @@ router.post("/register", async (req, res, next) => {
 });
 
 router.post("/login", async (req, res, next) => {
-  console.log(req.body)
+  console.log(" in login ",req.body)
   const { error } = loginValidation(req.body);
   if (error) {
+    console.log("error in login is",error)
     return res
       .status(400)
       .json({ error: true, message: error.details[0].message });

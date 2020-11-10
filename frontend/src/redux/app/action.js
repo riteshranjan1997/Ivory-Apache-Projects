@@ -18,9 +18,9 @@ import {
 
 import axios from "axios"
 
-export const UpdateUserAppAddress = (payload) => {
-    restaurantsRequest()
 
+
+export const UpdateUserAppAddress = (payload) => {
 
  return  {
         type: UPDATE_ADDRESS,
@@ -28,10 +28,32 @@ export const UpdateUserAppAddress = (payload) => {
     }
 }
 
-export const UpdateUserGioLocation = (payload) => ({
+
+export const UpdateUserGioLocation =  (payload) => {
+
+    console.log(payload)
+
+    let longitude = 0 
+    let latitude = 0
+
+    axios({
+        method: "get",
+        url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${payload}.json`,
+        params: {
+          access_token:
+            "pk.eyJ1Ijoic291bmRhcnlhbWVjc2UiLCJhIjoiY2toMmUxZHBoMGJtdDJ3cGNqOWhmbTJqaiJ9.sZeF_rzMTfs2fPBA4JsHxQ",
+          country: "IN",
+        },
+      }).then(res => {
+          longitude =  res.data.features.geometry.coordinates[0]
+          latitude = res.data.features.geometry.coordinates[1]
+        }).catch(err => console.log(err))
+
+
+   return {
     type: UPDATE_GIOLOCATION,
-    payload
-})
+    payload: {longitude,latitude}
+}}
 
 export const UpdateUserCuisine = (payload) => ({
     type: UPDATE_CUISINE,
