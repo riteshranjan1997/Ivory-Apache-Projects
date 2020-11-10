@@ -15,7 +15,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import Styled from 'styled-components'
 import axios from 'axios'
-
+import SideBar from './SideBar'
 
 
 const LocationWrapper = Styled.div`    
@@ -158,6 +158,8 @@ function PastOrders(){
     }   
     
     return(
+        <div>
+            <SideBar/>
         <div className={classes.root}>
             <SideBar />
             <main className={classes.content}>
@@ -315,6 +317,8 @@ function PastOrders(){
                     </CardContent>
                 </Card>
             </main>
+        </div>
+
         </div>
     )
 }

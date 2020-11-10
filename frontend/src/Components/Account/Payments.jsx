@@ -12,7 +12,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-
+import SideBar from './SideBar'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -118,6 +118,8 @@ function Payments() {
   };
 
   return (
+    <div>
+      <SideBar/>
     <div className={classes.root}>
       <SideBar />
       <main className={classes.content}>
@@ -359,6 +361,7 @@ function Payments() {
           </CardContent>
         </Card>
       </main>
+    </div>
     </div>
   );
 }
