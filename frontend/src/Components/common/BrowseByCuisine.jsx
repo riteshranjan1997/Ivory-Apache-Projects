@@ -10,8 +10,8 @@ import Box from '@material-ui/core/Box';
 
 function a11yProps(index) {
   return {
-    id: `scrollable-auto-tab-${index}`,
-    'aria-controls': `scrollable-auto-tabpanel-${index}`,
+    id: `scrollable-force-tab-${index}`,
+    'aria-controls': `scrollable-force-tabpanel-${index}`,
   };
 }
 
@@ -20,14 +20,9 @@ const useStyles = makeStyles(theme=>({
   root: {
     flexGrow: 1,
     width: '100%',
-    backgroundColor: theme.palette.background.paper,
+    background: "inherit",
   },
-  icon:{
-    background:'url("imgIcon/aadharCard backside.ico")',
-    height:"30px",
-    width:"30px",
-    display:"block",
-  }
+ 
 }));
 
 export default function BrowseByCuisine() {
@@ -37,20 +32,6 @@ export default function BrowseByCuisine() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  const seeAll=()=>{
-    return(
-      <div>
-        <i class="fas fa-utensils"></i>
-      </div>
-    )
-  }
-
-  const cusine=()=>{
-    <div>
-      <i className={classes.icon}></i>
-    </div>
-  }
 
   return (
      <div className="container"> 
@@ -62,19 +43,53 @@ export default function BrowseByCuisine() {
                 indicatorColor="primary"
                 textColor="primary"
                 variant="scrollable"
-                scrollButtons="auto"
+                scrollButtons="on"
                 aria-label="scrollable auto tabs example"
+                style={{background:"white"}}
               >
-                <Tab label="see all restaurent" icon={seeAll()} {...a11yProps(0)} />
+                <Tab label={
+                  <div>
+                    <div style={{background:"#2B8282",height:"100px",width:"100px",borderRadius:"50%"}}><i class="fas fa-utensils" style={{fontSize:"40px",color:"white",position:"relative",top:"20px"}}></i>
+                    </div>
+                    <div>all restaurents</div>
+                  </div>
+                }  {...a11yProps(0)} style={{textTransform:"capitalize"}} />
                 <Tab label={<div>
-                    <div><img src="https://mukasash.com/wp-content/blogs.dir/242/files/ciclocafe/CicloCafe_1d.jpeg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%"}}/></div>
-                    <div>See All Restaurents</div>
-                </div>}  {...a11yProps(1)} />
-                <Tab label="Item Three" {...a11yProps(2)} />
-                <Tab label="Item Four" {...a11yProps(3)} />
-                <Tab label="Item Five" {...a11yProps(4)} />
-                <Tab label="Item Six" {...a11yProps(5)} />
-                <Tab label="Item Seven" {...a11yProps(6)} />
+                    <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                    <div>deserts</div>
+                </div>}  {...a11yProps(1)} style={{textTransform:"capitalize"}} />
+                <Tab  label={<div>
+                    <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                    <div>Lunch Specials</div>
+                </div>} {...a11yProps(2)} style={{textTransform:"capitalize"}}/>
+                <Tab label={<div>
+                    <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                    <div>Lunch Specials</div>
+                </div>} {...a11yProps(3)} style={{textTransform:"capitalize"}} />
+                <Tab label={<div>
+                    <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                    <div>Lunch Specials</div>
+                </div>} {...a11yProps(4)} style={{textTransform:"capitalize"}}/>
+                <Tab label={<div>
+                    <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                    <div>Lunch Specials</div>
+                </div>} {...a11yProps(5)} style={{textTransform:"capitalize"}} />
+                <Tab label={<div>
+                  <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                  <div>Lunch Specials</div>
+              </div>} {...a11yProps(6)} style={{textTransform:"capitalize"}}/>
+              <Tab label={<div>
+                    <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                    <div>Lunch Specials</div>
+                </div>} {...a11yProps(7)} style={{textTransform:"capitalize"}}/>
+                <Tab label={<div>
+                    <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                    <div>Lunch Specials</div>
+                </div>} {...a11yProps(8)} style={{textTransform:"capitalize"}} />
+                <Tab label={<div>
+                  <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                  <div>Lunch Specials</div>
+              </div>} {...a11yProps(9)} style={{textTransform:"capitalize"}}/>
               </Tabs>
             </AppBar>
           </div>
