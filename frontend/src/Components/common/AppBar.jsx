@@ -15,31 +15,36 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import Avatar from "@material-ui/core/Avatar";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
 import CloseIcon from "@material-ui/icons/Close";
 import Fade from "@material-ui/core/Fade";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
+import Divider from "@material-ui/core/Divider";
+
 
 const useStyles = makeStyles((theme) => ({
   logo: {
     width: "105px",
+    marginTop:"-5px",
   },
   addressModel: {
-    width: "576px",
-    height: "407px",
+    width: "400px",
+    maxHeight: "600px",
     backgroundColor: "white",
-    margin: "auto",
     border: "none",
-    outline: "none",
-    padding: "16px 12px",
+    outline: "none",    
   },
   grow: {
-    flexGrow: 1,
+    
   },
   navbar: {
     backgroundColor: "white",
     color: "black",
-    height: "70px",
+    height: "50px",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -50,13 +55,48 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
   },
+  LocatePlaces:{
+    display:"flex",
+    alignItems:"center"
+  },
+  searchField:{
+    marginLeft:"10px",
+    border:"none",
+    outline:"none",
+  },
+  input:{
+    padding:"10px",
+    color:"grey",
+    "&:hover":{
+      border:"2px solid black",
+      borderRadius:"5px"
+    }
+  },
+  inputBar:{
+    marginLeft:"200px"
+  },
+  menuDetails:{
+    display:"flex",
+    flexDirection:"column",
+    marginRight:"10px"
+  },
+  menuRow:{
+    display:"flex",
+    justifyContent:"space-around",
+    color:"#2B8282",
+    padding:"10px",
+  },
+  menuIcon:{
+    fontSize:"30px",
+    textAlign:"center"
+  }
 }));
 
 const LocationWrapper = Styled.div`    
     width:250px;
     
     li{
-        width:248px;
+        width:360px;
         padding:10px;
         border:1px solid #E0E0E0;
         border-top:none;
@@ -84,6 +124,9 @@ export default function Bar(props) {
   const isAuth = useSelector((state) => state.auth.isAuth);
   const userData = useSelector((state) => state.auth.user_data);
   const selectedAddress = useSelector((state) => state.app.userAddress);
+  const [open, setOpen] = React.useState(false);
+  const theme = useTheme()
+  const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
 
   const handleAddressModelOpen = () => {
     setAddressModelStatus(true);
@@ -103,19 +146,55 @@ export default function Bar(props) {
 
   const handleLocationUpdate = () => {
     dispatch(UpdateUserAppAddress(addressquery));
-    handleAddressModelclose();
+    setOpen(false)
   };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    };
 
 
 
   const addressModel = (
     <Fade in={addressmodelStatus}>
       <div className={classes.addressModel}>
-        <CloseIcon onClick={handleAddressModelclose} />
-        <h5>Your order settings</h5>
-        <p>When would you like your order?</p>
-        <p>ASAP</p>
-        <h6>Delivery address</h6>
+        <CloseIcon onClick={handleAddressModelclose}
+        style={{color:"#2B8282",fontSize:"30px",fontWeight:"bold"}}
+        />
+         <h4 className={classes.modelHeading}>Your order settings</h4>
+              <div className={classes.buttons}>
+                  <Button
+                  style={{
+                      backgroundColor: "#2B8282",
+                      color: "white",
+                      width: "180px",
+                      height:"40px",
+                      borderRadius:"5px  0px 0px 5px"
+                  }}
+                  >
+                  Delivary
+                  </Button>
+                  <Button
+                  style={{
+                      border: "1px solid #2B8282",
+                      color: "#2B8282",
+                      width: "180px",
+                      height:"40px",
+                      borderRadius:"0px  5px 5px 0px"
+                  }}
+                  >
+                  PickUp
+                  </Button>
+              </div>
+
+              <div className={classes.design}></div>
+                <div style={{padding:"20px 0px 20px 0px "}}>When would You like your order?</div>
+                <div></div>
+                <div>Delivary Address</div>               
         <form>
           <TextField
             id="outlined-basic"
@@ -123,18 +202,9 @@ export default function Bar(props) {
             variant="outlined"
             value={addressquery}
             onChange={(e) => setAddressQuery(e.target.value)}
-            style={{ width: "250px" }}
+            style={{ width:"360px"}}
           />
-
-          <Button
-            variant="contained"
-            className={classes.button}
-            onClick={handleLocationUpdate}
-          >
-            Update
-          </Button>
-        </form>
-        <LocationWrapper>
+          <LocationWrapper>
           <ul style={{ listStyleType: "none", textAlign: "left" }}>
             {addressquery &&
               suggestedAddress &&
@@ -156,6 +226,19 @@ export default function Bar(props) {
               ))}
           </ul>
         </LocationWrapper>
+        <Button  
+            onClick={handleLocationUpdate}                                                      
+            style={{
+                backgroundColor: "#2B8282",
+                color: "white",
+                width: "360px",
+                height:"40px",                
+            }}
+            >
+            Update
+            </Button>
+        </form>
+        
       </div>
     </Fade>
   );
@@ -173,16 +256,20 @@ export default function Bar(props) {
 
   return (
     <div>
-
-      <Modal
-        open={addressmodelStatus}
-        onClose={handleAddressModelclose}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-        closeAfterTransition
-      >
-        {addressModel}
-      </Modal>
+     <div className={classes.dialog}>
+          <Dialog
+            fullScreen={fullScreen}
+            open={open}
+            fullWidth="fullwidth"
+            maxWidth="xs"
+            onClose={handleClose}
+            aria-labelledby="responsive-dialog-title"
+            >
+            <DialogContent>
+                {addressModel}
+            </DialogContent>
+        </Dialog>
+      </div>
       <Modal
         open={logingModelStatus}
         onClose={handleLoginModelClose}
@@ -196,9 +283,9 @@ export default function Bar(props) {
 
 
       <nav class="navbar navbar-light bg-white">
-        <div class="d-flex bd-highlight mb-3 container-fluid">
+        <div class="d-flex  container-fluid">
           
-          <div class="p-2 bd-highlight terms-link">
+          <div class="terms-link">
             <Link to="/">
               <img
                 className={classes.logo}
@@ -211,12 +298,21 @@ export default function Bar(props) {
           <div class="p-2 bd-highlight terms-link">
             {props.addressModel ? (
               <h6 onClick={handleAddressModelOpen}>
-                <LocationOnIcon />
-                Delivery ASAP <spam>to</spam>{" "}
-                {selectedAddress == "" ? "Enter an address" : selectedAddress}
-                <ExpandMoreIcon />
+                <div className={classes.LocatePlaces}>
+                    <div><LocationOnIcon style={{color:"#2B8282"}} /></div>
+                    <div style={{color:"#2B8282"}} onClick={handleClickOpen}>
+                        {selectedAddress == "" ? "Delivery ASAP to" : selectedAddress}
+                    </div>
+                    <div><ExpandMoreIcon style={{color:"#2B8282"}}/></div>
+                  </div>
               </h6>
             ) : null}
+          </div>
+          <div className={classes.inputBar}>
+            <div className={classes.input}>
+              <i className="fas fa-search" style={{color:"grey"}}></i>
+              <input type="text" className={classes.searchField} placeholder="pizza-sushi-chinese"/>
+            </div>
           </div>
 
           <div class="ml-auto p-2 bd-highlight">
@@ -261,9 +357,100 @@ export default function Bar(props) {
                   </button>
                 ) : null}
               </div>
+              <div>
+              <OverlayTrigger
+                 trigger="click"
+                 key="bottom"
+                 placement="bottom"
+                 overlay={
+                   <Popover id={"popover-positioned-bottom"}>
+                     <Popover.Content>
+                      <div style={{display:"flex",flexDirection:"column"}}>
+                          <div className={classes.menuRow}>
+                              <Link to="/account/Past orders" style={{color:"#2B8282",textDecoration:"none"}}>
+                                <div className={classes.menuDetails}>
+                                  <div className={classes.menuIcon}><i class="fas fa-history"></i></div>
+                                  <div>Past orders</div>
+                                </div>
+                              </Link>
+                              <Link to="/account/Upcoming orders" style={{color:"#2B8282",textDecoration:"none"}}>
+                                <div className={classes.menuDetails}>
+                                  <div className={classes.menuIcon}><i class="fas fa-briefcase"></i></div>
+                                  <div>Upcoming orders</div>
+                                </div>
+                              </Link>
+                          </div>
+                          <div className={classes.menuRow}>
+                            <Link to="/account/Saved Restaurent" style={{color:"#2B8282",textDecoration:"none"}}>
+                                <div className={classes.menuDetails}>
+                                  <div className={classes.menuIcon}><i class="fas fa-bookmark"></i></div>
+                                  <div>Saved</div>
+                                </div>
+                              </Link>
+                              <Link to="/account/Payments" style={{color:"#2B8282",textDecoration:"none"}}>
+                                <div className={classes.menuDetails}>
+                                  <div className={classes.menuIcon}><i class="fas fa-money-check"></i></div>
+                                  <div>Payments</div>
+                                </div>
+                              </Link>
+                          </div>
+                          <div className={classes.menuRow}>
+                            <Link to="/account" style={{color:"#2B8282",textDecoration:"none"}}>
+                                <div className={classes.menuDetails} style={{marginLeft:"-10px"}}>
+                                  <div className={classes.menuIcon}><i class="fas fa-cog"></i></div>
+                                  <div>Account</div>
+                                </div>
+                              </Link>
+                              <Link to="/" style={{color:"#2B8282",textDecoration:"none"}}>
+                                <div className={classes.menuDetails} style={{marginLeft:"-10px"}}>
+                                  <div className={classes.menuIcon}><i class="fas fa-info-circle"></i></div>
+                                  <div>Help</div>
+                                </div>
+                              </Link>
+                          </div>
+                          <Divider/>
+                          <div style={{color:"#2B8282",textAlign:"center"}}>SignOut</div>
+                      </div>
+                     </Popover.Content>
+                   </Popover>
+                 }
+               >
+                  <Button
+                      style={{
+                          backgroundColor: "#2B8282",
+                          color: "white",
+                          width: "233px",
+                          border:"none"
+                      }}
+                      >
+                      Account Details
+                      </Button> 
+                  </OverlayTrigger>
+              </div>
 
                 <div>{props.notifications ? (
-                <NotificationsIcon />
+                 <OverlayTrigger
+                 trigger="click"
+                 key="bottom"
+                 placement="bottom"
+                 overlay={
+                   <Popover id={"popover-positioned-bottom"} style={{ maxHeight: "200px", width: "260px" }}>
+                     <Popover.Content>
+                      <div style={{display:"flex"}}>
+                          <div style={{background:"orange",height:"50px",width:"50px",borderRadius:"5px",padding:"10px",marginRight:"5px",marginTop:"10px"}}>
+                            <i class="far fa-clock" style={{fontSize:"30px",color:"white"}} ></i>
+                          </div>
+                          <div>
+                            <div><span style={{fontWeight:"bold"}}>plan Ahead</span>:Schedule a week of tasty lunches deliveredto you desc<span style={{color:"#2B8282"}}>Plan now</span></div>
+                          </div>
+                        </div>
+                     </Popover.Content>
+                   </Popover>
+                 }
+               >
+              <NotificationsIcon style={{color:"#2B8282",fontSize:"30px",marginRight:"20px"}}/>
+              </OverlayTrigger>
+                
             ) : null}</div>
               
                 <div >{["bottom"].map((placement) => (
@@ -273,21 +460,21 @@ export default function Bar(props) {
                   placement={placement}
                   className="p-2 bd-highlight m-2"
                   overlay={
-                    <Popover style={{ height: "300px", width: "160px" }}>
+                    <Popover style={{ maxHeight: "200px", width: "260px" }}>
                       <Popover.Content>
-                        <div style={{ fontSize: "18px" }}>
-                          cart is empty
+                        <div style={{ fontSize: "18px",display:"flex",flexDirection:"column" }}>
+                          <div style={{alignSelf:"center"}}><img src="https://www.seamless.com/assets/img/seamless/empty-bag.svg" height="100px" width="100px" alt="Empty Bag"/></div>
+                          <div style={{fontSize:"20px",fontWeight:"bolder",color:"grey",alignSelf:"center"}}>Your Bag is empty</div>
                         </div>
                       </Popover.Content>
                     </Popover>
                   }
                 >
                   <div variant="secondary">
-                    <LocalMallIcon />
+                    <LocalMallIcon style={{color:"#2B8282",fontSize:"30px"}}/>
                   </div>
                 </OverlayTrigger>
-              ))}</div>
-              
+              ))}</div>              
             </div>
           </div>
         </div>

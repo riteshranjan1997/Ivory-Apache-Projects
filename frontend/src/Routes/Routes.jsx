@@ -9,6 +9,7 @@ import UpcomingOrders from '../Components/Account/UpcomingOrders'
 import SigninLandinngPage from "../Components/SigninLandingPage/SigninLandingPage"
 import LoginPage from "../Components/LoginPage/LoginPage"
 import RegisterPage from "../Components/RegisterPage/RegisterPage"
+import SavedRestaurent from "../Components/Account/SavedRestaurent"
 
 export default function Routes(){
     return(
@@ -17,12 +18,13 @@ export default function Routes(){
             <Route path = '/lets-eat' exact render={() => <SigninLandinngPage/>} />
             <Route path = "/login" exact render ={() => <LoginPage/> } />
             <Route path = "/create-account" exact render = {() => <RegisterPage/>} />
-            <Route path = "/" exact render={(props)=><Profile props={props}/>} />
+            <Route path = "/account" exact render={(props)=><Profile props={props}/>} />
             <Route path="/account/Profile" render={(props)=><Profile props={props}/>} />
             <Route path="/account/Address and Phone" render={(props)=><Address props={props}/>} />
             <Route path="/account/Payments" render={(props)=><Payments props={props}/>} />
             <Route path="/account/Past orders" render={(props)=><PastOrders props={props}/>} />
             <Route path="/account/Upcoming orders" render={(props)=><UpcomingOrders props={props}/>} />
+            <Route path="/account/Saved Restaurent" render={(props)=><SavedRestaurent props={props}/>} />
         </Switch>
     )
 }
