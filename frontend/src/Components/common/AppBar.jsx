@@ -3,12 +3,11 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { UpdateUserAppAddress } from "../../redux/app/action";
+import {logoutUser} from "../../redux/Auth/action"
 import LoginModel from "./LoginModel";
 import Styled from "styled-components";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button } from "@material-ui/core";
-import AppBar from "@material-ui/core/AppBar";
-import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import Modal from "@material-ui/core/Modal";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
@@ -253,6 +252,7 @@ export default function Bar(props) {
 
   return (
     <div>
+      {isAuth ? handleLoginModelClose() : null }
       <div className={classes.dialog}>
         <Dialog
           fullScreen={fullScreen}
@@ -441,6 +441,7 @@ export default function Bar(props) {
                                   color: "#2B8282",
                                   textAlign: "center",
                                 }}
+                                onClick={() => dispatch(logoutUser())}
                               >
                                 SignOut
                               </div>

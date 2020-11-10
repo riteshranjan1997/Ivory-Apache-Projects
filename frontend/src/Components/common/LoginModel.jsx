@@ -51,7 +51,6 @@ export default function LoginModel() {
                 onChange={(e) =>
                   setAddData({ ...user_data, email: e.target.value })
                 }
-                variant="outlined"
               />
               {/* <small id="emailHelp" class="form-text text-muted">
                 We'll never share your email with anyone else.
@@ -72,7 +71,6 @@ export default function LoginModel() {
               onChange={(e) =>
                 setAddData({ ...user_data, password: e.target.value })
               }
-              variant="outlined"
             />
           </div>
         </div>
@@ -102,10 +100,9 @@ export default function LoginModel() {
           <div className="col">
           <GoogleLogin
         clientId="1069087639484-chisqt1vcpiq2rqcbk2dvr8u3lr2k9hk.apps.googleusercontent.com"
-        buttonText="L O G I N"
+        buttonText="Continue with Google"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
-        style={{backgroundColor:"#4285f4"}}
       >
 
       </GoogleLogin>
