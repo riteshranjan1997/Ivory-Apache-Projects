@@ -1,5 +1,45 @@
 import React from 'react'
 import Styled from 'styled-components'
+import data from '../../data.json'
+import Button from '@material-ui/core/Button';
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({   
+    closeMark: {
+      color: "#2B8282",
+      fontWeight: "bolder",
+    },
+    modelHeading: {
+      color: "black",
+      fontSize: "18px",
+      fontWeight: "bolder",
+    },
+    design: {
+      height: "10px",
+      width: "108%",
+      marginLeft: "-20px",
+      borderRadius: "3px",
+      background: " #f7f7f7",
+      boxShadow: "34px 34px 68px #f5f5f5,-34px -34px 68px #f9f9f9",
+    },
+   
+    buttons:{
+      display:"flex",
+      flexDirection:"flex-start",
+      padding:"20px",
+      fontWeight:"bolder",
+    },
+    icons:{
+        color:"#2B8282",
+        padding:"10px",
+    }
+  }));
 
 const BannerWrapper = Styled.div`
         position:relative;     
@@ -71,23 +111,63 @@ const RestaurentIcon = Styled.div`
 `
 
 function RestaurentMenuItemTopBanner(){
+    const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
+    const theme = useTheme();
+    const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
+
+    const handleClickOpen = () => {
+        setOpen(true);
+      };
+    
+      const handleClose = () => {
+        setOpen(false);
+      };
     return(
         <div >
-        <BannerWrapper>
-            <img className="img-fluid" src = "https://res.cloudinary.com/grubhub-assets/image/upload/f_auto,fl_lossy,q_85/v1517936006/MOB_SL_FallbackWallpaper_watjdr.png" alt = "ImageBanner"/>
-            <BackArrow>
-                <i class="fas fa-chevron-circle-left"></i>
-            </BackArrow>
-            <SaveRestaurent>
-                 <i class="fas fa-bookmark"></i>
-            </SaveRestaurent>
-            <ShareRestaurent>
-                <i class="fas fa-share-alt"></i>
-            </ShareRestaurent>
-            <RestaurentIcon>
-                <img src="https://via.placeholder.com/100"  alt="restaurentIcon"/>
-            </RestaurentIcon>
-        </BannerWrapper>
+            {data && data.map(item=>(            
+                <BannerWrapper>
+                    <img className="img-fluid" src ={item.restaurant_images} alt = "ImageBanner"/>
+                    <BackArrow>
+                        <i class="fas fa-chevron-circle-left"></i>
+                    </BackArrow>
+                    <SaveRestaurent>
+                        <i class="fas fa-bookmark"></i>
+                    </SaveRestaurent>
+                    <ShareRestaurent>
+                        <div  onClick={handleClickOpen} ><i class="fas fa-share-alt"></i></div>
+                    </ShareRestaurent>
+                    <RestaurentIcon>
+                        <img src={item.restaurent_logo}  alt="restaurentIcon"/>
+                    </RestaurentIcon>
+                    <Dialog
+                        fullScreen={fullScreen}
+                        open={open}
+                        fullWidth="fullwidth"
+                        maxWidth="xs"
+                        onClose={handleClose}
+                        aria-labelledby="responsive-dialog-title"
+                        >
+                        <DialogTitle id="responsive-dialog-title">
+                            <h4 className={classes.closeMark} onClick={handleClose}>
+                            {<i class="fas fa-times"></i>}
+                            </h4>
+                        </DialogTitle>
+
+                        <DialogContent>
+                            <h4 className={classes.modelHeading}>Share {item.name}</h4>
+
+                            <DialogContentText>
+                            <div className={classes.design}></div>
+                                <div className={classes.icons}><i class="fab fa-facebook-square"></i>{" "}FaceBook</div>
+                                <div className={classes.icons}><i class="fab fa-twitter"></i> {" "}Twitter</div>
+                                <div className={classes.icons}><i class="fas fa-envelope"></i> {" "}Email</div>
+                                <div className={classes.icons}><i class="fas fa-bolt"></i> {" "}Copy Link</div>
+                            </DialogContentText>
+                        </DialogContent>
+                        </Dialog>
+                </BannerWrapper>
+        ))}
         </div>
     )
 }
