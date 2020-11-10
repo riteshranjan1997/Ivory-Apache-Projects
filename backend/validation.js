@@ -11,6 +11,7 @@ const registerValidation = (data) => {
 };
 
 const loginValidation = (data) => {
+  console.log("in login validation ",data)
   const schema = Joi.object({
     email: Joi.string().min(6).required().email(),
     password: Joi.string().min(6).required(),
@@ -32,5 +33,5 @@ const passwordValidation = (data) =>{
 }
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
-module.exports.loginValidation = emailValidation;
-module.exports.loginValidation = passwordValidation;
+module.exports.emailValidation = emailValidation;
+module.exports.passwordValidation = passwordValidation;
