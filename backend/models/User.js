@@ -36,6 +36,12 @@ const UserSchema = new Schema({
   saved_restaurants: {
     type: Array,
   },
+  cart:{
+    type:String,
+  },
+  credit_cards:{
+    type:Array,
+  }
 });
 
 module.exports = mongoose.model("User", UserSchema);

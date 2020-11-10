@@ -79,7 +79,8 @@ router.post("/login", async (req, res, next) => {
   } else {
     // const email = req.body.email;
     const first_name = userData.first_name;
-    const user = { id: userData["_id"], first_name: first_name };
+    const email = userData.email
+    const user = { id: userData["_id"], first_name: first_name,email:email };
     const accessToken = jwt.sign(user, process.env.SECRET_KEY_TO_ACCESS);
     res
       .status(200)
@@ -156,24 +157,5 @@ router.post("/googleLogin", (req, res) => {
         .json({ error: true, message: "Something went wrong" });
     });
 });
-
-
-function authenticateToken(req, res, next) {
-  const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1];
-  if (token == null) {
-    return res
-      .status(401)
-      .json({ error: true, message: "Not Authorized to access" });
-  }
-  jwt.verify(token, process.env.SECRET_KEY_TO_ACCESS, (err, user) => {
-    if (err) {
-      return res.status(403).json({ error: true, message: "Forbidden" });
-    }
-    req.user = user;
-    next();
-  });
-}
-
 
 module.exports = router;

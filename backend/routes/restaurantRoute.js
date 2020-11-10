@@ -1,55 +1,28 @@
-const Restaurants = require("../models/Restaurant")
-const express = require("express")
+const express = require("express");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const { registerValidation, loginValidation } = require("../validation");
+require("dotenv").config();
+const Restaurant = require("../models/Restaurant");
+const authenticateToken = require("../middlewares/jwtAuthentication")
+
 const router = express.Router();
 
-router.get("/lets-eat",async (req,res)=>{
-    try{
-    const data = await getNearByRestaurants(req.body.lattitude,req.body.longitude)
-    }catch(err){
-      return  res.status(400).json({error:true,message:err})
-    }
-    if(data.error){
-      res.status(400).json({error:true,message:error})
-    }
-    else{
-      res.status(200).json({error:false,data:data.data})
-    }
+router.get("/lets-eat",paginatedResultsWithLocation(Restaurant),async (req,res)=>{
+  return res.status(200).json({error:false,data:res.pagination})
 })
 
-
- async function getNearByRestaurants (lattitude,longitude)  {
-   try{
-    var restaurants = await Restaurants.find( { location:
-      { $near :
-        { $geometry :
-           { type : "Point" ,
-             coordinates : [ lattitude, longitude] } ,
-          $maxDistance : 1000
-   } } } )
-   return {error:false,data:restaurants}
-  }catch(error){
-    return {error:true,message:error}
-  }   
-}
-
-function authenticateToken(req, res, next) {
-  const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1];
-  if (token == null) {
-    return res
-      .status(401)
-      .json({ error: true, message: "Not Authorized to access" });
+router.get("/restaurantDetails",async (req,res)=>{
+  const {_id} = req.body
+  try{
+    const restaurantDetails = await Restaurant.find({_id:_id})
+    res.json(200).json({error:false,data:restaurantDetails})
+  }catch(err){
+    res.status(400).json({error:true,message:err})
   }
-  jwt.verify(token, process.env.SECRET_KEY_TO_ACCESS, (err, user) => {
-    if (err) {
-      return res.status(403).json({ error: true, message: "Forbidden" });
-    }
-    req.user = user;
-    next();
-  });
-}
+})
 
-function paginatedResults(model) {
+function paginatedResultsWithLocation(model) {
   return async (req, res, next) => {
     const page = parseInt(req.query.page);
     const limit = parseInt(req.query.limit);
@@ -57,28 +30,33 @@ function paginatedResults(model) {
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
 
-    const results = {};
-
-    if (endIndex < (await model.countDocuments().exec())) {
-      results.next = {
-        page: page + 1,
-        limit: limit,
-      };
-    }
-
-    if (startIndex > 0) {
-      results.prev = {
-        page: page - 1,
-        limit: limit,
-      };
-    }
+    const results = {};  
 
     try {
-      results.current = await model.find().limit(limit).skip(startIndex).exec();
+      results.current = await model.find({ location:
+        { $near :
+          { $geometry :
+             { type : "Point" ,
+               coordinates : [ req.body.lattitude, req.body.longitude] } ,
+            $maxDistance : 1000
+     } } }).limit(limit).skip(startIndex).exec();
       res.pagination = results;
+      if (endIndex < results.current.length) {
+        results.next = {
+          page: page + 1,
+          limit: limit,
+        };
+      }
+  
+      if (startIndex > 0) {
+        results.prev = {
+          page: page - 1,
+          limit: limit,
+        };
+      }
       next();
     } catch (e) {
-      res.status(500).json({ message: e.message });
+      res.status(400).json({error:true, message: e.message });
       return
     }
   };
