@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "@material-ui/core/Card";
+import SideBar from "./SideBar"
 import CardContent from "@material-ui/core/CardContent";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -118,6 +119,7 @@ function Payments() {
 
   return (
     <div className={classes.root}>
+      <SideBar />
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Card className={classes.root}>

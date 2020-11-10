@@ -3,7 +3,7 @@ import axios from "axios"
 import Styles from "./LoginModel.module.css";
 import GoogleLogin from 'react-google-login'
 import { useDispatch, useSelector } from "react-redux";
-import { loginRequest } from "../../redux/Auth/action";
+import { loginRequest,googleLoginRequest } from "../../redux/Auth/action";
 import { Redirect, Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, TextField, Checkbox, Button } from "@material-ui/core";
@@ -28,15 +28,8 @@ export default function LoginModel() {
   };
 
   const responseGoogle = (response) => {
-    console.log(response)
-    const fullName = response.profileObj.name;
-    axios({
-      method:"POST",
-      url:"http://localhost:5000/api/user/googleLogin",
-      data:{tokenId:response.tokenId}
-    }).then(response=>{
-      console.log("Response from backend",response)
-    })
+    const payload = {tokenId:response.tokenId}
+    dispatch(googleLoginRequest(payload));
   }
   
 
@@ -112,6 +105,7 @@ export default function LoginModel() {
         buttonText="L O G I N"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
+        style={{backgroundColor:"#4285f4"}}
       >
 
       </GoogleLogin>

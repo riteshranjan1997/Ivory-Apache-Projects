@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react'
+import SideBar from "./SideBar"
 import Typography from '@material-ui/core/Typography';
 import { makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -158,6 +159,7 @@ function PastOrders(){
     
     return(
         <div className={classes.root}>
+            <SideBar />
             <main className={classes.content}>
                 <div className={classes.toolbar} />
                 <Card className={classes.root}>

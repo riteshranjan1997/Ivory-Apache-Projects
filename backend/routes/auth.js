@@ -55,6 +55,7 @@ router.post("/register", async (req, res, next) => {
 });
 
 router.post("/login", async (req, res, next) => {
+  console.log(req.body)
   const { error } = loginValidation(req.body);
   if (error) {
     return res
