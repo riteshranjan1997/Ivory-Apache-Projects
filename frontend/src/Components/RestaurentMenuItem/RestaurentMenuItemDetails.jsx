@@ -1,44 +1,49 @@
 import React from 'react'
-import Styled from 'styled-components' 
+import Styled from 'styled-components'
+import data from '../../data.json' 
 
 const RestaurentDetails = Styled.div`
     position:relative;
     top:-100px;
     text-align:left;
     margin-left:100px;
-    i{
-        color:yellow;
-    }
     span{
         font-weight:bolder;
     }
 `
 
 function RestaurentMenuItemDetails(){
+    console.log(data)
     return(
-        <RestaurentDetails>
-            <h3><b>McDonald's</b></h3>
-            <div style={{display:"flex"}}>
-                <div style={{marginRight:"10px"}}>1235 New York Ave NW</div>
-                <div style={{color:"#2B8282"}}>Change Location</div>
-            </div>
-            <div style={{display:"flex"}}>
-                <div className="mr-2">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+        <div>
+        {data && data.map((item)=>(
+            <RestaurentDetails>
+                <h3><b>{item.restaurant_name}</b></h3>
+                <div style={{display:"flex"}}>
+                    <div className="text-muted" style={{marginRight:"10px"}}>{item.address}</div>
+                    <div style={{color:"#2B8282"}}>Change Location</div>
                 </div>
-                <div className="mr-2">34 ratings</div>
-                <div className="mr-2"><span>94%</span> food was good</div>
-                <div className="mr-2"><span>88%</span> Delivary was on time</div>
-                <div><span>91%</span> Order was correct</div>
-            </div>
-            <div>
-                <hr/>
-            </div>
-        </RestaurentDetails>
+
+                <div style={{display:"flex"}}>
+                <div className="mr-2">
+                    {new Array(5).fill(0).map((stars,i)=>(
+                        i<=item.aggregate_rating-1 ?                        
+                            <i class="fas fa-star" style={{color:"orange"}}></i>                         
+                         :
+                            <i class="far fa-star" style={{color:"orange"}} ></i>                    
+                    ))}
+                    </div>
+                    <div className="mr-2">{item.ratings} ratings</div>
+                    <div className="mr-2"><span>{item.food_was_good}</span> food was good</div>
+                    <div className="mr-2"><span>{item.delivery_was_on_time}</span> Delivary was on time</div>
+                    <div><span>{item.delivery_was_on_time}</span> Order was correct</div>
+                </div>
+                <div>
+                    <hr/>
+                </div>
+            </RestaurentDetails>
+        ))}
+        </div>
     )
 }
 
