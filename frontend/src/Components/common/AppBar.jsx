@@ -8,6 +8,7 @@ import LoginModel from "./LoginModel";
 import Styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button } from "@material-ui/core";
+import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import Modal from "@material-ui/core/Modal";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
@@ -252,18 +253,20 @@ export default function Bar(props) {
   }, [addressquery]);
 
   return (
-    <div>
-      {isAuth ? handleLoginModelClose() : null }
-      <div className={classes.dialog}>
-        <Dialog
-          fullScreen={fullScreen}
-          open={open}
-          fullWidth="fullwidth"
-          maxWidth="xs"
-          onClose={handleClose}
-          aria-labelledby="responsive-dialog-title"
-        >
-          <DialogContent>{addressModel}</DialogContent>
+    <div style={{zIndex:30,width:"100%", clear:"both"}}>
+      {/* {isAuth ? handleLoginModelClose() : null } */}
+     <div className={classes.dialog}>
+          <Dialog
+            fullScreen={fullScreen}
+            open={open}
+            fullWidth="fullwidth"
+            maxWidth="xs"
+            onClose={handleClose}
+            aria-labelledby="responsive-dialog-title"
+            >
+            <DialogContent>
+                {addressModel}
+            </DialogContent>
         </Dialog>
       </div>
       <Modal
@@ -456,7 +459,7 @@ export default function Bar(props) {
                           width: "233px",
                           border: "none",
                           outline: "none",
-                          color:"#2B8282"
+                          color:"#2B8282",
                         }}
                       >
                         <Avatar style={{ backgroundColor: "#2B8282" }}>

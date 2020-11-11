@@ -135,7 +135,7 @@ function PastOrders(){
     const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
     const [query,setQuery] = React.useState("")
     const [data,setData] = React.useState([])
-    console.log(data)
+    // console.log(data)
     useEffect(()=>{
         return axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?limit=5&access_token=pk.eyJ1Ijoic291bmRhcnlhbWVjc2UiLCJhIjoiY2toMmUxZHBoMGJtdDJ3cGNqOWhmbTJqaiJ9.sZeF_rzMTfs2fPBA4JsHxQ`)
         .then(res=>setData(res.data.features))

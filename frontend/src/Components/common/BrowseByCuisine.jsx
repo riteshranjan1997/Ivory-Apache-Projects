@@ -66,7 +66,10 @@ export default function BrowseByCuisine() {
                 aria-label="scrollable auto tabs example"
               >
                 <Tab label="see all restaurent" icon={seeAll()} {...a11yProps(0)} />
-                <Tab label="dessert" icon={cusine()} {...a11yProps(1)} />
+                <Tab label={<div>
+                    <div><img src="https://mukasash.com/wp-content/blogs.dir/242/files/ciclocafe/CicloCafe_1d.jpeg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%"}}/></div>
+                    <div>See All Restaurents</div>
+                </div>}  {...a11yProps(1)} />
                 <Tab label="Item Three" {...a11yProps(2)} />
                 <Tab label="Item Four" {...a11yProps(3)} />
                 <Tab label="Item Five" {...a11yProps(4)} />
