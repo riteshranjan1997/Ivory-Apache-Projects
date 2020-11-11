@@ -17,6 +17,8 @@
     "express": "^4.17.1",
     "joi": "^17.3.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.12"
+    "mongoose": "^5.10.12",
+    "razorpay": "^2.0.6",
+    "uuid": "^8.3.1"
   }
 }

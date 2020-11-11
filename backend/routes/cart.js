@@ -1,17 +1,20 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { registerValidation, loginValidation } = require("../validation");
 require("dotenv").config();
 const User = require("../models/User");
-const router = require("./auth");
+const Restaurant = require("../models/Restaurant")
 const authenticateToken = require("../middlewares/jwtAuthentication");
+
+const router = express.Router()
+
 
 router.post("/addToCart", authenticateToken, async (req, res) => {
   const { email } = req.user;
   try {
     const user = await User.findOne({ email });
     const { restaurant_id, item_id, quantity } = req.body;
+    const restaurant = await Restaurant.findOne({restaurant_id:restaurant_id})
     user.cart = [...user.cart, { restaurant_id, item_id, quantity }];
     const savedUser = await user.save();
     res.status(200).json({ error: false, data: savedUser });
