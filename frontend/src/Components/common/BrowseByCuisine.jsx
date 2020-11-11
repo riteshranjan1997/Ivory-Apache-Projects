@@ -36,7 +36,7 @@ export default function BrowseByCuisine() {
   return (
      <div className="container"> 
         <div className={classes.root}>
-            <AppBar position="static" color="default">
+            
               <Tabs
                 value={value}
                 onChange={handleChange}
@@ -91,7 +91,7 @@ export default function BrowseByCuisine() {
                   <div>Lunch Specials</div>
               </div>} {...a11yProps(9)} style={{textTransform:"capitalize"}}/>
               </Tabs>
-            </AppBar>
+            
           </div>
      </div>
   );

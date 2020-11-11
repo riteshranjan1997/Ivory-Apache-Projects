@@ -1,4 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
+import Bar from "../common/AppBar"
+import SideBar from "./SideBar"
+import {} from "../../redux/Auth/action";
+import { useDispatch, useSelector } from "react-redux";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -11,7 +15,6 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
-import SideBar from './SideBar'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,9 +68,38 @@ const useStyles = makeStyles((theme) => ({
 
 function Address() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
   const theme = useTheme();
+  const dispatch = useDispatch();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const [open, setOpen] = useState(false);
+
+  const userData = useSelector((state) => state.auth.user_data)
+  
+  const  [Street, setStreet] = useState("")
+  const  [aptName, setAptName] = useState("")
+  const  [city, setCity] = useState("")
+  const [addstate, setAddState] = useState("")
+  const  [zipCode, setzipCode] = useState("")
+  const  [phone, setPhone] = useState("")
+  const  [crossStreet, setcrossStreet] = useState("")
+  const  [delivaryInstructions, setDelivaryInstructions] = useState("")
+  const  [addressName, setAddressName] = useState("")
+  
+  const handleAddAddress = () => {
+
+    console.log(Street,aptName,city,addstate,zipCode,phone,crossStreet,delivaryInstructions,addressName)
+
+    setStreet("")
+    setAptName("")
+    setCity("")
+    setAddState("")
+    setzipCode("")
+    setPhone("")
+    setcrossStreet("")
+    setDelivaryInstructions("")
+    setAddressName("")
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -78,8 +110,10 @@ function Address() {
   };
   return (
     <div>
+      <Bar/>
       <SideBar/>
     <div className={classes.root}>
+      <SideBar />
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Card className={classes.root}>
@@ -88,7 +122,11 @@ function Address() {
             <Typography
               style={{ textAlign: "left", padding: "5px", fontSize: "13px" }}
             >
-              You don't have any saved address
+             {userData.address === [] ? "You don't have any saved address" : userData.address.map((elem,i) => {
+               <>
+                <p>{i}</p>
+               </>
+             })} 
             </Typography>
             <hr style={{ width: "110%", marginLeft: "-7%" }} />
             <Typography
@@ -129,6 +167,7 @@ function Address() {
                           type="text"
                           className="form-control"
                           placeholder="e.g. 555,main St."
+                          onChange = {((e) => setStreet(e.target.value))}
                         />
                       </div>
                     </div>
@@ -139,6 +178,7 @@ function Address() {
                           type="text"
                           className="form-control"
                           placeholder="e.g. 15F"
+                          onChange = {((e) => setAptName(e.target.value))}
                         />
                       </div>
                     </div>
@@ -149,6 +189,7 @@ function Address() {
                           type="text"
                           className="form-control"
                           placeholder=""
+                          onChange = {((e) => setCity(e.target.value))}
                         />
                       </div>
                       <div className="form-group col-6">
@@ -157,6 +198,7 @@ function Address() {
                           type="text"
                           className="form-control"
                           placeholder=""
+                          onChange = {((e) => setAddState(e.target.value))}
                         />
                       </div>
                     </div>
@@ -167,6 +209,7 @@ function Address() {
                           type="text"
                           className="form-control"
                           placeholder="e.g. 10018"
+                          onChange = {((e) => setzipCode(e.target.value))}
                         />
                       </div>
                     </div>
@@ -177,6 +220,7 @@ function Address() {
                           type="text"
                           className="form-control"
                           placeholder="e.g. (555) 555-1212"
+                          onChange = {((e) => setPhone(e.target.value))}
                         />
                       </div>
                     </div>
@@ -193,6 +237,7 @@ function Address() {
                           type="text"
                           className="form-control"
                           placeholder="e.g. Main Street and Second Avenue"
+                          onChange = {((e) => setcrossStreet(e.target.value))}
                         />
                       </div>
                     </div>
@@ -203,6 +248,7 @@ function Address() {
                           type="text"
                           className="form-control"
                           placeholder="e.g. checkin with the doorman"
+                          onChange = {((e) => setDelivaryInstructions(e.target.value))}
                         />
                       </div>
                     </div>
@@ -213,6 +259,7 @@ function Address() {
                           type="text"
                           className="form-control"
                           placeholder="e.g. home"
+                          onChange = {((e) => setAddressName(e.target.value))}
                         />
                       </div>
                     </div>
@@ -223,7 +270,7 @@ function Address() {
 
               <div className={classes.buttons}>
                 <Button
-                  onClick={handleClose}
+                  onClick={handleClose,handleAddAddress}
                   style={{
                     backgroundColor: "#2B8282",
                     color: "white",

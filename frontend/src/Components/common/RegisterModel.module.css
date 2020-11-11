@@ -12,8 +12,17 @@ label{
     margin: 0px;
 }
 
+.main .input {
+    width: 100%;
+    padding: 10px 16px;
+}
+
 .title {
     font-weight: 700;
     margin-top: 0px;
     margin-bottom:16px;
+}
+
+.main button {
+    width: 100%;
 }

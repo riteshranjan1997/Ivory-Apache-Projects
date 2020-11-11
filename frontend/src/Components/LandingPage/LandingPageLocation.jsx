@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import {UpdateUserAppAddress} from "../../redux/app/action"
+import { UpdateUserAppAddress } from "../../redux/app/action";
 import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link, Redirect } from "react-router-dom";
@@ -37,6 +37,7 @@ const LocationWrapper = Styled.div`
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    width: "100%",
     flexGrow: 1,
     marginTop: "-8px",
   },
@@ -48,15 +49,12 @@ const useStyles = makeStyles((theme) => ({
   // },
   signInBar: {
     color: "#2b8282",
-    fontSize: "20px",
-    marginTop: "100px",
-    marginLeft: "150px",
+    fontSize: "18px",
+    fontWeight: "700",
+    marginTop: "80px",
+    marginLeft: "50%",
   },
-  location: {
-    alignItems: "center",
-    marginTop: "200px",
-    margin: "10px",
-  },
+
   button: {
     background: "#2b8282",
     color: "white",
@@ -68,6 +66,12 @@ const useStyles = makeStyles((theme) => ({
     width: "180px",
     position: "absolute",
     top: "100px",
+  },
+  logo2: {
+    width: "350px",
+    position: "absolute",
+    bottom: "-160px",
+    left: "400px",
   },
 }));
 
@@ -117,28 +121,55 @@ function LandingPageLocation() {
             src="https://res.cloudinary.com/grubhub-assets/image/upload/v1576524886/Seamless_logo_flxqyg.svg"
             alt="logo"
           />
+          <img
+            className={classes.logo2}
+            src="https://media-cdn.grubhub.com/image/upload/dpr_auto,f_auto,fl_lossy/v1539202744/Onboarding/SL/treat-yourself-SL.png"
+            alt="logo"
+          />
         </Grid>
       </Grid>
       <Grid item xs={12} md={6}>
         <Grid container justify="center" spacing={2}>
-          <div className={`d-flex ${classes.signInBar} justify-content-end `}>
-            <div className="p-2">Get Perks in the App</div>
-            <Link to="/login">
-              <div className="p-2">Sign in</div>
-            </Link>
+          <div className="container">
+            <div className="row">
+              <div className={`col ${classes.signInBar}`}>
+                <p>
+                  Get Perks in the App{" "}
+                  <Link
+                    to="/login"
+                    style={{
+                      marginLeft: "20px",
+                      color: "#2b8282",
+                      textDecoration: "none",
+                    }}
+                  >
+                    Sign in
+                  </Link>
+                </p>
+              </div>
+            </div>
           </div>
-          <Typography className={classes.location} variant="h3" gutterBottom>
-            <b>Seamless food delivary every time</b>
-          </Typography>
-          <div>
-            <form>
+
+          <div className="container" style={{marginTop:"30%", width:"70%"}}>
+            <div className="row">
+              <div className="col">
+                <h1 style={{fontSize:"42px", fontWeight:"700"}}>
+                  Seamless food delivary every time
+                </h1>
+              </div>
+            </div>
+
+            <div className="row my-2">
+              <div className="col">
+                
+              <form>
               <TextField
                 id="outlined-basic"
                 label="Enter street address or zipcode"
                 variant="outlined"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                style={{ width: "250px" }}
+                style={{ width: "350px" }}
               />
 
               <Link to="/search">
@@ -173,7 +204,12 @@ function LandingPageLocation() {
                   ))}
               </ul>
             </LocationWrapper>
+
+              </div>
+            </div>
+
           </div>
+
         </Grid>
       </Grid>
     </Grid>

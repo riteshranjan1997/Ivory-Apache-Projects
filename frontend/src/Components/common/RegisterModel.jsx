@@ -2,39 +2,22 @@ import React from "react";
 import Styles from "./RegisterModel.module.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { registerRequest } from "../../redux/Auth/action";
-import { Redirect } from "react-router-dom";
+import { registerRequest,googleLoginRequest } from "../../redux/Auth/action";
+import { Redirect,Link } from "react-router-dom";
 import {
-  Card,
-  TextField,
   Checkbox,
-  Link,
   Button,
-  InputLabel,
-  OutlinedInput,
   InputAdornment,
   IconButton,
 } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import CardContent from "@material-ui/core/CardContent";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import GoogleLogin from 'react-google-login'
 
 const useStyles = makeStyles({});
 
 export default function RegisterModel() {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const [user_data, setAddData] = React.useState({});
 
-  // for show/hide password
-  const [values, setValues] = React.useState({
-    amount: "",
-    password: "",
-    weight: "",
-    weightRange: "",
-    showPassword: false,
-  });
   const isAuth = useSelector((state) => state.auth.isAuth);
 
   const handleRegister = (e) => {
@@ -45,16 +28,10 @@ export default function RegisterModel() {
     dispatch(registerRequest(payload));
   };
 
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-    if(prop == "password"){
-      setAddData({ ...user_data, password: event.target.value })
-    }
-  };
-
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
+  const responseGoogle = (response) => {
+    const payload = {tokenId:response.tokenId}
+    dispatch(googleLoginRequest(payload));
+  }
 
   if (isAuth) {
     return <Redirect to="/lets-eat" />;
@@ -63,16 +40,19 @@ export default function RegisterModel() {
   return (
     <>
       <div className={`card ${Styles.main}`}>
+
         <div className="row">
           <div className="col">
             <h5 className={Styles.title}>Create your account</h5>
           </div>
         </div>
-        <div className="row">
-          <div className="col">
+
+        <div className="row my-2">
+          <div className="col-6">
             <label>First name</label>
             <br />
-            <TextField
+            <input
+            className={Styles.input}
               id="outlined-error-helper-text"
               type="text"
               required
@@ -84,10 +64,11 @@ export default function RegisterModel() {
             />
           </div>
 
-          <div className="col">
+          <div className="col-6">
             <label>Last name</label>
             <br />
-            <TextField
+            <input
+            className={Styles.input}
               id="outlined-error-helper-text"
               type="text"
               required
@@ -104,7 +85,8 @@ export default function RegisterModel() {
           <div className="col">
             <label>Email</label>
             <br />
-            <TextField
+            <input
+            className={Styles.input}
               id="outlined-error-helper-text"
               type="text"
               required
@@ -121,23 +103,11 @@ export default function RegisterModel() {
           <div className="col">
             <label>password</label>
             <br />
-            <OutlinedInput
-              id="password"
-              type={values.showPassword ? "text" : "password"}
-              value={values.password}
-              onChange={handleChange("password")}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    edge="end"
-                  >
-                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              labelWidth={70}
+            <input
+            className={Styles.input}
+            value={user_data.password}
+              type="password"
+              onChange={(e) => setAddData({ ...user_data, password: e.target.value })}
             />
           </div>
         </div>
@@ -154,13 +124,14 @@ export default function RegisterModel() {
 
         <div className="row">
           <div className="col">
-            <Button
-              variant="contained"
+            <button 
+            className="btn btn-light"
+              style={{backgroundColor:"#2b8282",color:"white",fontFamily:"Poppins",fontSize:"14px",fontWeight:"500", padding:"10px 16px"}}
               color="primary"
               onClick={handleRegister}
             >
               Create your account
-            </Button>
+            </button>
           </div>
         </div>
         <p style={{ textAlign: "center",margin:"10px" }}>or</p>
@@ -175,20 +146,21 @@ export default function RegisterModel() {
         <br />
         <div className="row">
           <div className="col">
-            <Button variant="contained" color="primary">
-              google
-            </Button>
+          <GoogleLogin
+        clientId="1069087639484-chisqt1vcpiq2rqcbk2dvr8u3lr2k9hk.apps.googleusercontent.com"
+        buttonText="Continue with Google"
+        onSuccess={responseGoogle}
+        onFailure={responseGoogle}
+      >
+
+      </GoogleLogin>
           </div>
         </div>
 
         <div className="row">
-          <div className="col">
+          <div className="col" style={{ textAlign: "center",marginTop:"15px" , fontSize:"13px"}}>
             <p>Have an account?{" "} <Link
-              component="button"
-              variant="body2"
-              onClick={() => {
-                console.info("I'm a button.");
-              }}
+              to="/login"
             >
               Sign in
             </Link></p>
@@ -196,24 +168,14 @@ export default function RegisterModel() {
           </div>
         </div>
 
-        <span>
+        <span style={{ textAlign: "center", fontSize:"13px"}}>
           By creating your Seamless account, you agree to the{" "}
           <Link
-            component="button"
-            variant="body2"
-            onClick={() => {
-              console.info("I'm a button.");
-            }}
           >
             Terms of Use
           </Link>{" "}
           and{" "}
           <Link
-            component="button"
-            variant="body2"
-            onClick={() => {
-              console.info("I'm a button.");
-            }}
           >
             Privacy Policy
           </Link>
