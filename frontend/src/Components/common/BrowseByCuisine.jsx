@@ -55,7 +55,7 @@ export default function BrowseByCuisine() {
   return (
      <div className="container"> 
         <div className={classes.root}>
-            <AppBar position="static" color="default">
+            
               <Tabs
                 value={value}
                 onChange={handleChange}
@@ -76,7 +76,7 @@ export default function BrowseByCuisine() {
                 <Tab label="Item Six" {...a11yProps(5)} />
                 <Tab label="Item Seven" {...a11yProps(6)} />
               </Tabs>
-            </AppBar>
+            
           </div>
      </div>
   );

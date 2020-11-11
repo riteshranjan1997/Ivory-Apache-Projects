@@ -21,7 +21,7 @@ import axios from "axios"
 
 
 export const UpdateUserAppAddress = (payload) => {
-
+            UpdateUserGioLocation(payload)
  return  {
         type: UPDATE_ADDRESS,
             payload
@@ -31,7 +31,7 @@ export const UpdateUserAppAddress = (payload) => {
 
 export const UpdateUserGioLocation =  (payload) => {
 
-    console.log(payload)
+    console.log(payload,"fetching long,")
 
     let longitude = 0 
     let latitude = 0
@@ -47,12 +47,12 @@ export const UpdateUserGioLocation =  (payload) => {
       }).then(res => {
           longitude =  res.data.features.geometry.coordinates[0]
           latitude = res.data.features.geometry.coordinates[1]
-        }).catch(err => console.log(err))
+        }).catch(err => console.log(err,"from err fetch long"))
 
 
    return {
     type: UPDATE_GIOLOCATION,
-    payload: {longitude,latitude}
+    // payload: {longitude,latitude}
 }}
 
 export const UpdateUserCuisine = (payload) => ({
@@ -77,14 +77,18 @@ export const restaurantsDataFailure = (payload) => ({
 
 export const restaurantsRequest = payload => dispatch => {
     dispatch(restaurantsDataRequest())
-    axios.get("http://localhost:5000/api/restaurant/lets-eat")
+
+    axios({
+        method:"POST",
+        url:"http://localhost:5000/api/restaurant/lets-eat",
+        data:{...payload}
+      })
         .then((res) => {
             dispatch(restaurantsDataSuccess(res.data))
         })
         .catch((err) => {
-            dispatch(restaurantsDataFailure(err.data))
+            dispatch(restaurantsDataFailure(err))
         });
-
 }
 
 

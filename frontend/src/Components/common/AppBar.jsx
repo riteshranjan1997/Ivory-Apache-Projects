@@ -243,14 +243,14 @@ export default function Bar(props) {
 
   const loginModel = <LoginModel />;
 
-  useEffect(() => {
-    return axios
-      .get(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${addressquery}.json?limit=5&access_token=pk.eyJ1Ijoic291bmRhcnlhbWVjc2UiLCJhIjoiY2toMmUxZHBoMGJtdDJ3cGNqOWhmbTJqaiJ9.sZeF_rzMTfs2fPBA4JsHxQ`
-      )
-      .then((res) => setsuggestedAddress(res.data.features))
-      .catch((err) => console.log(err));
-  }, [addressquery]);
+  // useEffect(() => {
+  //   return axios
+  //     .get(
+  //       `https://api.mapbox.com/geocoding/v5/mapbox.places/${addressquery}.json?limit=5&access_token=pk.eyJ1Ijoic291bmRhcnlhbWVjc2UiLCJhIjoiY2toMmUxZHBoMGJtdDJ3cGNqOWhmbTJqaiJ9.sZeF_rzMTfs2fPBA4JsHxQ`
+  //     )
+  //     .then((res) => setsuggestedAddress(res.data.features))
+  //     .catch((err) => console.log(err));
+  // }, [addressquery]);
 
   return (
     <div style={{zIndex:30,width:"100%", clear:"both"}}>

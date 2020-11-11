@@ -58,8 +58,6 @@ ValueLabelComponent.propTypes = {
 function Filter(){
   const classes = useStyles()
   return(
-    <div>
-       <div className="row ">
           <div className={`col-3 border border-right ${classes.root}`} style={{height:"1200px"}}>
             <div className="row">
               <div className="col-12">
@@ -193,8 +191,6 @@ function Filter(){
               </div>
             </div>
           </div>
-       </div>
-    </div>
   )
 }
 
