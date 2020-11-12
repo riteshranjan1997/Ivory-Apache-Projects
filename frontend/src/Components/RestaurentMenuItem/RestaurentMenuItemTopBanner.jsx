@@ -124,10 +124,10 @@ function RestaurentMenuItemTopBanner(){
         setOpen(false);
       };
     return(
-        <div >
+        <div>
             {data && data.map(item=>(            
                 <BannerWrapper>
-                    <img className="img-fluid" src ={item.restaurant_images} alt = "ImageBanner"/>
+                    <img className="img-fluid" src ={item.restaurant_images} style={{marginTop:"63px",objectFit:"cover"}} alt = "ImageBanner"/>
                     <BackArrow>
                         <i class="fas fa-chevron-circle-left"></i>
                     </BackArrow>

@@ -11,23 +11,22 @@ import {
 export const initState = {
     isLoading: false,
     userAddress: "",
-    userGioLocation: "",
+    userGioLocation: [],
     userCuisine: "",
     restaurantsData: [],
     isError: false,
 }
 
 
-export default (state = initState, { type, payload }) => {
-
+ const AppReducer=(state = initState, { type, payload }) => {
     switch (type) {
-
         case UPDATE_ADDRESS:
             return {
                 ...state,
                 userAddress: payload
             }
         case UPDATE_GIOLOCATION:
+            console.log(payload)
             return {
                 ...state,
                 userGioLocation: payload
@@ -57,3 +56,4 @@ export default (state = initState, { type, payload }) => {
     }
 }
 
+export default AppReducer
