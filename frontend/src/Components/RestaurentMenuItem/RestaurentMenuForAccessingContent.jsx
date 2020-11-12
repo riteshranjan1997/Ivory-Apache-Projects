@@ -89,10 +89,9 @@ const AntTabs = withStyles({
         
       padding: theme.spacing(0),
     },
-    demo1: {
-        
+    demo1: {        
       backgroundColor: theme.palette.background.paper,
-      marginLeft:"100px",
+      // marginLeft:"100px",
     },
    
   }));
@@ -106,6 +105,7 @@ function RestaurentMenuForAccessingContent(){
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  console.log(value)
    return(
     <div className={classes.root}>
         <div className={classes.demo1}>

@@ -1,6 +1,7 @@
 import React from 'react'
 import Styled from 'styled-components'
-import data from '../../data.json' 
+import {useSelector} from 'react-redux'
+
 
 const RestaurentDetails = Styled.div`
     position:relative;
@@ -13,7 +14,7 @@ const RestaurentDetails = Styled.div`
 `
 
 function RestaurentMenuItemDetails(){
-    console.log(data)
+    const data = useSelector((state)=>state.app.restaurantsData) 
     return(
         <div>
         {data && data.map((item)=>(
