@@ -20,10 +20,8 @@ export const initState = {
 }
 
 
-export default (state = initState, { type, payload }) => {
-
+ const AppReducer=(state = initState, { type, payload }) => {
     switch (type) {
-
         case UPDATE_ADDRESS:
             return {
                 ...state,
@@ -60,3 +58,4 @@ export default (state = initState, { type, payload }) => {
     }
 }
 
+export default AppReducer

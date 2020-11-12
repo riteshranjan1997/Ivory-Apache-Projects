@@ -86,6 +86,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "30px",
     textAlign: "center",
   },
+  boxshadow:{   
+  borderRadius: "0px",
+  background: "#55b9f3",
+  boxShadow: " 20px 20px 60px #e7ecef, -20px -20px 60px #f5fafd"
+  }
 }));
 
 const LocationWrapper = Styled.div`    
@@ -123,6 +128,8 @@ export default function Bar(props) {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
+
+  const cart = useSelector(state=>state.cart.cart)
 
   const handleAddressModelOpen = () => {
     setAddressModelStatus(true);
@@ -252,7 +259,7 @@ export default function Bar(props) {
   }, [addressquery]);
 
   return (
-    <div style={{zIndex:30,width:"100%", clear:"both"}}>
+    <div className={classes.boxshadow} style={{zIndex:30,width:"100%",position:"fixed"}}>
       {/* {isAuth ? handleLoginModelClose() : null } */}
      <div className={classes.dialog}>
           <Dialog
@@ -540,7 +547,8 @@ export default function Bar(props) {
               </div>
 
               <div>
-                {["bottom"].map((placement) => (
+                {cart.length === 0 ?
+                ["bottom"].map((placement) => (                  
                   <OverlayTrigger
                     trigger="click"
                     key={placement}
@@ -585,7 +593,76 @@ export default function Bar(props) {
                       />
                     </div>
                   </OverlayTrigger>
-                ))}
+                ))
+              :
+              ["bottom"].map((placement) => (                  
+                <OverlayTrigger
+                  trigger="click"
+                  key={placement}
+                  placement={placement}
+                  className="p-2 bd-highlight m-2"
+                  overlay={
+                    <Popover style={{ minxHeight: "200px", width: "260px" }}>
+                      <Popover.Content>
+                        <div
+                          style={{
+                            fontSize: "18px",
+                            display: "flex",
+                            flexDirection: "column",
+                            padding:"10px"
+                          }}
+                        >
+                        <div className="mb-2"><b>Your Order</b></div>
+                          {cart && cart.map((item)=>(
+                         <div>                           
+                           <div style={{display:"flex",fontSize:"14px",justifyContent:"space-between"}}>                             
+                              <div>{item.quantity}</div>
+                              <div style={{color:"#2B8282",alignSelf:"left"}}>{item.name}</div>                        
+                            
+                              <div><i class="fas fa-trash" style={{color:"grey"}}></i></div>
+                              <div>₹{item.totalPrice}</div>                                                      
+                           </div>                        
+                           <hr/>
+                         </div>
+                         ))}
+                          
+                         <div style={{display:"flex",fontSize:"12px",justifyContent:"space-between"}}>
+                              <div>item Subtotal</div>
+                              <div>{cart && cart.reduce((a,item)=>(
+                                  a+item.totalPrice
+                              ),0)}</div>
+                          </div>
+                          <hr/>
+                          <div>
+                          <Link to="/checkout"> 
+                                <Button
+                                    style={{
+                                        backgroundColor: "green",
+                                        color: "white",
+                                        width: "220px",
+                                        height:"40px",
+                                        borderRadius:"10px"
+                                    }}                                    
+                                    >
+                                    Proceed to Checkout
+                                </Button></Link>
+                          </div>
+                         
+                        </div>
+                      </Popover.Content>
+                    </Popover>
+                  }
+                >
+                  <div variant="secondary">
+                    
+                    <LocalMallIcon
+                      style={{ color: "#2B8282", fontSize: "30px",zIndex:1}}
+                    />
+                    <span class="badge badge-pill badge-success" style={{position:"relative",right:"10px",top:"-7px",fontSize:"10px"}} >{cart && cart.length}</span>
+                  </div>
+                </OverlayTrigger>
+              ))
+              }
               </div>
             </div>
           </div>

@@ -27,6 +27,7 @@ const popover = (
 );
 
 export default function RestaurantCard(props) {
+    
   return (
     <Link
       style={{ textDecoration: "none", color: "black" }}

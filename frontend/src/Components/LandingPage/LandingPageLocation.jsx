@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     background: "#2b8282",
     color: "white",
+    width:"350px",
     marginLeft: "5px",
     padding: "15px",
   },
@@ -166,11 +167,11 @@ function LandingPageLocation() {
               <form>
               <TextField
                 id="outlined-basic"
-                label="Enter street address or zipcode"
+                label="Enter Address"
                 variant="outlined"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                style={{ width: "350px" }}
+                style={{ width: "350px",marginBottom:"10px" }}
               />
 
               <Link to="/search">

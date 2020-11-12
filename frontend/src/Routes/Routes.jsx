@@ -13,6 +13,7 @@ import SigninLandinngPage from "../Components/SigninLandingPage/SigninLandingPag
 import LoginPage from "../Components/LoginPage/LoginPage";
 import RegisterPage from "../Components/RegisterPage/RegisterPage";
 import SavedRestaurent from "../Components/Account/SavedRestaurent";
+import CheckoutPage from "../Components/CheckoutPage/CheckoutPage";
 
 export default function Routes() {
   const isauth = useSelector((state) => state.auth.isauth);
@@ -64,6 +65,10 @@ export default function Routes() {
       <Route
         path="/account/Saved Restaurent"
         render={(props) => <SavedRestaurent props={props} />}
+      />
+       <Route
+        path="/checkout"
+        render={(props) => <CheckoutPage props={props} />}
       />
     </Switch>
   );
