@@ -30,11 +30,12 @@ function paginatedResultsWithLocation(model) {
     const endIndex = page * limit;
     const cuisine = req.query.cuisine
     const starRating = parseInt(req.query.starRating)
-    console.log("in pagination",typeof cuisine,typeof starRating)
+    console.log("in pagination",cuisine,starRating)
 
     const results = {};  
 
     try {
+      if(!cuisine && !starRating){
       results.current = await model.find({ location:
         { $near :
           { $geometry :
@@ -42,6 +43,25 @@ function paginatedResultsWithLocation(model) {
                coordinates : [ req.body.lattitude, req.body.longitude] } ,
             $maxDistance : 30000
      } },cuisines:cuisine,aggregate_rating: { $gte: starRating}}).limit(limit).skip(startIndex).exec();
+    }
+    else if(!cuisine && starRating){
+      results.current = await model.find({ location:
+        { $near :
+          { $geometry :
+             { type : "Point" ,
+               coordinates : [ req.body.lattitude, req.body.longitude] } ,
+            $maxDistance : 30000
+     } },aggregate_rating: { $gte: starRating}}).limit(limit).skip(startIndex).exec();
+    }
+    else if(cuisine && !starRating){
+      results.current = await model.find({ location:
+        { $near :
+          { $geometry :
+             { type : "Point" ,
+               coordinates : [ req.body.lattitude, req.body.longitude] } ,
+            $maxDistance : 30000
+     } },cuisines:cuisine}).limit(limit).skip(startIndex).exec();
+    }
       res.pagination = results;
       if (endIndex < results.current.length) {
         results.next = {
