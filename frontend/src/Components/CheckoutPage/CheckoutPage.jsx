@@ -18,6 +18,7 @@ const CheckoutPageWrapper = Styled.div`
 export default function CheckoutPage() {
   const userData = useSelector((state)=>state.auth.user_data)
   const cart = useSelector((state)=>state.cart.cart)
+  console.log(cart[0].restaurant_name)
   console.log(userData)
   return (
     <div>
@@ -97,8 +98,8 @@ export default function CheckoutPage() {
           
           <div className="col-3 border" style={{position:"fixed",marginLeft:"74%" ,fontSize:"12px",lineHeight:"2px"}} >
               <div style={{marginTop:"85px"}} ><b><p>Your order from</p></b></div>
-              {/* <div><p>{cart[0].restaurentName=== " " ? " " : cart[0].restaurentName  }</p></div> */}
-              <div>Restaurent Name</div>
+              <div><p>{cart[0].restaurantName=== " " ? " " : cart[0].restaurantName  }</p></div>
+              <div>Restaurant Name</div>
               <hr/>
               {cart && cart.map((item)=>(
                 <div>

@@ -11,7 +11,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import Button from '@material-ui/core/Button';
 import { useSelector,useDispatch } from 'react-redux';
-import {addCart} from '../../redux/AddToCart/action'
+import {addRequest} from '../../redux/cart/actions'
 
 
 const useStyles = makeStyles({    
@@ -85,6 +85,8 @@ function MenuPage()
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));   
     const cart = useSelector((state)=>state.cart.cart)
+    const access_token = useSelector((state)=>state.auth.access_token)
+    console.log("access token is ",access_token)
     console.log(cart)
     const dispatch = useDispatch()
     // console.log(quantity,typeof(quantity))
@@ -104,14 +106,14 @@ function MenuPage()
     const handleCart = () => {
         const payload={
             // restaurent_id:restaurentId,
-            restaurentId:restaurentId,
-            restaurentName:restaurentName,
-            id:id,
+            restaurant_id:restaurentId,
+            restaurantName:restaurentName,
+            item_id:id,
             name:name,
             quantity:quantity,
             totalPrice:price*quantity
         }
-        dispatch(addCart(payload))
+        dispatch(addRequest(payload,access_token))
         handleClose()
     }
 

@@ -23,6 +23,8 @@ import Popover from "react-bootstrap/Popover";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
+import { deleteCart } from "../../redux/AddToCart/action";
+import { deleteRequest } from "../../redux/cart/actions";
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -130,7 +132,13 @@ export default function Bar(props) {
   const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
 
   const cart = useSelector(state=>state.cart.cart)
+  const access_token = useSelector((state)=>state.auth.access_token)
+    console.log("access token is ",access_token)
 
+  console.log("in menu page",cart)
+  const handleDelete = (payload)=>{
+    dispatch(deleteRequest(payload,access_token))
+  }
   const handleAddressModelOpen = () => {
     setAddressModelStatus(true);
   };
@@ -617,10 +625,10 @@ export default function Bar(props) {
                          <div>                           
                            <div style={{display:"flex",fontSize:"14px",justifyContent:"space-between"}}>                             
                               <div>{item.quantity}</div>
-                              <div style={{color:"#2B8282",alignSelf:"left"}}>{item.name}</div>                        
+                              <div style={{color:"#2B8282",alignSelf:"left"}}>{item.item_name}</div>                        
                             
-                              <div><i class="fas fa-trash" style={{color:"grey"}}></i></div>
-                              <div>₹{item.totalPrice}</div>                                                      
+                              <div><i class="fas fa-trash" style={{color:"grey"}} onClick={()=>handleDelete({restaurant_id:item.restaurant_id,item_id:item.item_id,quantity:item.quantity})}></i></div>
+                              <div>₹{item.price}</div>                                                      
                            </div>                        
                            <hr/>
                          </div>
@@ -629,7 +637,7 @@ export default function Bar(props) {
                          <div style={{display:"flex",fontSize:"12px",justifyContent:"space-between"}}>
                               <div>item Subtotal</div>
                               <div>{cart && cart.reduce((a,item)=>(
-                                  a+item.totalPrice
+                                  a+item.price
                               ),0)}</div>
                           </div>
                           <hr/>
