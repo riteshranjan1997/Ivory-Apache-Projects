@@ -10,13 +10,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import Button from '@material-ui/core/Button';
 import { useSelector,useDispatch } from 'react-redux';
-<<<<<<< HEAD
-import {addRequest} from '../../redux/cart/actions'
 import {addCart} from '../../redux/AddToCart/action'
-import { useParams } from 'react-router-dom';
-=======
-import {addCart} from '../../redux/AddToCart/action'
->>>>>>> parent of 9a4d314... small updations
 
 
 const useStyles = makeStyles({    
