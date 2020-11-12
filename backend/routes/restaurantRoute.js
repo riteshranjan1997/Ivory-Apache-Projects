@@ -8,7 +8,7 @@ const authenticateToken = require("../middlewares/jwtAuthentication")
 
 const router = express.Router();
 
-router.get("/lets-eat",paginatedResultsWithLocation(Restaurant),async (req,res)=>{
+router.post("/lets-eat",paginatedResultsWithLocation(Restaurant),async (req,res)=>{
   return res.status(200).json({error:false,data:res.pagination})
 })
 
