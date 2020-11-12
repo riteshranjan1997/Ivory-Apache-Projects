@@ -1,7 +1,6 @@
 import React from 'react'
 import Styled from 'styled-components'
 import Divider from '@material-ui/core/Divider'
-import data from '../../data.json'
 import { makeStyles } from '@material-ui/core/styles';
 import { useTheme } from "@material-ui/core/styles";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -12,6 +11,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import Button from '@material-ui/core/Button';
 import { useSelector,useDispatch } from 'react-redux';
 import {addCart} from '../../redux/AddToCart/action'
+import { useParams } from 'react-router-dom';
 
 
 const useStyles = makeStyles({    
@@ -72,9 +72,7 @@ const MenuWrapper=Styled.div`
 function MenuPage()
 {
     const classes = useStyles();
-    // console.log(data[0].menu_items)
-    const restaurentId = data[0].restaurant_id
-    const restaurentName = data[0].restaurent_name
+    const ParamsId =useParams()
     const [open, setOpen] = React.useState(false);
     const [name,setName] = React.useState("")
     const [image,setImage] = React.useState("")
@@ -85,9 +83,16 @@ function MenuPage()
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));   
     const cart = useSelector((state)=>state.cart.cart)
-    console.log(cart)
+    const restaurantsData = useSelector((state)=>state.app.restaurantsData)
+    // console.log("reataurentsData",restaurantsData)
+    // console.log(typeof(ParamsId),typeof(restaurantsData[0].restaurant_id))
+    const data = restaurantsData.filter(item =>item.restaurant_id == ParamsId.id)
+    console.log("menu Page",data)
+    const restaurentId = data.restaurant_id
+    const restaurentName = data.restaurant_name
     const dispatch = useDispatch()
     // console.log(quantity,typeof(quantity))
+   
     const handleClickOpen = (name,image,description,price,id) => {
         setOpen(true);
         setName(name);
@@ -138,7 +143,9 @@ function MenuPage()
                                 </div>
                                 <div className={`${classes.price}`}>₹{item.price}</div>
                                 <div className="col-3" style={{position:"relative",right:"-16px"}}>
-                                    <img src={item.image} alt="menu" height="120px" className="rounded-right" width="120px" style={{zIndex:1}}/> 
+                                    <img src={`../${item.image}`} alt="menu" 
+                                    height="120px" className="rounded-right" width="120px" style={{zIndex:1,objectFit:"cover"}}
+                                    /> 
                                 </div>
                             </div>                           
                         
@@ -159,7 +166,7 @@ function MenuPage()
                         </DialogTitle>
 
                         <DialogContent>
-                            <div className="d-flex justify-content-center mb-3"><img src={image} alt="Menu Item" height="200px" width="450px" style={{objectFit:"cover",objectPosition:"0% 80%"}} /></div>
+                            <div className="d-flex justify-content-center mb-3"><img src={`../${image}`} alt="Menu Item" height="230px" width="550px" style={{objectFit:"cover",objectPosition:"0% 80%"}} /></div>
                             <h4 className={classes.modelHeading}>{name}</h4>
                             <h5><b>₹{price}</b></h5>
                             <DialogContentText>
