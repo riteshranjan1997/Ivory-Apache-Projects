@@ -3,6 +3,7 @@ const cors = require('cors')
 const { v4: uuidv4 } = require('uuid')
 const Razorpay = require('razorpay');
 const dotenv = require('dotenv');
+const authenticateToken = require("../middlewares/jwtAuthentication");
 
 const router = express.Router();
 
@@ -13,7 +14,8 @@ const instance = new Razorpay({
     key_secret: process.env.RAZOR_PAY_KEY_SECRET
 })
 
-router.get('/order', (req, res) => {
+router.get('/order',authenticateToken, (req, res) => {
+
     try {
         const options = {
             amount: 10 * 100,
