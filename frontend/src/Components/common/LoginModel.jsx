@@ -7,13 +7,11 @@ import { loginRequest,googleLoginRequest } from "../../redux/Auth/action";
 import { Redirect, Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, TextField, Checkbox, Button } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import CardContent from "@material-ui/core/CardContent";
+
 
 const useStyles = makeStyles({});
 
 export default function LoginModel() {
-  const classes = useStyles();
   const dispatch = useDispatch();
   const isError = useSelector((state) => state.auth.isError);
   const message = useSelector((state) => state.auth.message);

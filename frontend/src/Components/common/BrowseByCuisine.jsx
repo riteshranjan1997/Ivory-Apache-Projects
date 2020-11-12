@@ -6,37 +6,28 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-
-
 function a11yProps(index) {
   return {
     id: `scrollable-force-tab-${index}`,
     'aria-controls': `scrollable-force-tabpanel-${index}`,
   };
 }
-
-
 const useStyles = makeStyles(theme=>({
   root: {
     flexGrow: 1,
     width: '100%',
     background: "inherit",
   },
- 
 }));
-
 export default function BrowseByCuisine() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   return (
-     <div className="container"> 
-        <div className={classes.root}>
-            
+     <div className="container" style={{marginTop:"100px"}}> 
+        <div className={classes.root}>            
               <Tabs
                 value={value}
                 onChange={handleChange}
@@ -91,7 +82,6 @@ export default function BrowseByCuisine() {
                   <div>Lunch Specials</div>
               </div>} {...a11yProps(9)} style={{textTransform:"capitalize"}}/>
               </Tabs>
-            
           </div>
      </div>
   );
