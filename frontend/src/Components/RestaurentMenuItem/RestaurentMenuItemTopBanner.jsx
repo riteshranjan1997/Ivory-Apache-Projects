@@ -1,6 +1,7 @@
 import React from 'react'
 import Styled from 'styled-components'
-import data from '../../data.json'
+// import data from '../../data.json'
+import {useSelector} from 'react-redux'
 import Button from '@material-ui/core/Button';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
@@ -114,6 +115,8 @@ function RestaurentMenuItemTopBanner(){
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const theme = useTheme();
+    const data = useSelector((state)=>state.app.restaurantsData)
+    console.log(data)
     const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
 
     const handleClickOpen = () => {
@@ -127,7 +130,7 @@ function RestaurentMenuItemTopBanner(){
         <div>
             {data && data.map(item=>(            
                 <BannerWrapper>
-                    <img className="img-fluid" src ={item.restaurant_images} style={{marginTop:"63px",objectFit:"cover"}} alt = "ImageBanner"/>
+                    <img className="img-fluid" src ={`../${item.restaurant_images}`} style={{marginTop:"63px",objectFit:"cover"}} alt = "ImageBanner"/>
                     <BackArrow>
                         <i class="fas fa-chevron-circle-left"></i>
                     </BackArrow>
@@ -138,7 +141,7 @@ function RestaurentMenuItemTopBanner(){
                         <div  onClick={handleClickOpen} ><i class="fas fa-share-alt"></i></div>
                     </ShareRestaurent>
                     <RestaurentIcon>
-                        <img src={item.restaurent_logo}  alt="restaurentIcon"/>
+                        <img src={`../circlo_cafe.jpg`}  alt="restaurentIcon"/>
                     </RestaurentIcon>
                     <Dialog
                         fullScreen={fullScreen}

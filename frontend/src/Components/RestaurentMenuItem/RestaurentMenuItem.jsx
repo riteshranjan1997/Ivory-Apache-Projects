@@ -6,8 +6,8 @@ import AppBar  from '../common/AppBar'
 
 function RestaurentMenuItem(){
     return(
-        <div>
-            <AppBar  />
+        <div style={{fontFamily: "Balsamiq Sans, cursive"}}>
+            <AppBar />
             <div><RestaurentMenuItemTopBanner/></div>           
             <div> <RestaurentMenuItemDetails/></div>
             <div><RestaurentMenuForAccessingContent/></div>
