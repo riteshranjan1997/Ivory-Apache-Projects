@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { UpdateUserAppAddress } from "../../redux/app/action";
+import { UpdateUserAppAddress,fetchGioLocation } from "../../redux/app/action";
 import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link, Redirect } from "react-router-dom";
@@ -95,6 +95,7 @@ function LandingPageLocation() {
 
   const handleLocationUpdate = () => {
     dispatch(UpdateUserAppAddress(query));
+    dispatch(fetchGioLocation(query))
   };
 
   return (

@@ -2,6 +2,7 @@ import {
     UPDATE_ADDRESS,
     UPDATE_GIOLOCATION,
     UPDATE_CUISINE,
+    UPDATE_FILTERS,
     FETCH_RESTAURANTS_DATA_REQUEST,
     FETCH_RESTAURANTS_DATA_SUCCESS,
     FETCH_RESTAURANTS_DATA_FAILURE
@@ -11,10 +12,11 @@ import {
 export const initState = {
     isLoading: false,
     userAddress: "",
-    userGioLocation: [],
+    userGioLocation: {},
     userCuisine: "",
     restaurantsData: [],
     isError: false,
+    activePage:1
 }
 
 
@@ -26,7 +28,7 @@ export const initState = {
                 userAddress: payload
             }
         case UPDATE_GIOLOCATION:
-            console.log(payload)
+            console.log("in reducer", payload)
             return {
                 ...state,
                 userGioLocation: payload

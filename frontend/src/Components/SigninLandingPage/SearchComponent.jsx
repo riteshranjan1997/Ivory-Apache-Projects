@@ -3,11 +3,7 @@ import axios from "axios";
 import {Link} from "react-router-dom" 
 import { useEffect, useState } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-// import Typography from "@material-ui/core/Typography";
-// import { colors } from "@material-ui/core";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
-// import Tabs from "@material-ui/core/Tab";
-// import Tab from "@material-ui/core/Tab";
 import Styled from "styled-components";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -15,8 +11,6 @@ import {
   UpdateUserAppAddress,
   UpdateUserGioLocation,
 } from "../../redux/app/action";
-
-// import LandingPageFooter from "../LandingPage/LandinPageFooter";
 
 const useStyles = makeStyles({
   root: {
@@ -89,16 +83,6 @@ export default function SearchComponent() {
   const [cuisineQuery, setcuisineQuery] = useState("");
   const [suggestedAddress, setsuggestedAddress] = React.useState([]);
 
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  const handleChangeIndex = (index) => {
-    setValue(index);
-  };
-
   const handleLocationUpdate = () => {
     if(selectedAddress !== ""){
       dispatch(UpdateUserAppAddress(addressQuery));
@@ -132,22 +116,13 @@ export default function SearchComponent() {
             </div>
 
             <div className="row">
+
               <div className="col">
-                {/* <Tabs
-                  value={value}
-                  onChange={handleChange}
-                  indicatorColor="primary"
-                  textColor="primary"
-                  variant="fullWidth"
-                  aria-label="full width tabs example"
-                >
-                  <Tab label="Item One"  />
-                  <Tab label="Item Two"  />
-                  <Tab label="Item Three"  />
-                </Tabs> */}
               </div>
 
-              <div className="col"></div>
+              <div className="col">
+              </div>
+              
             </div>
 
             <div className="row">

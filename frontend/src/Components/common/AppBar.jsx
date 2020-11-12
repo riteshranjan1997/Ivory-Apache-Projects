@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
-import axios from "axios";
+import axios from "axios"
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { UpdateUserAppAddress,UpdateUserGioLocation } from "../../redux/app/action";
+import { UpdateUserAppAddress,fetchGioLocation } from "../../redux/app/action";
 import {logoutUser} from "../../redux/Auth/action"
 import LoginModel from "./LoginModel";
 import Styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button } from "@material-ui/core";
-import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import Modal from "@material-ui/core/Modal";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
@@ -150,7 +149,7 @@ export default function Bar(props) {
 
   const handleLocationUpdate = () => {
     dispatch(UpdateUserAppAddress(addressquery));
-    dispatch(UpdateUserGioLocation(addressquery))
+    dispatch(fetchGioLocation(addressquery));
     setOpen(false);
   };
 
@@ -250,15 +249,15 @@ export default function Bar(props) {
 
   const loginModel = <LoginModel />;
 
-  // useEffect(() => {
-  //   return axios
-  //     .get(
-  //       `https://api.mapbox.com/geocoding/v5/mapbox.places/${addressquery}.json?limit=5&access_token=pk.eyJ1Ijoic291bmRhcnlhbWVjc2UiLCJhIjoiY2toMmUxZHBoMGJtdDJ3cGNqOWhmbTJqaiJ9.sZeF_rzMTfs2fPBA4JsHxQ`
-  //     )
-  //     .then((res) => setsuggestedAddress(res.data.features))
-  //     .catch((err) => console.log(err));
-  // }, [addressquery]);
-  console.log(cart,"inAppBar")
+  useEffect(() => {
+    return axios
+      .get(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${addressquery}.json?limit=5&access_token=pk.eyJ1Ijoic291bmRhcnlhbWVjc2UiLCJhIjoiY2toMmUxZHBoMGJtdDJ3cGNqOWhmbTJqaiJ9.sZeF_rzMTfs2fPBA4JsHxQ`
+      )
+      .then((res) => setsuggestedAddress(res.data.features))
+      .catch((err) => console.log(err));
+  }, [addressquery]);
+
   return (
     <div className={classes.boxshadow} style={{zIndex:30,width:"100%",position:"fixed"}}>
       {/* {isAuth ? handleLoginModelClose() : null } */}
