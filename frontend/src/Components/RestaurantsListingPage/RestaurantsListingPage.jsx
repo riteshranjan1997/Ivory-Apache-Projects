@@ -13,14 +13,15 @@ import {
 
 import Filter from "./Filter";
 import Bar from "../common/AppBar";
+import BrowseByCuisine from "../common/BrowseByCuisine"
 import RestaurantCardDiv from "./RestaurantCardDiv";
 import Footer from "../LandingPage/LandinPageFooter";
 
+
 export default function RestaurantListingPage() {
   const dispatch = useDispatch();
-
+  const userGioLocation = useSelector((state)=>state.app.userGioLocation)
   const userAddress = useSelector((state) => state.app.userAddress);
-  const userGioLocation = useSelector((state) => state.app.userGioLocation)
   const isError = useSelector((state) => state.app.isError);
 
   const fetchRestaurantData =  () => {

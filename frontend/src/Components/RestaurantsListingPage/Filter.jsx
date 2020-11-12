@@ -58,10 +58,10 @@ ValueLabelComponent.propTypes = {
 function Filter(){
   const classes = useStyles()
   return(
-          <div className={`col-3 border border-right ${classes.root}`} style={{height:"1200px"}}>
+          <div className={`col-12 border border-right  ${classes.root}`} style={{height:"1200px"}}>
             <div className="row">
               <div className="col-12">
-                <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center" style={{marginTop:"100px"}}>
                     <div className="mr-3"><h4>Filters</h4></div>
                     <div style={{fontSize:"12px"}}>Clear All</div>
                 </div>
@@ -152,7 +152,7 @@ function Filter(){
                       </AccordionSummary>
                       <AccordionDetails>
                           <Typography>
-                                <div className="d-flex" >
+                                <div className="d-flex" style={{color:"#2B8282"}} >
                                    <div className={`border rounded-left p-2 ${classes.ratings}`} style={{width:"50px"}}><i class="fas fa-star"></i></div>
                                    <div className={`border p-2 ${classes.ratings}`} style={{width:"50px"}}><i class="fas fa-star"></i></div>
                                    <div className={`border p-2 ${classes.ratings}`} style={{width:"50px"}}><i class="fas fa-star"></i></div>

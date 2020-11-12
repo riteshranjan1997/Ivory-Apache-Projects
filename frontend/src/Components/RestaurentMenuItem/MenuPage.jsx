@@ -10,6 +10,9 @@ import DialogContent from "@material-ui/core/DialogContent";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import Button from '@material-ui/core/Button';
+import { useSelector,useDispatch } from 'react-redux';
+import {addCart} from '../../redux/AddToCart/action'
+
 
 const useStyles = makeStyles({    
     price:{
@@ -50,8 +53,7 @@ quantity:{
     fontSize:"15px",
     
 }
-   
-  });
+});
 
 const MenuWrapper=Styled.div`
     display:flex;
@@ -71,26 +73,47 @@ function MenuPage()
 {
     const classes = useStyles();
     // console.log(data[0].menu_items)
+    const restaurentId = data[0].restaurant_id
+    const restaurentName = data[0].restaurent_name
     const [open, setOpen] = React.useState(false);
     const [name,setName] = React.useState("")
     const [image,setImage] = React.useState("")
     const [description,setDescription] = React.useState("")
-    const [quantity,setQuantity] = React.useState(0)
+    const [quantity,setQuantity] = React.useState(1)
+    const [id,setId] =React.useState("")
     const [price,setPrice] = React.useState(0)
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));   
+    const cart = useSelector((state)=>state.cart.cart)
+    console.log(cart)
+    const dispatch = useDispatch()
     // console.log(quantity,typeof(quantity))
-    const handleClickOpen = (name,image,description,price) => {
+    const handleClickOpen = (name,image,description,price,id) => {
         setOpen(true);
         setName(name);
         setImage(image);
         setDescription(description);
         setPrice(price)
+        setId(id)
       };
     
     const handleClose = () => {
         setOpen(false);        
     };
+
+    const handleCart = () => {
+        const payload={
+            // restaurent_id:restaurentId,
+            restaurentId:restaurentId,
+            restaurentName:restaurentName,
+            id:id,
+            name:name,
+            quantity:quantity,
+            totalPrice:price*quantity
+        }
+        dispatch(addCart(payload))
+        handleClose()
+    }
 
     return(
         <div>
@@ -107,7 +130,7 @@ function MenuPage()
         <div className="container">
                 <div className="row">
                     {data[0].menu_items && data[0].menu_items.map(item=>(            
-                        <div className="col-12 col-md-5 border m-2 rounded" onClick={()=>handleClickOpen(item.name,item.image,item.description,item.price)}>
+                        <div className="col-12 col-md-5 border m-2 rounded" onClick={()=>handleClickOpen(item.name,item.image,item.description,item.price,item.id)}>
                             <div className="row">
                                 <div className="col-7" style={{textAlign:"left"}}>
                                     <div className={classes.itemName} style={{marginTop:"10px"}}>{item.name}</div>
@@ -156,6 +179,7 @@ function MenuPage()
                                         height:"40px",
                                         borderRadius:"10px"
                                     }}
+                                    onClick={handleCart}
                                     >
                                     Add to Bag : ₹{price*quantity}
                                 </Button>
