@@ -54,7 +54,6 @@ ValueLabelComponent.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-\
 function Filter(){
   const classes = useStyles()
   return(
