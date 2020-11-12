@@ -22,7 +22,6 @@ export default function RestaurantListingPage() {
   const dispatch = useDispatch();
   const userGioLocation = useSelector((state)=>state.app.userGioLocation)
   const userAddress = useSelector((state) => state.app.userAddress);
-  const userGioLocation = useSelector((state) => state.app.userGioLocation)
   const isError = useSelector((state) => state.app.isError);
 
   const fetchRestaurantData =  () => {

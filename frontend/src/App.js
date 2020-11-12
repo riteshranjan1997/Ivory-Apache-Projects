@@ -7,9 +7,9 @@ import Browse from './Components/common/Browse'
 function App() {
   return (
         <div className="App">
-          {/* <Routes/> */}
+          <Routes/>
           {/* <RestaurentMenuItem/> */}
-          <CheckoutPage/>
+          {/* <CheckoutPage/> */}
           {/* <Browse/> */}
         </div>
   );

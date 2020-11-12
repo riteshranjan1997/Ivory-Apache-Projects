@@ -4,7 +4,8 @@ import {ADD_CART,DELETE_CART} from './action'
 const initState=({    
     isLoading:true,    
     isError:false,
-    cart:[]
+    cart:[],
+    total:0
 })
 
 

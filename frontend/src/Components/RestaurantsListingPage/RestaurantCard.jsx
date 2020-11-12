@@ -26,7 +26,7 @@ const popover = (
   </Popover>
 );
 
-export default function RestaurantCard() {
+export default function RestaurantCard(props) {
     
   return (
     <Link
