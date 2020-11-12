@@ -73,13 +73,13 @@ export default (state = initState, { type, payload }) => {
                 ...state,
                 isAuth: false,
                 user_data: {},
+                access_token:"",
             }
         case REMOVE_ERROR:
             return {
                 ...state,
                 message: "",
                 isError: false,
-                access_token:""
             }
         default:
             return state
