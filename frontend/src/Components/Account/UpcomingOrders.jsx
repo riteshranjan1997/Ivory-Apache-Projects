@@ -1,4 +1,6 @@
 import React,{useState,useEffect} from 'react'
+import Bar from "../common/AppBar"
+import SideBar from "./SideBar"
 import Typography from '@material-ui/core/Typography';
 import { makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -14,7 +16,6 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import Styled from 'styled-components'
 import axios from 'axios'
-
 
 
 const LocationWrapper = Styled.div`    
@@ -134,7 +135,7 @@ function PastOrders(){
     const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
     const [query,setQuery] = React.useState("")
     const [data,setData] = React.useState([])
-    console.log(data)
+    // console.log(data)
     useEffect(()=>{
         return axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?limit=5&access_token=pk.eyJ1Ijoic291bmRhcnlhbWVjc2UiLCJhIjoiY2toMmUxZHBoMGJtdDJ3cGNqOWhmbTJqaiJ9.sZeF_rzMTfs2fPBA4JsHxQ`)
         .then(res=>setData(res.data.features))
@@ -157,6 +158,9 @@ function PastOrders(){
     }   
     
     return(
+        <div>
+            <Bar/>
+            <SideBar/>
         <div className={classes.root}>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
@@ -313,6 +317,8 @@ function PastOrders(){
                     </CardContent>
                 </Card>
             </main>
+        </div>
+
         </div>
     )
 }

@@ -5,7 +5,8 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
-import MenuPage from './MenuPage'
+import MenuPage from './MenuPage';
+import AboutPage from './AboutPage'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -118,7 +119,8 @@ function RestaurentMenuForAccessingContent(){
                 <MenuPage/>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                Welcome To  About page
+                Welcome to About page
+                <AboutPage/>
             </TabPanel>
             <TabPanel value={value} index={2}>
                 Welcome To  Review page

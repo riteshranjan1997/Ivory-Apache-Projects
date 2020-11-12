@@ -1,4 +1,6 @@
 import React from 'react'
+import Bar from "../common/AppBar"
+import SideBar from "./SideBar"
 import Typography from '@material-ui/core/Typography';
 import { makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -62,6 +64,9 @@ const useStyles = makeStyles((theme) => ({
 function PastOrders(){
     const classes = useStyles()
     return(
+        <div>
+            <Bar/>
+            <SideBar/>
         <div className={classes.root}>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
@@ -93,6 +98,7 @@ function PastOrders(){
                     </CardContent>
                 </Card>
             </main>
+        </div>
         </div>
     )
 }

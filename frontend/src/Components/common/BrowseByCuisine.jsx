@@ -1,119 +1,98 @@
 import React from "react";
-import Styles from "./LoginModel.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { loginRequest } from "../../redux/Auth/action";
-import { Redirect, Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import { Card, TextField, Checkbox, Button } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import CardContent from "@material-ui/core/CardContent";
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
-const useStyles = makeStyles({});
 
-export default function LoginModel() {
+function a11yProps(index) {
+  return {
+    id: `scrollable-force-tab-${index}`,
+    'aria-controls': `scrollable-force-tabpanel-${index}`,
+  };
+}
+
+
+const useStyles = makeStyles(theme=>({
+  root: {
+    flexGrow: 1,
+    width: '100%',
+    background: "inherit",
+  },
+ 
+}));
+
+export default function BrowseByCuisine() {
   const classes = useStyles();
-  const dispatch = useDispatch();
-  const isAuth = useSelector((state) => state.auth.isAuth);
-  const isError = useSelector((state) => state.auth.isError);
-  const message = useSelector((state) => state.auth.message);
-  const [user_data, setAddData] = React.useState({});
+  const [value, setValue] = React.useState(0);
 
-  const handleLogin = () => {
-    let payload = {
-      email: user_data.email,
-      password: user_data.password,
-    };
-    dispatch(loginRequest(payload));
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
 
-  if (isAuth) {
-    return <Redirect to="/lets-eat" />;
-  }
-
   return (
-    <>
-      <div className={`card ${Styles.main}`}>
-        <h5 className={Styles.title}>Sign in with your Seamless account</h5>
-
-        <div className="row">
-          <div className="col">
-            <label>Email</label>
-            <br />
-            <TextField
-              id="email"
-              type="text"
-              required
-              // value={user_data.email}
-              onChange={(e) =>
-                setAddData({ ...user_data, email: e.target.value })
-              }
-              variant="outlined"
-            />
+     <div className="container"> 
+        <div className={classes.root}>
+            
+              <Tabs
+                value={value}
+                onChange={handleChange}
+                indicatorColor="primary"
+                textColor="primary"
+                variant="scrollable"
+                scrollButtons="on"
+                aria-label="scrollable auto tabs example"
+                style={{background:"white"}}
+              >
+                <Tab label={
+                  <div>
+                    <div style={{background:"#2B8282",height:"100px",width:"100px",borderRadius:"50%"}}><i class="fas fa-utensils" style={{fontSize:"40px",color:"white",position:"relative",top:"20px"}}></i>
+                    </div>
+                    <div>all restaurents</div>
+                  </div>
+                }  {...a11yProps(0)} style={{textTransform:"capitalize"}} />
+                <Tab label={<div>
+                    <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                    <div>deserts</div>
+                </div>}  {...a11yProps(1)} style={{textTransform:"capitalize"}} />
+                <Tab  label={<div>
+                    <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                    <div>Lunch Specials</div>
+                </div>} {...a11yProps(2)} style={{textTransform:"capitalize"}}/>
+                <Tab label={<div>
+                    <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                    <div>Lunch Specials</div>
+                </div>} {...a11yProps(3)} style={{textTransform:"capitalize"}} />
+                <Tab label={<div>
+                    <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                    <div>Lunch Specials</div>
+                </div>} {...a11yProps(4)} style={{textTransform:"capitalize"}}/>
+                <Tab label={<div>
+                    <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                    <div>Lunch Specials</div>
+                </div>} {...a11yProps(5)} style={{textTransform:"capitalize"}} />
+                <Tab label={<div>
+                  <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                  <div>Lunch Specials</div>
+              </div>} {...a11yProps(6)} style={{textTransform:"capitalize"}}/>
+              <Tab label={<div>
+                    <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                    <div>Lunch Specials</div>
+                </div>} {...a11yProps(7)} style={{textTransform:"capitalize"}}/>
+                <Tab label={<div>
+                    <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                    <div>Lunch Specials</div>
+                </div>} {...a11yProps(8)} style={{textTransform:"capitalize"}} />
+                <Tab label={<div>
+                  <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                  <div>Lunch Specials</div>
+              </div>} {...a11yProps(9)} style={{textTransform:"capitalize"}}/>
+              </Tabs>
+            
           </div>
-        </div>
-
-        <div className="row">
-          <div className="col">
-            <label>Password</label>
-            <br />
-            <TextField
-              id="password"
-              type="text"
-              required
-              // value={user_data.password}
-              onChange={(e) =>
-                setAddData({ ...user_data, password: e.target.value })
-              }
-              variant="outlined"
-            />
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col justify-content-start">
-            <Checkbox
-              value="true"
-              label="Keep me signed in"
-              inputProps={{ "aria-label": "Checkbox A" }}
-            />
-            <label>Keep me signed in</label>
-          </div>
-
-          <div className="col justify-content-end">
-            <Link to="/">Reset password</Link>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col">
-          <button type="button" class="btn btn-danger" onClick={handleLogin}>Sign in</button>
-          </div>
-        </div>
-
-        <p>or</p>
-
-        <div className="row">
-          <div className="col">
-            <Button variant="contained" color="primary">
-              Primary
-            </Button>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col">
-            <Button variant="contained" color="primary">
-              Primary
-            </Button>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col">
-            <Link to="/create-account">Create your account</Link>
-          </div>
-        </div>
-      </div>
-    </>
+     </div>
   );
 }

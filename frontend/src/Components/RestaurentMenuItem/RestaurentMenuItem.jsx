@@ -5,11 +5,10 @@ import RestaurentMenuForAccessingContent from './RestaurentMenuForAccessingConte
 
 function RestaurentMenuItem(){
     return(
-        <div >
-            <div ><RestaurentMenuItemTopBanner/></div>           
-            <div  > <RestaurentMenuItemDetails/></div>
+        <div>
+            <div><RestaurentMenuItemTopBanner/></div>           
+            <div> <RestaurentMenuItemDetails/></div>
             <div><RestaurentMenuForAccessingContent/></div>
-            
         </div>
     )
 }

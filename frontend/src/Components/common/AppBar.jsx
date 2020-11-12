@@ -1,50 +1,47 @@
-import React, {useEffect} from "react";
-import axios from "axios"
-import Styled from 'styled-components';
-import { fade, makeStyles } from "@material-ui/core/styles";
-import { TextField, Button } from "@material-ui/core"; 
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import Badge from "@material-ui/core/Badge";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
+import React, { useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { UpdateUserAppAddress,UpdateUserGioLocation } from "../../redux/app/action";
+import {logoutUser} from "../../redux/Auth/action"
+import LoginModel from "./LoginModel";
+import Styled from "styled-components";
+import { makeStyles } from "@material-ui/core/styles";
+import { TextField, Button } from "@material-ui/core";
+import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import MoreIcon from "@material-ui/icons/MoreVert";
 import Modal from "@material-ui/core/Modal";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import Avatar from "@material-ui/core/Avatar";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import LocalMallIcon from "@material-ui/icons/LocalMall";
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
 import CloseIcon from "@material-ui/icons/Close";
 import Fade from "@material-ui/core/Fade";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Popover from "react-bootstrap/Popover";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
+import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles((theme) => ({
   logo: {
     width: "105px",
+    marginTop: "-5px",
   },
   addressModel: {
-    width: "576px",
-    height: "407px",
+    width: "400px",
+    maxHeight: "600px",
     backgroundColor: "white",
-    margin: "auto",
     border: "none",
     outline: "none",
-    padding: "16px 12px",
   },
-  grow: {
-    flexGrow: 1,
-  },
+  grow: {},
   navbar: {
     backgroundColor: "white",
     color: "black",
-    height: "70px",
+    height: "50px",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -55,54 +52,40 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
   },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto",
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
+  LocatePlaces: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
   },
-  inputRoot: {
-    color: "inherit",
+  searchField: {
+    marginLeft: "10px",
+    border: "none",
+    outline: "none",
   },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
+  input: {
+    padding: "10px",
+    color: "grey",
+    "&:hover": {
+      border: "2px solid black",
+      borderRadius: "5px",
     },
   },
-  sectionDesktop: {
-    display: "none",
-    [theme.breakpoints.up("md")]: {
-      display: "flex",
-    },
+  inputBar: {
+    marginLeft: "200px",
   },
-  sectionMobile: {
+  menuDetails: {
     display: "flex",
-    [theme.breakpoints.up("md")]: {
-      display: "none",
-    },
+    flexDirection: "column",
+    marginRight: "10px",
+  },
+  menuRow: {
+    display: "flex",
+    justifyContent: "space-around",
+    color: "#2B8282",
+    padding: "10px",
+  },
+  menuIcon: {
+    fontSize: "30px",
+    textAlign: "center",
   },
 }));
 
@@ -110,7 +93,7 @@ const LocationWrapper = Styled.div`
     width:250px;
     
     li{
-        width:248px;
+        width:360px;
         padding:10px;
         border:1px solid #E0E0E0;
         border-top:none;
@@ -128,88 +111,19 @@ const LocationWrapper = Styled.div`
 
 export default function Bar(props) {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [addressmodelStatus, setAddressModelStatus] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [logingModelStatus, setlogingModelStatus] = React.useState(false);
+
   const [addressquery, setAddressQuery] = React.useState("");
   const [suggestedAddress, setsuggestedAddress] = React.useState([]);
 
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const menuId = "primary-search-account-menu";
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
-
-  const mobileMenuId = "primary-search-account-menu-mobile";
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
-  );
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  const userData = useSelector((state) => state.auth.user_data);
+  const selectedAddress = useSelector((state) => state.app.userAddress);
+  const [open, setOpen] = React.useState(false);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
 
   const handleAddressModelOpen = () => {
     setAddressModelStatus(true);
@@ -219,19 +133,67 @@ export default function Bar(props) {
     setAddressModelStatus(false);
   };
 
-  let selectedAddress = "Mumbai";
-  let userFirstname = "Ritesh";
+  const handleLoginModelOpen = () => {
+    setlogingModelStatus(true);
+  };
+
+  const handleLoginModelClose = () => {
+    setlogingModelStatus(false);
+  };
+
+  const handleLocationUpdate = () => {
+    dispatch(UpdateUserAppAddress(addressquery));
+    dispatch(UpdateUserGioLocation(addressquery))
+    setOpen(false);
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const addressModel = (
     <Fade in={addressmodelStatus}>
       <div className={classes.addressModel}>
-        <CloseIcon onClick={handleAddressModelclose} />
-        <h5>Your order settings</h5>
-        <p>When would you like your order?</p>
-        <p>ASAP</p>
+        <CloseIcon
+          onClick={handleAddressModelclose}
+          style={{ color: "#2B8282", fontSize: "30px", fontWeight: "bold" }}
+        />
+        <h4 className={classes.modelHeading}>Your order settings</h4>
+        <div className={classes.buttons}>
+          <Button
+            style={{
+              backgroundColor: "#2B8282",
+              color: "white",
+              width: "180px",
+              height: "40px",
+              borderRadius: "5px  0px 0px 5px",
+            }}
+          >
+            Delivary
+          </Button>
+          <Button
+            style={{
+              border: "1px solid #2B8282",
+              color: "#2B8282",
+              width: "180px",
+              height: "40px",
+              borderRadius: "0px  5px 5px 0px",
+            }}
+          >
+            PickUp
+          </Button>
+        </div>
 
-        <h6>Delivery address</h6>
-
+        <div className={classes.design}></div>
+        <div style={{ padding: "20px 0px 20px 0px " }}>
+          When would You like your order?
+        </div>
+        <div></div>
+        <div>Delivary Address</div>
         <form>
           <TextField
             id="outlined-basic"
@@ -239,96 +201,397 @@ export default function Bar(props) {
             variant="outlined"
             value={addressquery}
             onChange={(e) => setAddressQuery(e.target.value)}
-            style={{ width: "250px" }}
+            style={{ width: "360px" }}
           />
-
-          <Button variant="contained" className={classes.button}>
+          <LocationWrapper>
+            <ul style={{ listStyleType: "none", textAlign: "left" }}>
+              {addressquery &&
+                suggestedAddress &&
+                suggestedAddress.map((item, i) => (
+                  <>
+                    {/* {i>=active && i<=active+4? */}
+                    <li
+                      className={`dropDown`}
+                      // data-toggle="modal"
+                      // data-target="#exampleModal"
+                      key={item.id}
+                      onClick={(e) => {
+                        setAddressQuery(item.place_name);
+                      }}
+                    >
+                      {item.place_name}
+                    </li>
+                  </>
+                ))}
+            </ul>
+          </LocationWrapper>
+          <Button
+            onClick={handleLocationUpdate}
+            style={{
+              backgroundColor: "#2B8282",
+              color: "white",
+              width: "360px",
+              height: "40px",
+            }}
+          >
             Update
           </Button>
         </form>
-        <LocationWrapper>
-          <ul style={{ listStyleType: "none", textAlign: "left" }}>
-            {addressquery &&
-              suggestedAddress &&
-              suggestedAddress.map((item, i) => (
-                <>
-                  {/* {i>=active && i<=active+4? */}
-                  <li
-                    className={`dropDown`}
-                    // data-toggle="modal"
-                    // data-target="#exampleModal"
-                    key={item.id}
-                    onClick={(e) => {
-                      setAddressQuery(item.place_name);
-                    }}
-                  >
-                    {item.place_name}
-                  </li>
-                </>
-              ))}
-          </ul>
-        </LocationWrapper>
       </div>
     </Fade>
   );
 
-  useEffect(() => {
-    return axios
-      .get(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${addressquery}.json?limit=5&access_token=pk.eyJ1Ijoic291bmRhcnlhbWVjc2UiLCJhIjoiY2toMmUxZHBoMGJtdDJ3cGNqOWhmbTJqaiJ9.sZeF_rzMTfs2fPBA4JsHxQ`
-      )
-      .then((res) => setsuggestedAddress(res.data.features))
-      .catch((err) => console.log(err));
-  }, [addressquery]);
+  const loginModel = <LoginModel />;
+
+  // useEffect(() => {
+  //   return axios
+  //     .get(
+  //       `https://api.mapbox.com/geocoding/v5/mapbox.places/${addressquery}.json?limit=5&access_token=pk.eyJ1Ijoic291bmRhcnlhbWVjc2UiLCJhIjoiY2toMmUxZHBoMGJtdDJ3cGNqOWhmbTJqaiJ9.sZeF_rzMTfs2fPBA4JsHxQ`
+  //     )
+  //     .then((res) => setsuggestedAddress(res.data.features))
+  //     .catch((err) => console.log(err));
+  // }, [addressquery]);
 
   return (
-    <div className={classes.grow}>
-      <AppBar position="static" className={classes.navbar}>
-        <div className="row">
-          <div className="col">
-            <img
-              className={classes.logo}
-              src="https://res.cloudinary.com/grubhub-assets/image/upload/v1576524886/Seamless_logo_flxqyg.svg"
-              alt="company logo"
-            />
-          </div>
-          <div className="col">
-            {props.addressModel ? (
-              <h6 onClick={handleAddressModelOpen}>
-                <LocationOnIcon />
-                Delivery ASAP <spam>to</spam>{" "}
-                {selectedAddress == "" ? "Enter an address" : selectedAddress}
-                <ExpandMoreIcon />
-              </h6>
-            ) : null}
-          </div>
-          <div className="col">
-            <p>
-              <Avatar>{userFirstname[0]}</Avatar>Hi,{" " + userFirstname}!{" "}
-              <ExpandMoreIcon />
-            </p>
-          </div>
-
-          <div className="col">
-            <NotificationsIcon />
-          </div>
-
-          <div className="col">
-            <LocalMallIcon />
-          </div>
-        </div>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
+    <div style={{zIndex:30,width:"100%", clear:"both"}}>
+      {/* {isAuth ? handleLoginModelClose() : null } */}
+     <div className={classes.dialog}>
+          <Dialog
+            fullScreen={fullScreen}
+            open={open}
+            fullWidth="fullwidth"
+            maxWidth="xs"
+            onClose={handleClose}
+            aria-labelledby="responsive-dialog-title"
+            >
+            <DialogContent>
+                {addressModel}
+            </DialogContent>
+        </Dialog>
+      </div>
       <Modal
-        open={addressmodelStatus}
-        onClose={handleAddressModelclose}
+        open={logingModelStatus}
+        onClose={handleLoginModelClose}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
         closeAfterTransition
       >
-        {addressModel}
+        {loginModel}
       </Modal>
+
+      <nav class="navbar navbar-light bg-white" style={{ position:"sticky", top:0}}>
+        <div class="d-flex  container-fluid">
+          <div class="terms-link">
+            <Link to="/">
+              <img
+                className={classes.logo}
+                src="https://res.cloudinary.com/grubhub-assets/image/upload/v1576524886/Seamless_logo_flxqyg.svg"
+                alt="company logo"
+              />
+            </Link>
+          </div>
+
+          <div class="p-2 bd-highlight terms-link">
+            {props.addressModel ? (
+              <h6 onClick={handleAddressModelOpen}>
+                <div className={classes.LocatePlaces}>
+                  <div>
+                    <LocationOnIcon style={{ color: "#2B8282" }} />
+                  </div>
+                  <div style={{ color: "#2B8282" }} onClick={handleClickOpen}>
+                    Delivery ASAP to
+                    {selectedAddress === ""
+                      ? " Select a address"
+                      : " " + selectedAddress}
+                  </div>
+                  <div>
+                    <ExpandMoreIcon style={{ color: "#2B8282" }} />
+                  </div>
+                </div>
+              </h6>
+            ) : null}
+          </div>
+
+          {props.cuisines ? (
+            <div className={classes.inputBar}>
+              <div className={classes.input}>
+                <i className="fas fa-search" style={{ color: "grey" }}></i>
+                <input
+                  type="text"
+                  className={classes.searchField}
+                  placeholder="pizza-sushi-chinese"
+                />
+              </div>
+            </div>
+          ) : null}
+
+          <div class="ml-auto p-2 bd-highlight">
+            <div className="d-flex">
+              <div>
+                {isAuth ? (
+                  <div>
+                    <OverlayTrigger
+                      trigger="click"
+                      key="bottom"
+                      placement="bottom"
+                      overlay={
+                        <Popover id={"popover-positioned-bottom"}>
+                          <Popover.Content>
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                              }}
+                            >
+                              <div className={classes.menuRow}>
+                                <Link
+                                  to="/account/Past orders"
+                                  style={{
+                                    color: "#2B8282",
+                                    textDecoration: "none",
+                                  }}
+                                >
+                                  <div className={classes.menuDetails}>
+                                    <div className={classes.menuIcon}>
+                                      <i class="fas fa-history"></i>
+                                    </div>
+                                    <div>Past orders</div>
+                                  </div>
+                                </Link>
+                                <Link
+                                  to="/account/Upcoming orders"
+                                  style={{
+                                    color: "#2B8282",
+                                    textDecoration: "none",
+                                  }}
+                                >
+                                  <div className={classes.menuDetails}>
+                                    <div className={classes.menuIcon}>
+                                      <i class="fas fa-briefcase"></i>
+                                    </div>
+                                    <div>Upcoming orders</div>
+                                  </div>
+                                </Link>
+                              </div>
+                              <div className={classes.menuRow}>
+                                <Link
+                                  to="/account/Saved Restaurent"
+                                  style={{
+                                    color: "#2B8282",
+                                    textDecoration: "none",
+                                  }}
+                                >
+                                  <div className={classes.menuDetails}>
+                                    <div className={classes.menuIcon}>
+                                      <i class="fas fa-bookmark"></i>
+                                    </div>
+                                    <div>Saved</div>
+                                  </div>
+                                </Link>
+                                <Link
+                                  to="/account/Payments"
+                                  style={{
+                                    color: "#2B8282",
+                                    textDecoration: "none",
+                                  }}
+                                >
+                                  <div className={classes.menuDetails}>
+                                    <div className={classes.menuIcon}>
+                                      <i class="fas fa-money-check"></i>
+                                    </div>
+                                    <div>Payments</div>
+                                  </div>
+                                </Link>
+                              </div>
+                              <div className={classes.menuRow}>
+                                <Link
+                                  to="/account"
+                                  style={{
+                                    color: "#2B8282",
+                                    textDecoration: "none",
+                                  }}
+                                >
+                                  <div
+                                    className={classes.menuDetails}
+                                    style={{ marginLeft: "-10px" }}
+                                  >
+                                    <div className={classes.menuIcon}>
+                                      <i class="fas fa-cog"></i>
+                                    </div>
+                                    <div>Account</div>
+                                  </div>
+                                </Link>
+                                <Link
+                                  to="/"
+                                  style={{
+                                    color: "#2B8282",
+                                    textDecoration: "none",
+                                  }}
+                                >
+                                  <div
+                                    className={classes.menuDetails}
+                                    style={{ marginLeft: "-10px" }}
+                                  >
+                                    <div className={classes.menuIcon}>
+                                      <i class="fas fa-info-circle"></i>
+                                    </div>
+                                    <div>Help</div>
+                                  </div>
+                                </Link>
+                              </div>
+                              <Divider />
+                              <div
+                                style={{
+                                  color: "#2B8282",
+                                  textAlign: "center",
+                                }}
+                                onClick={() => dispatch(logoutUser())}
+                              >
+                                SignOut
+                              </div>
+                            </div>
+                          </Popover.Content>
+                        </Popover>
+                      }
+                    >
+                      <Button
+                        style={{
+                          width: "233px",
+                          border: "none",
+                          outline: "none",
+                          color:"#2B8282",
+                        }}
+                      >
+                        <Avatar style={{ backgroundColor: "#2B8282" }}>
+                          {userData.first_name[0]}
+                        </Avatar>
+                        <spam style={{ marginLeft: "5px"}}>
+                          Hi,{" " + userData.first_name}{" "}
+                        </spam>
+                        <ExpandMoreIcon />
+                      </Button>
+                    </OverlayTrigger>
+                  </div>
+                ) : props.login ? (
+                  <button
+                    className="btn btn-outline-success"
+                    onClick={handleLoginModelOpen}
+                    style={{color:"#2B8282", marginRight:"20px"}}
+                  >
+                    Sign in
+                  </button>
+                ) : null}
+              </div>
+
+              <div>
+                {props.notifications ? (
+                  <OverlayTrigger
+                    trigger="click"
+                    key="bottom"
+                    placement="bottom"
+                    overlay={
+                      <Popover
+                        id={"popover-positioned-bottom"}
+                        style={{ maxHeight: "200px", width: "260px" }}
+                      >
+                        <Popover.Content>
+                          <div style={{ display: "flex" }}>
+                            <div
+                              style={{
+                                background: "orange",
+                                height: "50px",
+                                width: "50px",
+                                borderRadius: "5px",
+                                padding: "10px",
+                                marginRight: "5px",
+                                marginTop: "10px",
+                              }}
+                            >
+                              <i
+                                class="far fa-clock"
+                                style={{ fontSize: "30px", color: "white" }}
+                              ></i>
+                            </div>
+                            <div>
+                              <div>
+                                <span style={{ fontWeight: "bold" }}>
+                                  plan Ahead
+                                </span>
+                                :Schedule a week of tasty lunches deliveredto
+                                you desc
+                                <span style={{ color: "#2B8282" }}>
+                                  Plan now
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </Popover.Content>
+                      </Popover>
+                    }
+                  >
+                    <NotificationsIcon
+                      style={{
+                        color: "#2B8282",
+                        fontSize: "30px",
+                        marginRight: "20px",
+                      }}
+                    />
+                  </OverlayTrigger>
+                ) : null}
+              </div>
+
+              <div>
+                {["bottom"].map((placement) => (
+                  <OverlayTrigger
+                    trigger="click"
+                    key={placement}
+                    placement={placement}
+                    className="p-2 bd-highlight m-2"
+                    overlay={
+                      <Popover style={{ maxHeight: "200px", width: "260px" }}>
+                        <Popover.Content>
+                          <div
+                            style={{
+                              fontSize: "18px",
+                              display: "flex",
+                              flexDirection: "column",
+                            }}
+                          >
+                            <div style={{ alignSelf: "center" }}>
+                              <img
+                                src="https://www.seamless.com/assets/img/seamless/empty-bag.svg"
+                                height="100px"
+                                width="100px"
+                                alt="Empty Bag"
+                              />
+                            </div>
+                            <div
+                              style={{
+                                fontSize: "20px",
+                                fontWeight: "bolder",
+                                color: "grey",
+                                alignSelf: "center",
+                              }}
+                            >
+                              Your Bag is empty
+                            </div>
+                          </div>
+                        </Popover.Content>
+                      </Popover>
+                    }
+                  >
+                    <div variant="secondary">
+                      <LocalMallIcon
+                        style={{ color: "#2B8282", fontSize: "30px" }}
+                      />
+                    </div>
+                  </OverlayTrigger>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
     </div>
   );
 }

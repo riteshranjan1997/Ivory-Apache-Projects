@@ -1,19 +1,15 @@
-import React from 'react'
-import Styled from 'styled-components'
+import React from "react";
+import Styled from "styled-components";
+import {Link} from "react-router-dom"
 
-const LandingPageHeaderWrapper = Styled.div`
-    height:50px;
-    background:#2b8282;
-    color:white;
-    padding-top:10px;
-`
-//Header description of the Landing Page
-function LandingPageHeader(){
-    return(
-        <LandingPageHeaderWrapper>
-            <div>Your health and safety is our priority, from restaurant to doorstep</div>
-        </LandingPageHeaderWrapper>
-    )
+function LandingPageHeader() {
+  return (
+    <div style={{height:"58px", backgroundColor:"#0f8c92", textAlign:"center", paddingTop:"10px"}}>
+      <p style={{fontFamily:"Poppins",fontSize:"14px", color:"white" , marginTop:"10px", fontWeight:"500"}}>
+  Your health and safety is our priority, from restaurant to doorstep <Link style={{color:"white", marginLeft:"10px"}}>Learn more</Link>
+      </p>
+    </div>
+  );
 }
 
-export default LandingPageHeader
+export default LandingPageHeader;
