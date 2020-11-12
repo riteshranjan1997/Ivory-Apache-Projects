@@ -10,9 +10,13 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import Button from '@material-ui/core/Button';
 import { useSelector,useDispatch } from 'react-redux';
+<<<<<<< HEAD
 import {addRequest} from '../../redux/cart/actions'
 import {addCart} from '../../redux/AddToCart/action'
 import { useParams } from 'react-router-dom';
+=======
+import {addCart} from '../../redux/AddToCart/action'
+>>>>>>> parent of 9a4d314... small updations
 
 
 const useStyles = makeStyles({    
@@ -84,8 +88,6 @@ function MenuPage()
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));   
     const cart = useSelector((state)=>state.cart.cart)
-    const access_token = useSelector((state)=>state.auth.access_token)
-    console.log("access token is ",access_token)
     console.log(cart)
     const restaurantsData = useSelector((state)=>state.app.restaurantsData)
     // console.log("reataurentsData",restaurantsData)
@@ -113,14 +115,14 @@ function MenuPage()
     const handleCart = () => {
         const payload={
             // restaurent_id:restaurentId,
-            restaurant_id:restaurentId,
-            restaurantName:restaurentName,
-            item_id:id,
+            restaurentId:restaurentId,
+            restaurentName:restaurentName,
+            id:id,
             name:name,
             quantity:quantity,
             totalPrice:price*quantity
         }
-        dispatch(addRequest(payload,access_token))
+        dispatch(addCart(payload))
         handleClose()
     }
 
