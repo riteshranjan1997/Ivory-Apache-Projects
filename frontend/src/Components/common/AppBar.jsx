@@ -37,12 +37,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     border: "none",
     outline: "none",
+    padding:"15px"
   },
-  grow: {},
   navbar: {
     backgroundColor: "white",
     color: "black",
     height: "50px",
+    margin:"none"
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -92,7 +93,6 @@ const useStyles = makeStyles((theme) => ({
   borderRadius: "0px",
   background: "#55b9f3",
   boxShadow: " -1px -1px 8px black"
-
   }
 }));
 
@@ -183,7 +183,7 @@ export default function Bar(props) {
           onClick={handleAddressModelclose}
           style={{ color: "#2B8282", fontSize: "30px", fontWeight: "bold" }}
         />
-        <h4 className={classes.modelHeading}>Your order settings</h4>
+        <h4 style={{fontFamily:"Poppins", margin:"5px 0px"}}>Your order settings</h4>
         <div className={classes.buttons}>
           <Button
             style={{
@@ -275,7 +275,6 @@ export default function Bar(props) {
 
   return (
     <div className={classes.boxshadow} style={{zIndex:30,width:"100%",position:"fixed"}}>
-      {/* {isAuth ? handleLoginModelClose() : null } */}
      <div className={classes.dialog}>
           <Dialog
             fullScreen={fullScreen}
@@ -477,6 +476,7 @@ export default function Bar(props) {
                     >
                       <Button
                         style={{
+                          height:"62px",
                           width: "233px",
                           border: "none",
                           outline: "none",
@@ -486,7 +486,7 @@ export default function Bar(props) {
                         <Avatar style={{ backgroundColor: "#2B8282" }}>
                           {userData.first_name[0]}
                         </Avatar>
-                        <spam style={{ marginLeft: "5px"}}>
+                        <spam style={{ margin:"none",marginLeft: "5px"}}>
                           Hi,{" " + userData.first_name}{" "}
                         </spam>
                         <ExpandMoreIcon />
