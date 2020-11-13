@@ -16,11 +16,16 @@ function SigninLandingPage() {
 
   return (
     <div>
-      <AppBar addressModel="true" notifications="true" login />
-      <SearchComponent />
-      <FreeDelivary />
-      <IntroductionCardDiv />
-      <LandingPageFooter />
+      <div>
+        <AppBar addressModel="true" notifications="true" login />
+      </div>
+
+      <div>
+        <SearchComponent />
+        <FreeDelivary />
+        <IntroductionCardDiv />
+        <LandingPageFooter />
+      </div>
     </div>
   );
 }

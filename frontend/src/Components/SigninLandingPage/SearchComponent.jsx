@@ -109,13 +109,13 @@ export default function SearchComponent() {
           >
             <div className="row">
               <div className="col">
-                <h2 style={{ fontWeight: "700", color: "white" }}>
+                <h2 style={{ fontWeight: "700", color: "white" , marginTop:"50px"}}>
                   Who delivers in your neighborhood?
                 </h2>
               </div>
             </div>
 
-            <div className="row">
+            {/* <div className="row">
 
               <div className="col">
               </div>
@@ -123,7 +123,7 @@ export default function SearchComponent() {
               <div className="col">
               </div>
               
-            </div>
+            </div> */}
 
             <div className="row">
               <div className="col-9">
