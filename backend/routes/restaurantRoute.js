@@ -1,10 +1,8 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { registerValidation, loginValidation } = require("../validation");
 require("dotenv").config();
 const Restaurant = require("../models/Restaurant");
-const authenticateToken = require("../middlewares/jwtAuthentication")
 
 const router = express.Router();
 
@@ -23,31 +21,63 @@ router.get("/restaurantDetails",async (req,res)=>{
 })
 
 function paginatedResultsWithLocation(model) {
+  
   return async (req, res, next) => {
     const page = parseInt(req.query.page);
     const limit = parseInt(req.query.limit);
-
+    
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
+    const cuisine = req.query.cuisine
+    const starRating = parseInt(req.query.starRating)
+    console.log("in pagination",cuisine,starRating)
 
     const results = {};  
 
     try {
+      if(cuisine && starRating){
       results.current = await model.find({ location:
         { $near :
           { $geometry :
              { type : "Point" ,
                coordinates : [ req.body.lattitude, req.body.longitude] } ,
             $maxDistance : 50000
-     } } }).limit(limit).skip(startIndex).exec();
+     } },cuisines:cuisine,aggregate_rating: { $gte: starRating}}).limit(limit).skip(startIndex).exec();
+    }
+    else if(!cuisine && starRating){
+      results.current = await model.find({ location:
+        { $near :
+          { $geometry :
+             { type : "Point" ,
+               coordinates : [ req.body.lattitude, req.body.longitude] } ,
+            $maxDistance : 50000
+     } },aggregate_rating: { $gte: starRating}}).limit(limit).skip(startIndex).exec();
+    }
+    else if(cuisine && !starRating){
+      results.current = await model.find({ location:
+        { $near :
+          { $geometry :
+             { type : "Point" ,
+               coordinates : [ req.body.lattitude, req.body.longitude] } ,
+            $maxDistance : 50000
+     } },cuisines:cuisine}).limit(limit).skip(startIndex).exec();
+    }
+    else if(!cuisine && !starRating){
+      results.current = await model.find({ location:
+        { $near :
+          { $geometry :
+             { type : "Point" ,
+               coordinates : [ req.body.lattitude, req.body.longitude] } ,
+            $maxDistance : 50000
+     } }}).limit(limit).skip(startIndex).exec();
+    }
       res.pagination = results;
       if (endIndex < results.current.length) {
         results.next = {
           page: page + 1,
           limit: limit,
         };
-      }
-  
+      }  
       if (startIndex > 0) {
         results.prev = {
           page: page - 1,

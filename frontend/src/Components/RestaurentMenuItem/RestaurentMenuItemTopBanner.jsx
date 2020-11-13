@@ -1,7 +1,5 @@
 import React from 'react'
 import Styled from 'styled-components'
-// import data from '../../data.json'
-import {useSelector} from 'react-redux'
 import Button from '@material-ui/core/Button';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
@@ -10,7 +8,10 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { makeStyles } from "@material-ui/core/styles";
-import {useParams} from 'react-router-dom'
+import { useSelector,useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
+
 
 const useStyles = makeStyles((theme) => ({   
     closeMark: {
@@ -117,11 +118,12 @@ function RestaurentMenuItemTopBanner(){
     const ParamsId =useParams()
     const [open, setOpen] = React.useState(false);
     const theme = useTheme();
-    const restaurantsData = useSelector((state)=>state.app.restaurantsData)
-    const data = restaurantsData.find(item => item.restaurant_id == ParamsId.id)
     const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
-    console.log("in banner Page",data)
-
+    const restaurantsData = useSelector((state)=>state.app.restaurantsData)
+    console.log("params id",ParamsId)
+    const item = restaurantsData.find(item =>item.restaurant_id == ParamsId.id)
+    // console.log("data",data)
+    // console.log("in banner page",data)
     const handleClickOpen = () => {
         setOpen(true);
       };
@@ -129,10 +131,11 @@ function RestaurentMenuItemTopBanner(){
       const handleClose = () => {
         setOpen(false);
       };
+    //   console.log(data.restaurant_id)
     return(
-        <div>         
+        <div>
                 <BannerWrapper>
-                    <img className="img-fluid" src ={`../${data.restaurant_images}`} style={{marginTop:"63px",objectFit:"cover"}} alt = "ImageBanner"/>
+                    <img className="img-fluid" src ={`../${item.restaurant_images}`} style={{marginTop:"63px",objectFit:"cover"}} alt = "ImageBanner"/>
                     <BackArrow>
                         <i class="fas fa-chevron-circle-left"></i>
                     </BackArrow>
@@ -143,7 +146,7 @@ function RestaurentMenuItemTopBanner(){
                         <div  onClick={handleClickOpen} ><i class="fas fa-share-alt"></i></div>
                     </ShareRestaurent>
                     <RestaurentIcon>
-                        <img src={`../circlo_cafe.jpg`}  alt="restaurentIcon"/>
+                        <img src={item.restaurant_images}  alt="restaurentIcon"/>
                     </RestaurentIcon>
                     <Dialog
                         fullScreen={fullScreen}
@@ -160,7 +163,7 @@ function RestaurentMenuItemTopBanner(){
                         </DialogTitle>
 
                         <DialogContent>
-                            <h4 className={classes.modelHeading}>Share {data.restaurant_name}</h4>
+                            <h4 className={classes.modelHeading}>Share {item.restaurant_name}</h4>
 
                             <DialogContentText>
                             <div className={classes.design}></div>
@@ -172,6 +175,7 @@ function RestaurentMenuItemTopBanner(){
                         </DialogContent>
                         </Dialog>
                 </BannerWrapper>
+ 
         </div>
     )
 }
