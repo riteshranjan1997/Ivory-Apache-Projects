@@ -132,8 +132,12 @@ export default function Bar(props) {
   const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
 
   const cart = useSelector(state=>state.cart.cart)
+  const cart_items = useSelector(state=>state.auth.user_data.cart)
+  console.log(cart_items)
   const access_token = useSelector((state)=>state.auth.access_token)
     console.log("access token is ",access_token)
+
+  useEffect(()=>{},[])
 
   console.log("in menu page",cart)
   const handleDelete = (payload)=>{
@@ -666,7 +670,7 @@ export default function Bar(props) {
                     <LocalMallIcon
                       style={{ color: "#2B8282", fontSize: "30px",zIndex:1}}
                     />
-                    <span class="badge badge-pill badge-success" style={{position:"relative",right:"10px",top:"-7px",fontSize:"10px"}} >{cart && cart.length}</span>
+                    <span class="badge badge-pill badge-success" style={{position:"relative",right:"10px",top:"-7px",fontSize:"10px"}} >{cart.length || cart_items.length}</span>
                   </div>
                 </OverlayTrigger>
               ))

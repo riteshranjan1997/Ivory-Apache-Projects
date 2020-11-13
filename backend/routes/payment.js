@@ -14,22 +14,24 @@ const instance = new Razorpay({
     key_secret: process.env.RAZOR_PAY_KEY_SECRET
 })
 
-router.get('/order',authenticateToken, (req, res) => {
-
+router.post('/order',authenticateToken, (req, res) => {
+    console.log("in order",req.body,req.body.amount)
     try {
         const options = {
-            amount: 10 * 100,
+            amount: req.body.amount*100,
             currency: 'INR',
             receipt: uuidv4(),
             payment_capture: 0
         }
         instance.orders.create(options, (err, order) => {
             if (err) {
+                console.log(err)
                 return res.status(500).json({ message: "Something went wrong" })
             }
             return res.status(200).json(order)
         })
     } catch (err) {
+        console.log(err)
         return res.status(500).json({
             message: 'Something went wrong'
         })
@@ -49,6 +51,7 @@ router.post("/capture/:paymentId", (req, res) => {
             },
             async function (err, res, body) {
                 if (err) {
+                    console.log("capture",err)
                     return res.status(500).json({
                         message: "Something Went Wrong",
                     });

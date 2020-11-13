@@ -19,7 +19,7 @@ router.post("/addToCart", authenticateToken, async (req, res) => {
     console.log("in adding to cart restaurant is",restaurant)
     let menu_item = restaurant.menu_items.find(ele => ele.id === item_id)
     const price = menu_item.price*quantity
-    user.cart = [...user.cart, { restaurant_name:restaurant.name,restaurant_id, item_id,item_name:menu_item.name, quantity,price}];
+    user.cart = [...user.cart, { restaurant_name:restaurant.restaurant_name,restaurant_id, item_id,item_name:menu_item.name, quantity,price}];
     const savedUser = await user.save();
     res.status(200).json({ error: false, data: savedUser });
   } catch (err) {

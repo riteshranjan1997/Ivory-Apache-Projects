@@ -1,6 +1,7 @@
 import React from 'react'
 import Styled from 'styled-components'
-import data from '../../data.json' 
+import { useSelector,useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 const RestaurentDetails = Styled.div`
     position:relative;
@@ -13,10 +14,15 @@ const RestaurentDetails = Styled.div`
 `
 
 function RestaurentMenuItemDetails(){
-    console.log(data)
+    const restaurantsData = useSelector((state)=>state.app.restaurantsData)
+    const ParamsId =useParams()
+    console.log("params id",ParamsId)
+    const item = restaurantsData.find(item =>item.restaurant_id == ParamsId.id)
+    // console.log("data",data)
+    // console.log("in banner page",data)
     return(
         <div>
-        {data && data.map((item)=>(
+      
             <RestaurentDetails>
                 <h3><b>{item.restaurant_name}</b></h3>
                 <div style={{display:"flex"}}>
@@ -33,16 +39,15 @@ function RestaurentMenuItemDetails(){
                             <i class="far fa-star" style={{color:"orange"}} ></i>                    
                     ))}
                     </div>
-                    <div className="mr-2">{item.ratings} ratings</div>
+                    <div className="mr-2">{item.votes} ratings</div>
                     <div className="mr-2"><span>{item.food_was_good}</span> food was good</div>
                     <div className="mr-2"><span>{item.delivery_was_on_time}</span> Delivary was on time</div>
-                    <div><span>{item.delivery_was_on_time}</span> Order was correct</div>
+                    <div><span>{item.order_was_correct}</span> Order was correct</div>
                 </div>
                 <div>
                     <hr/>
                 </div>
             </RestaurentDetails>
-        ))}
         </div>
     )
 }
