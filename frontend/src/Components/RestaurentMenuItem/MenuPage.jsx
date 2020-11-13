@@ -9,6 +9,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import Button from '@material-ui/core/Button';
+import {addRequest} from '../../redux/cart/actions'
 import { useSelector,useDispatch } from 'react-redux';
 import {addCart} from '../../redux/AddToCart/action'
 import { useParams } from 'react-router-dom';
@@ -83,10 +84,13 @@ function MenuPage()
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));   
     const cart = useSelector((state)=>state.cart.cart)
+    const access_token = useSelector((state)=>state.auth.access_token)
+    console.log("access token is ",access_token)
+    console.log(cart)
     const restaurantsData = useSelector((state)=>state.app.restaurantsData)
     // console.log("reataurentsData",restaurantsData)
     // console.log(typeof(ParamsId),typeof(restaurantsData[0].restaurant_id))
-    const data = restaurantsData.filter(item =>item.restaurant_id == ParamsId.id)
+    const data = restaurantsData.find(item =>item.restaurant_id == ParamsId.id)
     console.log("menu Page",data)
     const restaurentId = data.restaurant_id
     const restaurentName = data.restaurant_name
@@ -109,14 +113,14 @@ function MenuPage()
     const handleCart = () => {
         const payload={
             // restaurent_id:restaurentId,
-            restaurentId:restaurentId,
-            restaurentName:restaurentName,
-            id:id,
+            restaurant_id:restaurentId,
+            restaurantName:restaurentName,
+            item_id:id,
             name:name,
             quantity:quantity,
             totalPrice:price*quantity
         }
-        dispatch(addCart(payload))
+        dispatch(addRequest(payload,access_token))
         handleClose()
     }
 
@@ -134,7 +138,7 @@ function MenuPage()
         </MenuWrapper>
         <div className="container">
                 <div className="row">
-                    {data[0].menu_items && data[0].menu_items.map(item=>(            
+                    {data && data.menu_items && data.menu_items.map(item=>(            
                         <div className="col-12 col-md-5 border m-2 rounded" onClick={()=>handleClickOpen(item.name,item.image,item.description,item.price,item.id)}>
                             <div className="row">
                                 <div className="col-7" style={{textAlign:"left"}}>
@@ -143,7 +147,7 @@ function MenuPage()
                                 </div>
                                 <div className={`${classes.price}`}>₹{item.price}</div>
                                 <div className="col-3" style={{position:"relative",right:"-16px"}}>
-                                    <img src={`../${item.image}`} alt="menu" 
+                                <img src={`../${item.image}`} alt="menu" 
                                     height="120px" className="rounded-right" width="120px" style={{zIndex:1,objectFit:"cover"}}
                                     /> 
                                 </div>
@@ -166,6 +170,7 @@ function MenuPage()
                         </DialogTitle>
 
                         <DialogContent>
+                            {/* <div className="d-flex justify-content-center mb-3"><img src={image} alt="Menu Item" height="200px" width="450px" style={{objectFit:"cover",objectPosition:"0% 80%"}} /></div> */}
                             <div className="d-flex justify-content-center mb-3"><img src={`../${image}`} alt="Menu Item" height="230px" width="550px" style={{objectFit:"cover",objectPosition:"0% 80%"}} /></div>
                             <h4 className={classes.modelHeading}>{name}</h4>
                             <h5><b>₹{price}</b></h5>

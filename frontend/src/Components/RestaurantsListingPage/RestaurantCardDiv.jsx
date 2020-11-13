@@ -31,7 +31,7 @@ export default function RestaurantCardDiv(props) {
 
   return (
     <>
-      <div className="row" style={{marginTop:"80px"}}>
+      <div className="row">
         <div className="col">
           <FreeDelivery />
         </div>
