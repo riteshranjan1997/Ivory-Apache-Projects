@@ -3,21 +3,34 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import RestaurantCard from "./RestaurantCard";
 import { makeStyles } from "@material-ui/core/styles";
+import Pagination from '@material-ui/lab/Pagination';
 
 import FreeDelivery from "../SigninLandingPage/FreeDelivary";
 import BrowseByCuisine from "../common/BrowseByCuisine";
 
-import Pagination from "react-bootstrap/Pagination";
-
-const useStyles = makeStyles({});
+const useStyles = makeStyles({
+  ul: {
+    listStyle: 'none',
+    padding: 0,
+    margin: 0,
+    display: 'flex',
+  },
+});
 
 export default function RestaurantCardDiv(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
   let data = useSelector((state) => state.app.restaurantsData);
+  let activePage = useSelector((state) => state.app.activePage);
+  const [active_page, setActivePage] = useState(1);
+
+  const handlePageChange = (e, page) => {
+    setActivePage(page);
+    console.log(active_page)
+  };
 
   return (
-    <div className="container-fulid">
+    <>
       <div className="row">
         <div className="col">
           <FreeDelivery />
@@ -37,28 +50,14 @@ export default function RestaurantCardDiv(props) {
         </div>
       )}
 
-      <div className="row">
-        <div className="col" style={{margin:"0% 25%"}}>
-          <Pagination>
-            <Pagination.First />
-            <Pagination.Prev />
-            <Pagination.Item active>{1}</Pagination.Item>
-
-            <Pagination.Item>{10}</Pagination.Item>
-            <Pagination.Item>{11}</Pagination.Item>
-            <Pagination.Item active>{12}</Pagination.Item>
-            <Pagination.Item>{13}</Pagination.Item>
-            <Pagination.Item disabled>{14}</Pagination.Item>
-
-            <Pagination.Item>{20}</Pagination.Item>
-            <Pagination.Next />
-            <Pagination.Last />
-          </Pagination>
-          <br/>
-      <span style={{textAlign:"center"}}>Page {"activePage"} of {"data.totalpage"}</span>
-
+      <div className="row mt-4">
+        <div className="col" style={{ margin: "0% 28%", textAlign: "center" }}>
+        <Pagination count={10} variant="outlined" shape="rounded" onChange={handlePageChange} />
+          <span>
+            Page {activePage + " "} of {" " + data.totalpage}
+          </span>
         </div>
       </div>
-    </div>
+    </>
   );
 }
