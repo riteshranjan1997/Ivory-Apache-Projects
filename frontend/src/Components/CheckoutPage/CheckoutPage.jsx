@@ -5,12 +5,8 @@ import AppBar from '../common/AppBar'
 import axios from "axios"
  
 
-const CheckoutPageWrapper = Styled.div`
-    
+const CheckoutPageWrapper = Styled.div`    
    margin-left:30px;
-   div:nth-child(1){
-      margin-bottom:40px;
-   }
    p{
      font-size:10px;
      line-height:1px;
@@ -159,7 +155,7 @@ export default function CheckoutPage() {
                     <div><p>{item.item_name ? item.item_name :0 }</p></div>
                     <div><p>₹{item.price ?item.price:0 }</p></div>
                   </div>
-                  <hr/>
+                  <hr style={{padding:"-20px"}}/>
                 </div>
               ))}
               <div className="d-flex justify-content-between">
@@ -179,6 +175,14 @@ export default function CheckoutPage() {
               <div className="d-flex justify-content-between">
                 <div><b>Total</b></div>
                 <div><b>Rupees</b></div>
+              </div>  
+              <div style={{position:"relative"}}>          
+              <div style={{background:"#2B8282",padding:"20px",color:"white",fontSize:"20px",width:"300px",marginTop:"280px",position:"absolute"}}><span>{">"}</span>Modify Your Order</div>
+              <div className="d-flex  justify-content-between bg-secondary text-white p-2" style={{width:"300px",marginTop:"340px",position:"absolute"}} >
+                  <div><b>Total</b></div>
+                  <div><b>Rupees</b></div>
+                </div>
+              </div>  
               </div>
               <div style={{background:"#2B8282",padding:"20px",color:"white",fontSize:"20px",marginTop:"100px",border:"1px solid black"}}><span>{">"}</span>Modify Your Order</div>
               <div className="d-flex  justify-content-between bg-secondary text-white p-2 " style={{alignItems:"center"}} >
@@ -190,8 +194,6 @@ export default function CheckoutPage() {
               </div>
         </div>
        </div>
-      </div>
-      
   </CheckoutPageWrapper>
   </div>
   )

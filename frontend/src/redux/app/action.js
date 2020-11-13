@@ -59,6 +59,11 @@ export const UpdateUserGioLocation = (data) => {
     }
 }
 
+export const updateFilters = (payload) => ({
+    type:UPDATE_FILTERS,
+    payload
+})
+
 export const UpdateUserCuisine = (payload) => ({
     type: UPDATE_CUISINE,
     payload
@@ -80,7 +85,7 @@ export const restaurantsDataFailure = (payload) => ({
 
 
 export const restaurantsRequest = payload => dispatch => {
-    console.log(payload)
+    // console.log(payload)
     dispatch(restaurantsDataRequest())
     axios({
         method: "POST",

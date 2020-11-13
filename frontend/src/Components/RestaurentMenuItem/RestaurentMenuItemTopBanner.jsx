@@ -115,8 +115,11 @@ const RestaurentIcon = Styled.div`
 
 function RestaurentMenuItemTopBanner(){
     const classes = useStyles();
+    const ParamsId =useParams()
     const [open, setOpen] = React.useState(false);
     const theme = useTheme();
+    const restaurantsData = useSelector((state)=>state.app.restaurantsData)
+    const data = restaurantsData.find(item => item.restaurant_id == ParamsId.id)
     const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
     const restaurantsData = useSelector((state)=>state.app.restaurantsData)
     const ParamsId =useParams()

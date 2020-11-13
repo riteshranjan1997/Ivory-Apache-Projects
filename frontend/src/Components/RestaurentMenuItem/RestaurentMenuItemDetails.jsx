@@ -24,16 +24,16 @@ function RestaurentMenuItemDetails(){
         <div>
       
             <RestaurentDetails>
-                <h3><b>{item.restaurant_name}</b></h3>
+                <h3><b>{data.restaurant_name}</b></h3>
                 <div style={{display:"flex"}}>
-                    <div className="text-muted" style={{marginRight:"10px"}}>{item.address}</div>
+                    <div className="text-muted" style={{marginRight:"10px"}}>{data.address}</div>
                     <div style={{color:"#2B8282"}}>Change Location</div>
                 </div>
 
                 <div style={{display:"flex"}}>
                 <div className="mr-2">
                     {new Array(5).fill(0).map((stars,i)=>(
-                        i<=item.aggregate_rating-1 ?                        
+                        i<=data.aggregate_rating-1 ?                        
                             <i class="fas fa-star" style={{color:"orange"}}></i>                         
                          :
                             <i class="far fa-star" style={{color:"orange"}} ></i>                    

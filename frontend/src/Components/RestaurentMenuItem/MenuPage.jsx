@@ -1,7 +1,6 @@
 import React from 'react'
 import Styled from 'styled-components'
 import Divider from '@material-ui/core/Divider'
-import data from '../../data.json'
 import { makeStyles } from '@material-ui/core/styles';
 import { useTheme } from "@material-ui/core/styles";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -97,6 +96,7 @@ function MenuPage()
     const restaurentName = data.restaurant_name
     const dispatch = useDispatch()
     // console.log(quantity,typeof(quantity))
+   
     const handleClickOpen = (name,image,description,price,id) => {
         setOpen(true);
         setName(name);
