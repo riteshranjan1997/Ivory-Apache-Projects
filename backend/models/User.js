@@ -37,7 +37,7 @@ const UserSchema = new Schema({
     type: Array,
   },
   cart:{
-    type:String,
+    type:Array,
   },
   credit_cards:{
     type:Array,

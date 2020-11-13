@@ -23,6 +23,8 @@ import Popover from "react-bootstrap/Popover";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
+import { deleteCart } from "../../redux/AddToCart/action";
+import { deleteRequest } from "../../redux/cart/actions";
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -35,13 +37,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     border: "none",
     outline: "none",
-    padding:"15px"
   },
+  grow: {},
   navbar: {
     backgroundColor: "white",
     color: "black",
     height: "50px",
-    margin:"none"
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -91,6 +92,7 @@ const useStyles = makeStyles((theme) => ({
   borderRadius: "0px",
   background: "#55b9f3",
   boxShadow: " -1px -1px 8px black"
+
   }
 }));
 
@@ -132,7 +134,17 @@ export default function Bar(props) {
   const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
 
   const cart = useSelector(state=>state.cart.cart)
+  const cart_items = useSelector(state=>state.auth.user_data.cart)
+  console.log(cart_items)
+  const access_token = useSelector((state)=>state.auth.access_token)
+    console.log("access token is ",access_token)
 
+  useEffect(()=>{},[])
+
+  console.log("in menu page",cart)
+  const handleDelete = (payload)=>{
+    dispatch(deleteRequest(payload,access_token))
+  }
   const handleAddressModelOpen = () => {
     setAddressModelStatus(true);
   };
@@ -171,7 +183,7 @@ export default function Bar(props) {
           onClick={handleAddressModelclose}
           style={{ color: "#2B8282", fontSize: "30px", fontWeight: "bold" }}
         />
-        <h4 style={{fontFamily:"Poppins", margin:"5px 0px"}}>Your order settings</h4>
+        <h4 className={classes.modelHeading}>Your order settings</h4>
         <div className={classes.buttons}>
           <Button
             style={{
@@ -263,6 +275,7 @@ export default function Bar(props) {
 
   return (
     <div className={classes.boxshadow} style={{zIndex:30,width:"100%",position:"fixed"}}>
+      {/* {isAuth ? handleLoginModelClose() : null } */}
      <div className={classes.dialog}>
           <Dialog
             fullScreen={fullScreen}
@@ -464,7 +477,6 @@ export default function Bar(props) {
                     >
                       <Button
                         style={{
-                          height:"62px",
                           width: "233px",
                           border: "none",
                           outline: "none",
@@ -474,7 +486,7 @@ export default function Bar(props) {
                         <Avatar style={{ backgroundColor: "#2B8282" }}>
                           {userData.first_name[0]}
                         </Avatar>
-                        <spam style={{ margin:"none",marginLeft: "5px"}}>
+                        <spam style={{ marginLeft: "5px"}}>
                           Hi,{" " + userData.first_name}{" "}
                         </spam>
                         <ExpandMoreIcon />
@@ -620,10 +632,10 @@ export default function Bar(props) {
                          <div>                           
                            <div style={{display:"flex",fontSize:"14px",justifyContent:"space-between"}}>                             
                               <div>{item.quantity}</div>
-                              <div style={{color:"#2B8282",alignSelf:"left"}}>{item.name}</div>                        
+                              <div style={{color:"#2B8282",alignSelf:"left"}}>{item.item_name}</div>                        
                             
-                              <div><i class="fas fa-trash" style={{color:"grey"}}></i></div>
-                              <div>₹{item.totalPrice}</div>                                                      
+                              <div><i class="fas fa-trash" style={{color:"grey"}} onClick={()=>handleDelete({restaurant_id:item.restaurant_id,item_id:item.item_id,quantity:item.quantity})}></i></div>
+                              <div>₹{item.price}</div>                                                      
                            </div>                        
                            <hr/>
                          </div>
@@ -632,7 +644,7 @@ export default function Bar(props) {
                          <div style={{display:"flex",fontSize:"12px",justifyContent:"space-between"}}>
                               <div>item Subtotal</div>
                               <div>{cart && cart.reduce((a,item)=>(
-                                  a+item.totalPrice
+                                  a+item.price
                               ),0)}</div>
                           </div>
                           <hr/>
@@ -661,7 +673,7 @@ export default function Bar(props) {
                     <LocalMallIcon
                       style={{ color: "#2B8282", fontSize: "30px",zIndex:1}}
                     />
-                    <span class="badge badge-pill badge-success" style={{position:"relative",right:"10px",top:"-7px",fontSize:"10px"}} >{cart && cart.length}</span>
+                    <span class="badge badge-pill badge-success" style={{position:"relative",right:"10px",top:"-7px",fontSize:"10px"}} >{cart.length || cart_items.length}</span>
                   </div>
                 </OverlayTrigger>
               ))

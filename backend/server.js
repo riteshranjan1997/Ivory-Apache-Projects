@@ -22,9 +22,13 @@ mongoose.connect(
 const authRoute = require("./routes/auth");
 const restaurantRoute = require("./routes/restaurantRoute");
 const accountSettings = require("./routes/accountSettings")
+const cart = require("./routes/cart")
+const payment = require("./routes/payment")
 app.use("/api/user", authRoute);
 app.use("/api/restaurant", restaurantRoute);
 app.use("/api/settings", accountSettings);
+app.use("/api/cart", cart);
+app.use("/api/payment",payment)
 
 app.listen(5000, () => {
   console.log("The server is running on port 5000");
