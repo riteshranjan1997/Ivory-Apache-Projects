@@ -38,7 +38,7 @@ function paginatedResultsWithLocation(model) {
           { $geometry :
              { type : "Point" ,
                coordinates : [ req.body.lattitude, req.body.longitude] } ,
-            $maxDistance : 1000
+            $maxDistance : 50000
      } } }).limit(limit).skip(startIndex).exec();
       res.pagination = results;
       if (endIndex < results.current.length) {
