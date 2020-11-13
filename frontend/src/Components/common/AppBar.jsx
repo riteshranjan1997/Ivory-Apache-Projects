@@ -89,7 +89,8 @@ const useStyles = makeStyles((theme) => ({
   boxshadow:{   
   borderRadius: "0px",
   background: "#55b9f3",
-  boxShadow: " 20px 20px 60px #e7ecef, -20px -20px 60px #f5fafd"
+  boxShadow: " -1px -1px 8px black"
+
   }
 }));
 
