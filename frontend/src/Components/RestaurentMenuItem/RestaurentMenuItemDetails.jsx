@@ -17,7 +17,8 @@ const RestaurentDetails = Styled.div`
 function RestaurentMenuItemDetails(){
     const ParamsId = useParams()
     const restaurantData = useSelector((state)=>state.app.restaurantsData) 
-    const data = restaurantData.find(item => item.restaurent_id == ParamsId)
+    const data = restaurantData.find(item => item.restaurant_id == ParamsId.id)
+    console.log(ParamsId,restaurantData,data)
 
     return(
         <div>
