@@ -23,6 +23,7 @@ import Popover from "react-bootstrap/Popover";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
+import {deleteRequest} from "../../redux/cart/actions"
 
 const useStyles = makeStyles((theme) => ({
   logo: {
