@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios"
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { UpdateUserAppAddress,fetchGioLocation } from "../../redux/app/action";
+import { UpdateUserAppAddress,fetchGioLocation,restaurantsRequest } from "../../redux/app/action";
 import {logoutUser} from "../../redux/Auth/action"
 import LoginModel from "./LoginModel";
 import Styled from "styled-components";
@@ -125,6 +125,7 @@ export default function Bar(props) {
   const isAuth = useSelector((state) => state.auth.isAuth);
   const userData = useSelector((state) => state.auth.user_data);
   const selectedAddress = useSelector((state) => state.app.userAddress);
+  const userGioLocation = useSelector((state) => state.app.userGioLocation);
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
@@ -151,6 +152,7 @@ export default function Bar(props) {
     dispatch(UpdateUserAppAddress(addressquery));
     dispatch(fetchGioLocation(addressquery));
     setOpen(false);
+    dispatch(restaurantsRequest(userGioLocation))
   };
 
   const handleClickOpen = () => {

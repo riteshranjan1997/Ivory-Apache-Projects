@@ -59,6 +59,11 @@ export const UpdateUserGioLocation = (data) => {
     }
 }
 
+export const updateFilters = (payload) => ({
+    type:UPDATE_FILTERS,
+    payload
+})
+
 export const UpdateUserCuisine = (payload) => ({
     type: UPDATE_CUISINE,
     payload

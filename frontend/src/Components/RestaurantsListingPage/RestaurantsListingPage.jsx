@@ -1,19 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-
 import { useDispatch, useSelector } from "react-redux";
 import {
   restaurantsRequest,
   UpdateUserAppAddress,
-  UpdateUserGioLocation,
 } from "../../redux/app/action";
 
 import Filter from "./Filter";
 import Bar from "../common/AppBar";
-import BrowseByCuisine from "../common/BrowseByCuisine"
 import RestaurantCardDiv from "./RestaurantCardDiv";
 import Footer from "../LandingPage/LandinPageFooter";
 
@@ -22,7 +16,6 @@ export default function RestaurantListingPage() {
   const dispatch = useDispatch();
   const userGioLocation = useSelector((state)=>state.app.userGioLocation)
   const userAddress = useSelector((state) => state.app.userAddress);
-  const isError = useSelector((state) => state.app.isError);
 
   const fetchRestaurantData =  () => {
     if (userAddress === "") {
@@ -37,26 +30,27 @@ export default function RestaurantListingPage() {
 
   useEffect(() => {
     fetchRestaurantData()
-    console.log("use effect")
   }, []);
 
   return (
     <>
       <Bar addressModel="true" notifications="true" login  />
-      <Container fluid>
-        <Row>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-3">
           <Filter />
-          <Col>
+          </div>
+          <div className="col-9">
             <RestaurantCardDiv  />
-          </Col>
-        </Row>
+          </div>
+        </div>
 
-        <Row>
-          <Col>
+        <div className="row">
+          <div className="col">
             <Footer />
-          </Col>
-        </Row>
-      </Container>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
