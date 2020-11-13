@@ -43,16 +43,16 @@ export default function RestaurantCard(props) {
             />
           </div>
 
-          <div style={{ marginRight: "500px" }}>
+          <div style={{ marginRight: "40%" }}>
             <h5>{props.data.restaurant_name}</h5>
-            <span>{props.data.restaurant_images}</span>
+            <span>{props.data.cuisines[0]}</span>
             <img style={{padding:"5px"}}
               src="https://res.cloudinary.com/grubhub-assets/image/upload/v1577663084/subscriptions/s_flag_ihsory.svg"
               alt="s+"
             />
           </div>
 
-          <div style={{ marginRight: "150px" }}>
+          <div style={{ marginRight: "12%" }}>
             
 
             <OverlayTrigger

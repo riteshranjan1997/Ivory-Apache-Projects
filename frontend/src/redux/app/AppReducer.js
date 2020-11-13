@@ -14,6 +14,7 @@ export const initState = {
     userAddress: "",
     userGioLocation: {},
     userCuisine: "",
+    userFilter:{},
     restaurantsData: [],
     isError: false,
     activePage:1
@@ -32,6 +33,11 @@ export const initState = {
             return {
                 ...state,
                 userGioLocation: payload
+            }
+        case UPDATE_FILTERS:
+            return {
+                ...state,
+                userFilter:payload
             }
         case UPDATE_CUISINE:
             return {
