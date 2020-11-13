@@ -119,12 +119,8 @@ function RestaurentMenuItemTopBanner(){
     const [open, setOpen] = React.useState(false);
     const theme = useTheme();
     const restaurantsData = useSelector((state)=>state.app.restaurantsData)
-    const data = restaurantsData.find(item => item.restaurant_id == ParamsId.id)
+    const item = restaurantsData.find(item => item.restaurant_id == ParamsId.id)
     const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
-    const restaurantsData = useSelector((state)=>state.app.restaurantsData)
-    const ParamsId =useParams()
-    console.log("params id",ParamsId)
-    const item = restaurantsData.find(item =>item.restaurant_id == ParamsId.id)
     // console.log("data",data)
     // console.log("in banner page",data)
     const handleClickOpen = () => {
