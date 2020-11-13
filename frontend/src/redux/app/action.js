@@ -85,7 +85,7 @@ export const restaurantsDataFailure = (payload) => ({
 
 
 export const restaurantsRequest = payload => dispatch => {
-    console.log(payload)
+    // console.log(payload)
     dispatch(restaurantsDataRequest())
     axios({
         method: "POST",
