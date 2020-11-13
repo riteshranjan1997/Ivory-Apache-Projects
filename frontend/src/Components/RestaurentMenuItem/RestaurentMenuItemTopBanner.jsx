@@ -10,6 +10,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { makeStyles } from "@material-ui/core/styles";
+import {useParams} from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({   
     closeMark: {
@@ -113,11 +114,13 @@ const RestaurentIcon = Styled.div`
 
 function RestaurentMenuItemTopBanner(){
     const classes = useStyles();
+    const ParamsId =useParams()
     const [open, setOpen] = React.useState(false);
     const theme = useTheme();
-    const data = useSelector((state)=>state.app.restaurantsData)
-    console.log(data)
+    const restaurantsData = useSelector((state)=>state.app.restaurantsData)
+    const data = restaurantsData.find(item => item.restaurant_id == ParamsId.id)
     const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
+    console.log("in banner Page",data)
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -127,10 +130,9 @@ function RestaurentMenuItemTopBanner(){
         setOpen(false);
       };
     return(
-        <div>
-            {data && data.map(item=>(            
+        <div>         
                 <BannerWrapper>
-                    <img className="img-fluid" src ={`../${item.restaurant_images}`} style={{marginTop:"63px",objectFit:"cover"}} alt = "ImageBanner"/>
+                    <img className="img-fluid" src ={`../${data.restaurant_images}`} style={{marginTop:"63px",objectFit:"cover"}} alt = "ImageBanner"/>
                     <BackArrow>
                         <i class="fas fa-chevron-circle-left"></i>
                     </BackArrow>
@@ -158,7 +160,7 @@ function RestaurentMenuItemTopBanner(){
                         </DialogTitle>
 
                         <DialogContent>
-                            <h4 className={classes.modelHeading}>Share {item.name}</h4>
+                            <h4 className={classes.modelHeading}>Share {data.restaurant_name}</h4>
 
                             <DialogContentText>
                             <div className={classes.design}></div>
@@ -170,7 +172,6 @@ function RestaurentMenuItemTopBanner(){
                         </DialogContent>
                         </Dialog>
                 </BannerWrapper>
-        ))}
         </div>
     )
 }

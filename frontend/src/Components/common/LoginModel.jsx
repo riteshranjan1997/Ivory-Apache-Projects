@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios"
 import Styles from "./LoginModel.module.css";
 import GoogleLogin from 'react-google-login'
+import FontAwesome from 'react-google-login'
 import { useDispatch, useSelector } from "react-redux";
 import { loginRequest,googleLoginRequest } from "../../redux/Auth/action";
 import { Redirect, Link } from "react-router-dom";
@@ -9,9 +10,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Card, TextField, Checkbox, Button } from "@material-ui/core";
 
 
-const useStyles = makeStyles({});
+const useStyles = makeStyles({
+  google:{
+      textAlign:"center"
+  }
+});
 
 export default function LoginModel() {
+  const classes = useStyles()
   const dispatch = useDispatch();
   const isError = useSelector((state) => state.auth.isError);
   const message = useSelector((state) => state.auth.message);
@@ -95,14 +101,19 @@ export default function LoginModel() {
         <p style={{ textAlign: "center", marginTop: "10px" }}>or</p>
 
         <div className="row">
-          <div className="col">
+          <div className="col" >
           <GoogleLogin
         clientId="1069087639484-chisqt1vcpiq2rqcbk2dvr8u3lr2k9hk.apps.googleusercontent.com"
-        buttonText="Continue with Google"
+        buttonText={<div style={{marginLeft:"60px",fontWeight:"bolder"}}>Continue With Google</div>}
         onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-      >
-
+        onFailure={responseGoogle}  
+        theme="dark"      
+       
+      >  
+      {/* <div style={{display:"flex",alignItems:"center"}}>
+      <div><img src = "google_logo.svg" width="25px" alt="google_logo.svg"/></div> */}
+          
+          {/* </div> */}
       </GoogleLogin>
           </div>
         </div>
@@ -120,7 +131,19 @@ export default function LoginModel() {
             <Link to="/create-account">Create your account</Link>
           </div>
         </div>
+        
       </div>
+      <GoogleLogin
+    clientId={'658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com'}
+    onSuccess={responseGoogle}
+    onFailure={responseGoogle}
+  >
+    <FontAwesome
+      name='google'
+    />
+    <span> Login with Google</span>
+  </GoogleLogin>
+
     </>
   );
 }

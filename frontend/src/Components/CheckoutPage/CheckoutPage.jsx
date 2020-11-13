@@ -3,12 +3,8 @@ import { useSelector } from "react-redux";
 import Styled from 'styled-components'
 import AppBar from '../common/AppBar'
 
-const CheckoutPageWrapper = Styled.div`
-    
+const CheckoutPageWrapper = Styled.div`    
    margin-left:30px;
-   div:nth-child(1){
-      margin-bottom:40px;
-   }
    p{
      font-size:10px;
      line-height:1px;
@@ -95,19 +91,19 @@ export default function CheckoutPage() {
                   </div>
           </div>
           
-          <div className="col-3 border" style={{position:"fixed",marginLeft:"74%" ,fontSize:"12px",lineHeight:"2px"}} >
-              <div style={{marginTop:"85px"}} ><b><p>Your order from</p></b></div>
+          <div className=" border" style={{width:"300px",position:"fixed",marginLeft:"74%",fontSize:"12px",padding:"10px",height:"100%"}} >
+              <div style={{marginTop:"85px",color:"black"}} ><b>Your order from</b></div>
               {/* <div><p>{cart[0].restaurentName=== " " ? " " : cart[0].restaurentName  }</p></div> */}
-              <div>Restaurent Name</div>
+              <div >Restaurent Name</div>
               <hr/>
               {cart && cart.map((item)=>(
                 <div>
                   <div className="d-flex justify-content-between">
-                    <div><p>{item.quantity ?item.quantity:0 }</p></div>
-                    <div><p>{item.name ? item.name :0 }</p></div>
-                    <div><p>₹{item.totalPrice ?item.totalPrice:0 }</p></div>
+                    <div>{item.quantity ?item.quantity:0 }</div>
+                    <div>{item.name ? item.name :0 }</div>
+                    <div>₹{item.totalPrice ?item.totalPrice:0 }</div>
                   </div>
-                  <hr/>
+                  <hr style={{padding:"-20px"}}/>
                 </div>
               ))}
               <div className="d-flex justify-content-between">
@@ -127,13 +123,16 @@ export default function CheckoutPage() {
               <div className="d-flex justify-content-between">
                 <div><b>Total</b></div>
                 <div><b>Rupees</b></div>
+              </div>  
+              <div style={{position:"relative"}}>          
+              <div style={{background:"#2B8282",padding:"20px",color:"white",fontSize:"20px",width:"300px",marginTop:"280px",position:"absolute"}}><span>{">"}</span>Modify Your Order</div>
+              <div className="d-flex  justify-content-between bg-secondary text-white p-2" style={{width:"300px",marginTop:"340px",position:"absolute"}} >
+                  <div><b>Total</b></div>
+                  <div><b>Rupees</b></div>
+                </div>
+              </div>  
               </div>
-              <div style={{background:"#2B8282",padding:"20px",color:"white",fontSize:"20px",marginTop:"220px"}}><span>{">"}</span>Modify Your Order</div>
-              <div className="d-flex  justify-content-between bg-secondary text-white p-2 " >
-                <div><b>Total</b></div>
-                <div><b>Rupees</b></div>
-              </div>
-              </div>
+            
         </div>
        </div>
       </div>
