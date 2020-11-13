@@ -11,14 +11,13 @@ import {ADD_TO_CART_REQUEST,
 
     export const initState = {
         isLoading: false,
-        user_data:{},
-        cart:[],
+        user_data: {},
         message: "",
         isError: false,
     }
     
     export default (state = initState, { type, payload }) => {
-        console.log("in payload reducer",payload)
+    
         switch (type) {    
             case ADD_TO_CART_REQUEST:
                 return {
@@ -31,8 +30,7 @@ import {ADD_TO_CART_REQUEST,
                     ...state,
                     isLoading: false,
                     isError: payload.error,
-                    user_data: payload.data.data,
-                    cart:payload.data.data.cart,
+                    user_data: payload.data,
                     message:payload.message,                    
                 }
             case ADD_TO_CART_FAILURE:
@@ -75,7 +73,6 @@ import {ADD_TO_CART_REQUEST,
                             isLoading: false,
                             isError: payload.error,
                             user_data: payload.data,
-                            cart:payload.data.cart,
                             message:payload.message,
                         }
                     case DELETE_CART_FAILURE:
@@ -84,7 +81,9 @@ import {ADD_TO_CART_REQUEST,
                             isLoading: false,
                             isError: payload.error,
                             message: payload.message,
-                        }         
+                        }
+        
+    
                         default:
                 return state
         }

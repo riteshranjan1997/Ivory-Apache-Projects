@@ -35,13 +35,13 @@ function paginatedResultsWithLocation(model) {
     const results = {};  
 
     try {
-      if(cuisine && starRating){
+      if(!cuisine && !starRating){
       results.current = await model.find({ location:
         { $near :
           { $geometry :
              { type : "Point" ,
                coordinates : [ req.body.lattitude, req.body.longitude] } ,
-            $maxDistance : 50000
+            $maxDistance : 30000
      } },cuisines:cuisine,aggregate_rating: { $gte: starRating}}).limit(limit).skip(startIndex).exec();
     }
     else if(!cuisine && starRating){
@@ -50,7 +50,7 @@ function paginatedResultsWithLocation(model) {
           { $geometry :
              { type : "Point" ,
                coordinates : [ req.body.lattitude, req.body.longitude] } ,
-            $maxDistance : 50000
+            $maxDistance : 30000
      } },aggregate_rating: { $gte: starRating}}).limit(limit).skip(startIndex).exec();
     }
     else if(cuisine && !starRating){
@@ -59,17 +59,8 @@ function paginatedResultsWithLocation(model) {
           { $geometry :
              { type : "Point" ,
                coordinates : [ req.body.lattitude, req.body.longitude] } ,
-            $maxDistance : 50000
+            $maxDistance : 30000
      } },cuisines:cuisine}).limit(limit).skip(startIndex).exec();
-    }
-    else if(!cuisine && !starRating){
-      results.current = await model.find({ location:
-        { $near :
-          { $geometry :
-             { type : "Point" ,
-               coordinates : [ req.body.lattitude, req.body.longitude] } ,
-            $maxDistance : 50000
-     } }}).limit(limit).skip(startIndex).exec();
     }
       res.pagination = results;
       if (endIndex < results.current.length) {
@@ -77,7 +68,8 @@ function paginatedResultsWithLocation(model) {
           page: page + 1,
           limit: limit,
         };
-      }  
+      }
+  
       if (startIndex > 0) {
         results.prev = {
           page: page - 1,

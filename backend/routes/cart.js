@@ -28,7 +28,7 @@ router.post("/addToCart", authenticateToken, async (req, res) => {
   }
 });
 
-router.post("/deleteFromCart", authenticateToken, async (req, res) => {
+router.delete("/deleteFromCart", authenticateToken, async (req, res) => {
   const { email } = req.user;
   try {
     const user = await User.findOne({ email });

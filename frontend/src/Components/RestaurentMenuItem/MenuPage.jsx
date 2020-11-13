@@ -113,14 +113,14 @@ function MenuPage()
     const handleCart = () => {
         const payload={
             // restaurent_id:restaurentId,
-            restaurant_id:restaurentId,
-            restaurantName:restaurentName,
-            item_id:id,
+            restaurentId:restaurentId,
+            restaurentName:restaurentName,
+            id:id,
             name:name,
             quantity:quantity,
             totalPrice:price*quantity
         }
-        dispatch(addRequest(payload,access_token))
+        dispatch(addCart(payload))
         handleClose()
     }
 
@@ -149,7 +149,7 @@ function MenuPage()
                                 <div className="col-3" style={{position:"relative",right:"-16px"}}>
                                 <img src={`../${item.image}`} alt="menu" 
                                     height="120px" className="rounded-right" width="120px" style={{zIndex:1,objectFit:"cover"}}
-                                    /> 
+                                    />  
                                 </div>
                             </div>                           
                         
