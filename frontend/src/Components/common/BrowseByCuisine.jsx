@@ -14,7 +14,6 @@ function a11yProps(index) {
 }
 const useStyles = makeStyles(theme=>({
   root: {
-    flexGrow: 1,
     width: '100%',
     background: "inherit",
   },
@@ -26,7 +25,7 @@ export default function BrowseByCuisine() {
     setValue(newValue);
   };
   return (
-     <div className="container" style={{marginTop:"100px"}}> 
+     <div className="container" style={{margin:"15px 0px"}}> 
         <div className={classes.root}>            
               <Tabs
                 value={value}
