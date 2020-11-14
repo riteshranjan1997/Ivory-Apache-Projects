@@ -42,13 +42,7 @@ export default function RestaurantCardDiv(props) {
         </div>
       </div>
 
-      {data !== [] ? (
-        data.map((elem) => <RestaurantCard data={elem} />)
-      ) : (
-        <div className="col">
-          <p>No Data</p>
-        </div>
-      )}
+     
 
       <div className="row mt-4">
         <div className="col" style={{ margin: "0% 28%", textAlign: "center" }}>
