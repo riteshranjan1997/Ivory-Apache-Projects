@@ -132,14 +132,16 @@ export default function Bar(props) {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
-
+  
+  // let auth_cart = useSelector(state=>state.auth.user_data.cart)
   const cart = useSelector(state=>state.cart.cart)
-  const cart_items = useSelector(state=>state.auth.user_data.cart)
-  console.log(cart_items)
-  const access_token = useSelector((state)=>state.auth.access_token)
-    console.log("access token is ",access_token)
 
-  useEffect(()=>{},[])
+
+  // const cart = auth_cart?auth_cart:user_cart 
+  // console.log(cart_items)
+  const access_token = useSelector((state)=>state.auth.access_token)
+  console.log("access token is ",access_token)
+
 
   console.log("in menu page",cart)
   const handleDelete = (payload)=>{
@@ -272,7 +274,7 @@ export default function Bar(props) {
       .then((res) => setsuggestedAddress(res.data.features))
       .catch((err) => console.log(err));
   }, [addressquery]);
-
+  // console.log("in app bar",cart.length,cart_items.length,cart,cart_items,(cart.length || cart_items.length))
   return (
     <div className={classes.boxshadow} style={{zIndex:30,width:"100%",position:"fixed"}}>
       {/* {isAuth ? handleLoginModelClose() : null } */}
@@ -652,14 +654,15 @@ export default function Bar(props) {
                           <Link to="/checkout"> 
                                 <Button
                                     style={{
-                                        backgroundColor: "green",
+                                        backgroundColor: "#13AA37",
                                         color: "white",
                                         width: "220px",
                                         height:"40px",
-                                        borderRadius:"10px"
+                                        borderRadius:"10px",
+
                                     }}                                    
                                     >
-                                    Proceed to Checkout
+                                    <span style={{fontSize:"15.4"}}>Proceed to Checkout</span>
                                 </Button></Link>
                           </div>
                          
@@ -673,7 +676,7 @@ export default function Bar(props) {
                     <LocalMallIcon
                       style={{ color: "#2B8282", fontSize: "30px",zIndex:1}}
                     />
-                    <span class="badge badge-pill badge-success" style={{position:"relative",right:"10px",top:"-7px",fontSize:"10px"}} >{cart.length || cart_items.length}</span>
+                    <span class="badge badge-pill badge-success" style={{position:"relative",right:"10px",top:"-7px",fontSize:"10px"}} >{cart.length} </span>
                   </div>
                 </OverlayTrigger>
               ))

@@ -102,4 +102,20 @@ router.get("/checkOut", authenticateToken, async (req, res) => {
   }
 });
 
+router.post("/saveOrders",authenticateToken,async (req,res)=>{
+  const {email} = req.user
+  let user
+  try{
+     user = await User.findOne({email:email})
+     user.savedRestaurants = [...user.pastOrders,[...user.cart]]
+     user.cart = []
+     const savedUser = await user.save()
+     return res.status(200).json({error:false,data:savedUser})
+  }
+  catch(err){
+    return res.status(500).json({error:true,message:err})
+  }
+   
+})
+
 module.exports = router;

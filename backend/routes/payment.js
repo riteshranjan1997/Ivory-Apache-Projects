@@ -4,6 +4,7 @@ const { v4: uuidv4 } = require('uuid')
 const Razorpay = require('razorpay');
 const dotenv = require('dotenv');
 const authenticateToken = require("../middlewares/jwtAuthentication");
+const User = require("../models/User")
 
 const router = express.Router();
 
@@ -14,7 +15,9 @@ const instance = new Razorpay({
     key_secret: process.env.RAZOR_PAY_KEY_SECRET
 })
 
-router.post('/order',authenticateToken, (req, res) => {
+router.post('/order',authenticateToken, async (req, res) => {
+    const {email} = req.user
+    const user = await User.findOne({email:email})
     console.log("in order",req.body,req.body.amount)
     try {
         const options = {
@@ -28,7 +31,6 @@ router.post('/order',authenticateToken, (req, res) => {
                 console.log(err)
                 return res.status(500).json({ message: "Something went wrong" })
             }
-            return res.status(200).json(order)
         })
     } catch (err) {
         console.log(err)
