@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
-import {} from "../../redux/Auth/action";
+import {userUpdateRequest} from "../../redux/Auth/action";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,8 +70,9 @@ function Profile() {
 
   const userData = useSelector((state) => state.auth.user_data);
 
-  const [firstName, setfirstName] = useState("");
-  const [LastName, setLastName] = useState("");
+  const [first_name, setfirstName] = useState("");
+  const [Last_name, setLastName] = useState("");
+  const [password_for_editing_name, setPasswordForEditingName] = useState("");
   const [email, setEmail] = useState("");
   const [conformEmail, setConformEmail] = useState("");
   const [currentPassword, setcurrentPassword] = useState("")
@@ -79,9 +80,11 @@ function Profile() {
   const [conformPassword, setConformPassword] = useState("")
 
   const handleNameUpdate = () => {
-    console.log(firstName, LastName);
+    console.log({first_name, Last_name, password_for_editing_name})
+    dispatch(userUpdateRequest({first_name, Last_name, password_for_editing_name}));
     setfirstName("");
     setLastName("");
+    setPasswordForEditingName("");
   };
 
   const handleEmailUpdate = () => {
@@ -166,6 +169,22 @@ function Profile() {
                           className="form-control"
                           placeholder=""
                           onChange={(e) => setLastName(e.target.value)}
+                        />
+                      </div>
+                    </div>
+                    <div className="form-row">
+                      <div className="form-group col-12  col-md-6 col-lg-4">
+                        <label
+                          htmlFor="password"
+                          className={classes.floatLeft}
+                        >
+                          Current password
+                        </label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder=""
+                          onChange={(e) => setPasswordForEditingName(e.target.value)}
                         />
                       </div>
                     </div>

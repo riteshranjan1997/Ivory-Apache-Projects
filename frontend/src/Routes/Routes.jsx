@@ -24,7 +24,7 @@ export default function Routes() {
 
   return (
     <Switch>
-      <Route path="/" exact render={() => <LandingPage />} />
+      <Route path="/" exact render={() => isauth ? <Redirect to="/lets-eat" > </Redirect> : <LandingPage />} />
       <Route path="/lets-eat" exact render={() => <SigninLandinngPage />} />
       <Route path="/login" exact render={() => <LoginPage />} />
       <Route path="/create-account" exact render={() => <RegisterPage />} />

@@ -135,13 +135,8 @@ export default function Bar(props) {
 
   const cart = useSelector(state=>state.cart.cart)
   const cart_items = useSelector(state=>state.auth.user_data.cart)
-  console.log(cart_items)
   const access_token = useSelector((state)=>state.auth.access_token)
-    console.log("access token is ",access_token)
 
-  useEffect(()=>{},[])
-
-  console.log("in menu page",cart)
   const handleDelete = (payload)=>{
     dispatch(deleteRequest(payload,access_token))
   }
@@ -160,6 +155,26 @@ export default function Bar(props) {
   const handleLoginModelClose = () => {
     setlogingModelStatus(false);
   };
+
+  // const getUserGeoLocation = () => {
+  //   navigator.geolocation.getCurrentPosition(success, error);
+
+  //   function success(pos) {
+  //     axios
+  //       .get(
+  //         `https://api.mapbox.com/geocoding/v5/mapbox.places/${pos.coords.longitude},${pos.coords.latitude}.json?access_token=pk.eyJ1Ijoicml0ZXNocmFuamFuMTk5NyIsImEiOiJja2gwMjZ5NGowMzJhMnFxbWpxc3kwNmxrIn0._1C2CDnVfnnySzjFo-Zb1A`
+  //       )
+  //       .then((res) => console.log(res.data))
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //     console.log(pos.coords);
+  //   }
+  //   function error(err) {
+  //     console.log("unable to get location");
+  //   }
+  // }
+
 
   const handleLocationUpdate = () => {
     dispatch(UpdateUserAppAddress(addressquery));

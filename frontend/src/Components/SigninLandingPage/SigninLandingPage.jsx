@@ -10,9 +10,9 @@ import { useSelector } from "react-redux";
 function SigninLandingPage() {
   const isauth = useSelector((state) => state.auth.isauth);
 
-  //   if(!isauth){
-  //     return <Redirect to="/" ></Redirect>
-  //   }
+    if(!isauth){
+      return <Redirect to="/" ></Redirect>
+    }
 
   return (
     <div>

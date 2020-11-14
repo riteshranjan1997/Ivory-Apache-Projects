@@ -26,7 +26,7 @@ export default function BrowseByCuisine() {
     setValue(newValue);
   };
   return (
-     <div className="container" style={{marginTop:"100px"}}> 
+     <div className="container" style={{marginTop:"10px"}}> 
         <div className={classes.root}>            
               <Tabs
                 value={value}

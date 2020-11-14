@@ -43,7 +43,7 @@ export default function RestaurantCard(props) {
             />
           </div>
 
-          <div style={{ marginRight: "40%" }}>
+          <div style={{ width: "45%" }}>
             <h5>{props.data.restaurant_name}</h5>
             <span>{props.data.cuisines[0]}</span>
             <img style={{padding:"5px"}}

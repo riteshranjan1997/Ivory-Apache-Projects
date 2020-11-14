@@ -15,7 +15,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 const useStyles = makeStyles((theme) => ({
   root: {
     background: "#F5F5F5",
-    height:"800px"
+    height:"100%"
   },
   buttons: {
     display: "flex",

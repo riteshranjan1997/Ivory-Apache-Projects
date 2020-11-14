@@ -13,10 +13,10 @@ const router = express.Router();
 router.put("/profile", authenticateToken, async (req, res) => {
   const { _id, first_name, email } = req.user;
   let userData;
-  if (data.first_name) {
-    if (data.password != "") {
+  let validPass;
+  if (req.body.first_name) {
+    if (req.body.password != "") {
       userData = await User.findOne({ email: email });
-      let validPass;
       try {
         validPass = await bcrypt.compare(req.body.password, userData.password);
       } catch (err) {
@@ -66,7 +66,6 @@ router.put("/profile", authenticateToken, async (req, res) => {
         });
     }
     const { error } = emailValidation(req.body.new_email);
-
     if (error) {
       res.status(400).json({ error: true, message: error.details[0].message });
       return;
@@ -126,14 +125,13 @@ router.put("/profile", authenticateToken, async (req, res) => {
         });
     }
     const { error } = passwordValidation(req.body.new_password);
-
+    let validPass;
     if (error) {
       res.status(400).json({ error: true, message: error.details[0].message });
       return;
     }
     const { current_email } = req.user;
     const userData = await User.findOne({ email: current_email });
-    let validPass;
     try {
       validPass = await bcrypt.compare(req.body.password, userData.password);
     } catch (err) {
@@ -278,6 +276,4 @@ router.get("/saveRestaurant",authenticateToken,async(req,res)=>{
     }
 
 })
-
-
 module.exports = router;

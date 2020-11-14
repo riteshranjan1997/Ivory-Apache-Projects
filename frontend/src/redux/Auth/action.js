@@ -92,6 +92,7 @@ export const googelLoginUserFailure = (payload) => ({
 })
 
 export const googleLoginRequest = payload => dispatch => {
+    console.log(payload)
     dispatch(loginUserRequest())
     axios({
         method:"POST",
@@ -99,7 +100,8 @@ export const googleLoginRequest = payload => dispatch => {
         data:{...payload}
       })
       .then((res) => {
-        dispatch(loginUserSuccess(res))
+          console.log(res)
+        dispatch(loginUserSuccess(res.data))
     })
     .catch((err) => {
         dispatch(loginUserFailure(err))
@@ -123,7 +125,7 @@ export const fetchUserDataFailure = (payload) => ({
 
 export const UserDataRequest = payload => dispatch => {
     dispatch(fetchUserDataRequest())
-    return fetch("http://localhost:5000/api/user/login", {
+    return fetch("", {
         method: "POST",
         headers: {
             "Content-type": "application/json",
@@ -156,8 +158,9 @@ export const updateUserFailure = (payload) => ({
 })
 
 export const userUpdateRequest = payload => dispatch => {
+    console.log(payload,"action")
     dispatch(updateUserRequest())
-    return fetch("", {
+    return fetch("http://localhost:5000/api/settings/profile", {
         method: "POST",
         headers: {
             "Content-type": "application/json",
