@@ -296,7 +296,7 @@ export default function CheckoutPage() {
                     border: "1px solid black",
                   }}
                 >
-                  <span>{">"}</span>Modify Your Order
+                  <span><i class="fas fa-greater-than"></i></span>Modify Your Order
                 </div>
                 <div
                   className="d-flex  justify-content-between bg-secondary text-white p-2 "
