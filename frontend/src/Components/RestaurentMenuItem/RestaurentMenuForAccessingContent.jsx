@@ -72,7 +72,7 @@ function RestaurentMenuForAccessingContent(){
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-            <Tab label={<div style={{textTransform:"capitalize"}}>Menu</div>} {...a11yProps(0)}/>
+            <Tab label={<div style={{textTransform:"capitalize"}} >Menu</div>} {...a11yProps(0)}/>
             <Tab label={<div style={{textTransform:"capitalize"}}>About</div>}  {...a11yProps(1)} />
             <Tab label={<div style={{textTransform:"capitalize"}}>Review</div>}  {...a11yProps(2)}/>
         </Tabs>

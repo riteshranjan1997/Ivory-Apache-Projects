@@ -22,7 +22,7 @@ function ReviewPage(){
     const restaurantsData = useSelector((state)=>state.app.restaurantsData)
     // const data = restaurantsData.find(item =>item.restaurant_id == ParamsId.id)
     return(
-        <div>
+        <div style={{marginLeft:"30px"}}>
            
             <div><h4><b>Reviews from {data[0].restaurant_name}</b></h4></div>
             <div><StyledRating
@@ -51,15 +51,15 @@ function ReviewPage(){
             <hr/>
             {data[0].reviews.map(item=>(
                 <>
-                <div style={{display:"flex"}}>
+                <div style={{display:"flex",marginTop:"20px"}}>
                     <div><Avatar style={{ backgroundColor: "#2B8282" }}>
                         {item.user_name[0]}
                     </Avatar></div>
                     <div>
-                        <div style={{ marginLeft: "5px"}}>
+                        <div style={{ marginLeft: "5px",fontSize:"12px"}}>
                         {item.user_name}
                         </div>
-                        <div><i class="fas fa-star" style={{color:"#2B8282"}}></i>{item.review.length}</div>
+                        <div style={{marginLeft: "5px",fontSize:"12px"}}><i class="fas fa-star" style={{color:"#2B8282",fontSize:"12px"}}></i>{item.review.length}</div>
                     </div>                    
                 </div>
                 <div>
@@ -71,10 +71,10 @@ function ReviewPage(){
                     icon={<StarIcon fontSize="inherit" />}
                     />
                 </div>
-                <div>{item.user_name} ordered</div>
+                <div style={{fontSize:"12px"}}>{item.user_name} ordered</div>
                 <div style={{display:"flex"}}>
                     {item.ordered.map(elem=>(
-                        <div style={{background:"grey",padding:"10px"}}>
+                        <div style={{background:"lightgrey",fontSize:"12px",padding:"10px",marginTop:"10px",marginLeft:"10px"}}>
                             {elem}
                         </div>
                     ))}

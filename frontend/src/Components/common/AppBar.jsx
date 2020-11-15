@@ -483,13 +483,15 @@ export default function Bar(props) {
                           color:"#2B8282",
                         }}
                       >
-                        <Avatar style={{ backgroundColor: "#2B8282" }}>
-                          {userData.first_name[0]}
-                        </Avatar>
-                        <spam style={{ marginLeft: "5px"}}>
-                          Hi,{" " + userData.first_name}{" "}
-                        </spam>
-                        <ExpandMoreIcon />
+                        <div style={{display:"flex",alignItems:"center",marginTop:"-10px"}}>
+                          <div><Avatar style={{ backgroundColor: "#2B8282",height:"30px",width:"30px"}}>
+                            {userData.first_name[0]}
+                          </Avatar></div>
+                          <div style={{ marginLeft: "5px"}}>
+                            Hi,{" " + userData.first_name}{" "}
+                          </div>                        
+                          <div><ExpandMoreIcon /></div>
+                        </div>
                       </Button>
                     </OverlayTrigger>
                   </div>
