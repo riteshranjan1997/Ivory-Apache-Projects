@@ -10,6 +10,9 @@ import {
 import axios from "axios" 
 
 
+
+
+// for register User
 export const registerUserRequest = () => ({
     type: REGISTER_USERS_REQUEST,
 })
@@ -44,6 +47,8 @@ export const registerRequest = payload => dispatch => {
 
 }
 
+
+// for login user
 export const loginUserRequest = () => ({
     type: LOGIN_USERS_REQUEST,
 })
@@ -77,6 +82,8 @@ export const loginRequest = payload => dispatch => {
         });
 }
 
+
+// for google auth (both for register and login)
 export const googelLoginUserRequest = () => ({
     type: LOGIN_WITH_GOOGLE_REQUEST,
 })
@@ -108,6 +115,8 @@ export const googleLoginRequest = payload => dispatch => {
     });
 }
 
+
+// use for fetch user data
 export const fetchUserDataRequest = () => ({
     type: FETCH_USER_DATA__REQUEST,
 })
@@ -121,7 +130,6 @@ export const fetchUserDataFailure = (payload) => ({
     type: FETCH_USER_DATA__FAILURE,
     payload
 })
-
 
 export const UserDataRequest = payload => dispatch => {
     dispatch(fetchUserDataRequest())
@@ -143,6 +151,8 @@ export const UserDataRequest = payload => dispatch => {
 }
 
 
+
+// editing profile data of user
 export const updateUserRequest = () => ({
     type: UPDATE_USER_DETAILS_REQUEST,
 })
@@ -178,6 +188,8 @@ export const userUpdateRequest = payload => dispatch => {
 }
 
 
+
+// for adding new address to the user account
 export const addAddressRequest = () => ({
     type: ADD_ADDRESS_REQUEST,
 })
@@ -212,9 +224,7 @@ export const AddressRequest = payload => dispatch => {
 }
 
 
-
-
-
+// logging out user
 export const logoutUser = () => ({
     type: LOGOUT_USER
 })

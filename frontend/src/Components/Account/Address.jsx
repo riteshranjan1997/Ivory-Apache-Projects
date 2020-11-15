@@ -15,19 +15,11 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
+import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    minWidth: 275,
-  },
   content: {
-    flexGrow: 1,
-    [theme.breakpoints.down("xs")]: {
-      paddingLeft: theme.spacing(3),
-    },
-    paddingLeft: theme.spacing(45),
-    paddingTop: theme.spacing(10),
-    paddingRight: theme.spacing(5),
+    padding:"20px"
   },
   toolbar: {
     toolbar: theme.mixins.toolbar,
@@ -72,7 +64,8 @@ function Address() {
   const dispatch = useDispatch();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const [open, setOpen] = useState(false);
+  const [newOpenStatus, setNewOpenStatus] = useState(false);
+  const [newEditStatus, setEditOpenStatus] = useState(false);
 
   const userData = useSelector((state) => state.auth.user_data)
   
@@ -101,20 +94,29 @@ function Address() {
     setAddressName("")
   }
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleEditClickOpen = () => {
+
+  }
+
+  const handleEditClose = () => {
+
+  }
+
+
+  const handleNewClickOpen = () => {
+    setNewOpenStatus(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleNewClose = () => {
+    setNewOpenStatus(false);
   };
   return (
-    <div>
+    <>
       <Bar/>
+      <Grid container>
       <SideBar/>
-    <div className={classes.root}>
-      <SideBar />
-      <main className={classes.content}>
+    <Grid xs={9} item style={{marginTop:"60px "}}>
+    <main className={classes.content}>
         <div className={classes.toolbar} />
         <Card className={classes.root}>
           <CardContent>
@@ -122,15 +124,15 @@ function Address() {
             <Typography
               style={{ textAlign: "left", padding: "5px", fontSize: "13px" }}
             >
-             {userData.address === [] ? "You don't have any saved address" : userData.address.map((elem,i) => {
+             {/* {userData.address === [] ? "You don't have any saved address" : userData.address.map((elem,i) => {
                <>
                 <p>{i}</p>
                </>
-             })} 
+             })}  */}
             </Typography>
             <hr style={{ width: "110%", marginLeft: "-7%" }} />
             <Typography
-              onClick={handleClickOpen}
+              onClick={handleNewClickOpen}
               style={{
                 textAlign: "left",
                 padding: "5px",
@@ -142,14 +144,14 @@ function Address() {
             </Typography>
             <Dialog
               fullScreen={fullScreen}
-              open={open}
+              open={newOpenStatus}
               fullWidth="fullwidth"
               maxWidth="sm"
-              onClose={handleClose}
+              onClose={handleNewClose}
               aria-labelledby="responsive-dialog-title"
             >
               <DialogTitle id="responsive-dialog-title">
-                <h4 className={classes.closeMark} onClick={handleClose}>
+                <h4 className={classes.closeMark} onClick={handleNewClose}>
                   {"X"}
                 </h4>
               </DialogTitle>
@@ -166,6 +168,7 @@ function Address() {
                         <input
                           type="text"
                           className="form-control"
+                          value={Street}
                           placeholder="e.g. 555,main St."
                           onChange = {((e) => setStreet(e.target.value))}
                         />
@@ -177,6 +180,7 @@ function Address() {
                         <input
                           type="text"
                           className="form-control"
+                          value={aptName}
                           placeholder="e.g. 15F"
                           onChange = {((e) => setAptName(e.target.value))}
                         />
@@ -188,6 +192,7 @@ function Address() {
                         <input
                           type="text"
                           className="form-control"
+                          value={city}
                           placeholder=""
                           onChange = {((e) => setCity(e.target.value))}
                         />
@@ -197,6 +202,7 @@ function Address() {
                         <input
                           type="text"
                           className="form-control"
+                          value={addstate}
                           placeholder=""
                           onChange = {((e) => setAddState(e.target.value))}
                         />
@@ -208,6 +214,7 @@ function Address() {
                         <input
                           type="text"
                           className="form-control"
+                          value={zipCode}
                           placeholder="e.g. 10018"
                           onChange = {((e) => setzipCode(e.target.value))}
                         />
@@ -219,6 +226,7 @@ function Address() {
                         <input
                           type="text"
                           className="form-control"
+                          value={phone}
                           placeholder="e.g. (555) 555-1212"
                           onChange = {((e) => setPhone(e.target.value))}
                         />
@@ -236,6 +244,7 @@ function Address() {
                         <input
                           type="text"
                           className="form-control"
+                          value={crossStreet}
                           placeholder="e.g. Main Street and Second Avenue"
                           onChange = {((e) => setcrossStreet(e.target.value))}
                         />
@@ -247,6 +256,7 @@ function Address() {
                         <input
                           type="text"
                           className="form-control"
+                          value={delivaryInstructions}
                           placeholder="e.g. checkin with the doorman"
                           onChange = {((e) => setDelivaryInstructions(e.target.value))}
                         />
@@ -258,6 +268,7 @@ function Address() {
                         <input
                           type="text"
                           className="form-control"
+                          value={addressName}
                           placeholder="e.g. home"
                           onChange = {((e) => setAddressName(e.target.value))}
                         />
@@ -270,7 +281,7 @@ function Address() {
 
               <div className={classes.buttons}>
                 <Button
-                  onClick={handleClose,handleAddAddress}
+                  onClick={handleNewClose,handleAddAddress}
                   style={{
                     backgroundColor: "#2B8282",
                     color: "white",
@@ -281,7 +292,7 @@ function Address() {
                   Submit
                 </Button>
                 <Button
-                  onClick={handleClose}
+                  onClick={handleNewClose}
                   style={{
                     border: "1px solid #2B8282",
                     color: "#2B8282",
@@ -295,8 +306,11 @@ function Address() {
           </CardContent>
         </Card>
       </main>
-    </div>
-    </div>
+    </Grid>
+      
+    
+    </Grid>
+    </>
   );
 }
 

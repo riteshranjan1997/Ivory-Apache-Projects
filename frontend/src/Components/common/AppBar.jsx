@@ -28,7 +28,7 @@ import { deleteRequest } from "../../redux/cart/actions";
 
 const useStyles = makeStyles((theme) => ({
   logo: {
-    width: "105px",
+    width: "120px",
     marginTop: "-5px",
   },
   addressModel: {
@@ -321,7 +321,7 @@ export default function Bar(props) {
             <Link to="/">
               <img
                 className={classes.logo}
-                src="https://res.cloudinary.com/grubhub-assets/image/upload/v1576524886/Seamless_logo_flxqyg.svg"
+                src="flawless_logo.png"
                 alt="company logo"
               />
             </Link>

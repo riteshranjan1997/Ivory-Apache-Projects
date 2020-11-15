@@ -8,13 +8,16 @@ import {
     LOGOUT_USER, REMOVE_ERROR,
 } from "./actionType"
 
+const savedUser = JSON.parse(localStorage.getItem('savedUser')) || {};
+const savedAccessToken = JSON.parse(localStorage.getItem('savedAccessToken')) || "";
+
 export const initState = {
     isLoading: false,
-    user_data: {},
+    user_data: savedUser || {},
     message: "",
     isError: false,
-    isAuth: false,
-    access_token: ""
+    isAuth: savedAccessToken !== "" ? true : false,
+    access_token: savedAccessToken || ""
 }
 
 export default (state = initState, { type, payload }) => {
@@ -28,11 +31,14 @@ export default (state = initState, { type, payload }) => {
                 isError: false,
             }
         case REGISTER_USERS_SUCCESS:
+            localStorage.setItem('savedUser', JSON.stringify(payload.data.userData));
+            localStorage.setItem('savedAccessToken', JSON.stringify(payload.data.accessToken));
             return {
                 ...state,
                 isLoading: false,
                 isError: payload.error,
-                user_data: payload.data,
+                user_data: payload.data.userData,
+                access_token: payload.data.accessToken,
                 message: payload.message,
                 isAuth: true,
             }
@@ -51,6 +57,8 @@ export default (state = initState, { type, payload }) => {
                 isError: false,
             }
         case LOGIN_USERS_SUCCESS:
+            localStorage.setItem('savedUser', JSON.stringify(payload.data.userData));
+            localStorage.setItem('savedAccessToken', JSON.stringify(payload.data.accessToken));
             return {
                 ...state,
                 isLoading: false,
@@ -98,6 +106,7 @@ export default (state = initState, { type, payload }) => {
 
 
         case LOGOUT_USER:
+            localStorage.clear();
             return {
                 ...state,
                 isAuth: false,

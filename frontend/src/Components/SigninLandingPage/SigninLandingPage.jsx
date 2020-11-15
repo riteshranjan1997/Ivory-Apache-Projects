@@ -8,11 +8,11 @@ import LandingPageFooter from "../LandingPage/LandinPageFooter";
 import { useSelector } from "react-redux";
 
 function SigninLandingPage() {
-  const isauth = useSelector((state) => state.auth.isauth);
+  const isAuth = useSelector((state) => state.auth.isAuth);
 
-    if(!isauth){
-      return <Redirect to="/" ></Redirect>
-    }
+  if (!isAuth) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <div>
