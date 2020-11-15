@@ -103,11 +103,13 @@ router.get("/checkOut", authenticateToken, async (req, res) => {
 });
 
 router.post("/saveOrders",authenticateToken,async (req,res)=>{
+  console.log("in saveOrder")
   const {email} = req.user
   let user
   try{
      user = await User.findOne({email:email})
-     user.savedRestaurants = [...user.pastOrders,[...user.cart]]
+     user.past_orders = [...user.past_orders,{order:[...user.cart],date:new Date().toLocaleDateString() ,time:new Date().toLocaleTimeString()}]
+     console.log("in saveOrder",user.past_orders)
      user.cart = []
      const savedUser = await user.save()
      return res.status(200).json({error:false,data:savedUser})
