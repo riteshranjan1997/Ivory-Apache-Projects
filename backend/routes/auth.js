@@ -8,9 +8,7 @@ const User = require("../models/User");
 const { OAuth2Client } = require("google-auth-library");
 
 const router = express.Router();
-const client = new OAuth2Client(
-  "1069087639484-chisqt1vcpiq2rqcbk2dvr8u3lr2k9hk.apps.googleusercontent.com"
-);
+const client = new OAuth2Client("1069087639484-chisqt1vcpiq2rqcbk2dvr8u3lr2k9hk.apps.googleusercontent.com");
 
 router.post("/register", async (req, res, next) => {
   const { error } = registerValidation(req.body);

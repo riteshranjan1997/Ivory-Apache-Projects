@@ -11,12 +11,14 @@ const { serialize } = require("v8");
 const router = express.Router();
 
 router.put("/profile", authenticateToken, async (req, res) => {
+  console.log("in profile put",req,req.body)
   const { _id, first_name, email } = req.user;
   let userData;
-  if (data.first_name) {
-    if (data.password != "") {
+  let validPass;
+  if (req.body.first_name) {
+    if (req.body.password != "") {
       userData = await User.findOne({ email: email });
-      let validPass;
+     
       try {
         validPass = await bcrypt.compare(req.body.password, userData.password);
       } catch (err) {
@@ -56,13 +58,14 @@ router.put("/profile", authenticateToken, async (req, res) => {
         });
     }
   } else if (req.body.new_email) {
+    console.log("in else email condition",req.body.new_email,req.body.confirm_email)
     if (req.body.new_email !== req.body.confirm_email) {
       return res
         .status(400)
         .json({
           error: true,
           message:
-            "We were unable to update the account. Please refresh the page and try again.",
+            "new email and confirm email should be same",
         });
     }
     const { error } = emailValidation(req.body.new_email);
@@ -72,16 +75,18 @@ router.put("/profile", authenticateToken, async (req, res) => {
       return;
     }
     //   const {current_email} = req.user
-    const userData = await User.findOne({ email: req.body.new_email });
+    let userData = await User.findOne({ email: req.body.new_email });
+    let validPass;
     if (userData) {
       return res
         .status(400)
         .json({ error: true, message: "Email already exists in database" });
     }
-    let validPass;
+    userData = await User.findOne({ email: email });
     try {
       validPass = await bcrypt.compare(req.body.password, userData.password);
     } catch (err) {
+      console.log("error in email updation",err)
       return res.status(500).json({
         error: true,
         message: "Something went wrong, try again after some time",
@@ -98,7 +103,8 @@ router.put("/profile", authenticateToken, async (req, res) => {
           .status(200)
           .json({ error: false, data: savedUser, accessToken: accessToken });
       } catch (err) {
-        return res
+        // return res
+        console.log(err)
           .status(400)
           .json({
             error: true,
@@ -126,17 +132,18 @@ router.put("/profile", authenticateToken, async (req, res) => {
         });
     }
     const { error } = passwordValidation(req.body.new_password);
-
+    let validPass;
     if (error) {
       res.status(400).json({ error: true, message: error.details[0].message });
       return;
     }
-    const { current_email } = req.user;
+    const { email:current_email } = req.user;
     const userData = await User.findOne({ email: current_email });
-    let validPass;
+  
     try {
       validPass = await bcrypt.compare(req.body.password, userData.password);
     } catch (err) {
+      console.log("error at 146",err)
       return res.status(500).json({
         error: true,
         message: "Something went wrong, try again after some time",
@@ -190,16 +197,19 @@ router.post("/addAddress",authenticateToken,async (req,res)=>{
     try{
         const user = await User.findOne({email:email});
         const {street,city,state,zip,phone,name} = req.body
-        const prevAddress = user.address.filter(ele=>ele.street+ele.city+ele.state+ele.zip+ele.phone+ele.name === street+city+state+zip+phone+name)
+        const prevAddress = user.address.find(ele=>ele.street+ele.city+ele.state+ele.zip+ele.phone+ele.name === street+city+state+zip+phone+name)
+        console.log("in addAddress",prevAddress)
         if(prevAddress){
+          console.log("prev address is ",prevAddress,req.body)
             return res.status(400).json({error:true,message:"Already the given address is present"})
         }
         else{
             user.address = [...user.address,{street,city,state,phone,zip,name}]
-            const saveduser = user.save()
+            const savedUser = await user.save()
             return res.status(200).json({error:false,data:savedUser})
         }
     }catch(err){
+      console.log("in addAdderss",err)
         return res.status(400).json({error:true,message:err})
     }
 })
@@ -226,8 +236,9 @@ router.put("/editAddress",authenticateToken,async (req,res)=>{
         return res.status(400).json({error:true,message:err})
     }
 })
-router.delete("/deleteAddress",async (req,res)=>{
+router.delete("/deleteAddress",authenticateToken,async (req,res)=>{
     const {id,email,first_name} = req.user
+    console.log("in deleteAddress",req.body,req.body.prevAddress)
     try{
         const user = await User.findOne({email:email});
         const {street,city,state,zip,phone,name} = req.body.prevAddress
@@ -238,25 +249,28 @@ router.delete("/deleteAddress",async (req,res)=>{
         else{
             user.address = prevAddress
             const savedUser = await user.save()
-            res.status(200).status.json({error:false,data:savedUser})
+            res.status(200).json({error:false,data:savedUser})
         }
     }catch(err){
+       console.log("error in deleteAddress is",err)
         return res.status(400).json({error:true,message:err})
     }
 })
 
 router.post("/addCard",authenticateToken,async (req,res)=>{
+  console.log("in addCard")
     const {id,email,first_name} = req.user
     try{
         const user = await User.findOne({email:email});
         const {card_number,expires_on,security_code,postal_code} = req.body
-        const prevCards = user.credit_cards.filter(ele=>ele.card_number+ele.expires_on+ele.security_code+ele.postal_code === card_number+expires_on+security_code+postal_code)
+        const prevCards = user.credit_cards.find(ele=>ele.card_number+ele.expires_on+ele.security_code+ele.postal_code === card_number+expires_on+security_code+postal_code)
         if(prevCards){
+            console.log(prevCards)
             return res.status(400).json({error:true,message:"Already the given card is present"})
         }
         else{
             user.credit_cards = [...user.credit_cards,{card_number,expires_on,security_code,postal_code}]
-            const saveduser = user.save()
+            const savedUser = await user.save()
             return res.status(200).json({error:false,data:savedUser})
         }
     }catch(err){
@@ -278,6 +292,6 @@ router.get("/saveRestaurant",authenticateToken,async(req,res)=>{
     }
 
 })
-
+//profile apis working
 
 module.exports = router;

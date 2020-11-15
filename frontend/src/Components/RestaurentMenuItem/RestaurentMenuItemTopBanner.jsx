@@ -146,7 +146,7 @@ function RestaurentMenuItemTopBanner(){
                         <div  onClick={handleClickOpen} ><i class="fas fa-share-alt"></i></div>
                     </ShareRestaurent>
                     <RestaurentIcon>
-                        <img src={item.restaurant_images}  alt="restaurentIcon"/>
+                        <img src={`../hotel.png`} style={{width:100}} alt="restaurentIcon"/>
                     </RestaurentIcon>
                     <Dialog
                         fullScreen={fullScreen}
