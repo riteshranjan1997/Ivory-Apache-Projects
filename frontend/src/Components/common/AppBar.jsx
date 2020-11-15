@@ -139,7 +139,9 @@ export default function Bar(props) {
   const access_token = useSelector((state)=>state.auth.access_token)
     console.log("access token is ",access_token)
 
-  useEffect(()=>{},[])
+  useEffect(()=>{
+    
+  },[])
 
   console.log("in menu page",cart)
   const handleDelete = (payload)=>{
@@ -483,7 +485,7 @@ export default function Bar(props) {
                           color:"#2B8282",
                         }}
                       >
-                        <div style={{display:"flex",alignItems:"center",marginTop:"-10px"}}>
+                        <div style={{display:"flex",alignItems:"center",marginTop:"-5px"}}>
                           <div><Avatar style={{ backgroundColor: "#2B8282",height:"30px",width:"30px"}}>
                             {userData.first_name[0]}
                           </Avatar></div>

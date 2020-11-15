@@ -122,6 +122,7 @@ function MenuPage()
         }
         dispatch(addRequest(payload,access_token))
         handleClose()
+        setQuantity(1)
     }
 
     return(
