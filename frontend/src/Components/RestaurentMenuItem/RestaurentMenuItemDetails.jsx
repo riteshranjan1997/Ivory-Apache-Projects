@@ -45,7 +45,7 @@ function RestaurentMenuItemDetails(){
                     <div><span>{item.order_was_correct}</span> Order was correct</div>
                 </div>
                 <div>
-                    <hr/>
+                    <hr style={{width:"120%",marginBottom:"-30px",position:"relative",left:"-100px"}}/>
                 </div>
             </RestaurentDetails>
         </div>
