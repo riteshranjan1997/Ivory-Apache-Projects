@@ -69,7 +69,6 @@ router.put("/profile", authenticateToken, async (req, res) => {
         });
     }
     const { error } = emailValidation(req.body.new_email);
-
     if (error) {
       res.status(400).json({ error: true, message: error.details[0].message });
       return;

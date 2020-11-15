@@ -10,6 +10,9 @@ import {
 import axios from "axios" 
 
 
+
+
+// for register User
 export const registerUserRequest = () => ({
     type: REGISTER_USERS_REQUEST,
 })
@@ -44,6 +47,8 @@ export const registerRequest = payload => dispatch => {
 
 }
 
+
+// for login user
 export const loginUserRequest = () => ({
     type: LOGIN_USERS_REQUEST,
 })
@@ -77,6 +82,8 @@ export const loginRequest = payload => dispatch => {
         });
 }
 
+
+// for google auth (both for register and login)
 export const googelLoginUserRequest = () => ({
     type: LOGIN_WITH_GOOGLE_REQUEST,
 })
@@ -92,6 +99,7 @@ export const googelLoginUserFailure = (payload) => ({
 })
 
 export const googleLoginRequest = payload => dispatch => {
+    console.log(payload)
     dispatch(loginUserRequest())
     axios({
         method:"POST",
@@ -106,6 +114,8 @@ export const googleLoginRequest = payload => dispatch => {
     });
 }
 
+
+// use for fetch user data
 export const fetchUserDataRequest = () => ({
     type: FETCH_USER_DATA__REQUEST,
 })
@@ -120,10 +130,9 @@ export const fetchUserDataFailure = (payload) => ({
     payload
 })
 
-
 export const UserDataRequest = payload => dispatch => {
     dispatch(fetchUserDataRequest())
-    return fetch("http://localhost:5000/api/user/login", {
+    return fetch("", {
         method: "POST",
         headers: {
             "Content-type": "application/json",
@@ -141,6 +150,8 @@ export const UserDataRequest = payload => dispatch => {
 }
 
 
+
+// editing profile data of user
 export const updateUserRequest = () => ({
     type: UPDATE_USER_DETAILS_REQUEST,
 })
@@ -155,12 +166,14 @@ export const updateUserFailure = (payload) => ({
     payload
 })
 
-export const userUpdateRequest = payload => dispatch => {
+export const userUpdateRequest = (payload ,accessToken)=> dispatch => {
+    console.log(payload,accessToken,"action")
     dispatch(updateUserRequest())
-    return fetch("", {
-        method: "POST",
+    return fetch("http://localhost:5000/api/settings/profile", {
+        method: "PUT",
         headers: {
             "Content-type": "application/json",
+            "Authorization": "Bearer " + accessToken
         },
         body: JSON.stringify({ ...payload }),
     })
@@ -174,7 +187,13 @@ export const userUpdateRequest = payload => dispatch => {
         });
 }
 
+// axios.put("http://localhost:5000/api/settings/profile", payload, {
+//     headers:{
+//         Authorization: "Bearer " + accessToken
+//     }}
+//     )
 
+// for adding new address to the user account
 export const addAddressRequest = () => ({
     type: ADD_ADDRESS_REQUEST,
 })
@@ -209,9 +228,7 @@ export const AddressRequest = payload => dispatch => {
 }
 
 
-
-
-
+// logging out user
 export const logoutUser = () => ({
     type: LOGOUT_USER
 })

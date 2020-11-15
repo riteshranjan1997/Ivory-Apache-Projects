@@ -29,7 +29,7 @@ import {useState} from "react"
 
 const useStyles = makeStyles((theme) => ({
   logo: {
-    width: "105px",
+    width: "120px",
     marginTop: "-5px",
   },
   addressModel: {
@@ -134,26 +134,15 @@ export default function Bar(props) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
   
+  const cart = useSelector(state=>state.cart.cart)
+  const cart_items = useSelector(state=>state.auth.user_data.cart)
+
   let auth = useSelector(state=>state.auth)
-  console.log("auth is",auth)
   let auth_cart = useSelector(state=>state.auth.user_data.cart)
-  const user_cart = useSelector(state=>state.cart.cart)
-  const cart = user_cart
-
-//   const [cart,setCart] =  useState(auth_cart)
-//   if(user_cart.length > 0){
-//     setCart(user_cart)
-//   }
-  console.log("in app bar")
-  console.log("authCart",auth_cart)
-  console.log("userCart",user_cart)
-  // const cart = user_cart.length>0?user_cart:auth_cart 
-  // console.log(cart_items)
+ 
   const access_token = useSelector((state)=>state.auth.access_token)
-  console.log("access token is ",access_token)
 
 
-  console.log("in menu page",cart,auth_cart,user_cart)
   const handleDelete = (payload)=>{
     dispatch(deleteRequest(payload,access_token))
   }
@@ -172,6 +161,26 @@ export default function Bar(props) {
   const handleLoginModelClose = () => {
     setlogingModelStatus(false);
   };
+
+  // const getUserGeoLocation = () => {
+  //   navigator.geolocation.getCurrentPosition(success, error);
+
+  //   function success(pos) {
+  //     axios
+  //       .get(
+  //         `https://api.mapbox.com/geocoding/v5/mapbox.places/${pos.coords.longitude},${pos.coords.latitude}.json?access_token=pk.eyJ1Ijoicml0ZXNocmFuamFuMTk5NyIsImEiOiJja2gwMjZ5NGowMzJhMnFxbWpxc3kwNmxrIn0._1C2CDnVfnnySzjFo-Zb1A`
+  //       )
+  //       .then((res) => console.log(res.data))
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //     console.log(pos.coords);
+  //   }
+  //   function error(err) {
+  //     console.log("unable to get location");
+  //   }
+  // }
+
 
   const handleLocationUpdate = () => {
     dispatch(UpdateUserAppAddress(addressquery));
@@ -318,7 +327,7 @@ export default function Bar(props) {
             <Link to="/">
               <img
                 className={classes.logo}
-                src="https://res.cloudinary.com/grubhub-assets/image/upload/v1576524886/Seamless_logo_flxqyg.svg"
+                src="flawless_logo.png"
                 alt="company logo"
               />
             </Link>

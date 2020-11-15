@@ -54,8 +54,10 @@ export default function RestaurantCard(props) {
               alt=""
             />
           </div>
-          <div style={{ width: "40%" }}>
-            <h6><b>{props.data.restaurant_name}</b></h6>
+
+          <div style={{ width: "45%" }}>
+            <h5>{props.data.restaurant_name}</h5>
+            <span>{props.data.cuisines[0]}</span>
             <img style={{padding:"5px"}}
               src="https://res.cloudinary.com/grubhub-assets/image/upload/v1577663084/subscriptions/s_flag_ihsory.svg"
               alt="s+"
