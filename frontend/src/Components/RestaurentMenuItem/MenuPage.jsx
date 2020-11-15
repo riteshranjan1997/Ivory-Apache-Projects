@@ -58,7 +58,7 @@ quantity:{
 
 const MenuWrapper=Styled.div`
     display:flex;
-    margin-top:-40px;
+    margin-top:0px;
     margin-left:400px;
     .delivary{
         display:flex;
