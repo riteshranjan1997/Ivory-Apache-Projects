@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles,withStyles } from "@material-ui/core/styles";
 import {useSelector, useDispatch} from "react-redux"
 import {updateFilters} from "../../redux/app/action"
 import PropTypes from "prop-types";
@@ -11,11 +11,26 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import Tooltip from "@material-ui/core/Tooltip";
+import Rating from "@material-ui/lab/Rating";
+import StarIcon from '@material-ui/icons/Star';
+import { useEffect } from "react";
+import {filterStarRatings} from '../../redux/Filtering/action'
+
+const StyledRating = withStyles({
+  iconFilled: {
+    color: '#2B8282',
+  },
+  iconHover:{   
+      color:"white",
+      backgroundColor:"#2B8282",      
+      }
+
+})(Rating); 
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
     background: "#F5F5F5",
-    height:"800px"
   },
   buttons: {
     display: "flex",
@@ -37,6 +52,12 @@ const useStyles = makeStyles((theme) => ({
   },
   rootSlider: {
     width: 200 + theme.spacing(3) * 2,
+  },
+
+  rootRating: {
+    width: 200,
+    display: "flex",
+    alignItems: "center"
   },
 }));
 
@@ -61,6 +82,13 @@ function Filter() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const filters = useSelector(state => state.app.userFilter)
+  
+  const [value, setValue] = React.useState(0);
+  const [hover, setHover] = React.useState(-1);
+
+  useEffect(()=>{
+     dispatch(filterStarRatings(value))
+  },[value])
 
   const handleClearFilter = () => {
       dispatch(updateFilters({}))
@@ -76,8 +104,8 @@ function Filter() {
   return (
     <div
       className={`col-12 border border-right  ${classes.root}`}
-      style={{ fontFamily: "Poppins" }}
-    >
+      style={{ fontFamily: "Poppins" ,marginLeft:"-20px",height:"1300px"}}
+    >\
       <div className="row">
         <div className="col-12">
           <div
@@ -218,7 +246,7 @@ function Filter() {
                   <Typography className={classes.heading}>Rating </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>
+                  {/* <Typography>
                     <div className="d-flex" style={{ color: "#2B8282" }}>
                       <div
                         className={`border rounded-left p-2 ${classes.ratings}`}
@@ -256,7 +284,36 @@ function Filter() {
                         <i class="fas fa-star"></i>
                       </div>
                     </div>
-                  </Typography>
+                  </Typography> */}
+                  <div>
+                    <StyledRating                        
+                        name="hover-feedback"
+                        value={value}
+                        precision={1}
+                        onChange={(event, newValue) => {
+                          setValue(newValue);
+                        }}
+                        onChangeActive={(event, newHover) => {
+                          setHover(newHover);
+                        }}
+                        icon={
+                          <div
+                              className={`border rounded-right p-2 ${classes.ratings}`}
+                              style={{ width: "50px"   }}>
+                            <StarIcon fontSize="inherit" />
+                        </div>}
+                      />
+                      {/* {value !== null && (
+                        <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>
+                      )} */}
+                       {/* <StyledRating
+                                name="customized-color"
+                                defaultValue={props.data.aggregate_rating}
+                                // getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
+                                // precision={0.5}
+                                icon={<StarIcon fontSize="inherit" />}
+                              /> */}
+                  </div>
                 </AccordionDetails>
               </Accordion>
             </div>

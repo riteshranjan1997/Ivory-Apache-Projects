@@ -59,7 +59,7 @@ quantity:{
 
 const MenuWrapper=Styled.div`
     display:flex;
-    margin-top:-40px;
+    margin-top:0px;
     margin-left:400px;
     .delivary{
         display:flex;
@@ -125,6 +125,7 @@ function MenuPage()
         }
         dispatch(addRequest(payload,access_token))
         handleClose()
+        setQuantity(1)
     }
 
     const handleRotate=  (item)=>{

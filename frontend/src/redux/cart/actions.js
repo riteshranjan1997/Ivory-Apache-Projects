@@ -10,18 +10,14 @@ import {
   DELETE_CART_FAILURE,
 } from "./actionTypes";
 import { useSelector } from "react-redux";
-
 import axios from "axios";
-
 export const addToCartRequest = () => ({
   type: ADD_TO_CART_REQUEST,
 });
-
 export const addToCartSuccess = (payload) => ({
   type: ADD_TO_CART_SUCCESS,
   payload,
 });
-
 export const addToCartFailure = (payload) => ({
   type: ADD_TO_CART_FAILURE,
   payload,
@@ -29,12 +25,10 @@ export const addToCartFailure = (payload) => ({
 export const editCartRequest = () => ({
   type: EDIT_CART_REQUEST,
 });
-
 export const editCartSuccess = (payload) => ({
   type: EDIT_CART_SUCCESS,
   payload,
 });
-
 export const editCartFailure = (payload) => ({
   type: EDIT_CART_FAILURE,
   payload,
@@ -42,17 +36,14 @@ export const editCartFailure = (payload) => ({
 export const deleteCartRequest = () => ({
   type: DELETE_CART_REQUEST,
 });
-
 export const deleteCartSuccess = (payload) => ({
   type: DELETE_CART_SUCCESS,
   payload,
 });
-
 export const deleteCartFailure = (payload) => ({
   type: DELETE_CART_FAILURE,
   payload,
 });
-
 export const addRequest = (payload, access_token) => (dispatch) => {
   dispatch(addToCartRequest());
   axios
@@ -69,7 +60,6 @@ export const addRequest = (payload, access_token) => (dispatch) => {
       dispatch(addToCartFailure(err));
     });
 };
-
 export const editRequest = (payload) => (dispatch) => {
   console.log(payload);
   dispatch(editCartRequest());
@@ -88,7 +78,6 @@ export const editRequest = (payload) => (dispatch) => {
       dispatch(editCartFailure(err));
     });
 };
-
 export const deleteRequest = (payload,access_token) => (dispatch) => {
   console.log(payload);
   dispatch(deleteCartRequest());

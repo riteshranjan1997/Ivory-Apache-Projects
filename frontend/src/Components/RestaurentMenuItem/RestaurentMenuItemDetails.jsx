@@ -21,7 +21,7 @@ function RestaurentMenuItemDetails(){
     // console.log("data",data)
     // console.log("in banner page",data)
     return(
-        <div>
+        <div>            
       
             <RestaurentDetails>
                 <h3><b>{item.restaurant_name}</b></h3>
@@ -36,7 +36,7 @@ function RestaurentMenuItemDetails(){
                         i<=item.aggregate_rating-1 ?                        
                             <i class="fas fa-star" style={{color:"orange"}}></i>                         
                          :
-                            <i class="far fa-star" style={{color:"orange"}} ></i>                    
+                           <i class="fas fa-star" style={{color:"grey"}}></i>                    
                     ))}
                     </div>
                     <div className="mr-2">{item.votes} ratings</div>

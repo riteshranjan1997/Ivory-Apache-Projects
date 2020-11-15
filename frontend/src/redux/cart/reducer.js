@@ -7,8 +7,6 @@ import {ADD_TO_CART_REQUEST,
     DELETE_CART_REQUEST,
     DELETE_CART_SUCCESS,
     DELETE_CART_FAILURE} from "./actionTypes"
-
-
     export const initState = {
         isLoading: false,
         user_data:{},
@@ -16,7 +14,6 @@ import {ADD_TO_CART_REQUEST,
         message: "",
         isError: false,
     }
-    
     export default (state = initState, { type, payload }) => {
         console.log("in payload reducer",payload)
         switch (type) {    

@@ -105,8 +105,7 @@ export default function SearchComponent() {
         <div className="col">
           <div
             className="container"
-            style={{ width: "60%", marginTop: "50px", fontFamily: "Poppins" }}
-          >
+            style={{ width: "60%", marginTop: "50px", fontFamily: "Poppins" }}>
             <div className="row">
               <div className="col">
                 <h2 style={{ fontWeight: "700", color: "white" , marginTop:"50px"}}>
