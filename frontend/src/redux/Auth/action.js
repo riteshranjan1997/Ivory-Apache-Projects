@@ -99,7 +99,7 @@ export const googleLoginRequest = payload => dispatch => {
         data:{...payload}
       })
       .then((res) => {
-        dispatch(loginUserSuccess(res))
+        dispatch(loginUserSuccess(res.data))
     })
     .catch((err) => {
         dispatch(loginUserFailure(err))

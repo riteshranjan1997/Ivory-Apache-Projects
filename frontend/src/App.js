@@ -11,6 +11,7 @@ function App() {
           {/* <RestaurentMenuItem/> */}
           {/* <CheckoutPage/> */}
           {/* <Browse/> */}
+          {/* <Card /> */}
         </div>
   );
 }

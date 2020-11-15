@@ -10,7 +10,7 @@ import {
 
 export const initState = {
     isLoading: false,
-    user_data: {},
+    user_data: {cart:[]},
     message: "",
     isError: false,
     isAuth: false,

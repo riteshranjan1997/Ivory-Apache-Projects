@@ -25,6 +25,7 @@ import { useTheme } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
 import { deleteCart } from "../../redux/AddToCart/action";
 import { deleteRequest } from "../../redux/cart/actions";
+import {useState} from "react"
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -133,17 +134,26 @@ export default function Bar(props) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
   
-  // let auth_cart = useSelector(state=>state.auth.user_data.cart)
-  const cart = useSelector(state=>state.cart.cart)
+  let auth = useSelector(state=>state.auth)
+  console.log("auth is",auth)
+  let auth_cart = useSelector(state=>state.auth.user_data.cart)
+  const user_cart = useSelector(state=>state.cart.cart)
+  const cart = user_cart
 
-
-  // const cart = auth_cart?auth_cart:user_cart 
+//   const [cart,setCart] =  useState(auth_cart)
+//   if(user_cart.length > 0){
+//     setCart(user_cart)
+//   }
+  console.log("in app bar")
+  console.log("authCart",auth_cart)
+  console.log("userCart",user_cart)
+  // const cart = user_cart.length>0?user_cart:auth_cart 
   // console.log(cart_items)
   const access_token = useSelector((state)=>state.auth.access_token)
   console.log("access token is ",access_token)
 
 
-  console.log("in menu page",cart)
+  console.log("in menu page",cart,auth_cart,user_cart)
   const handleDelete = (payload)=>{
     dispatch(deleteRequest(payload,access_token))
   }
@@ -630,6 +640,7 @@ export default function Bar(props) {
                           }}
                         >
                         <div className="mb-2"><b>Your Order</b></div>
+                        {/* { cart.length>0 ? :auth_cart.length > 0? : } */}
                           {cart && cart.map((item)=>(
                          <div>                           
                            <div style={{display:"flex",fontSize:"14px",justifyContent:"space-between"}}>                             

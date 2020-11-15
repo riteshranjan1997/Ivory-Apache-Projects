@@ -13,6 +13,7 @@ router.post("/addToCart", authenticateToken, async (req, res) => {
   const { email } = req.user;
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
+  console.log("in adding to cart email is",email)
   try {
     const user = await User.findOne({ email });
     console.log("user is ",user)
