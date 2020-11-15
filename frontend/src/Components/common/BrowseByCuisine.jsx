@@ -10,6 +10,8 @@ import RestaurantCard from "../RestaurantsListingPage/RestaurantCard";
 import {useSelector,useDispatch} from 'react-redux'
 import axios from 'axios'
 import {gioLocationData} from '../../redux/GioLocation/action'
+import Pagination from '@material-ui/lab/Pagination';
+
 
 
 
@@ -58,27 +60,51 @@ export default function BrowseByCuisine() {
   let data = useSelector((state) => state.app.restaurantsData);
   const userAddress = useSelector((state)=>state.app.userAddress)
   const coordinates = useSelector((state)=>state.location.coordinates)
-  console.log("in Browse Cusine",coordinates)
+  // console.log("in Browse CusFine",coordinates)
   const dispatch = useDispatch()
   const [cusine,setCusine] = React.useState("")
   const [cusineArray,setCusineArray] = React.useState([])
   const filterRatings=useSelector((state)=>state.filter.star)
+  const [page,setPage] = React.useState(1)
+  // const [totalPage,setTotalPage] = React.useState(1)
+  const limit = 4
+  let offset = (page - 1) * limit
+
+  const sort = useSelector((state)=>state.filter.sort)
+
+  console.log("sort",sort,data)
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+
+
   useEffect(()=>{
-    return axios.post(`http://localhost:5000/api/restaurant/lets-eat?cuisine=${cusine ? cusine : null }&starRating=${filterRatings? filterRatings:"0"}`,{
-      longitude:coordinates[0],
-      lattitude:coordinates[1]
-    })    
-    // .then(res=>console.log(res))
-    .then(res=>setCusineArray(res.data.data.current))
+    if(cusine){
+      return axios.post(`http://localhost:5000/api/restaurant/lets-eat?starRating=${filterRatings? filterRatings:"0"}&cuisine=${cusine}`,{
+        longitude:coordinates[0],
+        lattitude:coordinates[1]
+      })  
+      .then(res=>setCusineArray(res.data.data.current))
     .catch(err=>console.log("Fetch Error",err))
-  },[filterRatings,cusine]
-      
+    }
+    else {
+      return axios.post(`http://localhost:5000/api/restaurant/lets-eat?starRating=${filterRatings? filterRatings:"0"} `,{
+        longitude:coordinates[0],
+        lattitude:coordinates[1]
+      })  
+      .then(res=>setCusineArray(res.data.data.current))
+    .catch(err=>console.log("Fetch Error",err))
+    }     
+    // .then(res=>console.log(res))    
+  },[filterRatings,cusine]      
   )
+  // console.log("cusine",cusine)
+
+  const handlePageChange = (event, value) => {
+    setPage(value);
+  };
 
   const handleClick=(cusine)=>{    
      setCusine(cusine)
@@ -90,7 +116,23 @@ export default function BrowseByCuisine() {
 
   const displayData=()=>(
     <div>
-       {cusineArray ? cusineArray.map((item)=>(
+       {cusineArray ? cusineArray
+        .sort((a,b)=>(
+          sort == "high" && Math.round(parseInt(b.votes))-Math.round(parseInt(a.votes)) 
+        ))
+        .sort((a,b)=>(
+          sort == "low" && Math.round(parseInt(a.votes))-Math.round(parseInt(b.votes)) 
+        ))
+        .sort((a,b)=>(
+          sort == "asc" ? b.restaurant_name>a.restaurant_name?-1
+          :b.restaurant_name <a.restaurant_name :0
+        ))
+        .sort((a,b)=>(
+          sort == "desc" ? a.restaurant_name>b.restaurant_name?-1
+          :a.restaurant_name <b.restaurant_name:0
+        ))
+       .filter((item,index)=>index>=offset && index<=offset+ limit)
+       .map((item)=>(
          <RestaurantCard data={item} />))
          :
           <div className="col">
@@ -100,9 +142,9 @@ export default function BrowseByCuisine() {
     </div>
   )
  
-  console.log(cusineArray)
+  // console.log(cusineArray)
   return (
-     <div className="container-fluid mt-4"> 
+     <div className="container-fluid "> 
      <div style={{display:"flex",alignItems:"center"}}>
           <div style={{fontSize:"20px"}}><b>Most Popular near you</b></div>
           <div style={{color:"grey",marginLeft:"10px"}}>Restaurents</div>
@@ -120,7 +162,7 @@ export default function BrowseByCuisine() {
                 style={{background:"white"}}
               >
                 <Tab label={
-                  <div>
+                  <div onClick={()=>handleClick(null)}>
                     <div style={{background:"#2B8282",height:"100px",width:"100px",borderRadius:"50%"}}><i class="fas fa-utensils" style={{fontSize:"40px",color:"white",position:"relative",top:"20px"}}></i>
                     </div>
                     <div>all restaurents</div>
@@ -165,44 +207,80 @@ export default function BrowseByCuisine() {
               </Tabs>
 
               <TabPanel value={value} index={0}>
-                {console.log("filterRatings",filterRatings)}
-                {!filterRatings ?
-                data !== [] ? (
-                    data.map((elem) => <RestaurantCard data={elem} />)
-                  ) : (
+                {filterRatings===0 || filterRatings===null?
+                data?data
+                .sort((a,b)=>(
+                    sort == "high" && Math.round(parseInt(b.votes))-Math.round(parseInt(a.votes)) 
+                  ))
+                  .sort((a,b)=>(
+                    sort == "low" && Math.round(parseInt(a.votes))-Math.round(parseInt(b.votes)) 
+                  ))
+                  .sort((a,b)=>(
+                    sort == "asc" ? b.restaurant_name>a.restaurant_name?-1
+                    :b.restaurant_name <a.restaurant_name :0
+                  ))
+                  .sort((a,b)=>(
+                    sort == "desc" ? a.restaurant_name>b.restaurant_name?-1
+                    :a.restaurant_name <b.restaurant_name:0
+                  ))
+                  .filter((item,index)=>index>=offset && index<=offset+ limit).map((elem) => <RestaurantCard data={elem} />)
+                   : (
                     <div className="col">
                       <p>No Data</p>
                     </div>
                   )
-                : displayData()}
+                : 
+                  displayData()}
+
+                 <Pagination count={Math.ceil(filterRatings===0 || filterRatings===null? data.length/limit : cusineArray.length/limit)} page={page} onChange={handlePageChange} size="large" variant="outlined" color="primary"
+                        style={{ display: "inline-block",position:"absolute",left:"32%",bottom:"-10%"}} />
+
             </TabPanel>
             <TabPanel value={value} index={1} >
                   
                  {displayData()}
+                 <Pagination count={Math.ceil(cusineArray.length/limit)} page={page} onChange={handlePageChange} size="large" variant="outlined" color="primary"
+                        style={{ display: "inline-block",position:"absolute",left:"32%",bottom:"-10%" }} />
             </TabPanel>
             <TabPanel value={value} index={2} >
                  {displayData()}
+                 <Pagination count={Math.ceil(cusineArray.length/limit)} page={page} onChange={handlePageChange} size="large" variant="outlined" color="primary"
+                        style={{ display: "inline-block",position:"absolute",left:"32%",bottom:"-10%" }} />
             </TabPanel>
             <TabPanel value={value} index={3} >
                  {displayData()}
+                 <Pagination count={Math.ceil(cusineArray.length/limit)} page={page} onChange={handlePageChange} size="large" variant="outlined" color="primary"
+                        style={{ display: "inline-block",position:"absolute",left:"32%",bottom:"-10%" }} />
             </TabPanel>
             <TabPanel value={value} index={4} >
                  {displayData()}
+                 <Pagination count={Math.ceil(cusineArray.length/limit)} page={page} onChange={handlePageChange} size="large" variant="outlined" color="primary"
+                        style={{ display: "inline-block",position:"absolute",left:"32%",bottom:"-10%" }} />
             </TabPanel>
             <TabPanel value={value} index={5} >
                  {displayData()}
+                 <Pagination count={Math.ceil(cusineArray.length/limit)} page={page} onChange={handlePageChange} size="large" variant="outlined" color="primary"
+                        style={{ display: "inline-block",position:"absolute",left:"32%",bottom:"-10%" }} />
             </TabPanel>
             <TabPanel value={value} index={6} >
                  {displayData()}
+                 <Pagination count={Math.ceil(cusineArray.length/limit)} page={page} onChange={handlePageChange} size="large" variant="outlined" color="primary"
+                        style={{ display: "inline-block",position:"absolute",left:"32%",bottom:"-10%" }} />
             </TabPanel>
             <TabPanel value={value} index={7} >
                  {displayData()}
+                 <Pagination count={Math.ceil(cusineArray.length/limit)} page={page} onChange={handlePageChange} size="large" variant="outlined" color="primary"
+                        style={{ display: "inline-block",position:"absolute",left:"32%",bottom:"-10%" }} />
             </TabPanel>
             <TabPanel value={value} index={8} >
                  {displayData()}
+                 <Pagination count={Math.ceil(cusineArray.length/limit)} page={page} onChange={handlePageChange} size="large" variant="outlined" color="primary"
+                        style={{ display: "inline-block",position:"absolute",left:"32%",bottom:"-10%" }} />
             </TabPanel>
             <TabPanel value={value} index={9} >
                  {displayData()}
+                 <Pagination count={Math.ceil(cusineArray.length/limit)} page={page} onChange={handlePageChange} size="large" variant="outlined" color="primary"
+                        style={{ display: "inline-block",position:"absolute",left:"32%",bottom:"-10%" }} />
             </TabPanel>
           </div>
      </div>

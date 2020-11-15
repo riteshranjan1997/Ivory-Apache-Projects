@@ -8,7 +8,6 @@ const initState = {
 
 
 const locationReducer = ( state = initState , { type , payload }) =>{
-    console.log(payload)
     switch( type ){
         case GIO_LOCATION_REQUEST :
             return {
@@ -16,9 +15,9 @@ const locationReducer = ( state = initState , { type , payload }) =>{
                 isLoading : true,
                 islocationError :false
             }
-         case GIO_LOCATION_SUCCESS :       
-            console.log(payload)     
+         case GIO_LOCATION_SUCCESS :          
              return {
+                 ...state,
                 isLoading : false,
                 coordinates:payload,
                 islocationError :false

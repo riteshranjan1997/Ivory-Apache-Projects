@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import RestaurantCard from "./RestaurantCard";
 import { makeStyles } from "@material-ui/core/styles";
 import Pagination from '@material-ui/lab/Pagination';
-
+import SortingData from '../common/SortingData'
 import FreeDelivery from "../SigninLandingPage/FreeDelivary";
 import BrowseByCuisine from "../common/BrowseByCuisine";
 
@@ -38,20 +38,14 @@ export default function RestaurantCardDiv(props) {
       </div>
       <div className="row">
         <div className="col">
+            <SortingData/>
+        </div>
+      </div> 
+      <div className="row">
+        <div className="col">
           <BrowseByCuisine />
         </div>
       </div>
-
-     
-
-      <div className="row mt-4">
-        <div className="col" style={{ margin: "0% 28%", textAlign: "center" }}>
-        <Pagination count={10} variant="outlined" shape="rounded" onChange={handlePageChange} />
-          <span>
-            Page {activePage + " "} of {" " + data.totalpage}
-          </span>
-        </div>
-      </div>
-    </>
+     </>
   );
 }

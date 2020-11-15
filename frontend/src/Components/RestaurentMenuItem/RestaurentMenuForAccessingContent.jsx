@@ -34,6 +34,13 @@ function TabPanel(props) {
     value: PropTypes.any.isRequired,
   };
 
+  function a11yProps(index) {
+    return {
+      id: `scrollable-prevent-tab-${index}`,
+      'aria-controls': `scrollable-prevent-tabpanel-${index}`,
+    };
+  }
+
 const AntTabs = withStyles({
     root: {   
         position:"relative",
@@ -110,9 +117,9 @@ function RestaurentMenuForAccessingContent(){
     <div className={classes.root}>
         <div className={classes.demo1}>
             <AntTabs value={value} onChange={handleChange} aria-label="ant example">
-                <AntTab label="Menu" />
-                <AntTab label="About" />
-                <AntTab label="Review" />
+                <AntTab label="Menu" {...a11yProps(0)}/>
+                <AntTab label="About" {...a11yProps(1)} />
+                <AntTab label="Review" {...a11yProps(2)}/>
             </AntTabs>
             <Typography className={classes.padding} />
             <TabPanel value={value} index={0}>

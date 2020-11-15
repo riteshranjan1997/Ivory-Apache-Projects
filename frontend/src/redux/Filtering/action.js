@@ -1,6 +1,6 @@
 
 export const FILTER_STAR_RATINGS=" FILTER_STAR_RATINGS"
-export const DELETE_CART="DELETE_CART"
+export const SORT_DATA_BY ="SORT_DATA_BY"
 
 
 export const filterStarRatings=(payload)=>({  
@@ -8,8 +8,8 @@ export const filterStarRatings=(payload)=>({
     payload
 })
 
-export const deleteCart=(payload)=>({
-   type:DELETE_CART,
+export const sortDataBy=(payload)=>({
+   type:SORT_DATA_BY,
     payload
 })
 

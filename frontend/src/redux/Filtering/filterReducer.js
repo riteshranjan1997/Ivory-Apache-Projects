@@ -1,23 +1,23 @@
-import {FILTER_STAR_RATINGS,DELETE_CART} from './action'
+import {FILTER_STAR_RATINGS,SORT_DATA_BY} from './action'
 // import {saveData} from '../Login/localstorage'
 
 const initState=({    
-   star:0
+   star:0,
+   sort:""
 })
 
 
-const cartReducer=(state=initState,{type,payload})=>{
-    console.log(payload)
+const filterReducer=(state=initState,{type,payload})=>{
     switch(type){
         case FILTER_STAR_RATINGS:
             return{
+                ...state,
                 star:payload
             }
-        case DELETE_CART:
+        case SORT_DATA_BY:
             return{
                 ...state,
-                cart:state.cart.filter((item)=>item.id!==payload),
-                total:state.cart.filter((item)=>item.id!==payload).length
+                sort:payload
             }
         
         default:
@@ -27,4 +27,4 @@ const cartReducer=(state=initState,{type,payload})=>{
     }
 }
 
-export default cartReducer
+export default filterReducer

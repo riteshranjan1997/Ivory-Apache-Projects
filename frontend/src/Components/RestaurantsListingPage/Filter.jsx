@@ -104,8 +104,8 @@ function Filter() {
   return (
     <div
       className={`col-12 border border-right  ${classes.root}`}
-      style={{ fontFamily: "Poppins" ,marginLeft:"-20px",height:"2000px"}}
-    >
+      style={{ fontFamily: "Poppins" ,marginLeft:"-20px",height:"1300px"}}
+    >\
       <div className="row">
         <div className="col-12">
           <div
@@ -288,7 +288,7 @@ function Filter() {
                     <StyledRating                        
                         name="hover-feedback"
                         value={value}
-                        precision={0.5}
+                        precision={1}
                         onChange={(event, newValue) => {
                           setValue(newValue);
                         }}
