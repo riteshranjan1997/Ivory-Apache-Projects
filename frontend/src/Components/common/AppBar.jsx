@@ -25,6 +25,7 @@ import { useTheme } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
 import { deleteCart } from "../../redux/AddToCart/action";
 import { deleteRequest } from "../../redux/cart/actions";
+import {useState} from "react"
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -136,6 +137,9 @@ export default function Bar(props) {
   const cart = useSelector(state=>state.cart.cart)
   const cart_items = useSelector(state=>state.auth.user_data.cart)
 
+  let auth = useSelector(state=>state.auth)
+  let auth_cart = useSelector(state=>state.auth.user_data.cart)
+ 
   const access_token = useSelector((state)=>state.auth.access_token)
 
 
@@ -500,7 +504,7 @@ export default function Bar(props) {
                           color:"#2B8282",
                         }}
                       >
-                        <div style={{display:"flex",alignItems:"center",marginTop:"-10px"}}>
+                        <div style={{display:"flex",alignItems:"center",marginTop:"-5px"}}>
                           <div><Avatar style={{ backgroundColor: "#2B8282",height:"30px",width:"30px"}}>
                             {userData.first_name[0]}
                           </Avatar></div>
@@ -647,6 +651,7 @@ export default function Bar(props) {
                           }}
                         >
                         <div className="mb-2"><b>Your Order</b></div>
+                        {/* { cart.length>0 ? :auth_cart.length > 0? : } */}
                           {cart && cart.map((item)=>(
                          <div>                           
                            <div style={{display:"flex",fontSize:"14px",justifyContent:"space-between"}}>                             

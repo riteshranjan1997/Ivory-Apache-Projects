@@ -9,12 +9,12 @@ import {
     LOGOUT_USER, REMOVE_ERROR,
 } from "./actionType"
 
-const savedUser = JSON.parse(localStorage.getItem('savedUser')) || {};
+const savedUser = JSON.parse(localStorage.getItem('savedUser')) || {cart:[]};
 const savedAccessToken = JSON.parse(localStorage.getItem('savedAccessToken')) || "";
 
 export const initState = {
     isLoading: false,
-    user_data: savedUser || {},
+    user_data: savedUser || {cart:[]},
     message: "",
     isError: false,
     isAuth: savedAccessToken !== "" ? true : false,

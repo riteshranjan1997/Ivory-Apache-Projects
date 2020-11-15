@@ -16,7 +16,7 @@ export default function RestaurantListingPage() {
   const dispatch = useDispatch();
   const userGioLocation = useSelector((state)=>state.app.userGioLocation)
   const userAddress = useSelector((state) => state.app.userAddress);
-
+  console.log(userAddress)
   const fetchRestaurantData =  () => {
     if (userAddress === "") {
      dispatch(UpdateUserAppAddress("Chennai, Tamil Nadu, India"));

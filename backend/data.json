@@ -97,24 +97,46 @@
       "type": "Point",
       "coordinates": [13.02239444, 80.24243889]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "77%",
+    "delivery_was_on_time": "91%",
+    "order_was_correct": "85%",
+    "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Katie",
+        "rating": "5",
+        "no_reviews": "1",
+        "review": "Sushi was good, the fried rice was delicious. Would recommend.",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Joe",
+        "rating": "4.5",
+        "no_reviews": "2",
+        "review": "Good sushi at a great price",
+        "ordered": "Sushi",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Jennifer",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "It's fine. May or may not order from there again.",
+        "ordered": "Hambuger",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Maria",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "Sushi portion was really small for $9. The pot stickers were soggy. The entree was good and hot.",
+        "ordered": "Italian Pasta",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1002",
@@ -199,24 +221,46 @@
       "type": "Point",
       "coordinates": [12.981615, 80.231598]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "78%",
+    "delivery_was_on_time": "91%",
+    "order_was_correct": "65%",
+    "timings": [{ "mon-thu": { "pickup": "9PM to 9AM", "delivery": "9AM to 9PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Nikol",
+        "rating": "1",
+        "no_reviews": "1",
+        "review": "They delivered to the wrong address and left at front desk.",
+        "ordered": "Soya Malai Tikka",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Reema Das",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "No doubt it is one of the best biryani",
+        "ordered": "Makai Palak",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Jennifer",
+        "rating": "4",
+        "no_reviews": "4",
+        "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
+        "ordered": "Pizza",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Emily",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": "Great food but really late delivery :,(",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1003",
@@ -302,24 +346,46 @@
       "type": "Point",
       "coordinates": [12.975996, 80.221898]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "72%",
+    "delivery_was_on_time": "78%",
+    "order_was_correct": "66%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Hari",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Food is absolutely brilliant.",
+        "ordered": "Biryani",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Brik",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Neharika Jindal",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "The crackling spinach chicken /paneer is my favorite dish here.",
+        "ordered": "paneer butter masala",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Sushmita",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": " amazing cuisines",
+        "ordered": "Malai Palak",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1004",
@@ -420,24 +486,46 @@
       "type": "Point",
       "coordinates": [28.6337562, 77.2243937]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "71%",
+    "delivery_was_on_time": "91%",
+    "order_was_correct": "89%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":[
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Prabhat Thakur",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Rice bowl was good.",
+        "ordered": "Biryani",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Vikram Katta",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": "food is average",
+        "ordered": "Italian Pasta",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Amruthaa Prakash",
+        "rating": "4",
+        "no_reviews": "3",
+        "review": " You have the best ROLLS here.",
+        "ordered": "Cake",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Vivek Krishnan",
+        "rating": "3",
+        "no_reviews": "3",
+        "review": " Great delicious food , healthy and yummy.",
+        "ordered": "Panneer Butter Masala ",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1005",
@@ -539,24 +627,46 @@
       "type": "Point",
       "coordinates": [28.5173033, 77.200089]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "71%",
+    "delivery_was_on_time": "81%",
+    "order_was_correct": "75%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":[
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Rupak",
+        "rating": "1",
+        "no_reviews": "1",
+        "review": "I have not satisfied with my order, food was not cooked properly",
+        "ordered": "Sushi",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "HippeHunk",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": "I would rate the best dosa",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Amruthaa Prakash",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": " You have the best ROLLS here.",
+        "ordered": "Pasta",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Foodie_rockie",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": " tasty south Indian food",
+        "ordered": "Masala Dosa",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1006",
@@ -642,24 +752,46 @@
       "type": "Point",
       "coordinates": [28.53921168, 77.36621249]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "75%",
+    "order_was_correct": "91%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":[
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Katie",
+        "rating": "5",
+        "no_reviews": "2",
+        "review": "Sushi was good, the fried rice was delicious. Would recommend.",
+        "ordered": "Pizza",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Joe",
+        "rating": "4.5",
+        "no_reviews": "2",
+        "review": "Good sushi at a great price",
+        "ordered": "Pizza",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Jennifer",
+        "rating": "3",
+        "no_reviews": "4",
+        "review": "It's fine. May or may not order from there again.",
+        "ordered": "Pasta",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Maria",
+        "rating": "3",
+        "no_reviews": "4",
+        "review": "Sushi portion was really small for $9. The pot stickers were soggy. The entree was good and hot.",
+        "ordered": "Cake",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1007",
@@ -744,24 +876,46 @@
       "type": "Point",
       "coordinates": [28.5982082, 77.3441147]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Nikol",
+        "rating": "1",
+        "no_reviews": "1",
+        "review": "They delivered to the wrong address and left at front desk.",
+        "ordered": "Biryani",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Reema Das",
+        "rating": "4",
+        "no_reviews": "2",
+        "review": "No doubt it is one of the best biryani",
+        "ordered": "Pasta",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Jennifer",
+        "rating": "4",
+        "no_reviews": "2",
+        "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
+        "ordered": "Pizza",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Emily",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "Great food but really late delivery :,(",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1008",
@@ -862,24 +1016,46 @@
       "type": "Point",
       "coordinates": [0, 0]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Hari",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Food is absolutely brilliant.",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Brik",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
+        "ordered": "sushi",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Neharika Jindal",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "The crackling spinach chicken /paneer is my favorite dish here.",
+        "ordered": "biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Sushmita",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": " amazing cuisines",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1009",
@@ -1012,24 +1188,46 @@
       "type": "Point",
       "coordinates": [28.5801189, 77.3153216]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Prabhat Thakur",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Rice bowl was good.",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Vikram Katta",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "food is average",
+        "ordered": "pasta",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Amruthaa Prakash",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": " You have the best ROLLS here.",
+        "ordered": "cake",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Vivek Krishnan",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": " Great delicious food , healthy and yummy.",
+        "ordered": "burger",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10010",
@@ -1162,24 +1360,46 @@
       "type": "Point",
       "coordinates": [28.57088023, 77.32570108]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "91%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Rupak",
+        "rating": "1",
+        "no_reviews": "1",
+        "review": "I have not satisfied with my order, food was not cooked properly",
+        "ordered": "Biryani",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "HippeHunk",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "I would rate the best dosa",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Amruthaa Prakash",
+        "rating": "4",
+        "no_reviews": "2",
+        "review": " You have the best ROLLS here.",
+        "ordered": "Pasta",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Foodie_rockie",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": " tasty south Indian food",
+        "ordered": "Pasta",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10011",
@@ -1264,24 +1484,46 @@
       "type": "Point",
       "coordinates": [28.5837833, 77.3143909]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":[
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Katie",
+        "rating": "5",
+        "no_reviews": "1",
+        "review": "Sushi was good, the fried rice was delicious. Would recommend.",
+        "ordered": "Pasta",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Joe",
+        "rating": "4.5",
+        "no_reviews": "1",
+        "review": "Good sushi at a great price",
+        "ordered": "Pizza",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Jennifer",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": "It's fine. May or may not order from there again.",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Maria",
+        "rating": "3",
+        "no_reviews": "3",
+        "review": "Sushi portion was really small for $9. The pot stickers were soggy. The entree was good and hot.",
+        "ordered": "Pizza",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10012",
@@ -1367,24 +1609,46 @@
       "type": "Point",
       "coordinates": [28.5822486, 77.3135127]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "71%",
+    "delivery_was_on_time": "81%",
+    "order_was_correct": "91%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Nikol",
+        "rating": "1",
+        "no_reviews": "1",
+        "review": "They delivered to the wrong address and left at front desk.",
+        "ordered": "Pasta",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Reema Das",
+        "rating": "4",
+        "no_reviews": "2",
+        "review": "No doubt it is one of the best biryani",
+        "ordered": "Biryni",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Jennifer",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
+        "ordered": "Cake",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Emily",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "Great food but really late delivery :,(",
+        "ordered": "Pasta",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10013",
@@ -1470,24 +1734,46 @@
       "type": "Point",
       "coordinates": [28.5838546, 77.3332052]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":  [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Hari",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Food is absolutely brilliant.",
+        "ordered": "pasta",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Brik",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
+        "ordered": "biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Neharika Jindal",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "The crackling spinach chicken /paneer is my favorite dish here.",
+        "ordered": "cake",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Sushmita",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": " amazing cuisines",
+        "ordered": "Pasta",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10014",
@@ -1572,24 +1858,46 @@
       "type": "Point",
       "coordinates": [25.617912, 85.148632]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Prabhat Thakur",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Rice bowl was good.",
+        "ordered": "Rice Bowl",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Vikram Katta",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "food is average",
+        "ordered": "Pizza",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Amruthaa Prakash",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": " You have the best ROLLS here.",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Vivek Krishnan",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": " Great delicious food , healthy and yummy.",
+        "ordered": "cake",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10015",
@@ -1787,24 +2095,46 @@
       "type": "Point",
       "coordinates": [25.615025, 85.142028]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":  [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Hari",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Food is absolutely brilliant.",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Brik",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Neharika Jindal",
+        "rating": "4",
+        "no_reviews": "2",
+        "review": "The crackling spinach chicken /paneer is my favorite dish here.",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Sushmita",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": " amazing cuisines",
+        "ordered": "pasta",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10016",
@@ -1890,24 +2220,46 @@
       "type": "Point",
       "coordinates": [25.60662778, 85.074775]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Nikol",
+        "rating": "1",
+        "no_reviews": "1",
+        "review": "They delivered to the wrong address and left at front desk.",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Reema Das",
+        "rating": "4",
+        "no_reviews": "2",
+        "review": "No doubt it is one of the best biryani",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Jennifer",
+        "rating": "4",
+        "no_reviews": "3",
+        "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Emily",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "Great food but really late delivery :,(",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10017",
@@ -1993,24 +2345,46 @@
       "type": "Point",
       "coordinates": [25.61355147, 85.08215654]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":  [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Prabhat Thakur",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Rice bowl was good.",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Vikram Katta",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": "food is average",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Amruthaa Prakash",
+        "rating": "4",
+        "no_reviews": "3",
+        "review": " You have the best ROLLS here.",
+        "ordered": "pasta",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Vivek Krishnan",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": " Great delicious food , healthy and yummy.",
+        "ordered": "cake",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10018",
@@ -2152,24 +2526,46 @@
       "type": "Point",
       "coordinates": [25.61583889, 85.14343889]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Rupak",
+        "rating": "1",
+        "no_reviews": "1",
+        "review": "I have not satisfied with my order, food was not cooked properly",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "HippeHunk",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": "I would rate the best dosa",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Amruthaa Prakash",
+        "rating": "4",
+        "no_reviews": "2",
+        "review": " You have the best ROLLS here.",
+        "ordered": "cake",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Foodie_rockie",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": " tasty south Indian food",
+        "ordered": "dosa",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10019",
@@ -2255,24 +2651,46 @@
       "type": "Point",
       "coordinates": [25.61552768, 85.1154613]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":[
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Nikol",
+        "rating": "1",
+        "no_reviews": "1",
+        "review": "They delivered to the wrong address and left at front desk.",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Reema Das",
+        "rating": "4",
+        "no_reviews": "2",
+        "review": "No doubt it is one of the best biryani",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Jennifer",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
+        "ordered": "pasta",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Emily",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "Great food but really late delivery :,(",
+        "ordered": "dosa",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10020",
@@ -2374,24 +2792,46 @@
       "type": "Point",
       "coordinates": [18.52001645, 73.83054703]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":  [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Hari",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Food is absolutely brilliant.",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Brik",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Neharika Jindal",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "The crackling spinach chicken /paneer is my favorite dish here.",
+        "ordered": "dosa",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Sushmita",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": " amazing cuisines",
+        "ordered": "puri",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10021",
@@ -2461,24 +2901,46 @@
       "type": "Point",
       "coordinates": [18.5624502, 73.9166191]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":  [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Prabhat Thakur",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Rice bowl was good.",
+        "ordered": "rice bowl",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Vikram Katta",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": "food is average",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Amruthaa Prakash",
+        "rating": "4",
+        "no_reviews": "2",
+        "review": " You have the best ROLLS here.",
+        "ordered": "pasta",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Vivek Krishnan",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": " Great delicious food , healthy and yummy.",
+        "ordered": "cake",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10022",
@@ -2580,24 +3042,46 @@
       "type": "Point",
       "coordinates": [18.5309626, 73.8289719]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
-      {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
-      },
-      {},
-      {}
-    ],
-    "tot_reviews": ""
+        {
+          "user_name": "Nikol",
+          "rating": "1",
+          "no_reviews": "1",
+          "review": "They delivered to the wrong address and left at front desk.",
+          "ordered": "Black Forest Cake",
+          "level": "Top Reviewer"
+        },
+        {
+          "user_name": "Reema Das",
+          "rating": "4",
+          "no_reviews": "2",
+          "review": "No doubt it is one of the best biryani",
+          "ordered": "Biryani",
+          "level": "Top Reviewer" 
+        },
+        {
+          "user_name": "Jennifer",
+          "rating": "4",
+          "no_reviews": "2",
+          "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
+          "ordered": "cake",
+          "level": "Top Reviewer" 
+        },
+        {
+          "user_name": "Emily",
+          "rating": "3",
+          "no_reviews": "2",
+          "review": "Great food but really late delivery :,(",
+          "ordered": "Black Forest Cake",
+          "level": "Top Reviewer" 
+        }
+      ],
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10023",
@@ -2683,24 +3167,46 @@
       "type": "Point",
       "coordinates": [0, 0]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":  [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Hari",
+        "rating": "4",
+        "no_reviews": "3",
+        "review": "Food is absolutely brilliant.",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Brik",
+        "rating": "3",
+        "no_reviews": "3",
+        "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Neharika Jindal",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "The crackling spinach chicken /paneer is my favorite dish here.",
+        "ordered": "non veg",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Sushmita",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": " amazing cuisines",
+        "ordered": "dosa",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10024",
@@ -2898,24 +3404,46 @@
       "type": "Point",
       "coordinates": [23.35780368, 85.32514606]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":  [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Prabhat Thakur",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Rice bowl was good.",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Vikram Katta",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "food is average",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Amruthaa Prakash",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": " You have the best ROLLS here.",
+        "ordered": "dosa",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Vivek Krishnan",
+        "rating": "3",
+        "no_reviews": "4",
+        "review": " Great delicious food , healthy and yummy.",
+        "ordered": "biryani",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10025",
@@ -3049,24 +3577,46 @@
       "type": "Point",
       "coordinates": [0, 0]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Rupak",
+        "rating": "1",
+        "no_reviews": "1",
+        "review": "I have not satisfied with my order, food was not cooked properly",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "HippeHunk",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "I would rate the best dosa",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Amruthaa Prakash",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": " You have the best ROLLS here.",
+        "ordered": "",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Foodie_rockie",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": " tasty south Indian food",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10026",
@@ -3264,24 +3814,46 @@
       "type": "Point",
       "coordinates": [23.37498889, 85.33548611]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":  [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Hari",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Food is absolutely brilliant.",
+        "ordered": "Idly",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Brik",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Neharika Jindal",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "The crackling spinach chicken /paneer is my favorite dish here.",
+        "ordered": "Dosa",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Sushmita",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": " amazing cuisines",
+        "ordered": "Puri",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10027",
@@ -3383,24 +3955,46 @@
       "type": "Point",
       "coordinates": [0, 0]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Nikol",
+        "rating": "1",
+        "no_reviews": "1",
+        "review": "They delivered to the wrong address and left at front desk.",
+        "ordered": "Cake",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Reema Das",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "No doubt it is one of the best biryani",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Jennifer",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
+        "ordered": "Garlic Bread",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Emily",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "Great food but really late delivery :,(",
+        "ordered": "Cake",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10028",
@@ -3486,24 +4080,46 @@
       "type": "Point",
       "coordinates": [23.33301667, 85.3172]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Rupak",
+        "rating": "1",
+        "no_reviews": "3",
+        "review": "I have not satisfied with my order, food was not cooked properly",
+        "ordered": "Burger",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "HippeHunk",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "I would rate the best dosa",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Amruthaa Prakash",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": " You have the best ROLLS here.",
+        "ordered": "Pizza",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Foodie_rockie",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": " tasty south Indian food",
+        "ordered": "Pasta",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "10029",
@@ -3701,24 +4317,46 @@
       "type": "Point",
       "coordinates": [23.39925, 85.39046389]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Hari",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Food is absolutely brilliant.",
+        "ordered": "Noodles",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Brik",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Neharika Jindal",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "The crackling spinach chicken /paneer is my favorite dish here.",
+        "ordered": "Cake",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Sushmita",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": " amazing cuisines",
+        "ordered": "Pasta",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1050",
@@ -3818,24 +4456,46 @@
       "type": "Point",
       "coordinates": [12.899661, 80.1587772]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":[
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Nikol",
+        "rating": "1",
+        "no_reviews": "1",
+        "review": "They delivered to the wrong address and left at front desk.",
+        "ordered": "Garlic Bread",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Reema Das",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "No doubt it is one of the best biryani",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Jennifer",
+        "rating": "4",
+        "no_reviews": "3",
+        "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
+        "ordered": "Pizza",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Emily",
+        "rating": "3",
+        "no_reviews": "3",
+        "review": "Great food but really late delivery :,(",
+        "ordered": "Pasta",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1051",
@@ -3920,24 +4580,46 @@
       "type": "Point",
       "coordinates": [12.899661, 80.1587772]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":  [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Prabhat Thakur",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Rice bowl was good.",
+        "ordered": "Rice bowl",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Vikram Katta",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": "food is average",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Amruthaa Prakash",
+        "rating": "4",
+        "no_reviews": "3",
+        "review": " You have the best ROLLS here.",
+        "ordered": "Pasta",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Vivek Krishnan",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": " Great delicious food , healthy and yummy.",
+        "ordered": "noodles",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1052",
@@ -4023,24 +4705,46 @@
       "type": "Point",
       "coordinates": [13.034777, 80.167762]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":  [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Hari",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Food is absolutely brilliant.",
+        "ordered": "Biryani",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Brik",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Neharika Jindal",
+        "rating": "4",
+        "no_reviews": "3",
+        "review": "The crackling spinach chicken /paneer is my favorite dish here.",
+        "ordered": "dosa",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Sushmita",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": " amazing cuisines",
+        "ordered": "puri",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1053",
@@ -4141,24 +4845,46 @@
       "type": "Point",
       "coordinates": [13.00863, 80.1936813]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":  [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Prabhat Thakur",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Rice bowl was good.",
+        "ordered": "Biryani",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Vikram Katta",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": "food is average",
+        "ordered": "pasta",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Amruthaa Prakash",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": " You have the best ROLLS here.",
+        "ordered": "dosa",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Vivek Krishnan",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": " Great delicious food , healthy and yummy.",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1054",
@@ -4260,24 +4986,46 @@
       "type": "Point",
       "coordinates": [13.0071757, 80.1943752]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":[
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Rupak",
+        "rating": "1",
+        "no_reviews": "1",
+        "review": "I have not satisfied with my order, food was not cooked properly",
+        "ordered": "Cake",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "HippeHunk",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": "I would rate the best dosa",
+        "ordered": "Burger",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Amruthaa Prakash",
+        "rating": "4",
+        "no_reviews": "2",
+        "review": " You have the best ROLLS here.",
+        "ordered": "pasta",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Foodie_rockie",
+        "rating": "3",
+        "no_reviews": "3",
+        "review": " tasty south Indian food",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1055",
@@ -4379,24 +5127,46 @@
       "type": "Point",
       "coordinates": [13.0086286, 80.1953727]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Nikol",
+        "rating": "1",
+        "no_reviews": "2",
+        "review": "They delivered to the wrong address and left at front desk.",
+        "ordered": "cake",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Reema Das",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "No doubt it is one of the best biryani",
+        "ordered": "pasta",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Jennifer",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
+        "ordered": "pizza",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Emily",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "Great food but really late delivery :,(",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1056",
@@ -4482,24 +5252,46 @@
       "type": "Point",
       "coordinates": [13.043338, 80.1822128]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":  [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Hari",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Food is absolutely brilliant.",
+        "ordered": "burger",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Brik",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Neharika Jindal",
+        "rating": "4",
+        "no_reviews": "2",
+        "review": "The crackling spinach chicken /paneer is my favorite dish here.",
+        "ordered": "pasta",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Sushmita",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": " amazing cuisines",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1066",
@@ -4585,24 +5377,46 @@
       "type": "Point",
       "coordinates": [13.00863, 80.1936813]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
+        "user_name": "Nikol",
+        "rating": "1",
+        "no_reviews": "biryani",
+        "review": "They delivered to the wrong address and left at front desk.",
         "ordered": "",
-        "level": ""
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Reema Das",
+        "rating": "4",
+        "no_reviews": "3",
+        "review": "No doubt it is one of the best biryani",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Jennifer",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
+        "ordered": "pasta",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Emily",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "Great food but really late delivery :,(",
+        "ordered": "cake",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1097",
@@ -4687,24 +5501,46 @@
       "type": "Point",
       "coordinates": [13.0170994, 80.203035]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
-      { 
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+    "reviews":  [
+      {
+        "user_name": "Prabhat Thakur",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Rice bowl was good.",
+        "ordered": "panneer",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Vikram Katta",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": "food is average",
+        "ordered": "roti",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Amruthaa Prakash",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": " You have the best ROLLS here.",
+        "ordered": "dosa",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Vivek Krishnan",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": " Great delicious food , healthy and yummy.",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1098",
@@ -4805,24 +5641,46 @@
       "type": "Point",
       "coordinates": [0, 0]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
-    "reviews": [
+    "reviews":  [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Hari",
+        "rating": "4",
+        "no_reviews": "1",
+        "review": "Food is absolutely brilliant.",
+        "ordered": "cake",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Brik",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
+        "ordered": "pasta",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Neharika Jindal",
+        "rating": "4",
+        "no_reviews": "2",
+        "review": "The crackling spinach chicken /paneer is my favorite dish here.",
+        "ordered": "burger",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Sushmita",
+        "rating": "3",
+        "no_reviews": "1",
+        "review": " amazing cuisines",
+        "ordered": "pasta",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "1099",
@@ -4955,24 +5813,46 @@
       "type": "Point",
       "coordinates": [13.0700327, 80.2683362]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
       {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
+        "user_name": "Nikol",
+        "rating": "1",
+        "no_reviews": "1",
+        "review": "They delivered to the wrong address and left at front desk.",
+        "ordered": "pasta",
+        "level": "Top Reviewer"
       },
-      {},
-      {}
+      {
+        "user_name": "Reema Das",
+        "rating": "4",
+        "no_reviews": "2",
+        "review": "No doubt it is one of the best biryani",
+        "ordered": "biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Jennifer",
+        "rating": "4",
+        "no_reviews": "2",
+        "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
+        "ordered": "Biryani",
+        "level": "Top Reviewer" 
+      },
+      {
+        "user_name": "Emily",
+        "rating": "3",
+        "no_reviews": "3",
+        "review": "Great food but really late delivery :,(",
+        "ordered": "cake",
+        "level": "Top Reviewer" 
+      }
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   },
   {
     "restaurant_id": "100101",
@@ -5105,24 +5985,48 @@
       "type": "Point",
       "coordinates": [12.8158874, 80.0189872]
     },
-    "food_was_good": "in percentage",
-    "delivery_was_on_time": "in percentage",
-    "order_was_correct": "in percentage",
-    "timings": [{ "mon-thu": { "pickup": "", "delivery": "" } }],
+    "food_was_good": "81%",
+    "delivery_was_on_time": "76%",
+    "order_was_correct": "81%",
+   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
     "delivery": "time",
     "reviews": [
-      {
-        "user_name": "",
-        "rating": "",
-        "no_reviews": "",
-        "review": "",
-        "ordered": "",
-        "level": ""
-      },
-      {},
-      {}
+      [
+        {
+          "user_name": "Nikol",
+          "rating": "1",
+          "no_reviews": "1",
+          "review": "They delivered to the wrong address and left at front desk.",
+          "ordered": "panneer",
+          "level": "Top Reviewer"
+        },
+        {
+          "user_name": "Reema Das",
+          "rating": "4",
+          "no_reviews": "1",
+          "review": "No doubt it is one of the best biryani",
+          "ordered": "Biryani",
+          "level": "Top Reviewer" 
+        },
+        {
+          "user_name": "Jennifer",
+          "rating": "4",
+          "no_reviews": "1",
+          "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
+          "ordered": "pasta",
+          "level": "Top Reviewer" 
+        },
+        {
+          "user_name": "Emily",
+          "rating": "3",
+          "no_reviews": "2",
+          "review": "Great food but really late delivery :,(",
+          "ordered": "Biryani",
+          "level": "Top Reviewer" 
+        }
+      ]
     ],
-    "tot_reviews": ""
+    "tot_reviews": "4"
   }
   
 ]

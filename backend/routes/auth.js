@@ -118,7 +118,7 @@ router.post("/googleLogin", (req, res) => {
         User.findOne({ email }).then(async (userData) => {
           if (userData) {
             const name = userData.name;
-            const user = { id: userData["_id"], name: name };
+            const user = { id: userData["_id"], first_name: name,email:email };
             const accessToken = jwt.sign(
               user,
               process.env.SECRET_KEY_TO_ACCESS
@@ -141,13 +141,13 @@ router.post("/googleLogin", (req, res) => {
               });
               return;
             }
-
+            console.log("in auth.js",name,email,hashedPassword)
             const user = new User({
-              name: name,
+              first_name: name,
               email: email,
               password: hashedPassword,
             });
-
+            console.log("in google auth new user is ", user)
             try {
               const savedUser = await user.save();
               const first_name = user.first_name;

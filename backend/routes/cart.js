@@ -11,6 +11,9 @@ const router = express.Router()
 
 router.post("/addToCart", authenticateToken, async (req, res) => {
   const { email } = req.user;
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
+  console.log("in adding to cart email is",email)
   try {
     const user = await User.findOne({ email });
     console.log("user is ",user)
@@ -22,7 +25,7 @@ router.post("/addToCart", authenticateToken, async (req, res) => {
     const price = menu_item.price*quantity
     user.cart = [...user.cart, { restaurant_name:restaurant.restaurant_name,restaurant_id, item_id,item_name:menu_item.name, quantity,price}];
     const savedUser = await user.save();
-    res.status(200).json({ error: false, data: savedUser });
+    res.status(200).json({ error: false, userData: savedUser,accessToken:token });
   } catch (err) {
     console.log("error in adding to cart",err)
     res.status(400).json({ error: true, message: err });
@@ -31,6 +34,8 @@ router.post("/addToCart", authenticateToken, async (req, res) => {
 
 router.post("/deleteFromCart", authenticateToken, async (req, res) => {
   const { email } = req.user;
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
   try {
     const user = await User.findOne({ email });
     const { restaurant_id, item_id, quantity } = req.body;
@@ -46,7 +51,7 @@ router.post("/deleteFromCart", authenticateToken, async (req, res) => {
       }
     }
     const savedUser = await user.save();
-    res.status(200).json({ error: false, data: savedUser });
+    res.status(200).json({ error: false, userData: savedUser,accessToken:token });
   } catch (err) {
     res.status(400).json({ error: true, message: err });
   }
@@ -105,6 +110,8 @@ router.get("/checkOut", authenticateToken, async (req, res) => {
 router.post("/saveOrders",authenticateToken,async (req,res)=>{
   console.log("in saveOrder")
   const {email} = req.user
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
   let user
   try{
      user = await User.findOne({email:email})
@@ -112,7 +119,7 @@ router.post("/saveOrders",authenticateToken,async (req,res)=>{
      console.log("in saveOrder",user.past_orders)
      user.cart = []
      const savedUser = await user.save()
-     return res.status(200).json({error:false,data:savedUser})
+     return res.status(200).json({error:false,userData:savedUser,accessToken:token})
   }
   catch(err){
     return res.status(500).json({error:true,message:err})

@@ -7,123 +7,94 @@ import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import MenuPage from './MenuPage';
 import AboutPage from './AboutPage'
+import ReviewPage from './ReviewPage';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  overrides:{
+    MuiTab:{
+      text:{
+        minWidth:"50px",
+        textAlign:"left"
+      }
+    }
+  }
+})
 
 function TabPanel(props) {
-    const { children, value, index, ...other } = props;
-  
-    return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`scrollable-force-tabpanel-${index}`}
-        aria-labelledby={`scrollable-force-tab-${index}`}
-        {...other}
-      >
-        {value === index && (
-          <Box>
-            <Typography><div style={{position:"relative",top:"-50px"}}>{children}</div><hr style={{position:"relative",top:"-50px"}}/></Typography>
-          </Box>
-        )}
-      </div>
-    );
-  }
+  const { children, value, index, ...other } = props;
 
-  TabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.any.isRequired,
-    value: PropTypes.any.isRequired,
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`scrollable-auto-tabpanel-${index}`}
+      aria-labelledby={`scrollable-auto-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `scrollable-auto-tab-${index}`,
+    'aria-controls': `scrollable-auto-tabpanel-${index}`,
   };
+}
 
-const AntTabs = withStyles({
-    root: {   
-        position:"relative",
-        top:"-100px",
-      borderBottom: '1px solid #e8e8e8',
-    },
-    indicator: {
-      backgroundColor: '#1890ff',
-    },
-  })(Tabs);
-
-  const AntTab = withStyles((theme) => ({
-    root: {
-      textTransform: 'none',
-      fontWeight: "bolder",
-    //   marginRight: theme.spacing(1),
-      fontFamily: [
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-      ].join(','),
-      '&:hover': {
-        color: 'black',
-        opacity: 1,
-      },
-      '&$selected': {
-        color: 'black',
-        fontWeight: theme.typography.fontWeightMedium,
-      },
-      '&:focus': {
-        color: '#40a9ff',
-      },
-    },
-    selected: {},
-  }))((props) => <Tab disableRipple {...props} />);
-
-
-
-
-  const useStyles = makeStyles((theme) => ({
-    root: {
-    //   flexGrow: 1,
-  
-    },
-    padding: {
-        
-      padding: theme.spacing(0),
-    },
-    demo1: {        
-      backgroundColor: theme.palette.background.paper,
-      // marginLeft:"100px",
-    },
-   
-  }));
-
-  
+const useStyles = makeStyles((theme) => ({
+  root: { 
+    backgroundColor: theme.palette.background.paper,
+    minWidth:"50px",
+    marginTop:"-100px",
+    marginLeft:"50px", 
+  },
+}));
 
 function RestaurentMenuForAccessingContent(){
-    const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);  
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  console.log(value)
    return(
     <div className={classes.root}>
         <div className={classes.demo1}>
-            <AntTabs value={value} onChange={handleChange} aria-label="ant example">
-                <AntTab label="Menu" />
-                <AntTab label="About" />
-                <AntTab label="Review" />
-            </AntTabs>
+        
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            
+          >
+               <Tab label={<div style={{textTransform:"capitalize"}} wrapped={true} >Menu</div>} {...a11yProps(0)} styles={{minWidth:"50%"}}/> 
+              <Tab label={<div style={{textTransform:"capitalize"}}>About</div>}  {...a11yProps(1)} />
+              <Tab label={<div style={{textTransform:"capitalize"}}>Review</div>}  {...a11yProps(2)}/>
+              
+          </Tabs>
+        
             <Typography className={classes.padding} />
             <TabPanel value={value} index={0}>
                 <MenuPage/>
             </TabPanel>
-            <TabPanel value={value} index={1}>
-                Welcome to About page
+            <TabPanel value={value} index={1}>               
                 <AboutPage/>
             </TabPanel>
             <TabPanel value={value} index={2}>
-                Welcome To  Review page
+                <ReviewPage/>
             </TabPanel>
            
         </div>

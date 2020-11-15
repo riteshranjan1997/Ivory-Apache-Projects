@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import { useSelector } from 'react-redux';
+import OrderCard from "../OrderCard"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -63,6 +65,9 @@ const useStyles = makeStyles((theme) => ({
 }))
 function PastOrders(){
     const classes = useStyles()
+    const userOrders = useSelector((state)=>state.auth.user_data.past_orders)
+    // console.timeLog(user)
+    console.log("userOrders total orders",userOrders)
     return(
         <div>
             <Bar/>
@@ -75,7 +80,7 @@ function PastOrders(){
                         <Typography className={classes.title}>
                             <div className={classes.orderHeader}>
                                 <div>Orders</div>
-                                <div>Restaurent</div>
+                                <div>Restaurant</div>
                                 <div className={classes.orderSearchFilter}>
                                     <div><i class="fas fa-search"></i></div>
                                     <div><input type="text" placeholder="Filter Order History" className={classes.orderHistory}/></div>
@@ -87,8 +92,8 @@ function PastOrders(){
                                                 <option>Most Recent</option>
                                                 <option>Ratings</option>
                                                 <option>Relevance</option>
-                                                <option>Restaurent(A-Z)</option>
-                                                <option>Restaurent(Z-A)</option>
+                                                <option>Restaurant(A-Z)</option>
+                                                <option>Restaurant(Z-A)</option>
                                             </select>
                                         </div>
                                 </div>
@@ -99,6 +104,7 @@ function PastOrders(){
                 </Card>
             </main>
         </div>
+    <div style={{border:"1px solid red",width:"max-content",position:"absolute",right:250,border:"1px solid gray",maxHeight:"600px",overflowY:"scroll",maxWidth:"800px",display:"flex",flexWrap:'wrap' }}>{userOrders.map(ele=>{return <div style={{margin:"25px"}}><OrderCard {...{ele}} /></div>})}</div>
         </div>
     )
 }
