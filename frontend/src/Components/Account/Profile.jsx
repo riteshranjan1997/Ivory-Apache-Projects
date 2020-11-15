@@ -61,6 +61,7 @@ function Profile() {
   const [isEditPassword, setIsEditPassword] = useState(false);
 
   const userData = useSelector((state) => state.auth.user_data);
+  const accessToken = useSelector((state) => state.auth.access_token);
 
   const [first_name, setfirstName] = useState("");
   const [Last_name, setLastName] = useState("");
@@ -71,12 +72,17 @@ function Profile() {
   const [current_password, setCurrentPassword] = useState("");
   const [new_password, setNewPassword] = useState("");
   const [conform_new_password, setConformNewPassword] = useState("");
-  
 
   const handleNameUpdate = () => {
-    console.log({ first_name, Last_name, password_for_editing_name });
+    const payload = {
+       first_name:first_name, 
+       last_name:Last_name, 
+       password:password_for_editing_name}
     dispatch(
-      userUpdateRequest({ first_name, Last_name, password_for_editing_name })
+      userUpdateRequest(
+        payload,
+        accessToken
+      )
     );
     setfirstName("");
     setLastName("");
@@ -86,7 +92,16 @@ function Profile() {
   const handleEmailUpdate = () => {
     console.log(email, conformEmail, password_for_editing_email);
     if (email === conformEmail) {
-      console.log(true);
+      const payload = {
+        email:email, 
+        conformEmail:conformEmail, 
+        password_for_editing_email:password_for_editing_name}
+     dispatch(
+       userUpdateRequest(
+         payload,
+         accessToken
+       )
+     );
     }
     setEmail("");
     setConformEmail("");
@@ -95,6 +110,16 @@ function Profile() {
 
   const handlePasswordChange = () => {
     console.log(current_password, new_password, conform_new_password);
+    const payload = {
+      current_password:current_password, 
+      last_name:Last_name, 
+      conform_new_password:conform_new_password}
+   dispatch(
+     userUpdateRequest(
+       payload,
+       accessToken
+     )
+   );
     setCurrentPassword("");
     setNewPassword("");
     setConformNewPassword("");
@@ -104,10 +129,9 @@ function Profile() {
     <>
       <Bar />
       <Grid container>
-        
         <SideBar />
 
-        <Grid item xs={9} style={{ marginTop:"60px" }}>
+        <Grid item xs={9} style={{ marginTop: "60px" }}>
           <main className={classes.content}>
             <div className={classes.toolbar} />
             <Card className={classes.root}>
@@ -297,7 +321,9 @@ function Profile() {
                             className="form-control"
                             placeholder=""
                             value={password_for_editing_email}
-                            onChange={(e) => setPasswordForEditingEmail(e.target.value)}
+                            onChange={(e) =>
+                              setPasswordForEditingEmail(e.target.value)
+                            }
                           />
                         </div>
                       </div>

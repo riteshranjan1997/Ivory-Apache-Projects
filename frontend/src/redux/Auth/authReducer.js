@@ -4,6 +4,7 @@ import {
     LOGIN_WITH_GOOGLE_REQUEST, LOGIN_WITH_GOOGLE_SUCCESS, LOGIN_WITH_GOOGLE_FAILURE,
     UPDATE_USER_DETAILS_REQUEST, UPDATE_USER_DETAILS_SUCCESS, UPDATE_USER_DETAILS_FAILURE,
     ADD_ADDRESS_REQUEST, ADD_ADDRESS_SUCCESS, ADD_ADDRESS_FAILURE,
+    EDIT_ADDRESS_REQUEST, EDIT_ADDRESS_SUCCESS, EDIT_ADDRESS_FAILURE,
     FETCH_USER_DATA__REQUEST, FETCH_USER_DATA__SUCCESS, FETCH_USER_DATA__FAILURE,
     LOGOUT_USER, REMOVE_ERROR,
 } from "./actionType"
@@ -74,7 +75,6 @@ export default (state = initState, { type, payload }) => {
                 isLoading: false,
                 isError: payload.error,
                 message: payload.message,
-
             }
 
 
@@ -102,6 +102,54 @@ export default (state = initState, { type, payload }) => {
         //         isError: payload.error,
         //         message: payload.message,
         //     }
+
+
+        case UPDATE_USER_DETAILS_REQUEST:
+            return {
+                ...state,
+                
+            }
+
+        case UPDATE_USER_DETAILS_SUCCESS:
+            return {
+                ...state,
+                message: payload.message,
+                user_data: payload.data.userData,
+                access_token: payload.data.accessToken,
+            }
+
+        case UPDATE_USER_DETAILS_FAILURE:
+            return {
+                ...state,
+
+            }
+
+        case ADD_ADDRESS_REQUEST:
+            return {
+                ...state,
+            }
+        case ADD_ADDRESS_SUCCESS:
+            return {
+                ...state,
+            }
+        case ADD_ADDRESS_FAILURE:
+            return {
+                ...state,
+            }
+
+        case EDIT_ADDRESS_REQUEST:
+            return {
+                ...state,
+            }
+        case EDIT_ADDRESS_SUCCESS:
+            return {
+                ...state,
+            }
+        case EDIT_ADDRESS_FAILURE:
+            return {
+                ...state,
+            }
+
 
 
 

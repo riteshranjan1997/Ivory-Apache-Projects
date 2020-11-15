@@ -107,7 +107,6 @@ export const googleLoginRequest = payload => dispatch => {
         data:{...payload}
       })
       .then((res) => {
-          console.log(res)
         dispatch(loginUserSuccess(res.data))
     })
     .catch((err) => {
@@ -167,13 +166,14 @@ export const updateUserFailure = (payload) => ({
     payload
 })
 
-export const userUpdateRequest = payload => dispatch => {
-    console.log(payload,"action")
+export const userUpdateRequest = (payload ,accessToken)=> dispatch => {
+    console.log(payload,accessToken,"action")
     dispatch(updateUserRequest())
     return fetch("http://localhost:5000/api/settings/profile", {
-        method: "POST",
+        method: "PUT",
         headers: {
             "Content-type": "application/json",
+            "Authorization": "Bearer " + accessToken
         },
         body: JSON.stringify({ ...payload }),
     })
@@ -187,7 +187,11 @@ export const userUpdateRequest = payload => dispatch => {
         });
 }
 
-
+// axios.put("http://localhost:5000/api/settings/profile", payload, {
+//     headers:{
+//         Authorization: "Bearer " + accessToken
+//     }}
+//     )
 
 // for adding new address to the user account
 export const addAddressRequest = () => ({

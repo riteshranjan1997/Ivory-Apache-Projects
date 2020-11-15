@@ -77,9 +77,9 @@ export default function SearchComponent() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const selectedAddress = useSelector(state => state.app.userAddress)
+  const selectedAddress = useSelector(state => state.app.userAddress || "")
 
-  const [addressQuery, setAddressQuery] = useState("");
+  const [addressQuery, setAddressQuery] = useState(selectedAddress);
   const [cuisineQuery, setcuisineQuery] = useState("");
   const [suggestedAddress, setsuggestedAddress] = React.useState([]);
 
@@ -114,16 +114,6 @@ export default function SearchComponent() {
                 </h2>
               </div>
             </div>
-
-            {/* <div className="row">
-
-              <div className="col">
-              </div>
-
-              <div className="col">
-              </div>
-              
-            </div> */}
 
             <div className="row">
               <div className="col-9">
