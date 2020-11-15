@@ -13,6 +13,7 @@ import {addRequest} from '../../redux/cart/actions'
 import { useSelector,useDispatch } from 'react-redux';
 import {addCart} from '../../redux/AddToCart/action'
 import { useParams } from 'react-router-dom';
+import {useState} from "react";
 
 
 const useStyles = makeStyles({    
@@ -95,6 +96,8 @@ function MenuPage()
     const restaurentId = data.restaurant_id
     const restaurentName = data.restaurant_name
     const dispatch = useDispatch()
+    const [loading,setLoading] = useState(false)
+    const [product,setProduct] = useState("")
     // console.log(quantity,typeof(quantity))
    
     const handleClickOpen = (name,image,description,price,id) => {
@@ -124,6 +127,23 @@ function MenuPage()
         handleClose()
     }
 
+    const handleRotate=  (item)=>{
+        // console.log("in handle rotate",product,item.name)
+        setProduct(item.name)
+        // console.log("item is",item,item.name)
+        // console.log("in handle rotate after setproduct",product,item.name,"loading status",loading)
+        console.log("before start",product,item.name,"loading status",loading)
+        // setLoading(!loading)
+        console.log("after start",product,item.name,"loading status",loading)
+        // for(var i=0;i<100000;i++){}
+        // handleClickOpen(item.name,item.image,item.description,item.price,item.id); 
+        setTimeout(()=>{handleClickOpen(item.name,item.image,item.description,item.price,item.id);setProduct(""); },1000)
+        // setLoading(!loading)
+        
+        console.log("at end",product,item.name,"loading status",loading)        
+        console.log(item.name,product,item.name===product)
+    }
+    
     return(
         <div>
         <MenuWrapper>
@@ -136,16 +156,19 @@ function MenuPage()
             </div>
             <Divider/>            
         </MenuWrapper>
+       
         <div className="container">
                 <div className="row">
                     {data && data.menu_items && data.menu_items.map(item=>(            
-                        <div className="col-12 col-md-5 border m-2 rounded" onClick={()=>handleClickOpen(item.name,item.image,item.description,item.price,item.id)}>
+                        <div className="col-12 col-md-5 border m-2 rounded" onClick={()=>handleRotate(item)}>
                             <div className="row">
                                 <div className="col-7" style={{textAlign:"left"}}>
+                                    {/* {(item.name === product)  &&   <i class="fas fa-sync fa-spin" style={{size:25}}></i>} */}
                                     <div className={classes.itemName} style={{marginTop:"10px"}}>{item.name}</div>
                                     <div className={classes.description}>{item.description}</div>
                                 </div>
-                                <div className={`${classes.price}`}>₹{item.price}</div>
+                                {(item.name !== product) && <div className={`${classes.price}`}>₹{item.price}</div>}
+                                {(item.name === product)  && <div className={`${classes.price}`} style= {{background:"transparent",textAlign:"center"}}>  <i class="fas fa-sync fa-spin" style={{fontSize:25,marginLeft:8}}></i></div>}
                                 <div className="col-3" style={{position:"relative",right:"-16px"}}>
                                 <img src={`../${item.image}`} alt="menu" 
                                     height="120px" className="rounded-right" width="120px" style={{zIndex:1,objectFit:"cover"}}

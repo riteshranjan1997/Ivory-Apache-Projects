@@ -8,9 +8,7 @@ const User = require("../models/User");
 const { OAuth2Client } = require("google-auth-library");
 
 const router = express.Router();
-const client = new OAuth2Client(
-  "1069087639484-chisqt1vcpiq2rqcbk2dvr8u3lr2k9hk.apps.googleusercontent.com"
-);
+const client = new OAuth2Client("1069087639484-chisqt1vcpiq2rqcbk2dvr8u3lr2k9hk.apps.googleusercontent.com");
 
 router.post("/register", async (req, res, next) => {
   const { error } = registerValidation(req.body);
@@ -39,7 +37,7 @@ router.post("/register", async (req, res, next) => {
     return;
   }
 
-  const user = new User({
+  const user1 = new User({
     first_name: req.body.first_name,
     last_name:req.body.last_name,
     email: req.body.email,
@@ -47,15 +45,20 @@ router.post("/register", async (req, res, next) => {
   });
 
   try {
-    const savedUser = await user.save();
+    const savedUser = await user1.save();
+    const first_name = savedUser.first_name;
+              const email = savedUser.email
+            const user = { id: user1["_id"], first_name: first_name,email:email };
+            const accessToken = jwt.sign(user, process.env.SECRET_KEY_TO_ACCESS);
     res
       .status(200)
       .json({
         error: false,
-        data: savedUser,
+        data: {userData:savedUser,accessToken:accessToken},
         message: "Register Successful",
       });
   } catch (err) {
+    console.log("errpr in register",err)
     res.status(400).json({ error: true, message: err });
   }
 });
@@ -147,9 +150,13 @@ router.post("/googleLogin", (req, res) => {
 
             try {
               const savedUser = await user.save();
+              const first_name = user.first_name;
+              const email = user.email
+            const user = { id: user["_id"], first_name: first_name,email:email };
+            const accessToken = jwt.sign(user, process.env.SECRET_KEY_TO_ACCESS);
               res.status(200).json({
                 error: false,
-                data: savedUser,
+                data: {userData:savedUser,accessToken},
                 message: "Register Successful",
               });
             } catch (err) {

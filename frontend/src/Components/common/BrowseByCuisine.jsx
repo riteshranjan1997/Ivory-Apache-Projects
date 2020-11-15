@@ -26,7 +26,12 @@ export default function BrowseByCuisine() {
     setValue(newValue);
   };
   return (
-     <div className="container" style={{marginTop:"10px"}}> 
+     <div className="container mt-4"> 
+     <div style={{display:"flex",alignItems:"center"}}>
+          <div style={{fontSize:"20px"}}><b>Most Popular near you</b></div>
+          <div style={{color:"grey",marginLeft:"10px"}}>Restaurents</div>
+          <div style={{color:"#2B8282",marginLeft:"550px"}}>All cuisines</div>
+      </div>
         <div className={classes.root}>            
               <Tabs
                 value={value}
@@ -58,16 +63,16 @@ export default function BrowseByCuisine() {
                     <div>Italian</div>
                 </div>} {...a11yProps(3)} style={{textTransform:"capitalize"}} />
                 <Tab label={<div>
-                    <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
-                    <div>Lunch Specials</div>
+                    <div><img src="pizza_cusine.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
+                    <div>Pizza</div>
                 </div>} {...a11yProps(4)} style={{textTransform:"capitalize"}}/>
                 <Tab label={<div>
-                    <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
-                    <div>Lunch Specials</div>
+                    <div><img src="salad_cusine.jpg" alt="JPEG" style={{height:"100px",width:"100px",objectFit:"cover",borderRadius:"50%",objectFit:"cover"}}/></div>
+                    <div>salads</div>
                 </div>} {...a11yProps(5)} style={{textTransform:"capitalize"}} />
                 <Tab label={<div>
                   <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
-                  <div>Lunch Specials</div>
+                  <div>Mexican</div>
               </div>} {...a11yProps(6)} style={{textTransform:"capitalize"}}/>
               <Tab label={<div>
                     <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
@@ -75,14 +80,16 @@ export default function BrowseByCuisine() {
                 </div>} {...a11yProps(7)} style={{textTransform:"capitalize"}}/>
                 <Tab label={<div>
                     <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
-                    <div>Lunch Specials</div>
+                    <div>Breakfast</div>
                 </div>} {...a11yProps(8)} style={{textTransform:"capitalize"}} />
                 <Tab label={<div>
                   <div><img src="https://media-cdn.grubhub.com/d_search:browse-images:default.jpg/d_search:browse-images:default.jpg/dpr_auto,c_fill,w_124,h_124,f_auto,q_auto,g_auto/search/browse-images/lunch-specials-v4.jpg" alt="JPEG" style={{height:"100px",width:"100px",borderRadius:"50%",objectFit:"cover"}}/></div>
-                  <div>Lunch Specials</div>
+                  <div>North Indian</div>
               </div>} {...a11yProps(9)} style={{textTransform:"capitalize"}}/>
               </Tabs>
           </div>
      </div>
   );
 }
+
+

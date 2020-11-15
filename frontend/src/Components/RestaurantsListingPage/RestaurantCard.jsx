@@ -6,8 +6,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Overlay from "react-bootstrap/Overlay";
 import Popover from "react-bootstrap/Popover";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-
-const StyledRating = withStyles({
+const StyledRating = ()=>withStyles({
   iconFilled: {
     color: "#ff6d75",
   },
@@ -15,7 +14,6 @@ const StyledRating = withStyles({
     color: "#ff3d47",
   },
 })(Rating);
-
 const popover = (
   <Popover id="popover-basic">
     <h6 style={{textAlign:"center" , padding:"10px"}} >Here's what people are saying:</h6>
@@ -25,9 +23,8 @@ const popover = (
     </Popover.Content>
   </Popover>
 );
-
 export default function RestaurantCard(props) {
-    
+  const classes = StyledRating()
   return (
     <Link
       style={{ textDecoration: "none", color: "black" }}
@@ -50,32 +47,31 @@ export default function RestaurantCard(props) {
               src="https://res.cloudinary.com/grubhub-assets/image/upload/v1577663084/subscriptions/s_flag_ihsory.svg"
               alt="s+"
             />
+            <span className="text-muted" style={{fontSize:"12px"}}>{props.data.cuisines[0]}</span>
           </div>
-
-          <div style={{ marginRight: "12%" }}>
-            
-
+          <div style={{ marginRight: "12%" }}>         
             <OverlayTrigger
               placement="bottom"
               delay={{ show: 250, hide: 400 }}
               overlay={popover}
             >
               <div>
-                <Rating
-                  name="size-medium"
-                  defaultValue={3.8}
-                  value={props.data.aggregate_rating}
-                  size="small"
-                />
-                <br />
-                <spam>{props.data.votes} ratings</spam>
+                <div className="mr-5">
+                      {new Array(5).fill(0).map((stars,i)=>(
+                          i<=props.data.aggregate_rating-1 ?                        
+                              <i class="fas fa-star" style={{color:"orange"}}></i>                         
+                          :
+                          <i class="fas fa-star" style={{color:"grey"}}></i>                     
+                      ))}
+                    </div>
+                    <spam className="text-muted ml-2" style={{fontSize:"12px"}}>{props.data.votes} ratings</spam>
+                <br />               
               </div>
             </OverlayTrigger>
           </div>
-
           <div>
-            <h5>20-30</h5>
-            <span>mins</span>
+            <h6><b>20-30</b></h6>
+            <span className ="text-muted" style={{fontSize:"10px"}}>mins</span>
           </div>
         </div>
       </div>

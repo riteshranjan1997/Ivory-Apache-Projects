@@ -1,5 +1,4 @@
 import React from 'react'
-
 function FreeDelivaey()
 {
     return(
@@ -9,5 +8,4 @@ function FreeDelivaey()
         </div>
     )
 }
-
 export default FreeDelivaey

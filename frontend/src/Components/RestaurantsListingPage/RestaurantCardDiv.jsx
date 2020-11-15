@@ -50,14 +50,14 @@ export default function RestaurantCardDiv(props) {
         </div>
       )}
 
-      <div className="row mt-4">
+      {/* <div className="row mt-4">
         <div className="col" style={{ margin: "0% 28%", textAlign: "center" }}>
         <Pagination count={10} variant="outlined" shape="rounded" onChange={handlePageChange} />
           <span>
             Page {activePage + " "} of {" " + data.totalpage}
           </span>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
