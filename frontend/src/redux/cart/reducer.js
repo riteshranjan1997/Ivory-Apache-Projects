@@ -18,7 +18,7 @@ import {ADD_TO_CART_REQUEST,
     }
     
     export default (state = initState, { type, payload }) => {
-        console.log("in payload reducer",payload)
+        // console.log("in payload reducer",payload)
         switch (type) {    
             case ADD_TO_CART_REQUEST:
                 return {
