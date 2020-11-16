@@ -110,7 +110,7 @@ function Filter() {
         <div className="col-12">
           <div
             className="d-flex align-items-center"
-            style={{ marginTop: "100px" }}
+            style={{ marginTop: "60px" }}
           >
             <div className="mr-3">
               <h4 style={{ fontWeight: "700" }}>Filters</h4>

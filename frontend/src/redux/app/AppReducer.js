@@ -8,14 +8,17 @@ import {
     FETCH_RESTAURANTS_DATA_FAILURE
 } from "./actionTypes"
 
+const restaurantdata = JSON.parse(localStorage.getItem('savedrestaurantdata')) || [];
+const savedUserLocation = JSON.parse(localStorage.getItem('savedUserLocation')) || "";
+const savedUserGioLocation = JSON.parse(localStorage.getItem('savedUserGioLocation')) || {};
 
 export const initState = {
     isLoading: false,
-    userAddress: "",
-    userGioLocation: {},
+    userAddress: savedUserLocation || "",
+    userGioLocation: savedUserGioLocation || {},
     userCuisine: "",
     userFilter:{},
-    restaurantsData: [],
+    restaurantsData: restaurantdata || [],
     isError: false,
     activePage:1
 }
@@ -24,12 +27,13 @@ export const initState = {
  const AppReducer=(state = initState, { type, payload }) => {
     switch (type) {
         case UPDATE_ADDRESS:
+            localStorage.setItem('savedUserLocation', JSON.stringify(payload));
             return {
                 ...state,
                 userAddress: payload
             }
         case UPDATE_GIOLOCATION:
-            console.log("in reducer", payload)
+            localStorage.setItem('savedUserGioLocation', JSON.stringify(payload));
             return {
                 ...state,
                 userGioLocation: payload
@@ -50,6 +54,7 @@ export const initState = {
                 isLoading: true
             }
         case FETCH_RESTAURANTS_DATA_SUCCESS:
+            localStorage.setItem('savedrestaurantdata', JSON.stringify(payload));
             return {
                 ...state,
                 restaurantsData: payload

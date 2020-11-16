@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+
+/* 'Orbitron', sans-serif; */
+
+.mastercard {
+  background-color: #227bce;
+  color: white;
+}
+
+.visa {
+  background-color: rgb(80, 94, 107);
+  color: rgb(255, 255, 255);
+}
+
+.amex {
+  background-color: rgb(223, 158, 73);
+}
+
+.unknown {
+  background-color: #fe4e57;
+  color: white;
+}
+
+
+.cardNo {
+  clear: both;
+  margin: 20px 15px 15px 15px;
+  height: 30px;
+  /* display: inline-block; */
+}
+
+.cardNo p {
+  display: inline-block;
+  margin-left: 25px;
+}
+
+.details {
+  display: flex;
+  clear: both;
+  margin: 0px 0px 0px 30px;
+  height: 20px;
+  
+}
+
+.valid{
+  display: flex;
+}
+
+small {
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* .details small,
+div {
+  flex: 1;
+} */
+
+.chip {
+  float: left;
+  margin: 30px 30px 25px 30px;
+}
+
+.type {
+  float: right;
+  margin: 30px 30px 25px 25px;
+}
+
+.from {
+  position: relative;
+  width: 50%;
+  height: 50px;
+  overflow: hidden;
+  margin-top: 30px;
+}
+
+.icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  color: #f6425b;
+  bottom: 3px;
+  filter: opacity(0.4) drop-shadow(0 0 0 #f6425b);
+}

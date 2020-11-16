@@ -32,7 +32,6 @@ export const UpdateUserAppAddress = (payload) => {
 }
 
 export const fetchGioLocation = payload => dispatch => {
-    console.log("fetchGioLocation",payload)
     axios({
         method: "get",
         url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${payload}.json`,

@@ -18,16 +18,7 @@ const useStyles = makeStyles({
 });
 
 export default function RestaurantCardDiv(props) {
-  const classes = useStyles();
-  const dispatch = useDispatch();
-  let data = useSelector((state) => state.app.restaurantsData);
-  let activePage = useSelector((state) => state.app.activePage);
-  const [active_page, setActivePage] = useState(1);
 
-  const handlePageChange = (e, page) => {
-    setActivePage(page);
-    console.log(active_page)
-  };
 
   return (
     <>

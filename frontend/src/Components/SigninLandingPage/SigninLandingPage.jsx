@@ -6,6 +6,7 @@ import FreeDelivary from "./FreeDelivary";
 import IntroductionCardDiv from "./IntroductionCardDiv";
 import LandingPageFooter from "../LandingPage/LandinPageFooter";
 import { useSelector } from "react-redux";
+import { Grid } from "@material-ui/core";
 
 function SigninLandingPage() {
   const isAuth = useSelector((state) => state.auth.isAuth);
@@ -16,16 +17,22 @@ function SigninLandingPage() {
 
   return (
     <div>
-      <div>
-        <AppBar addressModel="true" notifications="true" login />
-      </div>
+      <AppBar notifications="true" login />
 
-      <div>
-        <SearchComponent />
-        <FreeDelivary />
-        <IntroductionCardDiv />
-        <LandingPageFooter />
-      </div>
+      <Grid container >
+        <Grid item xs={12} style={{marginTop:"60px"}}>
+          <SearchComponent />
+        </Grid>
+        <Grid item xs={12}>
+          <FreeDelivary />
+        </Grid>
+        <Grid item xs={12}>
+          <IntroductionCardDiv />
+        </Grid>
+        <Grid item xs={12}>
+          <LandingPageFooter />
+        </Grid>
+      </Grid>
     </div>
   );
 }

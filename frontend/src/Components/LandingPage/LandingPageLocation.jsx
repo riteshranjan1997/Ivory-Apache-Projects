@@ -1,42 +1,15 @@
 import React from "react";
 import { useEffect } from "react";
-import { UpdateUserAppAddress, fetchGioLocation } from "../../redux/app/action";
-import { useDispatch, useSelector } from "react-redux";
+import { UpdateUserAppAddress,UpdateUserGioLocation } from "../../redux/app/action";
+import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link, Redirect } from "react-router-dom";
-import Container from "@material-ui/core/Container";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import axios from "axios";
-import Styled from "styled-components";
-
-const LocationWrapper = Styled.div`    
-    z-index:20;
-    width:"100%"; 
-    li{
-        padding:10px;
-        border:1px solid #E0E0E0;
-        border-top:none;
-        z-index:20;
-    }
-    ul{        
-        position:relative;
-        left:-38px;
-        top :-3px;
-        z-index:20;
-    }
-    ul li:hover {
-        background : #2b8282;
-        color : white;
-        z-index:20;
-    }
-`;
+import { useHistory } from 'react-router';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -84,9 +57,10 @@ const useStyles = makeStyles((theme) => ({
 function LandingPageLocation() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const userGioLocation = useSelector((state) => state.app.userGioLocation);
+  const history = useHistory();
   const [query, setQuery] = React.useState("");
   const [data, setData] = React.useState([]);
+  
   useEffect(() => {
     return axios
       .get(
@@ -97,14 +71,15 @@ function LandingPageLocation() {
   }, [query]);
 
   const handleLocationUpdate = () => {
-    dispatch(UpdateUserAppAddress(query));
-    dispatch(fetchGioLocation(query));
-    console.log(userGioLocation, "user gio");
+    dispatch(UpdateUserAppAddress(query.place_name));
+    dispatch(UpdateUserGioLocation(query.geometry.coordinates));
+    setTimeout(() => {
+      history.push("/search");
+    }, 600);
   };
 
   return (
     <Grid container className={classes.root}>
-
       <Grid item xs={12} md={6} style={{ height: "65%" }}>
         <Grid container justify="center">
           <CardMedia
@@ -124,7 +99,6 @@ function LandingPageLocation() {
       </Grid>
 
       <Grid item xs={12} md={6} className={classes.gioLocationDiv}>
-
         <Grid container>
           <Grid item className={classes.signInBar} md={12}>
             <p>
@@ -143,64 +117,56 @@ function LandingPageLocation() {
           </Grid>
 
           <Grid item md={12}>
-            
-              <h1
-                style={{
-                  fontSize: "52px",
-                  fontFamily: "esti",
-                }}
-              >
-                flawless food delivary every time
-              </h1>
+            <h1
+              style={{
+                fontSize: "52px",
+                fontFamily: "esti",
+              }}
+            >
+              flawless food delivary every time
+            </h1>
           </Grid>
 
           <Grid item md={12}>
             <Grid container>
               <Grid item md={7}>
-                <TextField
-                  autocomplete="false"
-                  label="Enter Address"
-                  variant="outlined"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  style={{width:"100%"}}
+                <Autocomplete
+                  disableClearable
+                  freeSolo
+                  options={data.map((place) => place.place_name)}
+                  onChange={(event, value) =>
+                    setQuery(() =>
+                    data.find((place) => place.place_name === value)
+                    )
+                  }
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      placeholder="Enter street address or zip code"
+                      margin="normal"
+                      variant="outlined"
+                      InputProps={{
+                        ...params.InputProps,
+                        type: "search",
+                      }}
+                      onChange={(e) => setQuery(e.target.value)}
+                    />
+                  )}
                 />
-                <LocationWrapper>
-                  <ul style={{ listStyleType: "none", textAlign: "left"}}>
-                    {query &&
-                      data &&
-                      data.map((item, i) => (
-                        <>
-                          <li
-                            className={`dropDown`}
-                            key={i}
-                            onClick={(e) => {
-                              setQuery(item.place_name);
-                            }}
-                          >
-                            {item.place_name}
-                          </li>
-                        </>
-                      ))}
-                  </ul>
-                </LocationWrapper>
               </Grid>
 
-              <Grid item md={4} style={{marginLeft:"10px"}}>
-                <Link to="/search">
-                  <button
-                    variant="contained"
-                    onClick={handleLocationUpdate}
-                    className={`${classes.button} btn`}
-                  >
-                    Find Food
-                  </button>
-                </Link>
+              <Grid item md={4} style={{ marginLeft: "10px",marginTop:"15px" }}>
+                <button
+                  variant="contained"
+                  onClick={handleLocationUpdate}
+                  className={`${classes.button} btn`}
+                >
+                  Find Food
+                </button>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
-
       </Grid>
     </Grid>
   );
