@@ -93,27 +93,30 @@ function Profile() {
     console.log(email, conformEmail, password_for_editing_email);
     if (email === conformEmail) {
       const payload = {
-        email:email, 
-        conformEmail:conformEmail, 
-        password_for_editing_email:password_for_editing_name}
+        new_email:email, 
+        confirm_email:conformEmail, 
+        password:password_for_editing_email
+      }
      dispatch(
        userUpdateRequest(
          payload,
          accessToken
        )
      );
-    }
-    setEmail("");
+     setEmail("");
     setConformEmail("");
     setPasswordForEditingEmail("");
+    }
   };
 
   const handlePasswordChange = () => {
     console.log(current_password, new_password, conform_new_password);
+    if(new_password === conform_new_password){
     const payload = {
-      current_password:current_password, 
-      last_name:Last_name, 
-      conform_new_password:conform_new_password}
+      new_password:new_password, 
+      confrim_password:conform_new_password, 
+      password:current_password
+    }
    dispatch(
      userUpdateRequest(
        payload,
@@ -123,6 +126,7 @@ function Profile() {
     setCurrentPassword("");
     setNewPassword("");
     setConformNewPassword("");
+     }
   };
 
   return (
@@ -271,7 +275,7 @@ function Profile() {
                 ) : (
                   <div>
                     <div style={{ textAlign: "left", fontWeight: "bold" }}>
-                      Edit Name
+                      Edit Email
                     </div>
                     <form>
                       <div className="form-row">
@@ -379,7 +383,7 @@ function Profile() {
                   ) : (
                     <div>
                       <div style={{ textAlign: "left", fontWeight: "bold" }}>
-                        Edit Name
+                        Edit Password
                       </div>
                       <form>
                         <div className="form-row">

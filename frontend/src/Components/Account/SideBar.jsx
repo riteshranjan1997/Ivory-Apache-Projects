@@ -18,15 +18,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
   },
-  menuButton: {
-  },
+  menuButton: {},
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
   },
-  content: {
-  },
+  content: {},
   account: {
     marginLeft: "10px",
   },
@@ -68,14 +66,21 @@ function SideBar(props) {
           "Upcoming orders",
           "Saved Restaurent",
         ].map((text, index) => (
-          <ListItem button key={text}>
-            <Link to={`/account/${text}`} className={classes.link}>
+          <Link to={`/account/${text}`} className={classes.link}>
+            <ListItem button key={text}>
               <div style={{ color: "#2B8282" }}>
                 <Typography className={classes.sidebar}>{text}</Typography>
               </div>
-            </Link>
-          </ListItem>
+            </ListItem>
+          </Link>
         ))}
+        <Link to="/" className={classes.link}>
+          <ListItem button key="Back to Home Page">
+            <div style={{ color: "#2B8282" }}>
+              <Typography className={classes.sidebar}>Back to Home Page</Typography>
+            </div>
+          </ListItem>
+        </Link>
       </List>
     </div>
   );

@@ -147,6 +147,7 @@ function MenuPage()
     
     return(
         <div>
+             <hr style={{marginTop:"-27px",width:"120%",position:"relative",left:"-100px"}}/>  
         <MenuWrapper>
             <div className="delivary">
                 <div style={{fontSize:"12px"}}>Delivary,ASAP(20-30m)</div>

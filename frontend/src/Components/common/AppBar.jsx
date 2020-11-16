@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useState} from "react";
 import axios from "axios"
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { UpdateUserAppAddress,fetchGioLocation,restaurantsRequest } from "../../redux/app/action";
+import { UpdateUserAppAddress,UpdateUserGioLocation,restaurantsRequest } from "../../redux/app/action";
 import {logoutUser} from "../../redux/Auth/action"
 import LoginModel from "./LoginModel";
 import Styled from "styled-components";
@@ -23,9 +23,9 @@ import Popover from "react-bootstrap/Popover";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
-import { deleteCart } from "../../redux/AddToCart/action";
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import { deleteRequest } from "../../redux/cart/actions";
-import {useState} from "react"
+
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   addressModel: {
     width: "400px",
-    maxHeight: "600px",
+    height: "400px",
     backgroundColor: "white",
     border: "none",
     outline: "none",
@@ -123,14 +123,43 @@ export default function Bar(props) {
   const [addressmodelStatus, setAddressModelStatus] = React.useState(false);
   const [logingModelStatus, setlogingModelStatus] = React.useState(false);
 
-  const [addressquery, setAddressQuery] = React.useState("");
-  const [suggestedAddress, setsuggestedAddress] = React.useState([]);
+  
 
   const isAuth = useSelector((state) => state.auth.isAuth);
   const userData = useSelector((state) => state.auth.user_data);
-  const selectedAddress = useSelector((state) => state.app.userAddress);
-  const userGioLocation = useSelector((state) => state.app.userGioLocation);
-  const [open, setOpen] = React.useState(false);
+
+
+  const selectedAddressFromStore = useSelector((state) => state.app.userAddress || "");
+  const selectedGioLocationFromStore = useSelector((state) => {
+    if (state.app.userGioLocation) {
+      return [state.app.userGioLocation.longitude, state.app.userGioLocation.lattitude];
+    } else {
+      return [];
+    }
+  });
+
+  const [addressquery, setAddressQuery] = useState("");
+  
+  const [selectedAddress, setSelectedAddress] = useState({})
+
+  const [suggestedAddress, setsuggestedAddress] = useState([]);
+
+  const handleLocationUpdate = () => {
+    if(selectedAddress !== []){
+    dispatch(UpdateUserAppAddress(selectedAddress.place_name));
+    dispatch(UpdateUserGioLocation(selectedAddress.geometry.coordinates));
+    handleClose()
+    setTimeout(() => {
+      let longitude = selectedAddress.geometry.coordinates[0]
+      let lattitude = selectedAddress.geometry.coordinates[1]
+      dispatch(restaurantsRequest({longitude:longitude,lattitude:lattitude}))
+    }, 100);
+    }
+    
+    
+  };
+
+  const [open, setOpen] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
   
@@ -182,12 +211,7 @@ export default function Bar(props) {
   // }
 
 
-  const handleLocationUpdate = () => {
-    dispatch(UpdateUserAppAddress(addressquery));
-    dispatch(fetchGioLocation(addressquery));
-    setOpen(false);
-    dispatch(restaurantsRequest(userGioLocation))
-  };
+  
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -236,37 +260,32 @@ export default function Bar(props) {
         </div>
         <div></div>
         <div>Delivary Address</div>
-        <form>
-          <TextField
-            id="outlined-basic"
-            label="Enter street address or zipcode"
-            variant="outlined"
-            value={addressquery}
-            onChange={(e) => setAddressQuery(e.target.value)}
-            style={{ width: "360px" }}
-          />
-          <LocationWrapper>
-            <ul style={{ listStyleType: "none", textAlign: "left" }}>
-              {addressquery &&
-                suggestedAddress &&
-                suggestedAddress.map((item, i) => (
-                  <>
-                    {/* {i>=active && i<=active+4? */}
-                    <li
-                      className={`dropDown`}
-                      // data-toggle="modal"
-                      // data-target="#exampleModal"
-                      key={item.id}
-                      onClick={(e) => {
-                        setAddressQuery(item.place_name);
+        <Autocomplete
+                  disableClearable
+                  freeSolo
+                  options={suggestedAddress.map((place) => place.place_name)}
+                  onChange={(event, value) =>
+                    setSelectedAddress(() =>
+                    suggestedAddress.find((place) => place.place_name === value)
+                    )
+                  }
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      placeholder="Enter street address or zip code"
+                      margin="normal"
+                      variant="outlined"
+                      value={addressquery}
+                      InputProps={{
+                        ...params.InputProps,
+                        type: "search",
                       }}
-                    >
-                      {item.place_name}
-                    </li>
-                  </>
-                ))}
-            </ul>
-          </LocationWrapper>
+                      onChange={(e) => {
+                        console.log(e.target.value)
+                        setAddressQuery(e.target.value)}}
+                    />
+                  )}
+                />
           <Button
             onClick={handleLocationUpdate}
             style={{
@@ -278,7 +297,7 @@ export default function Bar(props) {
           >
             Update
           </Button>
-        </form>
+
       </div>
     </Fade>
   );
@@ -327,7 +346,7 @@ export default function Bar(props) {
             <Link to="/">
               <img
                 className={classes.logo}
-                src="flawless_logo.png"
+                src="../flawless_logo.png"
                 alt="company logo"
               />
             </Link>
@@ -342,9 +361,9 @@ export default function Bar(props) {
                   </div>
                   <div style={{ color: "#2B8282" }} onClick={handleClickOpen}>
                     Delivery ASAP to
-                    {selectedAddress === ""
+                    {selectedAddressFromStore === ""
                       ? " Select a address"
-                      : " " + selectedAddress}
+                      : " " + selectedAddressFromStore}
                   </div>
                   <div>
                     <ExpandMoreIcon style={{ color: "#2B8282" }} />
@@ -489,7 +508,7 @@ export default function Bar(props) {
                                 }}
                                 onClick={() => dispatch(logoutUser())}
                               >
-                                SignOut
+                               Not {userData.first_name} ? SignOut
                               </div>
                             </div>
                           </Popover.Content>
@@ -504,14 +523,14 @@ export default function Bar(props) {
                           color:"#2B8282",
                         }}
                       >
-                        <div style={{display:"flex",alignItems:"center",marginTop:"-5px"}}>
+                        <div style={{display:"flex",alignItems:"center",marginTop:"-5px", fontFamily:"esti"}}>
                           <div><Avatar style={{ backgroundColor: "#2B8282",height:"30px",width:"30px"}}>
                             {userData.first_name[0]}
                           </Avatar></div>
-                          <div style={{ marginLeft: "5px"}}>
+                          <div style={{ marginLeft: "5px", color:"#6b6b83"}}>
                             Hi,{" " + userData.first_name}{" "}
                           </div>                        
-                          <div><ExpandMoreIcon /></div>
+                          <div><ExpandMoreIcon style={{color:"#6b6b83" , marginLeft:"20px"}} /></div>
                         </div>
                       </Button>
                     </OverlayTrigger>

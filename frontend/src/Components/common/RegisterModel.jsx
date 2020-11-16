@@ -135,22 +135,16 @@ export default function RegisterModel() {
           </div>
         </div>
         <p style={{ textAlign: "center",margin:"10px" }}>or</p>
-        <div className="row">
-          <div className="col">
-            <Button variant="contained" color="primary">
-              facebook
-            </Button>
-          </div>
-        </div>
 
         <br />
         <div className="row">
           <div className="col">
           <GoogleLogin
         clientId="1069087639484-chisqt1vcpiq2rqcbk2dvr8u3lr2k9hk.apps.googleusercontent.com"
-        buttonText="Continue with Google"
+        buttonText={<div style={{marginLeft:"60px",fontWeight:"bolder"}}>Continue With Google</div>}
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
+        theme="dark"   
       >
 
       </GoogleLogin>

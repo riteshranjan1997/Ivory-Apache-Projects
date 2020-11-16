@@ -118,13 +118,6 @@ export default function LoginModel() {
           </div>
         </div>
 
-        <div className="row my-3">
-          <div className="col">
-            <Button variant="contained" color="primary">
-              Facebook
-            </Button>
-          </div>
-        </div>
 
         <div className="row my-4">
           <div className="col" style={{ textAlign: "center" }}>
@@ -133,16 +126,7 @@ export default function LoginModel() {
         </div>
         
       </div>
-      <GoogleLogin
-    clientId={'658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com'}
-    onSuccess={responseGoogle}
-    onFailure={responseGoogle}
-  >
-    <FontAwesome
-      name='google'
-    />
-    <span> Login with Google</span>
-  </GoogleLogin>
+      
 
     </>
   );
