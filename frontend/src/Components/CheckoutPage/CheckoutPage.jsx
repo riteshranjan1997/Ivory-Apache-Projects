@@ -32,7 +32,8 @@ export default function CheckoutPage() {
     e.preventDefault();
     const API_URL = "http://localhost:5000/api/payment/";
     const orderUrl = `${API_URL}order`;
-    const response = await axios.post(
+    try{
+    var response = await axios.post(
       orderUrl,
       { amount: cart && cart.reduce((a, item) => a + item.price, 0) },
       {
@@ -41,7 +42,11 @@ export default function CheckoutPage() {
         },
       }
     );
-    const { data } = response;
+    var { data } = response;
+    }catch(err){
+      console.log(err)
+      return
+    }
     console.log("data in check out is", data);
     const options = {
       name: "Masai RazorPay",
@@ -51,11 +56,11 @@ export default function CheckoutPage() {
         try {
           const paymentId = response.razorpay_payment_id;
           const url = `${API_URL}capture/${paymentId}`;
-          const captureResponse = await axios.post(url, {});
+          const captureResponse = await axios.post(url, {amount: cart && cart.reduce((a, item) => a + item.price, 0)});
           const successObj = JSON.parse(captureResponse.data);
           const captured = successObj.captured;
           if (captured) {
-            console.log("success");
+            console.log("success",captured);
           }
         } catch (err) {
           console.log(err);

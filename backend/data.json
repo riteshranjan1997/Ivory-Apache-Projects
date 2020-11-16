@@ -3,6 +3,10 @@
     "restaurant_id": "1001",
     "restaurant_name": "Ciclo Cafe",
     "restaurant_images": "cafe1.jpg",
+    "order_tracking_enabled": true,
+    "seamless_plus": false,
+    "free_delivery": true,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -88,7 +92,7 @@
     "city": "Chennai",
     "address": "47, Gandhi Mandapam Road, Kotturpuram, Chennai",
     "locality": "Kotturpuram",
-    "cuisines": ["Cafe"],
+    "cuisines": ["Cafe", "Lunch Specials", "Pizza", "Salads"],
     "aggregate_rating": "4.1",
     "rating_color": "Green",
     "rating_text": "Very Good",
@@ -100,7 +104,9 @@
     "food_was_good": "77%",
     "delivery_was_on_time": "91%",
     "order_was_correct": "85%",
-    "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -117,7 +123,7 @@
         "no_reviews": "2",
         "review": "Good sushi at a great price",
         "ordered": "Sushi",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Jennifer",
@@ -125,7 +131,7 @@
         "no_reviews": "1",
         "review": "It's fine. May or may not order from there again.",
         "ordered": "Hambuger",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Maria",
@@ -133,7 +139,7 @@
         "no_reviews": "1",
         "review": "Sushi portion was really small for $9. The pot stickers were soggy. The entree was good and hot.",
         "ordered": "Italian Pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -142,6 +148,10 @@
     "restaurant_id": "1002",
     "restaurant_name": "AB's - Absolute Barbecues",
     "restaurant_images": "Barbeques.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": false,
+    "free_delivery": true,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -212,7 +222,7 @@
     "city": "Chennai",
     "address": "Velachery Tharamani Link Road, Opposite TCS, Velachery, Chennai",
     "locality": "Velachery",
-    "cuisines": ["North Indian"],
+    "cuisines": ["North Indian", "Pizza", "Salads", "Sandwiches"],
     "aggregate_rating": "4.9",
     "rating_color": "Dark Green",
     "rating_text": "Excellent",
@@ -224,7 +234,9 @@
     "food_was_good": "78%",
     "delivery_was_on_time": "91%",
     "order_was_correct": "65%",
-    "timings": [{ "mon-thu": { "pickup": "9PM to 9AM", "delivery": "9AM to 9PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "9PM to 9AM", "delivery": "9AM to 9PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -241,7 +253,7 @@
         "no_reviews": "1",
         "review": "No doubt it is one of the best biryani",
         "ordered": "Makai Palak",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Jennifer",
@@ -249,7 +261,7 @@
         "no_reviews": "4",
         "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
         "ordered": "Pizza",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Emily",
@@ -257,7 +269,7 @@
         "no_reviews": "2",
         "review": "Great food but really late delivery :,(",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -266,7 +278,10 @@
     "restaurant_id": "1003",
     "restaurant_name": "Pind",
     "restaurant_images": "pind.jpeg",
-
+    "order_tracking_enabled": true,
+    "seamless_plus": true,
+    "free_delivery": false,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -337,7 +352,7 @@
     "city": "Chennai",
     "address": "2, Sarathy Nagar, 1st Main Road, Velachery, Chennai",
     "locality": "Velachery",
-    "cuisines": ["South Indian"],
+    "cuisines": ["South Indian", "Pizza", "Hamburgers", "Asian"],
     "aggregate_rating": "4",
     "rating_color": "Green",
     "rating_text": "Very Good",
@@ -349,7 +364,9 @@
     "food_was_good": "72%",
     "delivery_was_on_time": "78%",
     "order_was_correct": "66%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -366,7 +383,7 @@
         "no_reviews": "1",
         "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
         "ordered": "Black Forest Cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Neharika Jindal",
@@ -374,7 +391,7 @@
         "no_reviews": "1",
         "review": "The crackling spinach chicken /paneer is my favorite dish here.",
         "ordered": "paneer butter masala",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Sushmita",
@@ -382,7 +399,7 @@
         "no_reviews": "1",
         "review": " amazing cuisines",
         "ordered": "Malai Palak",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -391,6 +408,10 @@
     "restaurant_id": "1004",
     "restaurant_name": "Makers & Bakers",
     "restaurant_images": "makers_Bakers.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": false,
+    "free_delivery": true,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -477,7 +498,7 @@
     "city": "New Delhi",
     "address": "Shop 40, Shankar Market, Barakhamba Road, New Delhi",
     "locality": "Barakhamba Road",
-    "cuisines": ["Cafe"],
+    "cuisines": ["Cafe", "Pasta", "Pizza", "Dessert", "American"],
     "aggregate_rating": "0",
     "rating_color": "White",
     "rating_text": "Not rated",
@@ -489,9 +510,11 @@
     "food_was_good": "71%",
     "delivery_was_on_time": "91%",
     "order_was_correct": "89%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":[
+    "reviews": [
       {
         "user_name": "Prabhat Thakur",
         "rating": "4",
@@ -506,7 +529,7 @@
         "no_reviews": "2",
         "review": "food is average",
         "ordered": "Italian Pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Amruthaa Prakash",
@@ -514,7 +537,7 @@
         "no_reviews": "3",
         "review": " You have the best ROLLS here.",
         "ordered": "Cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Vivek Krishnan",
@@ -522,7 +545,7 @@
         "no_reviews": "3",
         "review": " Great delicious food , healthy and yummy.",
         "ordered": "Panneer Butter Masala ",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -531,6 +554,10 @@
     "restaurant_id": "1005",
     "restaurant_name": "Blue Tokai Coffee Roasters",
     "restaurant_images": "cafe2.jpeg",
+    "order_tracking_enabled": true,
+    "seamless_plus": false,
+    "free_delivery": false,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -617,7 +644,7 @@
     "city": "New Delhi",
     "address": "Khasra 258, Lane 3, Westend Marg, Saidulajab, Saket, New Delhi",
     "locality": "Saket",
-    "cuisines": ["Cafe"],
+    "cuisines": ["Cafe", "Lunch Specials", "Hamburgers", "Asian", "Sandwiches"],
     "average_Cost_for_two": "350",
     "aggregate_rating": "4.4",
     "rating_color": "Green",
@@ -630,9 +657,11 @@
     "food_was_good": "71%",
     "delivery_was_on_time": "81%",
     "order_was_correct": "75%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":[
+    "reviews": [
       {
         "user_name": "Rupak",
         "rating": "1",
@@ -647,7 +676,7 @@
         "no_reviews": "2",
         "review": "I would rate the best dosa",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Amruthaa Prakash",
@@ -655,7 +684,7 @@
         "no_reviews": "1",
         "review": " You have the best ROLLS here.",
         "ordered": "Pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Foodie_rockie",
@@ -663,7 +692,7 @@
         "no_reviews": "1",
         "review": " tasty south Indian food",
         "ordered": "Masala Dosa",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -672,6 +701,10 @@
     "restaurant_id": "1006",
     "restaurant_name": "Dominos",
     "restaurant_images": "new_margherita_pizza.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": false,
+    "free_delivery": true,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -742,7 +775,7 @@
     "city": "Noida",
     "address": "Shop 31, Ashirwaad Complex, Opposite Pathways School, Sector 104 , Noida",
     "locality": "Sector 110",
-    "cuisines": ["Cafe"],
+    "cuisines": ["Cafe", "Pasta", "Pizza", "Dessert", "American"],
     "average_Cost_for_two": "850",
     "aggregate_rating": "3.6",
     "rating_color": "Yellow",
@@ -755,9 +788,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "75%",
     "order_was_correct": "91%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":[
+    "reviews": [
       {
         "user_name": "Katie",
         "rating": "5",
@@ -772,7 +807,7 @@
         "no_reviews": "2",
         "review": "Good sushi at a great price",
         "ordered": "Pizza",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Jennifer",
@@ -780,7 +815,7 @@
         "no_reviews": "4",
         "review": "It's fine. May or may not order from there again.",
         "ordered": "Pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Maria",
@@ -788,7 +823,7 @@
         "no_reviews": "4",
         "review": "Sushi portion was really small for $9. The pot stickers were soggy. The entree was good and hot.",
         "ordered": "Cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -797,6 +832,10 @@
     "restaurant_id": "1007",
     "restaurant_name": "Raghav Ki Rasoi",
     "restaurant_images": "NI.jpeg",
+    "order_tracking_enabled": true,
+    "seamless_plus": true,
+    "free_delivery": false,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -867,7 +906,7 @@
     "city": "Noida",
     "address": "Z 148, Main Road, Sector 12, Noida",
     "locality": "Sector 12",
-    "cuisines": ["North Indian"],
+    "cuisines": ["North Indian", "Pizza", "Salads"],
     "aggregate_rating": "0",
     "rating_color": "White",
     "rating_text": "Not rated",
@@ -879,7 +918,9 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -896,7 +937,7 @@
         "no_reviews": "2",
         "review": "No doubt it is one of the best biryani",
         "ordered": "Pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Jennifer",
@@ -904,7 +945,7 @@
         "no_reviews": "2",
         "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
         "ordered": "Pizza",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Emily",
@@ -912,7 +953,7 @@
         "no_reviews": "1",
         "review": "Great food but really late delivery :,(",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -921,6 +962,10 @@
     "restaurant_id": "1008",
     "restaurant_name": "Cafe Coffee Day",
     "restaurant_images": "cafe6.jpg",
+    "order_tracking_enabled": true,
+    "seamless_plus": false,
+    "free_delivery": true,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -1007,7 +1052,15 @@
     "city": "Noida",
     "address": "IT Towers, Plot 24, Sector 16-A, Near Sector 16, Sector 16, Noida",
     "locality": "Sector 16",
-    "cuisines": ["Cafe"],
+    "cuisines": [
+      "Cafe",
+      "Lunch Specials",
+      "Hamburgers",
+      "Asian",
+      "Dessert",
+      "American",
+      "Sandwiches"
+    ],
     "aggregate_rating": "0",
     "rating_color": "White",
     "rating_text": "Not rated",
@@ -1019,7 +1072,9 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -1036,7 +1091,7 @@
         "no_reviews": "2",
         "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
         "ordered": "sushi",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Neharika Jindal",
@@ -1044,7 +1099,7 @@
         "no_reviews": "1",
         "review": "The crackling spinach chicken /paneer is my favorite dish here.",
         "ordered": "biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Sushmita",
@@ -1052,7 +1107,7 @@
         "no_reviews": "2",
         "review": " amazing cuisines",
         "ordered": "Black Forest Cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -1061,6 +1116,10 @@
     "restaurant_id": "1009",
     "restaurant_name": "Barbeque Nation",
     "restaurant_images": "barbeque_res.jpeg",
+    "order_tracking_enabled": false,
+    "seamless_plus": false,
+    "free_delivery": false,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -1179,7 +1238,7 @@
     "city": "Noida",
     "address": "A-79-A, Ground Floor, Hotel Savoy Suites, Sector 16, Noida",
     "locality": "Sector 16",
-    "cuisines": ["North Indian", "Chinese"],
+    "cuisines": ["North Indian", "Chinese", "Pizza", "Salads"],
     "aggregate_rating": "4.3",
     "rating_color": "Green",
     "rating_text": "Very Good",
@@ -1191,7 +1250,9 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -1208,7 +1269,7 @@
         "no_reviews": "1",
         "review": "food is average",
         "ordered": "pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Amruthaa Prakash",
@@ -1216,7 +1277,7 @@
         "no_reviews": "1",
         "review": " You have the best ROLLS here.",
         "ordered": "cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Vivek Krishnan",
@@ -1224,7 +1285,7 @@
         "no_reviews": "2",
         "review": " Great delicious food , healthy and yummy.",
         "ordered": "burger",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -1233,6 +1294,10 @@
     "restaurant_id": "10010",
     "restaurant_name": "PS Wah Bhai Wah",
     "restaurant_images": "res_1.jpg",
+    "order_tracking_enabled": true,
+    "seamless_plus": false,
+    "free_delivery": false,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -1351,7 +1416,7 @@
     "city": "Noida",
     "address": "B-1/6, Ground Floor, Near Metro Station, Sector 18, Noida",
     "locality": "Sector 18",
-    "cuisines": ["North Indian", "Chinese"],
+    "cuisines": ["North Indian", "Chinese", "Pizza", "Hamburgers", "Asian"],
     "aggregate_rating": "2.6",
     "rating_color": "Orange",
     "rating_text": "Average",
@@ -1363,7 +1428,9 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "91%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -1380,7 +1447,7 @@
         "no_reviews": "1",
         "review": "I would rate the best dosa",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Amruthaa Prakash",
@@ -1388,7 +1455,7 @@
         "no_reviews": "2",
         "review": " You have the best ROLLS here.",
         "ordered": "Pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Foodie_rockie",
@@ -1396,7 +1463,7 @@
         "no_reviews": "1",
         "review": " tasty south Indian food",
         "ordered": "Pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -1405,6 +1472,10 @@
     "restaurant_id": "10011",
     "restaurant_name": "Anand Food Factory",
     "restaurant_images": "res_1.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": true,
+    "free_delivery": false,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -1475,7 +1546,7 @@
     "city": "Noida",
     "address": "C-68, Sector-2, Noida",
     "locality": "Sector 2",
-    "cuisines": ["North Indian"],
+    "cuisines": ["North Indian", "Pasta", "Salads", "Sandwiches"],
     "aggregate_rating": "2.9",
     "rating_color": "Orange",
     "rating_text": "Average",
@@ -1487,9 +1558,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":[
+    "reviews": [
       {
         "user_name": "Katie",
         "rating": "5",
@@ -1504,7 +1577,7 @@
         "no_reviews": "1",
         "review": "Good sushi at a great price",
         "ordered": "Pizza",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Jennifer",
@@ -1512,7 +1585,7 @@
         "no_reviews": "2",
         "review": "It's fine. May or may not order from there again.",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Maria",
@@ -1520,7 +1593,7 @@
         "no_reviews": "3",
         "review": "Sushi portion was really small for $9. The pot stickers were soggy. The entree was good and hot.",
         "ordered": "Pizza",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -1530,6 +1603,10 @@
 
     "restaurant_name": "Nirula's",
     "restaurant_images": "maurya_res.jpg",
+    "order_tracking_enabled": true,
+    "seamless_plus": false,
+    "free_delivery": false,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -1600,7 +1677,7 @@
     "city": "Noida",
     "address": "C-135, Near Sector 15 Metro Station, Sector 2, Noida",
     "locality": "Sector 2",
-    "cuisines": ["North Indian"],
+    "cuisines": ["North Indian", "Pizza", "Dessert"],
     "aggregate_rating": "2.5",
     "rating_color": "Orange",
     "rating_text": "Average",
@@ -1612,7 +1689,9 @@
     "food_was_good": "71%",
     "delivery_was_on_time": "81%",
     "order_was_correct": "91%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -1629,7 +1708,7 @@
         "no_reviews": "2",
         "review": "No doubt it is one of the best biryani",
         "ordered": "Biryni",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Jennifer",
@@ -1637,7 +1716,7 @@
         "no_reviews": "1",
         "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
         "ordered": "Cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Emily",
@@ -1645,7 +1724,7 @@
         "no_reviews": "1",
         "review": "Great food but really late delivery :,(",
         "ordered": "Pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -1655,6 +1734,10 @@
 
     "restaurant_name": "Olive Kitchen",
     "restaurant_images": "res_1.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": true,
+    "free_delivery": true,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -1725,7 +1808,7 @@
     "city": "Noida",
     "address": "82/2, F Block Market, Near INP School, Sector 20, Noida",
     "locality": "Sector 20",
-    "cuisines": ["North Indian"],
+    "cuisines": ["North Indian", "Pasta", "Pizza", "Salads", "Asian"],
     "aggregate_rating": "2.6",
     "rating_color": "Orange",
     "rating_text": "Average",
@@ -1737,9 +1820,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":  [
+    "reviews": [
       {
         "user_name": "Hari",
         "rating": "4",
@@ -1754,7 +1839,7 @@
         "no_reviews": "1",
         "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
         "ordered": "biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Neharika Jindal",
@@ -1762,7 +1847,7 @@
         "no_reviews": "1",
         "review": "The crackling spinach chicken /paneer is my favorite dish here.",
         "ordered": "cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Sushmita",
@@ -1770,7 +1855,7 @@
         "no_reviews": "2",
         "review": " amazing cuisines",
         "ordered": "Pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -1780,6 +1865,10 @@
 
     "restaurant_name": "McDonald's",
     "restaurant_images": "McD.jpg",
+    "order_tracking_enabled": true,
+    "seamless_plus": true,
+    "free_delivery": false,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -1849,7 +1938,7 @@
     "city": "Patna",
     "address": "BR Patna Elphinstone, Elphinstone Picture Palace , East Gandhi Maidan, Golambar, Patna",
     "locality": "Golambar",
-    "cuisines": ["Fast Food"],
+    "cuisines": ["Fast Food", "Pasta", "Pizza", "American", "Sandwiches"],
     "aggregate_rating": "3.4",
     "rating_color": "Orange",
     "rating_text": "Average",
@@ -1861,7 +1950,9 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -1878,7 +1969,7 @@
         "no_reviews": "1",
         "review": "food is average",
         "ordered": "Pizza",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Amruthaa Prakash",
@@ -1886,7 +1977,7 @@
         "no_reviews": "1",
         "review": " You have the best ROLLS here.",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Vivek Krishnan",
@@ -1894,7 +1985,7 @@
         "no_reviews": "1",
         "review": " Great delicious food , healthy and yummy.",
         "ordered": "cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -1904,6 +1995,10 @@
 
     "restaurant_name": "Spice Court - Hotel Maurya",
     "restaurant_images": "maurya_res.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": true,
+    "free_delivery": false,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -2086,7 +2181,16 @@
     "city": "Patna",
     "address": "Hotel Maurya, South Gandhi Maidan, Lodipur, Patna",
     "locality": "Hotel Maurya, Lodipur",
-    "cuisines": ["North Indian", "Chinese", "South Indian"],
+    "cuisines": [
+      "North Indian",
+      "Chinese",
+      "South Indian",
+      "Pizza",
+      "Salads",
+      "Hamburgers",
+      "Asian",
+      "Dessert"
+    ],
     "aggregate_rating": "3.7",
     "rating_color": "Yellow",
     "rating_text": "Good",
@@ -2098,9 +2202,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":  [
+    "reviews": [
       {
         "user_name": "Hari",
         "rating": "4",
@@ -2115,7 +2221,7 @@
         "no_reviews": "1",
         "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Neharika Jindal",
@@ -2123,7 +2229,7 @@
         "no_reviews": "2",
         "review": "The crackling spinach chicken /paneer is my favorite dish here.",
         "ordered": "Black Forest Cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Sushmita",
@@ -2131,7 +2237,7 @@
         "no_reviews": "2",
         "review": " amazing cuisines",
         "ordered": "pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -2141,6 +2247,10 @@
 
     "restaurant_name": "Angeethi",
     "restaurant_images": "Barbeques.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": true,
+    "free_delivery": false,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -2211,7 +2321,7 @@
     "city": "Patna",
     "address": "101, Gharonda Complex, Jagdeo Path Crossing, Bailey Road, Khajpura, Patna",
     "locality": "Khajpura",
-    "cuisines": ["North Indian"],
+    "cuisines": ["North Indian", "Pasta", "Pizza"],
     "aggregate_rating": "3.4",
     "rating_color": "Orange",
     "rating_text": "Average",
@@ -2223,7 +2333,9 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -2240,7 +2352,7 @@
         "no_reviews": "2",
         "review": "No doubt it is one of the best biryani",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Jennifer",
@@ -2248,7 +2360,7 @@
         "no_reviews": "3",
         "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
         "ordered": "Black Forest Cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Emily",
@@ -2256,7 +2368,7 @@
         "no_reviews": "1",
         "review": "Great food but really late delivery :,(",
         "ordered": "Black Forest Cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -2266,6 +2378,10 @@
 
     "restaurant_name": "Red Chilli",
     "restaurant_images": "res_1.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": true,
+    "free_delivery": false,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -2336,7 +2452,7 @@
     "city": "Patna",
     "address": "Opposite Allahabad Bank, Ramnagri Mor, Ashiana Digha Road, Khajpura, Patna",
     "locality": "Khajpura",
-    "cuisines": ["North Indian"],
+    "cuisines": ["North Indian", "Salads", "American", "Sandwiches"],
     "aggregate_rating": "3.6",
     "rating_color": "Yellow",
     "rating_text": "Good",
@@ -2348,9 +2464,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":  [
+    "reviews": [
       {
         "user_name": "Prabhat Thakur",
         "rating": "4",
@@ -2365,7 +2483,7 @@
         "no_reviews": "2",
         "review": "food is average",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Amruthaa Prakash",
@@ -2373,7 +2491,7 @@
         "no_reviews": "3",
         "review": " You have the best ROLLS here.",
         "ordered": "pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Vivek Krishnan",
@@ -2381,7 +2499,7 @@
         "no_reviews": "1",
         "review": " Great delicious food , healthy and yummy.",
         "ordered": "cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -2391,6 +2509,10 @@
 
     "restaurant_name": "Raj Rasoi",
     "restaurant_images": "kaveri.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": true,
+    "free_delivery": true,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -2517,7 +2639,7 @@
     "city": "Patna",
     "address": "Twin Tower Hathwa, South Gandhi Maidan, Lodipur, Patna",
     "locality": "Lodipur",
-    "cuisines": ["North Indian", "South Indian"],
+    "cuisines": ["North Indian", "South Indian", "Pizza", "Dessert"],
     "aggregate_rating": "3.3",
     "rating_color": "Orange",
     "rating_text": "Average",
@@ -2529,7 +2651,9 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -2546,7 +2670,7 @@
         "no_reviews": "2",
         "review": "I would rate the best dosa",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Amruthaa Prakash",
@@ -2554,7 +2678,7 @@
         "no_reviews": "2",
         "review": " You have the best ROLLS here.",
         "ordered": "cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Foodie_rockie",
@@ -2562,7 +2686,7 @@
         "no_reviews": "1",
         "review": " tasty south Indian food",
         "ordered": "dosa",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -2572,6 +2696,10 @@
 
     "restaurant_name": "Swaaddesh",
     "restaurant_images": "aroma_res.jpg",
+    "order_tracking_enabled": true,
+    "seamless_plus": false,
+    "free_delivery": false,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -2642,7 +2770,7 @@
     "city": "Patna",
     "address": "2nd floor, chandra complex, above manyavar, boring road, Sri Krishnapuri, Patna",
     "locality": "Sri Krishnapuri",
-    "cuisines": ["North Indian"],
+    "cuisines": ["North Indian", "Salads", "Hamburgers"],
     "aggregate_rating": "3.5",
     "rating_color": "Yellow",
     "rating_text": "Good",
@@ -2654,9 +2782,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":[
+    "reviews": [
       {
         "user_name": "Nikol",
         "rating": "1",
@@ -2671,7 +2801,7 @@
         "no_reviews": "2",
         "review": "No doubt it is one of the best biryani",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Jennifer",
@@ -2679,7 +2809,7 @@
         "no_reviews": "1",
         "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
         "ordered": "pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Emily",
@@ -2687,7 +2817,7 @@
         "no_reviews": "1",
         "review": "Great food but really late delivery :,(",
         "ordered": "dosa",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -2697,6 +2827,10 @@
 
     "restaurant_name": "German Bakery Wunderbar",
     "restaurant_images": "cafe6.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": false,
+    "free_delivery": true,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -2783,7 +2917,7 @@
     "city": "Pune",
     "address": "153/A, Varun Complex, Near Demech House, Law College Road, Pune",
     "locality": "Law College Road",
-    "cuisines": ["Cafe"],
+    "cuisines": ["Cafe", "Lunch Specials", "Asian", "American", "Sandwiches"],
     "aggregate_rating": "4",
     "rating_color": "Green",
     "rating_text": "Very Good",
@@ -2795,9 +2929,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":  [
+    "reviews": [
       {
         "user_name": "Hari",
         "rating": "4",
@@ -2812,7 +2948,7 @@
         "no_reviews": "2",
         "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Neharika Jindal",
@@ -2820,7 +2956,7 @@
         "no_reviews": "1",
         "review": "The crackling spinach chicken /paneer is my favorite dish here.",
         "ordered": "dosa",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Sushmita",
@@ -2828,7 +2964,7 @@
         "no_reviews": "2",
         "review": " amazing cuisines",
         "ordered": "puri",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -2838,6 +2974,10 @@
 
     "restaurant_name": "Chili's",
     "restaurant_images": "udp.jpg",
+    "order_tracking_enabled": true,
+    "seamless_plus": false,
+    "free_delivery": false,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -2892,7 +3032,7 @@
     "city": "Pune",
     "address": "UG 49, Phoenix Market City, Nagar Road, Viman Nagar, Pune",
     "locality": "Phoenix Market City, Viman Nagar",
-    "cuisines": ["Chinese"],
+    "cuisines": ["Chinese", "Pasta", "Dessert"],
     "aggregate_rating": "4.5",
     "rating_color": "Dark Green",
     "rating_text": "Excellent",
@@ -2904,9 +3044,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":  [
+    "reviews": [
       {
         "user_name": "Prabhat Thakur",
         "rating": "4",
@@ -2921,7 +3063,7 @@
         "no_reviews": "2",
         "review": "food is average",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Amruthaa Prakash",
@@ -2929,7 +3071,7 @@
         "no_reviews": "2",
         "review": " You have the best ROLLS here.",
         "ordered": "pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Vivek Krishnan",
@@ -2937,7 +3079,7 @@
         "no_reviews": "2",
         "review": " Great delicious food , healthy and yummy.",
         "ordered": "cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -2947,6 +3089,10 @@
 
     "restaurant_name": "Tales & Spirits",
     "restaurant_images": "cafe2.jpeg",
+    "order_tracking_enabled": false,
+    "seamless_plus": true,
+    "free_delivery": true,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -3033,7 +3179,7 @@
     "city": "Pune",
     "address": "Plot 64, Shivaji Housing Society, Senapati Bapat Road, Pune",
     "locality": "Senapati Bapat Road",
-    "cuisines": ["Cafe"],
+    "cuisines": ["Cafe", "Salads", "Hamburgers"],
     "aggregate_rating": "4.1",
     "rating_color": "Green",
     "rating_text": "Very Good",
@@ -3045,42 +3191,44 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
-        {
-          "user_name": "Nikol",
-          "rating": "1",
-          "no_reviews": "1",
-          "review": "They delivered to the wrong address and left at front desk.",
-          "ordered": "Black Forest Cake",
-          "level": "Top Reviewer"
-        },
-        {
-          "user_name": "Reema Das",
-          "rating": "4",
-          "no_reviews": "2",
-          "review": "No doubt it is one of the best biryani",
-          "ordered": "Biryani",
-          "level": "Top Reviewer" 
-        },
-        {
-          "user_name": "Jennifer",
-          "rating": "4",
-          "no_reviews": "2",
-          "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
-          "ordered": "cake",
-          "level": "Top Reviewer" 
-        },
-        {
-          "user_name": "Emily",
-          "rating": "3",
-          "no_reviews": "2",
-          "review": "Great food but really late delivery :,(",
-          "ordered": "Black Forest Cake",
-          "level": "Top Reviewer" 
-        }
-      ],
+      {
+        "user_name": "Nikol",
+        "rating": "1",
+        "no_reviews": "1",
+        "review": "They delivered to the wrong address and left at front desk.",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer"
+      },
+      {
+        "user_name": "Reema Das",
+        "rating": "4",
+        "no_reviews": "2",
+        "review": "No doubt it is one of the best biryani",
+        "ordered": "Biryani",
+        "level": "Top Reviewer"
+      },
+      {
+        "user_name": "Jennifer",
+        "rating": "4",
+        "no_reviews": "2",
+        "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
+        "ordered": "cake",
+        "level": "Top Reviewer"
+      },
+      {
+        "user_name": "Emily",
+        "rating": "3",
+        "no_reviews": "2",
+        "review": "Great food but really late delivery :,(",
+        "ordered": "Black Forest Cake",
+        "level": "Top Reviewer"
+      }
+    ],
     "tot_reviews": "4"
   },
   {
@@ -3088,6 +3236,10 @@
 
     "restaurant_name": "The Kav's",
     "restaurant_images": "res_1.jpg",
+    "order_tracking_enabled": true,
+    "seamless_plus": true,
+    "free_delivery": true,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -3158,7 +3310,15 @@
     "city": "Ranchi",
     "address": "Near BJP Office, Harmu Bypass Road, Harmu, Ranchi",
     "locality": "Harmu",
-    "cuisines": ["North Indian", "Continental", "Chinese"],
+    "cuisines": [
+      "North Indian",
+      "Continental",
+      "Chinese",
+      "Pizza",
+      "Asian",
+      "American",
+      "Sandwiches"
+    ],
     "aggregate_rating": "3.2",
     "rating_color": "Orange",
     "rating_text": "Average",
@@ -3170,9 +3330,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":  [
+    "reviews": [
       {
         "user_name": "Hari",
         "rating": "4",
@@ -3187,7 +3349,7 @@
         "no_reviews": "3",
         "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Neharika Jindal",
@@ -3195,7 +3357,7 @@
         "no_reviews": "1",
         "review": "The crackling spinach chicken /paneer is my favorite dish here.",
         "ordered": "non veg",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Sushmita",
@@ -3203,7 +3365,7 @@
         "no_reviews": "2",
         "review": " amazing cuisines",
         "ordered": "dosa",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -3213,6 +3375,10 @@
 
     "restaurant_name": "Kaveri Restaurant And Caterers",
     "restaurant_images": "kaveri.jpg",
+    "order_tracking_enabled": true,
+    "seamless_plus": false,
+    "free_delivery": false,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -3395,7 +3561,14 @@
     "city": "Ranchi",
     "address": "GEL Church Shopping Complex, Main Road, Hindpiri, Ranchi",
     "locality": "Hindpiri",
-    "cuisines": ["North Indian", "Chinese", "South Indian", "Chinese"],
+    "cuisines": [
+      "North Indian",
+      "Chinese",
+      "South Indian",
+      "Chinese",
+      "Pizza",
+      "Dessert"
+    ],
     "aggregate_rating": "4",
     "rating_color": "Green",
     "rating_text": "Very Good",
@@ -3407,9 +3580,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":  [
+    "reviews": [
       {
         "user_name": "Prabhat Thakur",
         "rating": "4",
@@ -3424,7 +3599,7 @@
         "no_reviews": "1",
         "review": "food is average",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Amruthaa Prakash",
@@ -3432,7 +3607,7 @@
         "no_reviews": "1",
         "review": " You have the best ROLLS here.",
         "ordered": "dosa",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Vivek Krishnan",
@@ -3440,7 +3615,7 @@
         "no_reviews": "4",
         "review": " Great delicious food , healthy and yummy.",
         "ordered": "biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -3450,6 +3625,10 @@
 
     "restaurant_name": "Food Belle",
     "restaurant_images": "cafe2.jpeg",
+    "order_tracking_enabled": false,
+    "seamless_plus": true,
+    "free_delivery": true,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -3568,7 +3747,7 @@
     "city": "Ranchi",
     "address": "Bhaskar Anirudh Complex, Near Jail More, Karamtoli Road, Lalpur, Ranchi",
     "locality": "Lalpur",
-    "cuisines": ["North Indian", "Chinese"],
+    "cuisines": ["North Indian", "Chinese", "Salads", "Asian"],
     "aggregate_rating": "3.3",
     "rating_color": "Orange",
     "rating_text": "Average",
@@ -3580,7 +3759,9 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -3597,7 +3778,7 @@
         "no_reviews": "1",
         "review": "I would rate the best dosa",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Amruthaa Prakash",
@@ -3605,7 +3786,7 @@
         "no_reviews": "1",
         "review": " You have the best ROLLS here.",
         "ordered": "",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Foodie_rockie",
@@ -3613,7 +3794,7 @@
         "no_reviews": "2",
         "review": " tasty south Indian food",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -3623,6 +3804,10 @@
 
     "restaurant_name": "Kaveri Restaurant And Caterers",
     "restaurant_images": "udp.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": false,
+    "free_delivery": true,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -3805,7 +3990,15 @@
     "city": "Ranchi",
     "address": "Circular Road, Near Lalpur Chowk, Lalpur, Ranchi",
     "locality": "Lalpur",
-    "cuisines": ["North Indian", "Chinese", "South Indian", "Chinese"],
+    "cuisines": [
+      "North Indian",
+      "Chinese",
+      "South Indian",
+      "Chinese",
+      "Pasta",
+      "Pizza",
+      "American"
+    ],
     "aggregate_rating": "3.4",
     "rating_color": "Orange",
     "rating_text": "Average",
@@ -3817,9 +4010,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":  [
+    "reviews": [
       {
         "user_name": "Hari",
         "rating": "4",
@@ -3834,7 +4029,7 @@
         "no_reviews": "2",
         "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Neharika Jindal",
@@ -3842,7 +4037,7 @@
         "no_reviews": "1",
         "review": "The crackling spinach chicken /paneer is my favorite dish here.",
         "ordered": "Dosa",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Sushmita",
@@ -3850,7 +4045,7 @@
         "no_reviews": "1",
         "review": " amazing cuisines",
         "ordered": "Puri",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -3860,6 +4055,10 @@
 
     "restaurant_name": "OMG Cafe",
     "restaurant_images": "cafe6.jpg",
+    "order_tracking_enabled": true,
+    "seamless_plus": true,
+    "free_delivery": false,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -3946,7 +4145,16 @@
     "city": "Ranchi",
     "address": "301, 3rd Floor, R S Tower, Opposite Pantaloons, Circular Road, Lalpur, Ranchi",
     "locality": "Lalpur",
-    "cuisines": ["Cafe", "Italian", "Mexican", "Chinese", "North Indian"],
+    "cuisines": [
+      "Cafe",
+      "Italian",
+      "Mexican",
+      "Chinese",
+      "North Indian",
+      "Pizza",
+      "Salads",
+      "Asian"
+    ],
     "aggregate_rating": "3.3",
     "rating_color": "Orange",
     "rating_text": "Average",
@@ -3958,7 +4166,9 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -3975,7 +4185,7 @@
         "no_reviews": "1",
         "review": "No doubt it is one of the best biryani",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Jennifer",
@@ -3983,7 +4193,7 @@
         "no_reviews": "1",
         "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
         "ordered": "Garlic Bread",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Emily",
@@ -3991,7 +4201,7 @@
         "no_reviews": "1",
         "review": "Great food but really late delivery :,(",
         "ordered": "Cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -4001,6 +4211,10 @@
 
     "restaurant_name": "Pizza Hut",
     "restaurant_images": "pizza_hut.jpeg",
+    "order_tracking_enabled": false,
+    "seamless_plus": true,
+    "free_delivery": true,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -4071,7 +4285,7 @@
     "city": "Ranchi",
     "address": "Shop 101, Ground Floor, Spring City Mall, Beside Eyelex Cinema, Airport Road, Hinoo, Doranda, Ranchi",
     "locality": "Spring City Mall, Doranda",
-    "cuisines": ["Pizza"],
+    "cuisines": ["Pizza", "Hamburgers", "Asian", "Sandwiches"],
     "aggregate_rating": "3.5",
     "rating_color": "Yellow",
     "rating_text": "Good",
@@ -4083,7 +4297,9 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -4100,7 +4316,7 @@
         "no_reviews": "1",
         "review": "I would rate the best dosa",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Amruthaa Prakash",
@@ -4108,7 +4324,7 @@
         "no_reviews": "1",
         "review": " You have the best ROLLS here.",
         "ordered": "Pizza",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Foodie_rockie",
@@ -4116,7 +4332,7 @@
         "no_reviews": "1",
         "review": " tasty south Indian food",
         "ordered": "Pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -4126,6 +4342,10 @@
 
     "restaurant_name": "Aroma - The Royal Retreat",
     "restaurant_images": "aroma_res.jpg",
+    "order_tracking_enabled": true,
+    "seamless_plus": false,
+    "free_delivery": true,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -4308,7 +4528,14 @@
     "city": "Ranchi",
     "address": "The Royal Retreat, Krishna Nagar, Booti, Bariatu, Ranchi",
     "locality": "The Royal Retreat, Bariatu",
-    "cuisines": ["North Indian", "South Indian", "Chinese"],
+    "cuisines": [
+      "North Indian",
+      "South Indian",
+      "Chinese",
+      "Pasta",
+      "Pizza",
+      "American"
+    ],
     "aggregate_rating": "3.5",
     "rating_color": "Yellow",
     "rating_text": "Good",
@@ -4320,7 +4547,9 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -4337,7 +4566,7 @@
         "no_reviews": "2",
         "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Neharika Jindal",
@@ -4345,7 +4574,7 @@
         "no_reviews": "1",
         "review": "The crackling spinach chicken /paneer is my favorite dish here.",
         "ordered": "Cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Sushmita",
@@ -4353,7 +4582,7 @@
         "no_reviews": "1",
         "review": " amazing cuisines",
         "ordered": "Pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -4362,6 +4591,10 @@
     "restaurant_id": "1050",
     "restaurant_name": "Aloft Chennai OMR - IT Expressway",
     "restaurant_images": "Aloft Chennai OMR - IT Expressway.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": false,
+    "free_delivery": true,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -4447,7 +4680,7 @@
     "city": "Chennai",
     "address": "102, SH 49A, Ezhil Nagar, Sholinganallur, Chennai, Tamil Nadu 600119",
     "locality": "Sholinganallur",
-    "cuisines": ["Cafe"],
+    "cuisines": ["Cafe", "Pasta", "Pizza", "Asian", "Sandwiches"],
     "aggregate_rating": "4.1",
     "rating_color": "Green",
     "rating_text": "Very Good",
@@ -4459,9 +4692,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":[
+    "reviews": [
       {
         "user_name": "Nikol",
         "rating": "1",
@@ -4476,7 +4711,7 @@
         "no_reviews": "1",
         "review": "No doubt it is one of the best biryani",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Jennifer",
@@ -4484,7 +4719,7 @@
         "no_reviews": "3",
         "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
         "ordered": "Pizza",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Emily",
@@ -4492,7 +4727,7 @@
         "no_reviews": "3",
         "review": "Great food but really late delivery :,(",
         "ordered": "Pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -4501,6 +4736,10 @@
     "restaurant_id": "1051",
     "restaurant_name": "Fairfield by Marriott Chennai OMR",
     "restaurant_images": "Fairfield by Marriott Chennai OMR.jpg",
+    "order_tracking_enabled": true,
+    "seamless_plus": false,
+    "free_delivery": false,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -4571,7 +4810,7 @@
     "city": "Chennai",
     "address": "No.169 Rajiv Gandhi Salai, Old Mahabalipuram Rd, Semencheri, Tamil Nadu 600119",
     "locality": "Semencheri",
-    "cuisines": ["North Indian"],
+    "cuisines": ["North Indian", "Pizza", "Dessert"],
     "aggregate_rating": "4.9",
     "rating_color": "Dark Green",
     "rating_text": "Excellent",
@@ -4583,9 +4822,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":  [
+    "reviews": [
       {
         "user_name": "Prabhat Thakur",
         "rating": "4",
@@ -4600,7 +4841,7 @@
         "no_reviews": "2",
         "review": "food is average",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Amruthaa Prakash",
@@ -4608,7 +4849,7 @@
         "no_reviews": "3",
         "review": " You have the best ROLLS here.",
         "ordered": "Pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Vivek Krishnan",
@@ -4616,7 +4857,7 @@
         "no_reviews": "2",
         "review": " Great delicious food , healthy and yummy.",
         "ordered": "noodles",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -4625,6 +4866,10 @@
     "restaurant_id": "1052",
     "restaurant_name": "S Hotels Chennai",
     "restaurant_images": "S Hotels Chennai.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": false,
+    "free_delivery": true,
+    "group_order": true,
 
     "menu_items": [
       {
@@ -4696,7 +4941,7 @@
     "city": "Chennai",
     "address": "2, Sarathy Nagar, 1st Main Road, Velachery, Chennai",
     "locality": "Velachery",
-    "cuisines": ["South Indian"],
+    "cuisines": ["South Indian", "Pasta", "Pizza", "Hamburgers", "Sandwiches"],
     "aggregate_rating": "4",
     "rating_color": "Green",
     "rating_text": "Very Good",
@@ -4708,9 +4953,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":  [
+    "reviews": [
       {
         "user_name": "Hari",
         "rating": "4",
@@ -4725,7 +4972,7 @@
         "no_reviews": "2",
         "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Neharika Jindal",
@@ -4733,7 +4980,7 @@
         "no_reviews": "3",
         "review": "The crackling spinach chicken /paneer is my favorite dish here.",
         "ordered": "dosa",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Sushmita",
@@ -4741,7 +4988,7 @@
         "no_reviews": "2",
         "review": " amazing cuisines",
         "ordered": "puri",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -4750,6 +4997,10 @@
     "restaurant_id": "1053",
     "restaurant_name": "FabHotel St. Thomas Inn",
     "restaurant_images": "FabHotel St. Thomas Inn.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": true,
+    "free_delivery": false,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -4836,7 +5087,7 @@
     "city": "Chennai",
     "address": "5, 69, Butt Rd, Parangi Malai, St.Thomas Mount, Tamil Nadu 600016",
     "locality": "Parangi Malai",
-    "cuisines": ["Cafe"],
+    "cuisines": ["Cafe", "Lunch Specials", "Pasta", "Pizza", "Salads"],
     "aggregate_rating": "0",
     "rating_color": "White",
     "rating_text": "Not rated",
@@ -4848,9 +5099,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":  [
+    "reviews": [
       {
         "user_name": "Prabhat Thakur",
         "rating": "4",
@@ -4865,7 +5118,7 @@
         "no_reviews": "2",
         "review": "food is average",
         "ordered": "pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Amruthaa Prakash",
@@ -4873,7 +5126,7 @@
         "no_reviews": "1",
         "review": " You have the best ROLLS here.",
         "ordered": "dosa",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Vivek Krishnan",
@@ -4881,7 +5134,7 @@
         "no_reviews": "1",
         "review": " Great delicious food , healthy and yummy.",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -4890,6 +5143,10 @@
     "restaurant_id": "1054",
     "restaurant_name": "Hotel Mount Plaza",
     "restaurant_images": "Hotel Mount Plaza.jpg",
+    "order_tracking_enabled": true,
+    "seamless_plus": true,
+    "free_delivery": false,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -4976,7 +5233,7 @@
     "city": "Chennai",
     "address": "101, Butt Rd, Parangi Malai, St.Thomas Mount, Tamil Nadu 600016",
     "locality": "Parangi Malai",
-    "cuisines": ["Cafe"],
+    "cuisines": ["Cafe", "Asian", "Dessert", "American", "Sandwiches"],
     "average_Cost_for_two": "350",
     "aggregate_rating": "4.4",
     "rating_color": "Green",
@@ -4989,9 +5246,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":[
+    "reviews": [
       {
         "user_name": "Rupak",
         "rating": "1",
@@ -5006,7 +5265,7 @@
         "no_reviews": "2",
         "review": "I would rate the best dosa",
         "ordered": "Burger",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Amruthaa Prakash",
@@ -5014,7 +5273,7 @@
         "no_reviews": "2",
         "review": " You have the best ROLLS here.",
         "ordered": "pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Foodie_rockie",
@@ -5022,7 +5281,7 @@
         "no_reviews": "3",
         "review": " tasty south Indian food",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -5031,6 +5290,10 @@
     "restaurant_id": "1055",
     "restaurant_name": "Aasife and Brothers",
     "restaurant_images": "Aasife and Brothers.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": false,
+    "free_delivery": false,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -5117,7 +5380,7 @@
     "city": "Chennai",
     "address": "5, 15, Butt Rd, Ravi Colony, Gandhi Nagar, St.Thomas Mount, Tamil Nadu 600016",
     "locality": "Ravi Colony",
-    "cuisines": ["Cafe"],
+    "cuisines": ["Cafe", "Lunch Specials", "Pasta", "Pizza", "Hamburgers"],
     "average_Cost_for_two": "350",
     "aggregate_rating": "4.4",
     "rating_color": "Green",
@@ -5130,7 +5393,9 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -5147,7 +5412,7 @@
         "no_reviews": "1",
         "review": "No doubt it is one of the best biryani",
         "ordered": "pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Jennifer",
@@ -5155,7 +5420,7 @@
         "no_reviews": "1",
         "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
         "ordered": "pizza",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Emily",
@@ -5163,7 +5428,7 @@
         "no_reviews": "1",
         "review": "Great food but really late delivery :,(",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -5172,6 +5437,10 @@
     "restaurant_id": "1056",
     "restaurant_name": "Qurbani biryani",
     "restaurant_images": "Qurbani biryani.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": false,
+    "free_delivery": true,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -5242,7 +5511,7 @@
     "city": "Chennai",
     "address": "N.o-1, Radhakrishnan St, Opp. Lamech School, Palaniappa Nagar, Valasaravakkam, Chennai, Tamil Nadu 600087",
     "locality": "Radhakrishnan St",
-    "cuisines": ["Cafe"],
+    "cuisines": ["Cafe", "Pasta", "Salads", "Asian", "Sandwiches"],
     "average_Cost_for_two": "850",
     "aggregate_rating": "3.6",
     "rating_color": "Yellow",
@@ -5255,9 +5524,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":  [
+    "reviews": [
       {
         "user_name": "Hari",
         "rating": "4",
@@ -5272,7 +5543,7 @@
         "no_reviews": "1",
         "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Neharika Jindal",
@@ -5280,7 +5551,7 @@
         "no_reviews": "2",
         "review": "The crackling spinach chicken /paneer is my favorite dish here.",
         "ordered": "pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Sushmita",
@@ -5288,7 +5559,7 @@
         "no_reviews": "2",
         "review": " amazing cuisines",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -5297,6 +5568,10 @@
     "restaurant_id": "1066",
     "restaurant_name": "Hotel NK Courtyard",
     "restaurant_images": "Hotel NK Courtyard.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": true,
+    "free_delivery": false,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -5367,7 +5642,7 @@
     "city": "Chennai",
     "address": "1/53, Sripuram Colony, Rajeswari colony, St.Thomas Mount, Tamil Nadu 600016",
     "locality": "Sripuram Colony",
-    "cuisines": ["Cafe"],
+    "cuisines": ["Cafe", "Pasta", "Pizza", "Dessert"],
     "average_Cost_for_two": "850",
     "aggregate_rating": "3.6",
     "rating_color": "Yellow",
@@ -5380,7 +5655,9 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -5397,7 +5674,7 @@
         "no_reviews": "3",
         "review": "No doubt it is one of the best biryani",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Jennifer",
@@ -5405,7 +5682,7 @@
         "no_reviews": "1",
         "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
         "ordered": "pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Emily",
@@ -5413,7 +5690,7 @@
         "no_reviews": "1",
         "review": "Great food but really late delivery :,(",
         "ordered": "cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -5422,6 +5699,10 @@
     "restaurant_id": "1097",
     "restaurant_name": "Hotel Arjun Inn , Room booking",
     "restaurant_images": "Hotel Arjun Inn , Room booking.jpg",
+    "order_tracking_enabled": false,
+    "seamless_plus": false,
+    "free_delivery": true,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -5492,7 +5773,7 @@
     "city": "Chennai",
     "address": "3/25, Pallavan Street, Ekkatuthangal, ( next to metro station), Chennai, Tamil Nadu 600032",
     "locality": "Ekkatuthangal",
-    "cuisines": ["North Indian"],
+    "cuisines": ["North Indian", "Salads", "Hamburgers", "Asian", "Sandwiches"],
     "aggregate_rating": "0",
     "rating_color": "White",
     "rating_text": "Not rated",
@@ -5504,9 +5785,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":  [
+    "reviews": [
       {
         "user_name": "Prabhat Thakur",
         "rating": "4",
@@ -5521,7 +5804,7 @@
         "no_reviews": "1",
         "review": "food is average",
         "ordered": "roti",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Amruthaa Prakash",
@@ -5529,7 +5812,7 @@
         "no_reviews": "1",
         "review": " You have the best ROLLS here.",
         "ordered": "dosa",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Vivek Krishnan",
@@ -5537,7 +5820,7 @@
         "no_reviews": "1",
         "review": " Great delicious food , healthy and yummy.",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -5546,6 +5829,10 @@
     "restaurant_id": "1098",
     "restaurant_name": "Cafe Coffee Day",
     "restaurant_images": "cafe6.jpg",
+    "order_tracking_enabled": true,
+    "seamless_plus": true,
+    "free_delivery": false,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -5632,7 +5919,14 @@
     "city": "Noida",
     "address": "IT Towers, Plot 24, Sector 16-A, Near Sector 16, Sector 16, Noida",
     "locality": "Sector 16",
-    "cuisines": ["Cafe"],
+    "cuisines": [
+      "Cafe",
+      "Lunch Specials",
+      "Pasta",
+      "Pizza",
+      "American",
+      "Sandwiches"
+    ],
     "aggregate_rating": "0",
     "rating_color": "White",
     "rating_text": "Not rated",
@@ -5644,9 +5938,11 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
-    "reviews":  [
+    "reviews": [
       {
         "user_name": "Hari",
         "rating": "4",
@@ -5661,7 +5957,7 @@
         "no_reviews": "2",
         "review": "Amazed by the authenticity of pizzas and the varieties they have in it",
         "ordered": "pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Neharika Jindal",
@@ -5669,7 +5965,7 @@
         "no_reviews": "2",
         "review": "The crackling spinach chicken /paneer is my favorite dish here.",
         "ordered": "burger",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Sushmita",
@@ -5677,7 +5973,7 @@
         "no_reviews": "1",
         "review": " amazing cuisines",
         "ordered": "pasta",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -5686,6 +5982,10 @@
     "restaurant_id": "1099",
     "restaurant_name": "The Mount Regency",
     "restaurant_images": "The Mount Regency.jog",
+    "order_tracking_enabled": false,
+    "seamless_plus": false,
+    "free_delivery": true,
+    "group_order": false,
     "menu_items": [
       {
         "id": "1",
@@ -5804,7 +6104,7 @@
     "city": "Chennai",
     "address": "No: 7, Wallers Rd, Mount Road, Chintadripet, Chennai, Tamil Nadu 600002",
     "locality": "Mount Road",
-    "cuisines": ["North Indian", "Chinese"],
+    "cuisines": ["North Indian", "Chinese", "Pizza", "Salads", "Asian"],
     "aggregate_rating": "4.3",
     "rating_color": "Green",
     "rating_text": "Very Good",
@@ -5816,7 +6116,9 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       {
@@ -5833,7 +6135,7 @@
         "no_reviews": "2",
         "review": "No doubt it is one of the best biryani",
         "ordered": "biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Jennifer",
@@ -5841,7 +6143,7 @@
         "no_reviews": "2",
         "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
         "ordered": "Biryani",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       },
       {
         "user_name": "Emily",
@@ -5849,7 +6151,7 @@
         "no_reviews": "3",
         "review": "Great food but really late delivery :,(",
         "ordered": "cake",
-        "level": "Top Reviewer" 
+        "level": "Top Reviewer"
       }
     ],
     "tot_reviews": "4"
@@ -5858,6 +6160,10 @@
     "restaurant_id": "100101",
     "restaurant_name": "Hotel Sera Grand",
     "restaurant_images": "Hotel Sera Grand.jpg",
+    "order_tracking_enabled": true,
+    "seamless_plus": true,
+    "free_delivery": true,
+    "group_order": true,
     "menu_items": [
       {
         "id": "1",
@@ -5976,7 +6282,7 @@
     "city": "Chennai",
     "address": "No:3,CMDA Town Centre Maraimalai Nagar,GST Road NH-45 Maraimalai Nagar, Chennai, Tamil Nadu 603203",
     "locality": "Maraimalai Nagar",
-    "cuisines": ["North Indian", "South Indian"],
+    "cuisines": ["North Indian", "South Indian", "Salads", "Dessert"],
     "aggregate_rating": "2.6",
     "rating_color": "Orange",
     "rating_text": "Average",
@@ -5988,7 +6294,9 @@
     "food_was_good": "81%",
     "delivery_was_on_time": "76%",
     "order_was_correct": "81%",
-   "timings": [{ "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }],
+    "timings": [
+      { "mon-thu": { "pickup": "6PM to 6AM", "delivery": "6AM to 6PM" } }
+    ],
     "delivery": "time",
     "reviews": [
       [
@@ -6006,7 +6314,7 @@
           "no_reviews": "1",
           "review": "No doubt it is one of the best biryani",
           "ordered": "Biryani",
-          "level": "Top Reviewer" 
+          "level": "Top Reviewer"
         },
         {
           "user_name": "Jennifer",
@@ -6014,7 +6322,7 @@
           "no_reviews": "1",
           "review": "Pizzas tastes good, but most of tge tym they fail to prepare well",
           "ordered": "pasta",
-          "level": "Top Reviewer" 
+          "level": "Top Reviewer"
         },
         {
           "user_name": "Emily",
@@ -6022,11 +6330,10 @@
           "no_reviews": "2",
           "review": "Great food but really late delivery :,(",
           "ordered": "Biryani",
-          "level": "Top Reviewer" 
+          "level": "Top Reviewer"
         }
       ]
     ],
     "tot_reviews": "4"
   }
-  
 ]

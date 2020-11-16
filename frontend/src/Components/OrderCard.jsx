@@ -2,7 +2,7 @@ import React from "react";
 import data from "./testdata.json"
 
 export default function OrderCard(temp) {
-  var props = data[1]
+  var props = temp.ele
   console.log("in card", props, props.order, props.date);
 
   return (
@@ -11,8 +11,9 @@ export default function OrderCard(temp) {
         <div class="card" style={{ width: "18rem" }}>
           <div class="card-body">
             <h5 class="card-title">
-              <img src="http://via.placeholder.com/50" alt="hotel image" />{" "}
-              {"NAME"}
+              {/* <img src="http://via.placeholder.com/50" alt="hotel image" /> */}
+              {"Order Id    "}
+              {props.orderId}
             </h5>
             <p class="card-text">
               {props.order &&
@@ -32,14 +33,14 @@ export default function OrderCard(temp) {
             type="button"
             class="btn btn-primary"
             data-toggle="modal"
-            data-target="#exampleModal"
+            data-target={"#exampleModal"+`${props.orderId}`}
           >
             Launch demo modal
           </button>
 
           <div
             class="modal fade"
-            id="exampleModal"
+            id={"exampleModal"+`${props.orderId}`}
             tabindex="-1"
             role="dialog"
             aria-labelledby="exampleModalLabel"
@@ -50,7 +51,7 @@ export default function OrderCard(temp) {
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">
     
-                      Orde Details{props.date}{" "}
+                      {"Order Details    "}{props.orderId}{" "}
                       <div>
                         <span style={{ fontSize: 10 }}>{props.date}</span>
                         <span style={{ fontSize: 10, marginLeft: 15 }}>

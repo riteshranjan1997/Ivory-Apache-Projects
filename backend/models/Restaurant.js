@@ -66,7 +66,18 @@ const RestaurantSchema = new Schema({
     tot_reviews:{
         type:Number
     },
-
+    order_tracking_enabled:{
+        type : Boolean
+    },
+    seamless_plus:{
+        type : Boolean
+    },
+    free_delivery:{
+        type : Boolean
+    },
+    group_order:{
+        type : Boolean
+    },
 });
 
 module.exports = mongoose.model("restaurants-data", RestaurantSchema);

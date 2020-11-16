@@ -5,6 +5,7 @@ require("dotenv").config();
 const User = require("../models/User");
 const Restaurant = require("../models/Restaurant")
 const authenticateToken = require("../middlewares/jwtAuthentication");
+const {v4 : uuidV4} = require("uuid");
 
 const router = express.Router()
 
@@ -115,13 +116,14 @@ router.post("/saveOrders",authenticateToken,async (req,res)=>{
   let user
   try{
      user = await User.findOne({email:email})
-     user.past_orders = [...user.past_orders,{order:[...user.cart],date:new Date().toLocaleDateString() ,time:new Date().toLocaleTimeString()}]
+     user.past_orders = [...user.past_orders,{order:[...user.cart],date:new Date().toLocaleDateString() ,time:new Date().toLocaleTimeString(),orderId:uuidV4().slice(0,6)}]
      console.log("in saveOrder",user.past_orders)
      user.cart = []
      const savedUser = await user.save()
      return res.status(200).json({error:false,userData:savedUser,accessToken:token})
   }
   catch(err){
+    console.log("in save orders",err)
     return res.status(500).json({error:true,message:err})
   }
    

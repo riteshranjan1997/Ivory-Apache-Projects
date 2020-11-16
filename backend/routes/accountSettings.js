@@ -7,7 +7,6 @@ const User = require("../models/User");
 const authenticateToken = require("../middlewares/jwtAuthentication");
 const { emailValidation, passwordValidation } = require("../validation");
 const { serialize } = require("v8");
-
 const router = express.Router();
 
 router.put("/profile", authenticateToken, async (req, res) => {
@@ -278,9 +277,9 @@ router.post("/addCard",authenticateToken,async (req,res)=>{
     }
 })
 
-router.get("/saveRestaurant",authenticateToken,async(req,res)=>{
+router.post("/saveRestaurant",authenticateToken,async(req,res)=>{
     const {id,email,first_name} = req.user
-    const {_id} = req.body["_id"]
+    const _id = req.body["restaurant_id"]
     try{
         const user = await User.findOne({email:email})
         user.saved_restaurants = [...user.saved_restaurants,_id]
