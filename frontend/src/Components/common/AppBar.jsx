@@ -327,7 +327,7 @@ export default function Bar(props) {
             <Link to="/">
               <img
                 className={classes.logo}
-                src="flawless_logo.png"
+                src="../flawless_logo.png"
                 alt="company logo"
               />
             </Link>

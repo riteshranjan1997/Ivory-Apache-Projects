@@ -28,8 +28,8 @@ function AboutPage(){
                             <div>See the full schedule</div>
                         </div>
                     </div>
+                    <div style={{color:"#2B8282"}}>{data.address}</div>
                 </div>
-
         </div>
     )
 }

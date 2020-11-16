@@ -2,6 +2,10 @@ import React from 'react'
 import Styled from 'styled-components'
 import { useSelector,useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import StarIcon from '@material-ui/icons/Star';
+import { makeStyles ,withStyles} from '@material-ui/core/styles';
+import Rating from "@material-ui/lab/Rating";
+import Popover from "react-bootstrap/Popover";
 
 const RestaurentDetails = Styled.div`
     position:relative;
@@ -12,6 +16,23 @@ const RestaurentDetails = Styled.div`
         font-weight:bolder;
     }
 `
+const StyledRating = withStyles({
+    iconFilled: {
+      color: 'orange',
+    },
+    iconHover:{
+      color:"inherit",
+    }
+  })(Rating); 
+  const popover = (
+    <Popover id="popover-basic">
+      <h6 style={{textAlign:"center" , padding:"10px"}} >Here's what people are saying:</h6>
+      <Popover.Content>
+        And here's some <strong>amazing</strong> content. It's very engaging.
+        right?
+      </Popover.Content>
+    </Popover>
+  );
 
 function RestaurentMenuItemDetails(){
     const restaurantsData = useSelector((state)=>state.app.restaurantsData)
@@ -32,12 +53,13 @@ function RestaurentMenuItemDetails(){
 
                 <div style={{display:"flex"}}>
                 <div className="mr-2">
-                    {new Array(5).fill(0).map((stars,i)=>(
-                        i<=item.aggregate_rating-1 ?                        
-                            <i class="fas fa-star" style={{color:"orange"}}></i>                         
-                         :
-                           <i class="fas fa-star" style={{color:"grey"}}></i>                    
-                    ))}
+                    <StyledRating
+                        name="unique-rating"
+                        defaultValue={item.aggregate_rating}
+                        // getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
+                        precision={1}
+                        icon={<StarIcon fontSize="inherit" />}
+                        />
                     </div>
                     <div className="mr-2">{item.votes} ratings</div>
                     <div className="mr-2"><span>{item.food_was_good}</span> food was good</div>
