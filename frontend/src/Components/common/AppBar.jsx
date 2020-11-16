@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   addressModel: {
     width: "400px",
-    maxHeight: "600px",
+    height: "400px",
     backgroundColor: "white",
     border: "none",
     outline: "none",
@@ -327,7 +327,7 @@ export default function Bar(props) {
             <Link to="/">
               <img
                 className={classes.logo}
-                src="flawless_logo.png"
+                src="../flawless_logo.png"
                 alt="company logo"
               />
             </Link>

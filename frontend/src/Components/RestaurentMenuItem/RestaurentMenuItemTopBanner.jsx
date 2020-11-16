@@ -1,6 +1,7 @@
 import React from 'react'
 import Styled from 'styled-components'
 import Button from '@material-ui/core/Button';
+import {Link} from 'react-router-dom'
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
@@ -10,6 +11,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector,useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import zIndex from '@material-ui/core/styles/zIndex';
 
 
 
@@ -60,42 +62,51 @@ const BackArrow=Styled.div`
       left:160px;
       z-index:1;
       i{
+          margin-top:65px;
           background :#2B8282;
           border-radius:50%;
           font-size:40px;
           color:white;
+          z-index:15;
       }
 `
 const SaveRestaurent = Styled.div`
     border : none;
+    margin-top:65px;
     position:absolute;
     top : 20px;
-    right:160px;
-    z-index:1;
+    right:160px;    
     height:40px;
     width:40px;
     background:white;
     border-radius:50%;
+    z-index:15;
     i{
-        margin-top:10px;
-        color:grey;
+        position:relative;
+        top:10px;
+        left:15px;        
+        color:grey;       
     }
 `
 
 const ShareRestaurent = Styled.div`
+    margin-top:65px;
     border : none;
     position:absolute;
     top : 20px;
     right:100px;
-    z-index:1;
+    z-index:15;
     height:40px;
     width:40px;
     background:white;
     border-radius:50%;
-    i{
-        margin-top:10px;
-        color:#2B8282;
+    i{       
+        color:#2B8282;        
+        border-radius:50%;
         font-size:22px;
+        position:relative;
+        top:10px;
+        left:10px; 
     }
 `
 
@@ -135,9 +146,9 @@ function RestaurentMenuItemTopBanner(){
     return(
         <div>
                 <BannerWrapper>
-                    <img className="img-fluid" src ={`../${item.restaurant_images}`} style={{marginTop:"63px",objectFit:"cover"}} alt = "ImageBanner"/>
+                    <img className="img-fluid" src ={`../${item.restaurant_images}`} style={{marginTop:"65px",objectFit:"cover",zIndex:"2"}} alt = "ImageBanner"/>
                     <BackArrow>
-                        <i class="fas fa-chevron-circle-left"></i>
+                        <Link to="/search"><i class="fas fa-chevron-circle-left"></i></Link>
                     </BackArrow>
                     <SaveRestaurent>
                         <i class="fas fa-bookmark"></i>

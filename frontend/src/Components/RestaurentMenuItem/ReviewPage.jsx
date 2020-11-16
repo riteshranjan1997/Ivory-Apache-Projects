@@ -5,7 +5,7 @@ import Rating from "@material-ui/lab/Rating";
 import { makeStyles ,withStyles} from '@material-ui/core/styles';
 import StarIcon from '@material-ui/icons/Star';
 import Avatar from "@material-ui/core/Avatar";
-import data from '../../data.json'
+// import data from '../../data.json'
 
 const StyledRating = withStyles({
     iconFilled: {
@@ -20,36 +20,37 @@ const StyledRating = withStyles({
 function ReviewPage(){
     const ParamsId =useParams()
     const restaurantsData = useSelector((state)=>state.app.restaurantsData)
-    // const data = restaurantsData.find(item =>item.restaurant_id == ParamsId.id)
+    const data = restaurantsData.find(item =>item.restaurant_id == ParamsId.id)
+    console.log("in review",data)
     return(
         <div style={{marginLeft:"30px"}}>
-           
-            <div><h4><b>Reviews from {data[0].restaurant_name}</b></h4></div>
+            <hr style={{marginTop:"-27px",width:"120%",position:"relative",left:"-100px"}}/>           
+            <div><h4><b>Reviews from {data.restaurant_name}</b></h4></div>
             <div><StyledRating
                 name="unique-rating"
-                defaultValue={data[0].aggregate_rating}
+                defaultValue={data.aggregate_rating}
                 // getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
                 precision={1}
                 icon={<StarIcon fontSize="inherit" />}
                 /></div>
-            <div style={{fontSize:"12px",color:"grey"}}>{data[0].votes} ratings</div>
+            <div style={{fontSize:"12px",color:"grey"}}>{data.votes} ratings</div>
             <div style={{marginTop:"10px",fontSize:"12px"}}>Here's what people are saying:</div>
             <div style={{display:"flex",marginTop:"20px"}}>
                 <div style={{width:"70px"}} >
-                    <div><h5><b>{data[0].food_was_good}</b></h5></div>
+                    <div><h5><b>{data.food_was_good}</b></h5></div>
                     <div style={{fontSize:"12px"}}>Food Was Good</div>
                 </div>
                 <div style={{width:"70px",marginLeft:"30px"}}>
-                    <div><h5><b>{data[0].order_was_correct}</b></h5></div>
+                    <div><h5><b>{data.order_was_correct}</b></h5></div>
                     <div style={{fontSize:"12px"}}>Order Was accurate</div>
                 </div>
                 <div style={{width:"70px",marginLeft:"30px"}}>
-                    <div><h5><b>{data[0].delivery_was_on_time}</b></h5></div>
+                    <div><h5><b>{data.delivery_was_on_time}</b></h5></div>
                     <div style={{fontSize:"12px"}}>Delivary was on time</div>
                 </div>
             </div>
             <hr/>
-            {data[0].reviews.map(item=>(
+            {data.reviews.map(item=>(
                 <>
                 <div style={{display:"flex",marginTop:"20px"}}>
                     <div><Avatar style={{ backgroundColor: "#2B8282" }}>
@@ -72,12 +73,9 @@ function ReviewPage(){
                     />
                 </div>
                 <div style={{fontSize:"12px"}}>{item.user_name} ordered</div>
-                <div style={{display:"flex"}}>
-                    {item.ordered.map(elem=>(
-                        <div style={{background:"lightgrey",fontSize:"12px",padding:"10px",marginTop:"10px",marginLeft:"10px"}}>
-                            {elem}
-                        </div>
-                    ))}
+                <div style={{fontSize:"12px"}}>{item.review}</div>
+                <div style={{background:"lightgrey",fontSize:"12px",padding:"10px",marginTop:"10px",maxWidth:"100px"}}>
+                    {item.ordered}
                 </div>
               </>
             ))}

@@ -102,6 +102,13 @@ function LandingPageLocation() {
     console.log(userGioLocation, "user gio");
   };
 
+  const handleChange = (e) =>{
+    let elem = document.getElementById("addressBar")
+    elem.addEventListener("change",(e)=>{
+      setQuery(e.target.value)
+    })
+  }
+
   return (
     <Grid container className={classes.root}>
 
@@ -158,11 +165,14 @@ function LandingPageLocation() {
             <Grid container>
               <Grid item md={7}>
                 <TextField
+                  id="addressBar"
                   autocomplete="false"
                   label="Enter Address"
                   variant="outlined"
                   value={query}
-                  onChange={(e) => setQuery(e.target.value)}
+                  // onFocus={(e)=>handleChange(e)}
+                  
+                  onChange= {(e)=>setQuery(e.target.value)}
                   style={{width:"100%"}}
                 />
                 <LocationWrapper>
