@@ -81,10 +81,15 @@ ValueLabelComponent.propTypes = {
 function Filter() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const filters = useSelector(state => state.app.userFilter)
-  
+  const filters = useSelector(state => state.app.userFilter)  
   const [value, setValue] = React.useState(0);
   const [hover, setHover] = React.useState(-1);
+  const [free_delivery,setFreeDelivery] = React.useState("")
+  const [order_tracking_enabled,setOrderTrackingEnabled] = React.useState("")
+  const [seamless_plus,setSeamlessPlus] = React.useState("")
+  const [group_order,setGroupOrder]= React.setState("")
+  
+  
 
   useEffect(()=>{
      dispatch(filterStarRatings(value))
@@ -165,8 +170,11 @@ function Filter() {
                     <div class="form-group form-check d-flex justify-content-left">
                       <input
                         type="checkbox"
+                        value="seamless_plus"
                         class="form-check-input"
                         id="exampleCheck1"
+                        onChange ={(e)=>
+                          {setSeamlessPlus(e.target.checked)}}
                       />
                       <label
                         class="form-check-label"
@@ -182,9 +190,12 @@ function Filter() {
                     </div>
                     <div class="form-group form-check d-flex justify-content-left">
                       <input
+                        value="group_order"
                         type="checkbox"
                         class="form-check-input"
                         id="exampleCheck1"
+                        onChange ={(e)=>
+                          {setGroupOrder(e.target.checked)}}
                       />
                       <label class="form-check-label" for="exampleCheck1">
                         Group order
@@ -202,9 +213,12 @@ function Filter() {
                     </div>
                     <div class="form-group form-check d-flex justify-content-left">
                       <input
+                       value="order_tracking_enabled"
                         type="checkbox"
                         class="form-check-input"
                         id="exampleCheck1"
+                        onChange ={(e)=>
+                          {setOrderTrackingEnabled(e.target.checked)}}
                       />
                       <label class="form-check-label" for="exampleCheck1">
                         Order Tracking Enabled
@@ -222,9 +236,12 @@ function Filter() {
                     </div>
                     <div class="form-group form-check d-flex justify-content-left">
                       <input
+                        value="free_delivery"
                         type="checkbox"
                         class="form-check-input"
                         id="exampleCheck1"
+                        onChange ={(e)=>
+                          {setFreeDelivery(e.target.checked)}}
                       />
                       <label class="form-check-label" for="exampleCheck1">
                         Free delivary
