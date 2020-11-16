@@ -32,7 +32,6 @@ export const UpdateUserAppAddress = (payload) => {
 }
 
 export const fetchGioLocation = payload => dispatch => {
-    console.log("fetchGioLocation",payload)
     axios({
         method: "get",
         url: `https://api.mapbox.com/geocoding/v5/mapbox.places/${payload}.json`,
@@ -59,16 +58,6 @@ export const UpdateUserGioLocation = (data) => {
     }
 }
 
-export const updateFilters = (payload) => ({
-    type:UPDATE_FILTERS,
-    payload
-})
-
-export const UpdateUserCuisine = (payload) => ({
-    type: UPDATE_CUISINE,
-    payload
-})
-
 export const restaurantsDataRequest = () => ({
     type: FETCH_RESTAURANTS_DATA_REQUEST,
 })
@@ -85,7 +74,7 @@ export const restaurantsDataFailure = (payload) => ({
 
 
 export const restaurantsRequest = payload => dispatch => {
-    // console.log(payload)
+    console.log("restaurent Request",payload)
     dispatch(restaurantsDataRequest())
     axios({
         method: "POST",
@@ -100,6 +89,18 @@ export const restaurantsRequest = payload => dispatch => {
             dispatch(restaurantsDataFailure(err))
         });
 }
+
+export const updateFilters = (payload) => ({
+    type:UPDATE_FILTERS,
+    payload
+})
+
+export const UpdateUserCuisine = (payload) => ({
+    type: UPDATE_CUISINE,
+    payload
+})
+
+
 
 
 export const addToCartRequest = () => ({

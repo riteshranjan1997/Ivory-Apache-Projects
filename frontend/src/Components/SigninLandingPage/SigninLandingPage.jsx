@@ -6,26 +6,33 @@ import FreeDelivary from "./FreeDelivary";
 import IntroductionCardDiv from "./IntroductionCardDiv";
 import LandingPageFooter from "../LandingPage/LandinPageFooter";
 import { useSelector } from "react-redux";
+import { Grid } from "@material-ui/core";
 
 function SigninLandingPage() {
-  const isauth = useSelector((state) => state.auth.isauth);
+  const isAuth = useSelector((state) => state.auth.isAuth);
 
-  //   if(!isauth){
-  //     return <Redirect to="/" ></Redirect>
-  //   }
+  if (!isAuth) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <div>
-      <div>
-        <AppBar addressModel="true" notifications="true" login />
-      </div>
+      <AppBar notifications="true" login />
 
-      <div>
-        <SearchComponent />
-        <FreeDelivary />
-        <IntroductionCardDiv />
-        <LandingPageFooter />
-      </div>
+      <Grid container >
+        <Grid item xs={12} style={{marginTop:"60px"}}>
+          <SearchComponent />
+        </Grid>
+        <Grid item xs={12}>
+          <FreeDelivary />
+        </Grid>
+        <Grid item xs={12}>
+          <IntroductionCardDiv />
+        </Grid>
+        <Grid item xs={12}>
+          <LandingPageFooter />
+        </Grid>
+      </Grid>
     </div>
   );
 }

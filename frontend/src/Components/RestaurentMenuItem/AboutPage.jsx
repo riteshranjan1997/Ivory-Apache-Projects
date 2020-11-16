@@ -10,7 +10,7 @@ function AboutPage(){
     const coordinates = useSelector((state)=>state.location.coordinates)
     return(
         <div >
-          
+           <hr style={{marginTop:"-27px",width:"120%",position:"relative",left:"-100px"}}/>  
                 <div style={{width:"1000px",marginLeft:"35px"}}>
                     <div><h4><b>{data.restaurant_name}</b></h4></div>
                     <div style={{display:"flex"}}>{data.cuisines.map(item=>(<div style={{fontSize:"12px",color:"#2B8282"}}>{item}</div>))}</div>
@@ -28,8 +28,8 @@ function AboutPage(){
                             <div>See the full schedule</div>
                         </div>
                     </div>
+                    <div style={{color:"#2B8282"}}>{data.address}</div>
                 </div>
-
         </div>
     )
 }

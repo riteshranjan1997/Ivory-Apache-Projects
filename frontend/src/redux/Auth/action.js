@@ -4,12 +4,17 @@ import {
     LOGIN_WITH_GOOGLE_REQUEST,LOGIN_WITH_GOOGLE_SUCCESS,LOGIN_WITH_GOOGLE_FAILURE,
     UPDATE_USER_DETAILS_REQUEST, UPDATE_USER_DETAILS_SUCCESS, UPDATE_USER_DETAILS_FAILURE,
     ADD_ADDRESS_REQUEST, ADD_ADDRESS_SUCCESS, ADD_ADDRESS_FAILURE,
+    DELETE_ADDRESS_REQUEST,DELETE_ADDRESS_SUCCESS,DELETE_ADDRESS_FAILURE,
     FETCH_USER_DATA__REQUEST, FETCH_USER_DATA__SUCCESS, FETCH_USER_DATA__FAILURE,
+    ADD_PAYMENT_CARD_REQUEST,ADD_PAYMENT_CARD_SUCCESS,ADD_PAYMENT_CARD_FAILURE,
     LOGOUT_USER, REMOVE_ERROR,
 } from './actionType'
 import axios from "axios" 
 
 
+
+
+// for register User
 export const registerUserRequest = () => ({
     type: REGISTER_USERS_REQUEST,
 })
@@ -44,6 +49,8 @@ export const registerRequest = payload => dispatch => {
 
 }
 
+
+// for login user
 export const loginUserRequest = () => ({
     type: LOGIN_USERS_REQUEST,
 })
@@ -77,6 +84,8 @@ export const loginRequest = payload => dispatch => {
         });
 }
 
+
+// for google auth (both for register and login)
 export const googelLoginUserRequest = () => ({
     type: LOGIN_WITH_GOOGLE_REQUEST,
 })
@@ -92,6 +101,7 @@ export const googelLoginUserFailure = (payload) => ({
 })
 
 export const googleLoginRequest = payload => dispatch => {
+    console.log(payload)
     dispatch(loginUserRequest())
     axios({
         method:"POST",
@@ -106,6 +116,8 @@ export const googleLoginRequest = payload => dispatch => {
     });
 }
 
+
+// use for fetch user data
 export const fetchUserDataRequest = () => ({
     type: FETCH_USER_DATA__REQUEST,
 })
@@ -120,10 +132,9 @@ export const fetchUserDataFailure = (payload) => ({
     payload
 })
 
-
 export const UserDataRequest = payload => dispatch => {
     dispatch(fetchUserDataRequest())
-    return fetch("http://localhost:5000/api/user/login", {
+    return fetch("", {
         method: "POST",
         headers: {
             "Content-type": "application/json",
@@ -141,6 +152,8 @@ export const UserDataRequest = payload => dispatch => {
 }
 
 
+
+// editing profile data of user
 export const updateUserRequest = () => ({
     type: UPDATE_USER_DETAILS_REQUEST,
 })
@@ -155,12 +168,14 @@ export const updateUserFailure = (payload) => ({
     payload
 })
 
-export const userUpdateRequest = payload => dispatch => {
+export const userUpdateRequest = (payload ,accessToken)=> dispatch => {
+    console.log(payload,accessToken,"action")
     dispatch(updateUserRequest())
-    return fetch("", {
-        method: "POST",
+    return fetch("http://localhost:5000/api/settings/profile", {
+        method: "PUT",
         headers: {
             "Content-type": "application/json",
+            "Authorization": "Bearer " + accessToken
         },
         body: JSON.stringify({ ...payload }),
     })
@@ -174,7 +189,13 @@ export const userUpdateRequest = payload => dispatch => {
         });
 }
 
+// axios.put("http://localhost:5000/api/settings/profile", payload, {
+//     headers:{
+//         Authorization: "Bearer " + accessToken
+//     }}
+//     )
 
+// for adding new address to the user account
 export const addAddressRequest = () => ({
     type: ADD_ADDRESS_REQUEST,
 })
@@ -189,18 +210,18 @@ export const addAddressFailure = (payload) => ({
     payload
 })
 
-export const AddressRequest = payload => dispatch => {
+export const AddressRequest = (payload ,accessToken) => dispatch => {
     dispatch(addAddressRequest())
-    return fetch("", {
+    return fetch("http://localhost:5000/api/settings/addAddress", {
         method: "POST",
         headers: {
             "Content-type": "application/json",
+            "Authorization": "Bearer " + accessToken
         },
         body: JSON.stringify({ ...payload }),
     })
         .then((res) => res.json())
         .then((res) => {
-            console.log(res)
             dispatch(addAddressSuccess(res))
         })
         .catch((err) => {
@@ -208,10 +229,76 @@ export const AddressRequest = payload => dispatch => {
         });
 }
 
+export const deleteAddressRequest = () => ({
+    type: DELETE_ADDRESS_REQUEST,
+})
+
+export const deleteAddressSuccess = (payload) => ({
+    type: DELETE_ADDRESS_SUCCESS,
+    payload
+})
+
+export const deleteAddressFailure = (payload) => ({
+    type: DELETE_ADDRESS_FAILURE,
+    payload
+})
+
+export const AddressDeleteRequest = (payload ,accessToken) => dispatch => {
+    dispatch(deleteAddressRequest())
+    return fetch("http://localhost:5000/api/settings/deleteAddress", {
+        method: "DELETE",
+        headers: {
+            "Content-type": "application/json",
+            "Authorization": "Bearer " + accessToken
+        },
+        body: JSON.stringify({ ...payload }),
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            dispatch(deleteAddressSuccess(res))
+        })
+        .catch((err) => {
+            dispatch(deleteAddressFailure(err))
+        });
+}
 
 
+export const addPaymentRequest = () => ({
+    type: DELETE_ADDRESS_REQUEST,
+})
+
+export const addPaymentSuccess = (payload) => ({
+    type: DELETE_ADDRESS_SUCCESS,
+    payload
+})
+
+export const addPaymentFailure = (payload) => ({
+    type: DELETE_ADDRESS_FAILURE,
+    payload
+})
+
+export const PaymentCardAddRequest = (payload ,accessToken) => dispatch => {
+    dispatch(addPaymentRequest())
+    console.log(payload,accessToken, "in action")
+    return fetch("http://localhost/5000/api/settings/addCard", {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json",
+            "Authorization": "Bearer " + accessToken
+        },
+        body: JSON.stringify({ ...payload }),
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            dispatch(addPaymentSuccess(res))
+        })
+        .catch((err) => {
+            dispatch(addPaymentFailure(err))
+        });
+}
 
 
+// logging out user
 export const logoutUser = () => ({
     type: LOGOUT_USER
 })

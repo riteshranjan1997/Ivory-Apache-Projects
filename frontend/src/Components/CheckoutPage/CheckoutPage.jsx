@@ -240,7 +240,7 @@ export default function CheckoutPage() {
                   overflowY: "scroll",
                 }}
               >
-                <div style={{ marginTop: "85px" }}>
+                <div style={{ marginTop: "55px" }}>
                   <b>
                     <p style={{ fontSize: 15.4 }}>Your order from</p>
                   </b>
@@ -255,18 +255,18 @@ export default function CheckoutPage() {
                 {cart &&
                   cart.map((item) => (
                     <div>
-                      <div className="d-flex justify-content-between">
+                      <div className="d-flex  justify-content-between">
                         <div>
-                          <p>{item.quantity ? item.quantity : 0}</p>
+                         {item.quantity ? item.quantity : 0}
                         </div>
                         <div>
-                          <p>{item.item_name ? item.item_name : 0}</p>
+                          {item.item_name ? item.item_name : 0}
                         </div>
                         <div>
-                          <p>₹{item.price ? item.price : 0}</p>
+                          ₹{item.price ? item.price : 0}
                         </div>
                       </div>
-                      <hr />
+                      <hr style={{marginTop:"-50px"}} />
                     </div>
                   ))}
                 <div className="d-flex justify-content-between">
@@ -288,7 +288,7 @@ export default function CheckoutPage() {
                     <b>Total</b>
                   </div>
                   <div>
-                    <b>Rupees</b>
+                    <b>{cart && cart.reduce((a, item) => a + item.price, 0)}</b>
                   </div>
                 </div>
                 <div
@@ -301,7 +301,7 @@ export default function CheckoutPage() {
                     border: "1px solid black",
                   }}
                 >
-                  <span>{">"}</span>Modify Your Order
+                  <span><i class="fas fa-greater-than"></i></span>Modify Your Order
                 </div>
                 <div
                   className="d-flex  justify-content-between bg-secondary text-white p-2 "

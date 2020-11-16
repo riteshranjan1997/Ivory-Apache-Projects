@@ -7,7 +7,6 @@ import { makeStyles ,withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import StarIcon from '@material-ui/icons/Star';
-
 const useStyles = makeStyles((theme)=>({
   root: {
     display: 'flex',
@@ -17,7 +16,6 @@ const useStyles = makeStyles((theme)=>({
     },
   },
 }))
-
 const StyledRating = withStyles({
   iconFilled: {
     color: 'orange',
@@ -25,9 +23,7 @@ const StyledRating = withStyles({
   iconHover:{
     color:"inherit",
   }
-  
 })(Rating); 
-
 const popover = (
   <Popover id="popover-basic">
     <h6 style={{textAlign:"center" , padding:"10px"}} >Here's what people are saying:</h6>
@@ -64,12 +60,8 @@ export default function RestaurantCard(props) {
             {props.data.cuisines.map(item=>(
                <span className="text-muted" style={{fontSize:"12px",marginLeft:"5px"}}>{item}</span>
             ))}</div>
-     
-            
           </div>
-
           <div style={{ marginRight: "12%" }}>         
-
             <OverlayTrigger
               placement="bottom"
               delay={{ show: 250, hide: 400 }}
@@ -77,7 +69,6 @@ export default function RestaurantCard(props) {
             >
               <div>
                 <div className="mr-5">
-                   
                       <div className={classes.root}>
                         {/* <Box component="fieldset"  borderColor="transparent"> */}
                               <StyledRating

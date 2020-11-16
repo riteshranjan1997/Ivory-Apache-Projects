@@ -1,10 +1,11 @@
 import React from "react";
 import axios from "axios";
-import {Link} from "react-router-dom" 
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import Styled from "styled-components";
+import { useHistory } from "react-router";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -14,7 +15,6 @@ import {
 
 const useStyles = makeStyles({
   root: {
-    // fontFamily: "sans-serif",
     height: "312px",
     backgroundRepeat: "no-repeat",
     backgroundSize: "100%",
@@ -76,18 +76,33 @@ const LocationWrapper = Styled.div`
 export default function SearchComponent() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  const selectedAddress = useSelector(state => state.app.userAddress)
+  const [isInputOnFocus, setIsInputOnFocus] = useState(false);
 
-  const [addressQuery, setAddressQuery] = useState("");
+  const selectedAddressFromStore = useSelector(
+    (state) => state.app.userAddress || ""
+  );
+  const selectedGioLocationFromStore = useSelector((state) => {
+    if (state.app.userGioLocation) {
+      return [state.app.userGioLocation.longitude, state.app.userGioLocation.lattitude];
+    } else {
+      return [];
+    }
+  });
+
+  const [addressQuery, setAddressQuery] = useState(selectedAddressFromStore);
+  const [addressQueryGeoLocation, setaddressQueryGeoLocation] = useState(selectedGioLocationFromStore);
   const [cuisineQuery, setcuisineQuery] = useState("");
   const [suggestedAddress, setsuggestedAddress] = React.useState([]);
 
   const handleLocationUpdate = () => {
-    if(selectedAddress !== ""){
-      dispatch(UpdateUserAppAddress(addressQuery));
-      dispatch(UpdateUserGioLocation(addressQuery));
-    }
+    console.log(addressQuery,addressQueryGeoLocation)
+    dispatch(UpdateUserAppAddress(addressQuery));
+    dispatch(UpdateUserGioLocation(addressQueryGeoLocation));
+    setTimeout(() => {
+      history.push("/search");
+    }, 600);
   };
 
   useEffect(() => {
@@ -95,7 +110,8 @@ export default function SearchComponent() {
       .get(
         `https://api.mapbox.com/geocoding/v5/mapbox.places/${addressQuery}.json?limit=5&access_token=pk.eyJ1Ijoic291bmRhcnlhbWVjc2UiLCJhIjoiY2toMmUxZHBoMGJtdDJ3cGNqOWhmbTJqaiJ9.sZeF_rzMTfs2fPBA4JsHxQ`
       )
-      .then((res) => setsuggestedAddress(res.data.features))
+      .then((res) => { 
+        setsuggestedAddress(res.data.features)})
       .catch((err) => console.log(err));
   }, [addressQuery]);
 
@@ -105,24 +121,21 @@ export default function SearchComponent() {
         <div className="col">
           <div
             className="container"
-            style={{ width: "60%", marginTop: "50px", fontFamily: "Poppins" }}>
+            style={{ width: "60%", marginTop: "50px", fontFamily: "Poppins" }}
+          >
             <div className="row">
               <div className="col">
-                <h2 style={{ fontWeight: "700", color: "white" , marginTop:"50px"}}>
+                <h2
+                  style={{
+                    fontWeight: "700",
+                    color: "white",
+                    marginTop: "50px",
+                  }}
+                >
                   Who delivers in your neighborhood?
                 </h2>
               </div>
             </div>
-
-            {/* <div className="row">
-
-              <div className="col">
-              </div>
-
-              <div className="col">
-              </div>
-              
-            </div> */}
 
             <div className="row">
               <div className="col-9">
@@ -134,6 +147,12 @@ export default function SearchComponent() {
                   </div>
                   <input
                     type="text"
+                    onFocus={() => setIsInputOnFocus(true)}
+                    onBlur={() => {
+                      setTimeout(() => {
+                        setIsInputOnFocus(false);
+                      }, 100);
+                    }}
                     class="form-control"
                     placeholder="Enter street address"
                     value={addressQuery}
@@ -144,16 +163,19 @@ export default function SearchComponent() {
                     <ul style={{ listStyleType: "none", textAlign: "left" }}>
                       {addressQuery &&
                         suggestedAddress &&
+                        isInputOnFocus &&
                         suggestedAddress.map((item, i) => (
+                          
                           <>
-                            {/* {i>=active && i<=active+4? */}
                             <li
                               className={`dropDown`}
-                              // data-toggle="modal"
-                              // data-target="#exampleModal"
                               key={item.id}
                               onClick={(e) => {
+                                console.log(item)
                                 setAddressQuery(item.place_name);
+                                setaddressQueryGeoLocation(
+                                  item.geometry.coordinates
+                                );
                               }}
                             >
                               {item.place_name}
@@ -186,7 +208,7 @@ export default function SearchComponent() {
                   }}
                   onClick={handleLocationUpdate}
                 >
-                 <Link to="/search" style={{color:"inherit", textDecoration:"none"}}> Find Food </Link>
+                  Find Food
                 </button>
               </div>
             </div>

@@ -1,78 +1,54 @@
 import React from "react";
 import { useEffect } from "react";
-import { UpdateUserAppAddress,fetchGioLocation } from "../../redux/app/action";
+import { UpdateUserAppAddress,UpdateUserGioLocation } from "../../redux/app/action";
 import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import axios from "axios";
-import Styled from "styled-components";
-
-const LocationWrapper = Styled.div`    
-    width:250px;
-    
-    li{
-        width:248px;
-        padding:10px;
-        border:1px solid #E0E0E0;
-        border-top:none;
-    }
-    ul{        
-        position:relative;
-        left:-38px;
-        top :-3px;
-    }
-    ul li:hover {
-        background : #2b8282;
-        color : white;
-    }
-`;
+import { useHistory } from 'react-router';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    flexGrow: 1,
-    marginTop: "-8px",
+  root: {},
+  coverImg: {
+    [theme.breakpoints.up("xs")]: {
+      height: "750px",
+    },
   },
-  paper: {
-    marginTop: "8px",
+  gioLocationDiv: {
+    padding: "64px 100px",
   },
-  // control: {
-  //   padding: theme.spacing(2),
-  // },
   signInBar: {
     color: "#2b8282",
     fontSize: "18px",
     fontWeight: "700",
-    marginTop: "80px",
-    marginLeft: "50%",
+    height: "250px",
+    width: "100%",
+    textAlign: "right",
+    fontFamily: "esti",
+    fontSize: "24px",
   },
 
   button: {
     background: "#2b8282",
     color: "white",
-    width:"350px",
-    marginLeft: "5px",
     padding: "15px",
   },
+
   logo: {
-    height: "120px",
-    width: "180px",
+    height: "80px",
+    width: "190px",
     position: "absolute",
     top: "100px",
   },
   logo2: {
     width: "350px",
     position: "absolute",
-    bottom: "-160px",
-    left: "400px",
+    bottom: "0%",
+    left: "25%",
   },
 }));
 
@@ -81,9 +57,10 @@ const useStyles = makeStyles((theme) => ({
 function LandingPageLocation() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
   const [query, setQuery] = React.useState("");
   const [data, setData] = React.useState([]);
-  console.log(data);
+  
   useEffect(() => {
     return axios
       .get(
@@ -94,35 +71,32 @@ function LandingPageLocation() {
   }, [query]);
 
   const handleLocationUpdate = () => {
-    dispatch(UpdateUserAppAddress(query));
-    dispatch(fetchGioLocation(query))
+    dispatch(UpdateUserAppAddress(query.place_name));
+    dispatch(UpdateUserGioLocation(query.geometry.coordinates));
+    setTimeout(() => {
+      history.push("/search");
+    }, 600);
   };
 
+  const handleChange = (e) =>{
+    let elem = document.getElementById("addressBar")
+    elem.addEventListener("change",(e)=>{
+      setQuery(e.target.value)
+    })
+  }
+
   return (
-    <Grid container className={classes.root} spacing={1}>
-      <Grid item xs={12} md={6}>
-        <Grid container justify="center" spacing={1}>
-          <Box
-            className={classes.paper}
-            display={{ xs: "none", sm: "none", md: "block" }}
-          >
-            <Card>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  alt="FrontImage"
-                  // display={{ xs: 'none', sm: 'none', md: 'block'}}
-                  image="https://media-cdn.grubhub.com/image/upload/c_scale,w_1650/q_50,dpr_auto,f_auto,fl_lossy,c_crop,e_vibrance:20,g_center,h_900,w_800/v1539269005/Onboarding/SL/burger-and-fries.jpg"
-                  title="LandingPageImage"
-                />
-              </CardActionArea>
-            </Card>
-          </Box>
-          <img
-            className={classes.logo}
-            src="https://res.cloudinary.com/grubhub-assets/image/upload/v1576524886/Seamless_logo_flxqyg.svg"
-            alt="logo"
+    <Grid container className={classes.root}>
+      <Grid item xs={12} md={6} style={{ height: "65%" }}>
+        <Grid container justify="center">
+          <CardMedia
+            component="img"
+            alt="FrontImage"
+            className={classes.coverImg}
+            image="https://media-cdn.grubhub.com/image/upload/c_scale,w_1650/q_50,dpr_auto,f_auto,fl_lossy,c_crop,e_vibrance:20,g_center,h_900,w_800/v1539269005/Onboarding/SL/burger-and-fries.jpg"
+            title="LandingPageImage"
           />
+          <img className={classes.logo} src="flawless_logo.png" alt="logo" />
           <img
             className={classes.logo2}
             src="https://media-cdn.grubhub.com/image/upload/dpr_auto,f_auto,fl_lossy/v1539202744/Onboarding/SL/treat-yourself-SL.png"
@@ -130,88 +104,75 @@ function LandingPageLocation() {
           />
         </Grid>
       </Grid>
-      <Grid item xs={12} md={6}>
-        <Grid container justify="center" spacing={2}>
-          <div className="container">
-            <div className="row">
-              <div className={`col ${classes.signInBar}`}>
-                <p>
-                  Get Perks in the App{" "}
-                  <Link
-                    to="/login"
-                    style={{
-                      marginLeft: "20px",
-                      color: "#2b8282",
-                      textDecoration: "none",
-                    }}
-                  >
-                    Sign in
-                  </Link>
-                </p>
-              </div>
-            </div>
-          </div>
 
-          <div className="container" style={{marginTop:"30%", width:"70%"}}>
-            <div className="row">
-              <div className="col">
-                <h1 style={{fontSize:"42px", fontWeight:"700"}}>
-                  Seamless food delivary every time
-                </h1>
-              </div>
-            </div>
+      <Grid item xs={12} md={6} className={classes.gioLocationDiv}>
+        <Grid container>
+          <Grid item className={classes.signInBar} md={12}>
+            <p>
+              Get Perks in the App{" "}
+              <Link
+                to="/login"
+                style={{
+                  marginLeft: "20px",
+                  color: "#2b8282",
+                  textDecoration: "none",
+                }}
+              >
+                Sign in
+              </Link>
+            </p>
+          </Grid>
 
-            <div className="row my-2">
-              <div className="col">
-                
-              <form>
-              <TextField
-                id="outlined-basic"
-                label="Enter Address"
-                variant="outlined"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                style={{ width: "350px",marginBottom:"10px" }}
-              />
+          <Grid item md={12}>
+            <h1
+              style={{
+                fontSize: "52px",
+                fontFamily: "esti",
+              }}
+            >
+              flawless food delivary every time
+            </h1>
+          </Grid>
 
-              <Link to="/search">
-                <Button
+          <Grid item md={12}>
+            <Grid container>
+              <Grid item md={7}>
+                <Autocomplete
+                  disableClearable
+                  freeSolo
+                  options={data.map((place) => place.place_name)}
+                  onChange={(event, value) =>
+                    setQuery(() =>
+                    data.find((place) => place.place_name === value)
+                    )
+                  }
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      placeholder="Enter street address or zip code"
+                      margin="normal"
+                      variant="outlined"
+                      InputProps={{
+                        ...params.InputProps,
+                        type: "search",
+                      }}
+                      onChange={(e) => setQuery(e.target.value)}
+                    />
+                  )}
+                />
+              </Grid>
+
+              <Grid item md={4} style={{ marginLeft: "10px",marginTop:"15px" }}>
+                <button
                   variant="contained"
                   onClick={handleLocationUpdate}
-                  className={classes.button}
+                  className={`${classes.button} btn`}
                 >
                   Find Food
-                </Button>
-              </Link>
-            </form>
-            <LocationWrapper>
-              <ul style={{ listStyleType: "none", textAlign: "left" }}>
-                {query &&
-                  data &&
-                  data.map((item, i) => (
-                    <>
-                      {/* {i>=active && i<=active+4? */}
-                      <li
-                        className={`dropDown`}
-                        // data-toggle="modal"
-                        // data-target="#exampleModal"
-                        key={item.id}
-                        onClick={(e) => {
-                          setQuery(item.place_name);
-                        }}
-                      >
-                        {item.place_name}
-                      </li>
-                    </>
-                  ))}
-              </ul>
-            </LocationWrapper>
-
-              </div>
-            </div>
-
-          </div>
-
+                </button>
+              </Grid>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
