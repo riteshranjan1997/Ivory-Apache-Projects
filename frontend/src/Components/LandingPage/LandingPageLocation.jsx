@@ -78,6 +78,13 @@ function LandingPageLocation() {
     }, 600);
   };
 
+  const handleChange = (e) =>{
+    let elem = document.getElementById("addressBar")
+    elem.addEventListener("change",(e)=>{
+      setQuery(e.target.value)
+    })
+  }
+
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12} md={6} style={{ height: "65%" }}>

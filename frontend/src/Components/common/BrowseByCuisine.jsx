@@ -11,13 +11,8 @@ import {useSelector,useDispatch} from 'react-redux'
 import axios from 'axios'
 import {gioLocationData} from '../../redux/GioLocation/action'
 import Pagination from '@material-ui/lab/Pagination';
-
-
-
-
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -34,13 +29,11 @@ function TabPanel(props) {
     </div>
   );
 }
-
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
   value: PropTypes.any.isRequired,
 };
-
 function a11yProps(index) {
   return {
     id: `scrollable-force-tab-${index}`,
@@ -69,17 +62,11 @@ export default function BrowseByCuisine() {
   // const [totalPage,setTotalPage] = React.useState(1)
   const limit = 4
   let offset = (page - 1) * limit
-
   const sort = useSelector((state)=>state.filter.sort)
-
   console.log("sort",sort,data)
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-
-
   useEffect(()=>{
     if(cusine){
       return axios.post(`http://localhost:5000/api/restaurant/lets-eat?starRating=${filterRatings? filterRatings:"0"}&cuisine=${cusine}`,{
@@ -101,19 +88,15 @@ export default function BrowseByCuisine() {
   },[filterRatings,cusine]      
   )
   // console.log("cusine",cusine)
-
   const handlePageChange = (event, value) => {
     setPage(value);
   };
-
   const handleClick=(cusine)=>{    
      setCusine(cusine)
   }
-
   useEffect(()=>{
       dispatch(gioLocationData(userAddress))
   },[userAddress])
-
   const displayData=()=>(
     <div>
        {cusineArray ? cusineArray
@@ -205,7 +188,6 @@ export default function BrowseByCuisine() {
                   <div>North Indian</div>
               </div>} {...a11yProps(9)} style={{textTransform:"capitalize"}}/>
               </Tabs>
-
               <TabPanel value={value} index={0}>
                 {filterRatings===0 || filterRatings===null?
                 data?data
@@ -231,10 +213,8 @@ export default function BrowseByCuisine() {
                   )
                 : 
                   displayData()}
-
                  <Pagination count={Math.ceil(filterRatings===0 || filterRatings===null? data.length/limit : cusineArray.length/limit)} page={page} onChange={handlePageChange} size="large" variant="outlined" color="primary"
                         style={{ display: "inline-block",position:"absolute",left:"32%",bottom:"-10%"}} />
-
             </TabPanel>
             <TabPanel value={value} index={1} >
                   

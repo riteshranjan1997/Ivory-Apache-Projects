@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   addressModel: {
     width: "400px",
-    maxHeight: "600px",
+    height: "400px",
     backgroundColor: "white",
     border: "none",
     outline: "none",
