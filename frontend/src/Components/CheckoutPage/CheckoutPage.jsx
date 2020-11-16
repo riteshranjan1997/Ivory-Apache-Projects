@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Styled from "styled-components";
 import AppBar from "../common/AppBar";
 import axios from "axios";
+import {Link} from "react-router-dom"
 
 const CheckoutPageWrapper = Styled.div`
     
@@ -301,7 +302,9 @@ export default function CheckoutPage() {
                     border: "1px solid black",
                   }}
                 >
-                  <span><i class="fas fa-greater-than"></i></span>Modify Your Order
+                   <Link to={`/menu/${cart[0].restaurant_id}`} style={{textDecoration:"none",color:"white"}}><span><i class="fas fa-greater-than"></i></span>Modify Your Order
+                </Link>
+
                 </div>
                 <div
                   className="d-flex  justify-content-between bg-secondary text-white p-2 "

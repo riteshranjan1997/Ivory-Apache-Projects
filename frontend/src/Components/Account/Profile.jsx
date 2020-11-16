@@ -9,6 +9,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import { userUpdateRequest } from "../../redux/Auth/action";
 import { Grid } from "@material-ui/core";
+import {Redirect} from "react-router-dom"
+
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -128,6 +130,11 @@ function Profile() {
     setConformNewPassword("");
      }
   };
+  const isAuth = useSelector((state) => state.auth.isAuth);
+
+  if(!isAuth){
+    <Redirect to ="/" />
+  }
 
   return (
     <>

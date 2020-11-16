@@ -6,9 +6,9 @@ export default function OrderCard(temp) {
   console.log("in card", props, props.order, props.date);
 
   return (
-    <div style={{ margin: "25" }}>
+    <div style={{ margin: "25px" }}>
       <div id="temp">
-        <div class="card" style={{ width: "18rem" }}>
+        <div class="card" style={{ width: "18rem",height:"300px",margin:"25px" }}>
           <div class="card-body">
             <h5 class="card-title">
               {/* <img src="http://via.placeholder.com/50" alt="hotel image" /> */}
@@ -35,7 +35,7 @@ export default function OrderCard(temp) {
             data-toggle="modal"
             data-target={"#exampleModal"+`${props.orderId}`}
           >
-            Launch demo modal
+            View Details
           </button>
 
           <div
@@ -74,7 +74,6 @@ export default function OrderCard(temp) {
 
                 <div class="modal-body">
                   <div>
-                    in modal body
                     {props.order &&
                       props.order.map((ele) => (
                         <div

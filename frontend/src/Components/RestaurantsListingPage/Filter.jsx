@@ -87,7 +87,7 @@ function Filter() {
   const [free_delivery,setFreeDelivery] = React.useState("")
   const [order_tracking_enabled,setOrderTrackingEnabled] = React.useState("")
   const [seamless_plus,setSeamlessPlus] = React.useState("")
-  const [group_order,setGroupOrder]= React.setState("")
+  const [group_order,setGroupOrder]= React.useState("")
   
   
 

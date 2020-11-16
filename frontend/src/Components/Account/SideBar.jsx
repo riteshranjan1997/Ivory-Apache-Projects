@@ -11,6 +11,10 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
+import {Redirect} from "react-router-dom"
+import { useSelector } from "react-redux";
+
+
 
 const drawerWidth = 339;
 
@@ -84,7 +88,11 @@ function SideBar(props) {
       </List>
     </div>
   );
+  const isAuth = useSelector((state) => state.auth.isAuth);
 
+  if(!isAuth){
+    <Redirect to ="/" />
+  }
   return (
     <Grid
       xs={3}

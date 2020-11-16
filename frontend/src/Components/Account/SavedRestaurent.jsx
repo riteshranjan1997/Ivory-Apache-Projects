@@ -7,6 +7,8 @@ import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { makeStyles } from "@material-ui/core/styles";
+import {Redirect} from "react-router-dom"
+
 
 const useStyles = makeStyles((theme) => ({
     root: {},
@@ -57,6 +59,11 @@ const useStyles = makeStyles((theme) => ({
 function SavedRestaurent() {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const isAuth = useSelector((state) => state.auth.isAuth);
+
+    if(!isAuth){
+      <Redirect to ="/" />
+    }
   return (
     <>
       <Bar />

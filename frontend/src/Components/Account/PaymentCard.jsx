@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 
 import Style from "./card.module.css";
+import { useSelector } from "react-redux";
+
 
 import styled from "styled-components";
-
+import {Redirect} from "react-router-dom"
 const CardContainer = styled.div`
   display: flex;
   // align-items: center;
@@ -87,6 +89,11 @@ export default function Card(props) {
   useEffect(() => {
     getCreditCardType(props.card_number);
   }, []);
+  const isAuth = useSelector((state) => state.auth.isAuth);
+
+  if(!isAuth){
+    <Redirect to ="/" />
+  }
 
   return (
     <CardContainer>

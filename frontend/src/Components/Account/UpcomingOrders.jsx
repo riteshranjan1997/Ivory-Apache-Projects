@@ -17,6 +17,10 @@ import { useTheme } from "@material-ui/core/styles";
 import Styled from "styled-components";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
+import {Redirect} from "react-router-dom"
+import { useSelector } from "react-redux";
+
+
 
 const LocationWrapper = Styled.div`    
     width:250px;
@@ -148,6 +152,11 @@ function PastOrders() {
     dateItem = String(tomorrow).split(" ");
   };
 
+  const isAuth = useSelector((state) => state.auth.isAuth);
+
+  if(!isAuth){
+    <Redirect to ="/" />
+  }
   return (
     <>
       <Bar />

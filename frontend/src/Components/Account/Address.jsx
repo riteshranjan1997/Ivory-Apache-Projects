@@ -16,6 +16,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
+import {Redirect} from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -69,7 +70,7 @@ function Address() {
 
   const userData = useSelector((state) => state.auth.user_data);
   const authToken = useSelector((state) => state.auth.access_token);
-
+  const isAuth = useSelector((state) => state.auth.isAuth);
   const [Street, setStreet] = useState("");
   const [aptName, setAptName] = useState("");
   const [city, setCity] = useState("");
@@ -80,6 +81,7 @@ function Address() {
   const [delivaryInstructions, setDelivaryInstructions] = useState("");
   const [addressName, setAddressName] = useState("");
   const [currentEditingAddress, setCurrentEditingAddress] = useState([])
+  
 
   const handleAddAddress = () => {
     const payload = {
@@ -148,7 +150,9 @@ function Address() {
   const handleNewClose = () => {
     setNewOpenStatus(false);
   };
-
+  if(!isAuth){
+    <Redirect to="/" />
+  }
   
   return (
     <>

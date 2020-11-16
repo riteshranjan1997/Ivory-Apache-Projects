@@ -16,6 +16,9 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Grid } from "@material-ui/core";
 import PaymentCard from "./PaymentCard";
+import {Redirect} from "react-router-dom"
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -133,6 +136,11 @@ function Payments() {
     setSecurityCode("");
     setPostalCode("");
   };
+   const isAuth = useSelector((state) => state.auth.isAuth);
+
+  if(!isAuth){
+    <Redirect to ="/" />
+  }
 
   return (
     <>
