@@ -1,9 +1,12 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Styled from "styled-components";
 import AppBar from "../common/AppBar";
 import axios from "axios";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import { userUpdateRequest } from "../../redux/Auth/action";
+import ErrorBar from "../common/ErrorBar";
 
 const CheckoutPageWrapper = Styled.div`
     
@@ -18,35 +21,46 @@ const CheckoutPageWrapper = Styled.div`
 `;
 
 export default function CheckoutPage() {
+  const isAuth = useSelector((state) => state.auth.isAuth);
   const userData = useSelector((state) => state.auth.user_data);
-  const cart = useSelector((state) => state.cart.cart);
-  console.log(cart[0].restaurant_name);
-  console.log("in checkout page", userData);
-  console.log(userData);
+
   const [firstName, setFirstName] = React.useState(userData.first_name);
   const [lastName, setLastName] = React.useState(userData.last_name);
   const [email, setEmail] = React.useState(userData.email);
   const access_token = useSelector((state) => state.auth.access_token);
   const address = useSelector((state) => state.app.userAddress);
+  const dispatch = useDispatch();
+  console.log("in check out page auth", isAuth);
+
+  if (!isAuth) {
+    return <Redirect to="/" />;
+  }
+  const cart = userData.cart;
+  console.log("in checkout page cart is", userData, userData.cart);
   console.log("address is ", address);
   const paymentHandler = async (e) => {
     e.preventDefault();
-    const API_URL = "http://localhost:5000/api/payment/";
+    const API_URL = "http://localhost:5001/api/payment/";
     const orderUrl = `${API_URL}order`;
-    try{
-    var response = await axios.post(
-      orderUrl,
-      { amount: cart && cart.reduce((a, item) => a + item.price, 0) },
-      {
-        headers: {
-          Authorization: "Bearer " + access_token,
-        },
-      }
-    );
-    var { data } = response;
-    }catch(err){
-      console.log(err)
-      return
+    try {
+      var response = await axios.post(
+        orderUrl,
+        { amount: cart && cart.reduce((a, item) => a + item.price, 0) },
+        {
+          headers: {
+            Authorization: "Bearer " + access_token,
+          },
+        }
+      );
+
+      console.log("payment response is ", response);
+      console.log("payment response is ", response.data);
+      console.log("payment response is ", response.data.data);
+      console.log("payment response is ", response.data.data.order);
+      var data = response.data.data.order;
+    } catch (err) {
+      console.log(err);
+      return;
     }
     console.log("data in check out is", data);
     const options = {
@@ -57,11 +71,15 @@ export default function CheckoutPage() {
         try {
           const paymentId = response.razorpay_payment_id;
           const url = `${API_URL}capture/${paymentId}`;
-          const captureResponse = await axios.post(url, {amount: cart && cart.reduce((a, item) => a + item.price, 0)});
+          const captureResponse = await axios.post(url, {
+            amount: cart && cart.reduce((a, item) => a + item.price, 0),
+          });
           const successObj = JSON.parse(captureResponse.data);
           const captured = successObj.captured;
           if (captured) {
-            console.log("success",captured);
+            console.log("success", captured);
+            alert("order success");
+            dispatch(userUpdateRequest({}, access_token));
           }
         } catch (err) {
           console.log(err);
@@ -74,10 +92,14 @@ export default function CheckoutPage() {
     const rzp1 = new window.Razorpay(options);
     rzp1.open();
   };
+  if (cart.length == 0) {
+    return <Redirect to="/account/Past%20orders" />;
+  }
 
   return (
     <div>
       <AppBar />
+      <ErrorBar />
       <br />
       <br />
       <br />
@@ -173,27 +195,57 @@ export default function CheckoutPage() {
                 {/* <div>{address}</div>  */}
 
                 <div className="row">
-                    <div class="form-group col-3">
-                      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="address"/>
-                    </div>
-                    <div class="form-group col-3">
-                      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Apartment"/>
-                    </div>  
-                    <div class="form-group col-3">
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="cross street"/>
-                    </div>      
+                  <div class="form-group col-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="address"
+                    />
                   </div>
-                  <div className="row">
-                    <div class="form-group col-3">
-                      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="city"/>
-                    </div>
-                    <div class="form-group col-3">
-                      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="area"/>
-                    </div>  
-                    <div class="form-group col-3">
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="zip code"/>
-                    </div>      
+                  <div class="form-group col-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="Apartment"
+                    />
                   </div>
+                  <div class="form-group col-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="cross street"
+                    />
+                  </div>
+                </div>
+                <div className="row">
+                  <div class="form-group col-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="city"
+                    />
+                  </div>
+                  <div class="form-group col-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="area"
+                    />
+                  </div>
+                  <div class="form-group col-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="zip code"
+                    />
+                  </div>
+                </div>
                 <div>
                   <div style={{ textAlign: "left" }}>
                     <b>Delivary Instruction</b>
@@ -247,27 +299,21 @@ export default function CheckoutPage() {
                   </b>
                 </div>
                 {/* <div><p>{cart[0].restaurentName=== " " ? " " : cart[0].restaurentName  }</p></div> */}
-                <div style={{ fontSize: 14 }}>
-                  {cart[0].restaurant_name === " "
+                {/* <div style={{ fontSize: 14 }}>
+                  {cart && cart[0] && (cart[0].restaurant_name === " ")
                     ? " "
-                    : cart[0].restaurant_name}
-                </div>
+                    : (cart && cart[0].restaurant_name)}
+                </div> */}
                 <hr />
                 {cart &&
                   cart.map((item) => (
                     <div>
                       <div className="d-flex  justify-content-between">
-                        <div>
-                         {item.quantity ? item.quantity : 0}
-                        </div>
-                        <div>
-                          {item.item_name ? item.item_name : 0}
-                        </div>
-                        <div>
-                          ₹{item.price ? item.price : 0}
-                        </div>
+                        <div>{item.quantity ? item.quantity : 0}</div>
+                        <div>{item.item_name ? item.item_name : 0}</div>
+                        <div>₹{item.price ? item.price : 0}</div>
                       </div>
-                      <hr style={{marginTop:"-50px"}} />
+                      <hr style={{ marginTop: "-50px" }} />
                     </div>
                   ))}
                 <div className="d-flex justify-content-between">
@@ -302,9 +348,17 @@ export default function CheckoutPage() {
                     border: "1px solid black",
                   }}
                 >
-                   <Link to={`/menu/${cart[0].restaurant_id}`} style={{textDecoration:"none",color:"white"}}><span><i class="fas fa-greater-than"></i></span>Modify Your Order
-                </Link>
-
+                  {
+                    <Link
+                      to={`/lets-eat`}
+                      style={{ textDecoration: "none", color: "white" }}
+                    >
+                      <span>
+                        <i class="fas fa-greater-than"></i>
+                      </span>
+                      Modify Your Order
+                    </Link>
+                  }
                 </div>
                 <div
                   className="d-flex  justify-content-between bg-secondary text-white p-2 "

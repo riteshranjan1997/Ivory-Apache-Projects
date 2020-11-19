@@ -25,7 +25,12 @@ export default function IntroductionCardDiv() {
     <div className="container">
       <div className="row">
         <div className="col-12">
-          <h4 className="my-2 mb-4" style={{fontFamily:"Poppins", fontWeight:"700"}}>Explore our collections</h4>
+          <h4
+            className="my-2 mb-4"
+            style={{ fontFamily: "Poppins", fontWeight: "700" }}
+          >
+            Explore our collections
+          </h4>
         </div>
         <div className="col-5 mr-5">
           <img

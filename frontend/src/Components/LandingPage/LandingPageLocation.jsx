@@ -1,6 +1,9 @@
 import React from "react";
 import { useEffect } from "react";
-import { UpdateUserAppAddress,UpdateUserGioLocation } from "../../redux/app/action";
+import {
+  UpdateUserAppAddress,
+  UpdateUserGioLocation,
+} from "../../redux/app/action";
 import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
@@ -8,8 +11,10 @@ import Grid from "@material-ui/core/Grid";
 import CardMedia from "@material-ui/core/CardMedia";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
-import { useHistory } from 'react-router';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import { useHistory } from "react-router";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import { Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -55,12 +60,18 @@ const useStyles = makeStyles((theme) => ({
 //Added Location part,Logo and Image
 
 function LandingPageLocation() {
+  const isAuth = useSelector((state) => state.auth.isAuth);
+
+  if (!isAuth) {
+    <Redirect to="/" />;
+  }
+
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
   const [query, setQuery] = React.useState("");
   const [data, setData] = React.useState([]);
-  
+
   useEffect(() => {
     return axios
       .get(
@@ -78,12 +89,12 @@ function LandingPageLocation() {
     }, 600);
   };
 
-  const handleChange = (e) =>{
-    let elem = document.getElementById("addressBar")
-    elem.addEventListener("change",(e)=>{
-      setQuery(e.target.value)
-    })
-  }
+  const handleChange = (e) => {
+    let elem = document.getElementById("addressBar");
+    elem.addEventListener("change", (e) => {
+      setQuery(e.target.value);
+    });
+  };
 
   return (
     <Grid container className={classes.root}>
@@ -143,7 +154,7 @@ function LandingPageLocation() {
                   options={data.map((place) => place.place_name)}
                   onChange={(event, value) =>
                     setQuery(() =>
-                    data.find((place) => place.place_name === value)
+                      data.find((place) => place.place_name === value)
                     )
                   }
                   renderInput={(params) => (
@@ -162,7 +173,11 @@ function LandingPageLocation() {
                 />
               </Grid>
 
-              <Grid item md={4} style={{ marginLeft: "10px",marginTop:"15px" }}>
+              <Grid
+                item
+                md={4}
+                style={{ marginLeft: "10px", marginTop: "15px" }}
+              >
                 <button
                   variant="contained"
                   onClick={handleLocationUpdate}

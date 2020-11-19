@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import Style from "./card.module.css";
 import { useSelector } from "react-redux";
 
-
 import styled from "styled-components";
-import {Redirect} from "react-router-dom"
+import { Redirect } from "react-router-dom";
+import ErrorBar from "../../Components/common/ErrorBar";
 const CardContainer = styled.div`
   display: flex;
   // align-items: center;
@@ -68,9 +68,13 @@ const FormArea = styled.div`
 `;
 
 export default function Card(props) {
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  if (!isAuth) {
+    <Redirect to="/" />;
+  }
   const [cardType, setCardType] = useState("");
 
- const getCreditCardType = (accountNumber) => {
+  const getCreditCardType = (accountNumber) => {
     let result = "unknown";
 
     if (/^5[1-5]/.test(accountNumber)) {
@@ -89,15 +93,11 @@ export default function Card(props) {
   useEffect(() => {
     getCreditCardType(props.card_number);
   }, []);
-  const isAuth = useSelector((state) => state.auth.isAuth);
-
-  if(!isAuth){
-    <Redirect to ="/" />
-  }
 
   return (
     <CardContainer>
       <div>
+        <ErrorBar />
         <CardArea
           className={
             cardType === "mastercard"

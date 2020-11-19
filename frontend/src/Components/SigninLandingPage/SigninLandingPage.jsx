@@ -7,6 +7,7 @@ import IntroductionCardDiv from "./IntroductionCardDiv";
 import LandingPageFooter from "../LandingPage/LandinPageFooter";
 import { useSelector } from "react-redux";
 import { Grid } from "@material-ui/core";
+import ErrorBar from "../../Components/common/ErrorBar";
 
 function SigninLandingPage() {
   const isAuth = useSelector((state) => state.auth.isAuth);
@@ -18,9 +19,9 @@ function SigninLandingPage() {
   return (
     <div>
       <AppBar notifications="true" login />
-
-      <Grid container >
-        <Grid item xs={12} style={{marginTop:"60px"}}>
+      <ErrorBar />
+      <Grid container>
+        <Grid item xs={12} style={{ marginTop: "60px" }}>
           <SearchComponent />
         </Grid>
         <Grid item xs={12}>

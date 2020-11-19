@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 function LandingPageHeader() {
+  const isAuth = useSelector((state) => state.auth.isAuth);
+
+  if (!isAuth) {
+    <Redirect to="/" />;
+  }
+
   return (
     <div
       style={{

@@ -7,6 +7,7 @@ import LandingPageSystem from "./LandingPageSystem";
 import LandingPageDelivary from "./LandingPageDelivary";
 import LandingPageAbout from "./LandingPageAbout";
 import LandingPageFooter from "./LandinPageFooter";
+import ErrorBar from "../../Components/common/ErrorBar";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -23,15 +24,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function LandingPage() {
-  const classes = useStyles();
   const isAuth = useSelector((state) => state.auth.isAuth);
 
-  if (isAuth) {
-    return <Redirect to="/lets-eat" />;
+  if (!isAuth) {
+    <Redirect to="/" />;
   }
-
+  const classes = useStyles();
   return (
     <div>
+      <ErrorBar />
       <Grid container>
         <Grid item xs={12}>
           <LandinPageHeader />

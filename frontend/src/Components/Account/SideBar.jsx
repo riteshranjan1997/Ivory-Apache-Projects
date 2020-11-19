@@ -11,10 +11,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
-import {Redirect} from "react-router-dom"
+import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
-
-
 
 const drawerWidth = 339;
 
@@ -47,6 +45,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SideBar(props) {
+  const isAuth = useSelector((state) => state.auth.isAuth);
+
+  if (!isAuth) {
+    <Redirect to="/" />;
+  }
   const classes = useStyles();
 
   const drawer = (
@@ -78,34 +81,34 @@ function SideBar(props) {
             </ListItem>
           </Link>
         ))}
-        <Link to="/" className={classes.link}>
+        <Link to="/login" className={classes.link}>
           <ListItem button key="Back to Home Page">
             <div style={{ color: "#2B8282" }}>
-              <Typography className={classes.sidebar}>Back to Home Page</Typography>
+              <Typography className={classes.sidebar}>
+                Back to Home Page
+              </Typography>
             </div>
           </ListItem>
         </Link>
       </List>
     </div>
   );
-  const isAuth = useSelector((state) => state.auth.isAuth);
 
-  if(!isAuth){
-    <Redirect to ="/" />
-  }
   return (
-    <Grid
-      xs={3}
-      item
-      style={{
-        width: "100%",
-        fontFamily: "esti",
-      }}
-    >
-      <Paper style={{ padding: "0px 20px", marginTop: "15px" }} elevation={4}>
-        {drawer}
-      </Paper>
-    </Grid>
+    <>
+      <Grid
+        xs={3}
+        item
+        style={{
+          width: "100%",
+          fontFamily: "esti",
+        }}
+      >
+        <Paper style={{ padding: "0px 20px", marginTop: "15px" }} elevation={4}>
+          {drawer}
+        </Paper>
+      </Grid>
+    </>
   );
 }
 

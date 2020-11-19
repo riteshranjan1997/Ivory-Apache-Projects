@@ -3,22 +3,22 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import { Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "80px 0px",
     textAlign: "center",
-    [theme.breakpoints.down('sm')]: {
-
-    }
+    [theme.breakpoints.down("sm")]: {},
   },
   card: {
     display: "flex",
     flexDirection: "column",
     maxWidth: 350,
   },
-  cardTitle:{
-    fontFamily:"esti"
+  cardTitle: {
+    fontFamily: "esti",
   },
   media: {
     height: "100px",
@@ -27,10 +27,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function LandingPageSystem() {
+  const isAuth = useSelector((state) => state.auth.isAuth);
+
+  if (!isAuth) {
+    <Redirect to="/" />;
+  }
+
   const classes = useStyles();
   return (
-    <Container fixed >
-      <Grid container alignItems="center" justify=""  direction="row" className={classes.root}>
+    <Container fixed>
+      <Grid
+        container
+        alignItems="center"
+        justify=""
+        direction="row"
+        className={classes.root}
+      >
         <Grid item xs={12} md={4}>
           <div className={classes.card}>
             <img
@@ -38,7 +50,12 @@ function LandingPageSystem() {
               alt="System"
             />
 
-            <Typography gutterBottom variant="h5" component="h5" className={classes.cardTitle}>
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="h5"
+              className={classes.cardTitle}
+            >
               Satisfy any craving
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
@@ -57,7 +74,12 @@ function LandingPageSystem() {
               alt="system"
               style={{ marginLeft: "130px" }}
             />
-            <Typography gutterBottom variant="h5" component="h5" className={classes.cardTitle}>
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="h5"
+              className={classes.cardTitle}
+            >
               Support restaurants and drivers
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
@@ -68,13 +90,18 @@ function LandingPageSystem() {
           </div>
         </Grid>
 
-        <Grid item xs={12}  md={4}>
+        <Grid item xs={12} md={4}>
           <div className={classes.card}>
             <img
               src="https://res.cloudinary.com/grubhub-assets/image/upload/v1567195623/illustration_3_sl_ww1kc4.svg"
               alt="system"
             />
-            <Typography gutterBottom variant="h5" component="h5" className={classes.cardTitle}>
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="h5"
+              className={classes.cardTitle}
+            >
               Cash in on Perks
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
@@ -84,7 +111,7 @@ function LandingPageSystem() {
           </div>
         </Grid>
       </Grid>
-      </Container>
+    </Container>
   );
 }
 
