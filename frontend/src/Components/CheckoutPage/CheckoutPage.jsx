@@ -40,7 +40,7 @@ export default function CheckoutPage() {
   console.log("address is ", address);
   const paymentHandler = async (e) => {
     e.preventDefault();
-    const API_URL = "http://localhost:5001/api/payment/";
+    const API_URL = "http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/payment/";
     const orderUrl = `${API_URL}order`;
     try {
       var response = await axios.post(

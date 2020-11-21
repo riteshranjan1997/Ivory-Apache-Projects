@@ -16,7 +16,7 @@ import SavedRestaurent from "../Components/Account/SavedRestaurent";
 import CheckoutPage from "../Components/CheckoutPage/CheckoutPage";
 
 export default function Routes() {
-  const isauth = useSelector((state) => state.auth.isauth);
+  // const isauth = useSelector((state) => state.auth.isauth);
 
   //   if(!isauth){
   //     return <Redirect to="/" ></Redirect>

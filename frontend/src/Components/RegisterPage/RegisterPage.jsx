@@ -17,7 +17,7 @@ function RegisterPage() {
     <div>
       <Grid container>
         <Grid item xs={12}>
-          <Bar />
+          {/* <Bar /> */}
         </Grid>
         <Grid item xs={12} style={{ marginTop: "60px" }}>
           <RegisterModel />
