@@ -78,7 +78,7 @@ export default function BrowseByCuisine() {
     if (cusine) {
       return axios
         .post(
-          `http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/restaurant/lets-eat?starRating=${
+          `http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com/api/restaurant/lets-eat?starRating=${
             filterRatings ? filterRatings : "0"
           }&cuisine=${cusine}`,
           {
@@ -91,7 +91,7 @@ export default function BrowseByCuisine() {
     } else {
       return axios
         .post(
-          `http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/restaurant/lets-eat?starRating=${
+          `http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com/api/restaurant/lets-eat?starRating=${
             filterRatings ? filterRatings : "0"
           } `,
           {

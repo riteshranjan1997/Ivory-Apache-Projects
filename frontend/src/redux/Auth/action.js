@@ -55,7 +55,7 @@ export const registerUserFailure = (payload) => ({
 export const registerRequest = (payload) => (dispatch) => {
   console.log(payload);
   dispatch(registerUserRequest());
-  fetch("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/user/register", {
+  fetch("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com/api/user/register", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -88,7 +88,7 @@ export const loginUserFailure = (payload) => ({
 
 export const loginRequest = (payload) => (dispatch) => {
   dispatch(loginUserRequest());
-  return fetch("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/user/login", {
+  return fetch("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com/api/user/login", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -130,7 +130,7 @@ export const googleLoginRequest = (payload) => (dispatch) => {
   dispatch(loginUserRequest());
   axios({
     method: "POST",
-    url: "http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/user/googleLogin",
+    url: "http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com/api/user/googleLogin",
     data: { ...payload },
   })
     .then((res) => {
@@ -193,7 +193,7 @@ export const updateUserFailure = (payload) => ({
 export const userUpdateRequest = (payload, accessToken) => (dispatch) => {
   console.log(payload, accessToken, "action");
   dispatch(updateUserRequest());
-  return fetch("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/settings/profile", {
+  return fetch("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com/api/settings/profile", {
     method: "PUT",
     headers: {
       "Content-type": "application/json",
@@ -211,7 +211,7 @@ export const userUpdateRequest = (payload, accessToken) => (dispatch) => {
     });
 };
 
-// axios.put("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/settings/profile", payload, {
+// axios.put("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com/api/settings/profile", payload, {
 //     headers:{
 //         Authorization: "Bearer " + accessToken
 //     }}
@@ -234,7 +234,7 @@ export const addAddressFailure = (payload) => ({
 
 export const AddressRequest = (payload, accessToken) => (dispatch) => {
   dispatch(addAddressRequest());
-  return fetch("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/settings/addAddress", {
+  return fetch("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com/api/settings/addAddress", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -267,7 +267,7 @@ export const deleteAddressFailure = (payload) => ({
 
 export const AddressDeleteRequest = (payload, accessToken) => (dispatch) => {
   dispatch(deleteAddressRequest());
-  return fetch("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/settings/deleteAddress", {
+  return fetch("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com/api/settings/deleteAddress", {
     method: "DELETE",
     headers: {
       "Content-type": "application/json",
@@ -370,7 +370,7 @@ export const deleteCartFailure = (payload) => ({
 export const addRequest = (payload, access_token) => (dispatch) => {
   dispatch(addToCartRequest());
   axios
-    .post("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/cart/addToCart", payload, {
+    .post("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com/api/cart/addToCart", payload, {
       headers: {
         Authorization: "Bearer " + access_token,
       },
@@ -386,7 +386,7 @@ export const addRequest = (payload, access_token) => (dispatch) => {
 export const editRequest = (payload) => (dispatch) => {
   console.log(payload);
   dispatch(editCartRequest());
-  fetch("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/cart/editCart", {
+  fetch("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com/api/cart/editCart", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -405,7 +405,7 @@ export const deleteRequest = (payload, access_token) => (dispatch) => {
   console.log(payload);
   dispatch(deleteCartRequest());
   axios
-    .post("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/cart/deleteFromCart", payload, {
+    .post("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com/api/cart/deleteFromCart", payload, {
       headers: {
         Authorization: "Bearer " + access_token,
       },

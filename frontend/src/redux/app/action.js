@@ -81,7 +81,7 @@ export const restaurantsRequest = (payload) => (dispatch) => {
   dispatch(restaurantsDataRequest());
   axios({
     method: "POST",
-    url: "http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/restaurant/lets-eat",
+    url: "http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com/api/restaurant/lets-eat",
     data: payload,
   })
     .then((res) => {
@@ -120,7 +120,7 @@ export const addToCartFailure = (payload) => ({
 export const addCart = (payload) => (dispatch) => {
   dispatch(addToCartRequest());
   axios
-    .get("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/")
+    .get("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com/api/")
     .then((res) => {
       dispatch(addToCartSuccess(res.data));
     })
@@ -146,7 +146,7 @@ export const updateToCartFailure = (payload) => ({
 export const updateCart = (payload) => (dispatch) => {
   dispatch(updateToCartRequest());
   axios
-    .get("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/")
+    .get("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com/api/")
     .then((res) => {
       dispatch(updateToCartSuccess(res.data));
     })
@@ -172,7 +172,7 @@ export const deleteToCartFailure = (payload) => ({
 export const DeleteCart = (payload) => (dispatch) => {
   dispatch(deleteCartRequest());
   axios
-    .get("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/")
+    .get("http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com/api/")
     .then((res) => {
       dispatch(deleteToCartSuccess(res.data));
     })

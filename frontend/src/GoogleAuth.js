@@ -11,7 +11,7 @@ function App() {
     setName(fullName);
     axios({
       method: "POST",
-      url: "http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com:5001/api/user/googleLogin",
+      url: "http://ec2-13-127-156-161.ap-south-1.compute.amazonaws.com/api/user/googleLogin",
       data: { tokenId: response.tokenId },
     }).then((response) => {
       console.log("Response from backend", response);
