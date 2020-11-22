@@ -141,7 +141,7 @@ function LandingPageLocation() {
                 fontFamily: "esti",
               }}
             >
-              flawless food delivary every time
+              Flawless food delivery every time.
             </h1>
           </Grid>
 
