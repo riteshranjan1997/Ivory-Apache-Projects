@@ -10,11 +10,11 @@ import { Grid } from "@material-ui/core";
 import ErrorBar from "../../Components/common/ErrorBar";
 
 function SigninLandingPage() {
-  const isAuth = useSelector((state) => state.auth.isAuth);
+  // const isAuth = useSelector((state) => state.auth.isAuth);
 
-  if (!isAuth) {
-    return <Redirect to="/" />;
-  }
+  // if (!isAuth) {
+  //   return <Redirect to="/" />;
+  // }
 
   return (
     <div>

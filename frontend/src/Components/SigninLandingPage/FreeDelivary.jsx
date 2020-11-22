@@ -19,7 +19,7 @@ function FreeDelivaey() {
         style={{ marginRight: "7px" }}
       />
       <div style={{ fontFamily: "graphik" }}>
-        Get unlimited free Delivary with flawless+!
+        Get unlimited free Delivery with flawless+!
       </div>
     </div>
   );

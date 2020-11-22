@@ -145,6 +145,12 @@ function MenuPage() {
     // for(var i=0;i<100000;i++){}
     // handleClickOpen(item.name,item.image,item.description,item.price,item.id);
     setTimeout(() => {
+      if(!isAuth){
+        alert("Login to continue")
+        setProduct("");
+        return
+        // <Redirect to = "/login" />
+      }
       handleClickOpen(
         item.name,
         item.image,
@@ -153,6 +159,7 @@ function MenuPage() {
         item.id
       );
       setProduct("");
+      
     }, 1000);
     // setLoading(!loading)
 

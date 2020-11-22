@@ -39,11 +39,11 @@ const popover = (
   </Popover>
 );
 export default function RestaurantCard(props) {
-  const isAuth = useSelector((state) => state.auth.isAuth);
+  // const isAuth = useSelector((state) => state.auth.isAuth);
 
-  if (!isAuth) {
-    <Redirect to="/" />;
-  }
+  // if (!isAuth) {
+  //   <Redirect to="/" />;
+  // }
   const classes = useStyles();
   const [value, setValue] = React.useState(2);
   return (

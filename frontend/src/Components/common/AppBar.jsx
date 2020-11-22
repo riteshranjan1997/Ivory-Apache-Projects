@@ -160,9 +160,9 @@ export default function Bar(props) {
   }, [addressquery]);
 
   const isAuth = useSelector((state) => state.auth.isAuth);
-  if (!isAuth) {
-    return <Redirect to="/" />;
-  }
+  // if (!isAuth) {
+  //   return <Redirect to="/" />;
+  // }
 
   const handleLocationUpdate = () => {
     if (selectedAddress !== []) {
@@ -506,7 +506,7 @@ export default function Bar(props) {
                                   color: "#2B8282",
                                   textAlign: "center",
                                 }}
-                                onClick={() => dispatch(logoutUser())}
+                                onClick={() => {dispatch(logoutUser());} }
                               >
                                 Not {userData.first_name} ? SignOut
                               </div>
@@ -623,7 +623,7 @@ export default function Bar(props) {
               </div>
 
               <div>
-                {cart.length === 0
+                {cart && cart.length === 0
                   ? ["bottom"].map((placement) => (
                       <OverlayTrigger
                         trigger="click"
@@ -794,7 +794,7 @@ export default function Bar(props) {
                               fontSize: "10px",
                             }}
                           >
-                            {cart.length}{" "}
+                            {cart ? cart.length : ""}
                           </span>
                         </div>
                       </OverlayTrigger>
