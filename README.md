@@ -32,7 +32,9 @@ Seamless is simply the easiest way to order food for delivery or takeout. Whatev
 [visit](https://seamless.com/)
 
 ## Landing Page
-<img src="https://drive.google.com/file/d/1GyNdTMCnkLRmPEV-0w7ejCJkus89QjUQ/view?usp=sharing" alt="screenshot" style="max-width:100%;">
+![alt text](https://github.com/riteshranjan1997/Ivory-Apache-Projects/blob/Project-Update/frontend/public/Seamless.png?raw=true)
+
+
 ## Contributors
 - [Sai Nihal](https://github.com/sainihal)
 - [Ritesh Ranjan](https://github.com/riteshranjan1997)
