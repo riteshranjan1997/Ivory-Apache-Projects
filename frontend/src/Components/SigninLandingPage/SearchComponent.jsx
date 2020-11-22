@@ -6,6 +6,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import Styled from "styled-components";
 import { useHistory } from "react-router";
+import { Redirect } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -85,19 +86,24 @@ export default function SearchComponent() {
   );
   const selectedGioLocationFromStore = useSelector((state) => {
     if (state.app.userGioLocation) {
-      return [state.app.userGioLocation.longitude, state.app.userGioLocation.lattitude];
+      return [
+        state.app.userGioLocation.longitude,
+        state.app.userGioLocation.lattitude,
+      ];
     } else {
       return [];
     }
   });
 
   const [addressQuery, setAddressQuery] = useState(selectedAddressFromStore);
-  const [addressQueryGeoLocation, setaddressQueryGeoLocation] = useState(selectedGioLocationFromStore);
+  const [addressQueryGeoLocation, setaddressQueryGeoLocation] = useState(
+    selectedGioLocationFromStore
+  );
   const [cuisineQuery, setcuisineQuery] = useState("");
   const [suggestedAddress, setsuggestedAddress] = React.useState([]);
 
   const handleLocationUpdate = () => {
-    console.log(addressQuery,addressQueryGeoLocation)
+    console.log(addressQuery, addressQueryGeoLocation);
     dispatch(UpdateUserAppAddress(addressQuery));
     dispatch(UpdateUserGioLocation(addressQueryGeoLocation));
     setTimeout(() => {
@@ -110,8 +116,9 @@ export default function SearchComponent() {
       .get(
         `https://api.mapbox.com/geocoding/v5/mapbox.places/${addressQuery}.json?limit=5&access_token=pk.eyJ1Ijoic291bmRhcnlhbWVjc2UiLCJhIjoiY2toMmUxZHBoMGJtdDJ3cGNqOWhmbTJqaiJ9.sZeF_rzMTfs2fPBA4JsHxQ`
       )
-      .then((res) => { 
-        setsuggestedAddress(res.data.features)})
+      .then((res) => {
+        setsuggestedAddress(res.data.features);
+      })
       .catch((err) => console.log(err));
   }, [addressQuery]);
 
@@ -165,13 +172,12 @@ export default function SearchComponent() {
                         suggestedAddress &&
                         isInputOnFocus &&
                         suggestedAddress.map((item, i) => (
-                          
                           <>
                             <li
                               className={`dropDown`}
                               key={item.id}
                               onClick={(e) => {
-                                console.log(item)
+                                console.log(item);
                                 setAddressQuery(item.place_name);
                                 setaddressQueryGeoLocation(
                                   item.geometry.coordinates

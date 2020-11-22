@@ -1,9 +1,13 @@
-import React, { useEffect , useState} from "react";
-import axios from "axios"
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { UpdateUserAppAddress,UpdateUserGioLocation,restaurantsRequest } from "../../redux/app/action";
-import {logoutUser} from "../../redux/Auth/action"
+import {
+  UpdateUserAppAddress,
+  UpdateUserGioLocation,
+  restaurantsRequest,
+} from "../../redux/app/action";
+import { logoutUser } from "../../redux/Auth/action";
 import LoginModel from "./LoginModel";
 import Styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
@@ -23,9 +27,9 @@ import Popover from "react-bootstrap/Popover";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import { deleteRequest } from "../../redux/cart/actions";
-
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import { deleteRequest } from "../../redux/Auth/action";
+import { Redirect } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -89,12 +93,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "30px",
     textAlign: "center",
   },
-  boxshadow:{   
-  borderRadius: "0px",
-  background: "#55b9f3",
-  boxShadow: " -1px -1px 8px black"
-
-  }
+  boxshadow: {
+    borderRadius: "0px",
+    background: "#55b9f3",
+    boxShadow: " -1px -1px 8px black",
+  },
 }));
 
 const LocationWrapper = Styled.div`    
@@ -122,59 +125,63 @@ export default function Bar(props) {
   const dispatch = useDispatch();
   const [addressmodelStatus, setAddressModelStatus] = React.useState(false);
   const [logingModelStatus, setlogingModelStatus] = React.useState(false);
-
-  
-
-  const isAuth = useSelector((state) => state.auth.isAuth);
   const userData = useSelector((state) => state.auth.user_data);
-
-
-  const selectedAddressFromStore = useSelector((state) => state.app.userAddress || "");
+  const selectedAddressFromStore = useSelector(
+    (state) => state.app.userAddress || ""
+  );
+  const theme = useTheme();
   const selectedGioLocationFromStore = useSelector((state) => {
     if (state.app.userGioLocation) {
-      return [state.app.userGioLocation.longitude, state.app.userGioLocation.lattitude];
+      return [
+        state.app.userGioLocation.longitude,
+        state.app.userGioLocation.lattitude,
+      ];
     } else {
       return [];
     }
   });
-
   const [addressquery, setAddressQuery] = useState("");
-  
-  const [selectedAddress, setSelectedAddress] = useState({})
-
+  const [selectedAddress, setSelectedAddress] = useState({});
   const [suggestedAddress, setsuggestedAddress] = useState([]);
+  const [open, setOpen] = useState(false);
+  const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
+
+  const cart = useSelector((state) => state.auth.user_data.cart);
+  console.log("in app bar CART is ", cart);
+
+  const access_token = useSelector((state) => state.auth.access_token);
+  useEffect(() => {
+    return axios
+      .get(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${addressquery}.json?limit=5&access_token=pk.eyJ1Ijoic291bmRhcnlhbWVjc2UiLCJhIjoiY2toMmUxZHBoMGJtdDJ3cGNqOWhmbTJqaiJ9.sZeF_rzMTfs2fPBA4JsHxQ`
+      )
+      .then((res) => setsuggestedAddress(res.data.features))
+      .catch((err) => console.log(err));
+  }, [addressquery]);
+
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  // if (!isAuth) {
+  //   return <Redirect to="/" />;
+  // }
 
   const handleLocationUpdate = () => {
-    if(selectedAddress !== []){
-    dispatch(UpdateUserAppAddress(selectedAddress.place_name));
-    dispatch(UpdateUserGioLocation(selectedAddress.geometry.coordinates));
-    handleClose()
-    setTimeout(() => {
-      let longitude = selectedAddress.geometry.coordinates[0]
-      let lattitude = selectedAddress.geometry.coordinates[1]
-      dispatch(restaurantsRequest({longitude:longitude,lattitude:lattitude}))
-    }, 100);
+    if (selectedAddress !== []) {
+      dispatch(UpdateUserAppAddress(selectedAddress.place_name));
+      dispatch(UpdateUserGioLocation(selectedAddress.geometry.coordinates));
+      handleClose();
+      setTimeout(() => {
+        let longitude = selectedAddress.geometry.coordinates[0];
+        let lattitude = selectedAddress.geometry.coordinates[1];
+        dispatch(
+          restaurantsRequest({ longitude: longitude, lattitude: lattitude })
+        );
+      }, 100);
     }
-    
-    
   };
 
-  const [open, setOpen] = useState(false);
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("xs"));
-  
-  const cart = useSelector(state=>state.cart.cart)
-  const cart_items = useSelector(state=>state.auth.user_data.cart)
-
-  let auth = useSelector(state=>state.auth)
-  let auth_cart = useSelector(state=>state.auth.user_data.cart)
- 
-  const access_token = useSelector((state)=>state.auth.access_token)
-
-
-  const handleDelete = (payload)=>{
-    dispatch(deleteRequest(payload,access_token))
-  }
+  const handleDelete = (payload) => {
+    dispatch(deleteRequest(payload, access_token));
+  };
   const handleAddressModelOpen = () => {
     setAddressModelStatus(true);
   };
@@ -209,9 +216,6 @@ export default function Bar(props) {
   //     console.log("unable to get location");
   //   }
   // }
-
-
-  
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -261,73 +265,66 @@ export default function Bar(props) {
         <div></div>
         <div>Delivary Address</div>
         <Autocomplete
-                  disableClearable
-                  freeSolo
-                  options={suggestedAddress.map((place) => place.place_name)}
-                  onChange={(event, value) =>
-                    setSelectedAddress(() =>
-                    suggestedAddress.find((place) => place.place_name === value)
-                    )
-                  }
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      placeholder="Enter street address or zip code"
-                      margin="normal"
-                      variant="outlined"
-                      value={addressquery}
-                      InputProps={{
-                        ...params.InputProps,
-                        type: "search",
-                      }}
-                      onChange={(e) => {
-                        console.log(e.target.value)
-                        setAddressQuery(e.target.value)}}
-                    />
-                  )}
-                />
-          <Button
-            onClick={handleLocationUpdate}
-            style={{
-              backgroundColor: "#2B8282",
-              color: "white",
-              width: "360px",
-              height: "40px",
-            }}
-          >
-            Update
-          </Button>
-
+          disableClearable
+          freeSolo
+          options={suggestedAddress.map((place) => place.place_name)}
+          onChange={(event, value) =>
+            setSelectedAddress(() =>
+              suggestedAddress.find((place) => place.place_name === value)
+            )
+          }
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              placeholder="Enter street address or zip code"
+              margin="normal"
+              variant="outlined"
+              value={addressquery}
+              InputProps={{
+                ...params.InputProps,
+                type: "search",
+              }}
+              onChange={(e) => {
+                console.log(e.target.value);
+                setAddressQuery(e.target.value);
+              }}
+            />
+          )}
+        />
+        <Button
+          onClick={handleLocationUpdate}
+          style={{
+            backgroundColor: "#2B8282",
+            color: "white",
+            width: "360px",
+            height: "40px",
+          }}
+        >
+          Update
+        </Button>
       </div>
     </Fade>
   );
 
   const loginModel = <LoginModel />;
 
-  useEffect(() => {
-    return axios
-      .get(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${addressquery}.json?limit=5&access_token=pk.eyJ1Ijoic291bmRhcnlhbWVjc2UiLCJhIjoiY2toMmUxZHBoMGJtdDJ3cGNqOWhmbTJqaiJ9.sZeF_rzMTfs2fPBA4JsHxQ`
-      )
-      .then((res) => setsuggestedAddress(res.data.features))
-      .catch((err) => console.log(err));
-  }, [addressquery]);
   // console.log("in app bar",cart.length,cart_items.length,cart,cart_items,(cart.length || cart_items.length))
   return (
-    <div className={classes.boxshadow} style={{zIndex:30,width:"100%",position:"fixed"}}>
+    <div
+      className={classes.boxshadow}
+      style={{ zIndex: 30, width: "100%", position: "fixed" }}
+    >
       {/* {isAuth ? handleLoginModelClose() : null } */}
-     <div className={classes.dialog}>
-          <Dialog
-            fullScreen={fullScreen}
-            open={open}
-            fullWidth="fullwidth"
-            maxWidth="xs"
-            onClose={handleClose}
-            aria-labelledby="responsive-dialog-title"
-            >
-            <DialogContent>
-                {addressModel}
-            </DialogContent>
+      <div className={classes.dialog}>
+        <Dialog
+          fullScreen={fullScreen}
+          open={open}
+          fullWidth="fullwidth"
+          maxWidth="xs"
+          onClose={handleClose}
+          aria-labelledby="responsive-dialog-title"
+        >
+          <DialogContent>{addressModel}</DialogContent>
         </Dialog>
       </div>
       <Modal
@@ -340,7 +337,10 @@ export default function Bar(props) {
         {loginModel}
       </Modal>
 
-      <nav class="navbar navbar-light bg-white" style={{ position:"sticky", top:0}}>
+      <nav
+        class="navbar navbar-light bg-white"
+        style={{ position: "sticky", top: 0 }}
+      >
         <div class="d-flex  container-fluid">
           <div class="terms-link">
             <Link to="/">
@@ -506,9 +506,9 @@ export default function Bar(props) {
                                   color: "#2B8282",
                                   textAlign: "center",
                                 }}
-                                onClick={() => dispatch(logoutUser())}
+                                onClick={() => {dispatch(logoutUser());} }
                               >
-                               Not {userData.first_name} ? SignOut
+                                Not {userData.first_name} ? SignOut
                               </div>
                             </div>
                           </Popover.Content>
@@ -520,17 +520,36 @@ export default function Bar(props) {
                           width: "233px",
                           border: "none",
                           outline: "none",
-                          color:"#2B8282",
+                          color: "#2B8282",
                         }}
                       >
-                        <div style={{display:"flex",alignItems:"center",marginTop:"-5px", fontFamily:"esti"}}>
-                          <div><Avatar style={{ backgroundColor: "#2B8282",height:"30px",width:"30px"}}>
-                            {userData.first_name[0]}
-                          </Avatar></div>
-                          <div style={{ marginLeft: "5px", color:"#6b6b83"}}>
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            marginTop: "-5px",
+                            fontFamily: "esti",
+                          }}
+                        >
+                          <div>
+                            <Avatar
+                              style={{
+                                backgroundColor: "#2B8282",
+                                height: "30px",
+                                width: "30px",
+                              }}
+                            >
+                              {userData.first_name[0]}
+                            </Avatar>
+                          </div>
+                          <div style={{ marginLeft: "5px", color: "#6b6b83" }}>
                             Hi,{" " + userData.first_name}{" "}
-                          </div>                        
-                          <div><ExpandMoreIcon style={{color:"#6b6b83" , marginLeft:"20px"}} /></div>
+                          </div>
+                          <div>
+                            <ExpandMoreIcon
+                              style={{ color: "#6b6b83", marginLeft: "20px" }}
+                            />
+                          </div>
                         </div>
                       </Button>
                     </OverlayTrigger>
@@ -539,7 +558,7 @@ export default function Bar(props) {
                   <button
                     className="btn btn-outline-success"
                     onClick={handleLoginModelOpen}
-                    style={{color:"#2B8282", marginRight:"20px"}}
+                    style={{ color: "#2B8282", marginRight: "20px" }}
                   >
                     Sign in
                   </button>
@@ -604,124 +623,182 @@ export default function Bar(props) {
               </div>
 
               <div>
-                {cart.length === 0 ?
-                ["bottom"].map((placement) => (                  
-                  <OverlayTrigger
-                    trigger="click"
-                    key={placement}
-                    placement={placement}
-                    className="p-2 bd-highlight m-2"
-                    overlay={
-                      <Popover style={{ maxHeight: "200px", width: "260px" }}>
-                        <Popover.Content>
-                          <div
-                            style={{
-                              fontSize: "18px",
-                              display: "flex",
-                              flexDirection: "column",
-                            }}
+                {cart && cart.length === 0
+                  ? ["bottom"].map((placement) => (
+                      <OverlayTrigger
+                        trigger="click"
+                        key={placement}
+                        placement={placement}
+                        className="p-2 bd-highlight m-2"
+                        overlay={
+                          <Popover
+                            style={{ maxHeight: "200px", width: "260px" }}
                           >
-                            <div style={{ alignSelf: "center" }}>
-                              <img
-                                src="https://www.seamless.com/assets/img/seamless/empty-bag.svg"
-                                height="100px"
-                                width="100px"
-                                alt="Empty Bag"
-                              />
-                            </div>
-                            <div
-                              style={{
-                                fontSize: "20px",
-                                fontWeight: "bolder",
-                                color: "grey",
-                                alignSelf: "center",
-                              }}
-                            >
-                              Your Bag is empty
-                            </div>
-                          </div>
-                        </Popover.Content>
-                      </Popover>
-                    }
-                  >
-                    <div variant="secondary">
-                      <LocalMallIcon
-                        style={{ color: "#2B8282", fontSize: "30px" }}
-                      />
-                    </div>
-                  </OverlayTrigger>
-                ))
-              :
-              ["bottom"].map((placement) => (                  
-                <OverlayTrigger
-                  trigger="click"
-                  key={placement}
-                  placement={placement}
-                  className="p-2 bd-highlight m-2"
-                  overlay={
-                    <Popover style={{ minxHeight: "200px", width: "260px" }}>
-                      <Popover.Content>
-                        <div
-                          style={{
-                            fontSize: "18px",
-                            display: "flex",
-                            flexDirection: "column",
-                            padding:"10px"
-                          }}
-                        >
-                        <div className="mb-2"><b>Your Order</b></div>
-                        {/* { cart.length>0 ? :auth_cart.length > 0? : } */}
-                          {cart && cart.map((item)=>(
-                         <div>                           
-                           <div style={{display:"flex",fontSize:"14px",justifyContent:"space-between"}}>                             
-                              <div>{item.quantity}</div>
-                              <div style={{color:"#2B8282",alignSelf:"left"}}>{item.item_name}</div>                        
-                            
-                              <div><i class="fas fa-trash" style={{color:"grey"}} onClick={()=>handleDelete({restaurant_id:item.restaurant_id,item_id:item.item_id,quantity:item.quantity})}></i></div>
-                              <div>₹{item.price}</div>                                                      
-                           </div>                        
-                           <hr/>
-                         </div>
-                         ))}
-                          
-                         <div style={{display:"flex",fontSize:"12px",justifyContent:"space-between"}}>
-                              <div>item Subtotal</div>
-                              <div>{cart && cart.reduce((a,item)=>(
-                                  a+item.price
-                              ),0)}</div>
-                          </div>
-                          <hr/>
-                          <div>
-                          <Link to="/checkout"> 
-                                <Button
-                                    style={{
+                            <Popover.Content>
+                              <div
+                                style={{
+                                  fontSize: "18px",
+                                  display: "flex",
+                                  flexDirection: "column",
+                                }}
+                              >
+                                <div style={{ alignSelf: "center" }}>
+                                  <img
+                                    src="https://www.seamless.com/assets/img/seamless/empty-bag.svg"
+                                    height="100px"
+                                    width="100px"
+                                    alt="Empty Bag"
+                                  />
+                                </div>
+                                <div
+                                  style={{
+                                    fontSize: "20px",
+                                    fontWeight: "bolder",
+                                    color: "grey",
+                                    alignSelf: "center",
+                                  }}
+                                >
+                                  Your Bag is empty
+                                </div>
+                              </div>
+                            </Popover.Content>
+                          </Popover>
+                        }
+                      >
+                        <div variant="secondary">
+                          <LocalMallIcon
+                            style={{ color: "#2B8282", fontSize: "30px" }}
+                          />
+                        </div>
+                      </OverlayTrigger>
+                    ))
+                  : ["bottom"].map((placement) => (
+                      <OverlayTrigger
+                        trigger="click"
+                        key={placement}
+                        placement={placement}
+                        className="p-2 bd-highlight m-2"
+                        overlay={
+                          <Popover
+                            style={{ minxHeight: "200px", width: "260px" }}
+                          >
+                            <Popover.Content>
+                              <div
+                                style={{
+                                  fontSize: "18px",
+                                  display: "flex",
+                                  flexDirection: "column",
+                                  padding: "10px",
+                                }}
+                              >
+                                <div className="mb-2">
+                                  <b>Your Order</b>
+                                </div>
+                                {/* { cart.length>0 ? :auth_cart.length > 0? : } */}
+                                {cart &&
+                                  cart.map((item) => (
+                                    <div>
+                                      <div
+                                        style={{
+                                          display: "flex",
+                                          fontSize: "14px",
+                                          justifyContent: "space-between",
+                                        }}
+                                      >
+                                        <div>{item.quantity}</div>
+                                        <div
+                                          style={{
+                                            color: "#2B8282",
+                                            alignSelf: "left",
+                                          }}
+                                        >
+                                          {item.item_name}
+                                        </div>
+
+                                        <div>
+                                          <i
+                                            class="fas fa-trash"
+                                            style={{ color: "grey" }}
+                                            onClick={(e) => {
+                                              console.log("in handle delete");
+                                              e.preventDefault();
+                                              handleDelete({
+                                                restaurant_id:
+                                                  item.restaurant_id,
+                                                item_id: item.item_id,
+                                                quantity: item.quantity,
+                                              });
+                                            }}
+                                          ></i>
+                                        </div>
+
+                                        <div>₹{item.price}</div>
+                                      </div>
+                                      <hr />
+                                    </div>
+                                  ))}
+
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    fontSize: "12px",
+                                    justifyContent: "space-between",
+                                  }}
+                                >
+                                  <div>item Subtotal</div>
+                                  <div>
+                                    {cart &&
+                                      cart.reduce(
+                                        (a, item) => a + item.price,
+                                        0
+                                      )}
+                                  </div>
+                                </div>
+                                <hr />
+                                <div>
+                                  <Link to="/checkout">
+                                    <Button
+                                      style={{
                                         backgroundColor: "#13AA37",
                                         color: "white",
                                         width: "220px",
-                                        height:"40px",
-                                        borderRadius:"10px",
-
-                                    }}                                    
+                                        height: "40px",
+                                        borderRadius: "10px",
+                                      }}
                                     >
-                                    <span style={{fontSize:"15.4"}}>Proceed to Checkout</span>
-                                </Button></Link>
-                          </div>
-                         
+                                      <span style={{ fontSize: "15.4" }}>
+                                        Proceed to Checkout
+                                      </span>
+                                    </Button>
+                                  </Link>
+                                </div>
+                              </div>
+                            </Popover.Content>
+                          </Popover>
+                        }
+                      >
+                        <div variant="secondary">
+                          <LocalMallIcon
+                            style={{
+                              color: "#2B8282",
+                              fontSize: "30px",
+                              zIndex: 1,
+                            }}
+                          />
+                          <span
+                            class="badge badge-pill badge-success"
+                            style={{
+                              position: "relative",
+                              right: "10px",
+                              top: "-7px",
+                              fontSize: "10px",
+                            }}
+                          >
+                            {cart ? cart.length : ""}
+                          </span>
                         </div>
-                      </Popover.Content>
-                    </Popover>
-                  }
-                >
-                  <div variant="secondary">
-                    
-                    <LocalMallIcon
-                      style={{ color: "#2B8282", fontSize: "30px",zIndex:1}}
-                    />
-                    <span class="badge badge-pill badge-success" style={{position:"relative",right:"10px",top:"-7px",fontSize:"10px"}} >{cart.length} </span>
-                  </div>
-                </OverlayTrigger>
-              ))
-              }
+                      </OverlayTrigger>
+                    ))}
               </div>
             </div>
           </div>

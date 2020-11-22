@@ -1,7 +1,7 @@
 import React from "react";
-import { makeStyles,withStyles } from "@material-ui/core/styles";
-import {useSelector, useDispatch} from "react-redux"
-import {updateFilters} from "../../redux/app/action"
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { useSelector, useDispatch } from "react-redux";
+import { updateFilters } from "../../redux/app/action";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import Accordion from "@material-ui/core/Accordion";
@@ -12,21 +12,20 @@ import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import Tooltip from "@material-ui/core/Tooltip";
 import Rating from "@material-ui/lab/Rating";
-import StarIcon from '@material-ui/icons/Star';
+import StarIcon from "@material-ui/icons/Star";
 import { useEffect } from "react";
-import {filterStarRatings} from '../../redux/Filtering/action'
+import { filterStarRatings } from "../../redux/Filtering/action";
+import { Redirect } from "react-router-dom";
 
 const StyledRating = withStyles({
   iconFilled: {
-    color: '#2B8282',
+    color: "#2B8282",
   },
-  iconHover:{   
-      color:"white",
-      backgroundColor:"#2B8282",      
-      }
-
-})(Rating); 
-
+  iconHover: {
+    color: "white",
+    backgroundColor: "#2B8282",
+  },
+})(Rating);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,12 +56,17 @@ const useStyles = makeStyles((theme) => ({
   rootRating: {
     width: 200,
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
   },
 }));
 
 function ValueLabelComponent(props) {
-  
+  const isAuth = useSelector((state) => state.auth.isAuth);
+
+  if (!isAuth) {
+    <Redirect to="/" />;
+  }
+
   const { children, open, value } = props;
 
   return (
@@ -81,36 +85,36 @@ ValueLabelComponent.propTypes = {
 function Filter() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const filters = useSelector(state => state.app.userFilter)  
+  const filters = useSelector((state) => state.app.userFilter);
   const [value, setValue] = React.useState(0);
   const [hover, setHover] = React.useState(-1);
-  const [free_delivery,setFreeDelivery] = React.useState("")
-  const [order_tracking_enabled,setOrderTrackingEnabled] = React.useState("")
-  const [seamless_plus,setSeamlessPlus] = React.useState("")
-  const [group_order,setGroupOrder]= React.useState("")
-  
-  
+  const [free_delivery, setFreeDelivery] = React.useState("");
+  const [order_tracking_enabled, setOrderTrackingEnabled] = React.useState("");
+  const [seamless_plus, setSeamlessPlus] = React.useState("");
+  const [group_order, setGroupOrder] = React.useState("");
 
-  useEffect(()=>{
-     dispatch(filterStarRatings(value))
-  },[value])
+  useEffect(() => {
+    dispatch(filterStarRatings(value));
+  }, [value]);
 
   const handleClearFilter = () => {
-      dispatch(updateFilters({}))
-  }
+    dispatch(updateFilters({}));
+  };
 
   const handleFilterChange = (star) => {
-    dispatch(updateFilters({
-      starRating:star
-    }))
-  }
-
+    dispatch(
+      updateFilters({
+        starRating: star,
+      })
+    );
+  };
 
   return (
     <div
       className={`col-12 border border-right  ${classes.root}`}
-      style={{ fontFamily: "Poppins" ,marginLeft:"-20px",height:"1300px"}}
-    >\
+      style={{ fontFamily: "Poppins", marginLeft: "-20px", height: "1300px" }}
+    >
+      \
       <div className="row">
         <div className="col-12">
           <div
@@ -120,7 +124,9 @@ function Filter() {
             <div className="mr-3">
               <h4 style={{ fontWeight: "700" }}>Filters</h4>
             </div>
-            <div style={{ fontSize: "12px" }} onClick={handleClearFilter}>Clear All</div>
+            <div style={{ fontSize: "12px" }} onClick={handleClearFilter}>
+              Clear All
+            </div>
           </div>
           <div className={classes.buttons}>
             <div className="mr-3 mb-3">Restaurents</div>
@@ -173,8 +179,9 @@ function Filter() {
                         value="seamless_plus"
                         class="form-check-input"
                         id="exampleCheck1"
-                        onChange ={(e)=>
-                          {setSeamlessPlus(e.target.checked)}}
+                        onChange={(e) => {
+                          setSeamlessPlus(e.target.checked);
+                        }}
                       />
                       <label
                         class="form-check-label"
@@ -194,8 +201,9 @@ function Filter() {
                         type="checkbox"
                         class="form-check-input"
                         id="exampleCheck1"
-                        onChange ={(e)=>
-                          {setGroupOrder(e.target.checked)}}
+                        onChange={(e) => {
+                          setGroupOrder(e.target.checked);
+                        }}
                       />
                       <label class="form-check-label" for="exampleCheck1">
                         Group order
@@ -213,12 +221,13 @@ function Filter() {
                     </div>
                     <div class="form-group form-check d-flex justify-content-left">
                       <input
-                       value="order_tracking_enabled"
+                        value="order_tracking_enabled"
                         type="checkbox"
                         class="form-check-input"
                         id="exampleCheck1"
-                        onChange ={(e)=>
-                          {setOrderTrackingEnabled(e.target.checked)}}
+                        onChange={(e) => {
+                          setOrderTrackingEnabled(e.target.checked);
+                        }}
                       />
                       <label class="form-check-label" for="exampleCheck1">
                         Order Tracking Enabled
@@ -240,8 +249,9 @@ function Filter() {
                         type="checkbox"
                         class="form-check-input"
                         id="exampleCheck1"
-                        onChange ={(e)=>
-                          {setFreeDelivery(e.target.checked)}}
+                        onChange={(e) => {
+                          setFreeDelivery(e.target.checked);
+                        }}
                       />
                       <label class="form-check-label" for="exampleCheck1">
                         Free delivary
@@ -303,27 +313,29 @@ function Filter() {
                     </div>
                   </Typography> */}
                   <div>
-                    <StyledRating                        
-                        name="hover-feedback"
-                        value={value}
-                        precision={1}
-                        onChange={(event, newValue) => {
-                          setValue(newValue);
-                        }}
-                        onChangeActive={(event, newHover) => {
-                          setHover(newHover);
-                        }}
-                        icon={
-                          <div
-                              className={`border rounded-right p-2 ${classes.ratings}`}
-                              style={{ width: "50px"   }}>
-                            <StarIcon fontSize="inherit" />
-                        </div>}
-                      />
-                      {/* {value !== null && (
+                    <StyledRating
+                      name="hover-feedback"
+                      value={value}
+                      precision={1}
+                      onChange={(event, newValue) => {
+                        setValue(newValue);
+                      }}
+                      onChangeActive={(event, newHover) => {
+                        setHover(newHover);
+                      }}
+                      icon={
+                        <div
+                          className={`border rounded-right p-2 ${classes.ratings}`}
+                          style={{ width: "50px" }}
+                        >
+                          <StarIcon fontSize="inherit" />
+                        </div>
+                      }
+                    />
+                    {/* {value !== null && (
                         <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>
                       )} */}
-                       {/* <StyledRating
+                    {/* <StyledRating
                                 name="customized-color"
                                 defaultValue={props.data.aggregate_rating}
                                 // getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}

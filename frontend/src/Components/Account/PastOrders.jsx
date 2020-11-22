@@ -10,8 +10,8 @@ import OrderCard from "../OrderCard";
 import Grid from "@material-ui/core/Grid";
 import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import {Redirect} from "react-router-dom"
-
+import { Redirect } from "react-router-dom";
+import ErrorBar from "../../Components/common/ErrorBar";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -59,15 +59,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function PastOrders() {
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  if (!isAuth) {
+    <Redirect to="/" />;
+  }
   const classes = useStyles();
   const userOrders = useSelector((state) => state.auth.user_data.past_orders);
-  const isAuth = useSelector((state) => state.auth.isAuth);
-  if(!isAuth){
-    <Redirect to ="/" />
-  }
+
   return (
     <>
       <Bar />
+      <ErrorBar />
 
       <Grid container>
         <SideBar />
@@ -117,28 +119,29 @@ function PastOrders() {
               </main>
             </Grid>
 
-            {userOrders && userOrders.map((ele) => {
-              if (userOrders.length === 0) {
-                return (
-                  <Grid item xs={12} style={{margin:"10px"}}>
-                    <div style={{ margin: "15px 20px", }}>
-                      <h3 style={{ fontFamily: "esti" }}></h3>
-                      <Link to="/lets-eat">
-                        <Button>Order Now</Button>
-                      </Link>
-                    </div>
-                  </Grid>
-                );
-              } else {
-                return (
-                  <Grid item xs={3} style={{margin:"10px"}}>
-                    <div style={{ margin: "15px 20px" }}>
-                      <OrderCard {...{ ele }} />
-                    </div>
-                  </Grid>
-                );
-              }
-            })}
+            {userOrders &&
+              userOrders.map((ele) => {
+                if (userOrders.length === 0) {
+                  return (
+                    <Grid item xs={12} style={{ margin: "10px" }}>
+                      <div style={{ margin: "15px 20px" }}>
+                        <h3 style={{ fontFamily: "esti" }}></h3>
+                        <Link to="/lets-eat">
+                          <Button>Order Now</Button>
+                        </Link>
+                      </div>
+                    </Grid>
+                  );
+                } else {
+                  return (
+                    <Grid item xs={3} style={{ margin: "10px" }}>
+                      <div style={{ margin: "15px 20px" }}>
+                        <OrderCard {...{ ele }} />
+                      </div>
+                    </Grid>
+                  );
+                }
+              })}
           </Grid>
         </Grid>
       </Grid>

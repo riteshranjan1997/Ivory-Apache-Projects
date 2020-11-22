@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Card from "@material-ui/core/Card";
-import {useDispatch , useSelector} from "react-redux"
-import {PaymentCardAddRequest} from "../../redux/Auth/action"
+import { useDispatch, useSelector } from "react-redux";
+import { PaymentCardAddRequest } from "../../redux/Auth/action";
 import SideBar from "./SideBar";
 import Bar from "../common/AppBar";
 import CardContent from "@material-ui/core/CardContent";
@@ -16,9 +16,8 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Grid } from "@material-ui/core";
 import PaymentCard from "./PaymentCard";
-import {Redirect} from "react-router-dom"
-
-
+import { Redirect } from "react-router-dom";
+import ErrorBar from "../../Components/common/ErrorBar";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -99,8 +98,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Payments() {
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  if (!isAuth) {
+    <Redirect to="/" />;
+  }
   const classes = useStyles();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [AddCreditCardDetails, setAddCreditCardDetails] = React.useState(false);
   const [AddPaypalAccount, setAddPaypalAccount] = React.useState(false);
   const [open, setOpen] = React.useState(false);
@@ -111,8 +114,8 @@ function Payments() {
   const [expiresOn, setExpiresOn] = useState("");
   const [securityCode, setSecurityCode] = useState("");
   const [postalCode, setPostalCode] = useState("");
-  const accesstoken = useSelector((state) => state.auth.access_token)
-  const userdata = useSelector((state) => state.auth.user_data)
+  const accesstoken = useSelector((state) => state.auth.access_token);
+  const userdata = useSelector((state) => state.auth.user_data);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -129,22 +132,18 @@ function Payments() {
       security_code: securityCode,
       postal_code: postalCode,
     };
-    console.log(payload,accesstoken)
-    dispatch(PaymentCardAddRequest(payload,accesstoken))
+    console.log(payload, accesstoken);
+    dispatch(PaymentCardAddRequest(payload, accesstoken));
     setCardNumber("");
     setExpiresOn("");
     setSecurityCode("");
     setPostalCode("");
   };
-   const isAuth = useSelector((state) => state.auth.isAuth);
-
-  if(!isAuth){
-    <Redirect to ="/" />
-  }
 
   return (
     <>
       <Bar />
+      <ErrorBar />
       <Grid container>
         <SideBar />
         <Grid xs={9} item style={{ marginTop: "60px" }}>
@@ -299,7 +298,7 @@ function Payments() {
                             </div>
                             <div>
                               <input
-                              value={postalCode}
+                                value={postalCode}
                                 onChange={(e) => setPostalCode(e.target.value)}
                                 type="text"
                                 style={{
@@ -341,7 +340,9 @@ function Payments() {
                     </form>
                   </div>
                 )}
-                {userdata && userdata.payment.length !== 0 && userdata.payment.map(elem => <PaymentCard {...elem}/>)}
+                {userdata &&
+                  userdata.payment.length !== 0 &&
+                  userdata.payment.map((elem) => <PaymentCard {...elem} />)}
               </CardContent>
             </Card>
             <Card className={classes.root}>

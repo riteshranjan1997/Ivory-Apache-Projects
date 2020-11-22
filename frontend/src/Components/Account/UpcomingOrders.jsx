@@ -17,10 +17,9 @@ import { useTheme } from "@material-ui/core/styles";
 import Styled from "styled-components";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
-import {Redirect} from "react-router-dom"
+import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
-
-
+import ErrorBar from "../../Components/common/ErrorBar";
 
 const LocationWrapper = Styled.div`    
     width:250px;
@@ -47,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 275,
   },
   content: {
-    padding:"20px"
+    padding: "20px",
   },
   toolbar: {
     toolbar: theme.mixins.toolbar,
@@ -154,13 +153,13 @@ function PastOrders() {
 
   const isAuth = useSelector((state) => state.auth.isAuth);
 
-  if(!isAuth){
-    <Redirect to ="/" />
+  if (!isAuth) {
+    <Redirect to="/" />;
   }
   return (
     <>
       <Bar />
-
+      <ErrorBar />
       <Grid container>
         <SideBar />
 
@@ -327,10 +326,8 @@ function PastOrders() {
                                             data &&
                                             data.map((item, i) => (
                                               <>
-                                               
                                                 <li
                                                   className={`dropDown`}
-                                                  
                                                   key={item.id}
                                                   onClick={(e) => {
                                                     setQuery(item.place_name);

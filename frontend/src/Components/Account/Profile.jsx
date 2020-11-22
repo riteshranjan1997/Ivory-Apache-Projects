@@ -9,8 +9,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import { userUpdateRequest } from "../../redux/Auth/action";
 import { Grid } from "@material-ui/core";
-import {Redirect} from "react-router-dom"
-
+import { Redirect } from "react-router-dom";
+import ErrorBar from "../../Components/common/ErrorBar";
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -56,6 +56,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Profile() {
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  if (!isAuth) {
+    <Redirect to="/" />;
+  }
   const classes = useStyles();
   const dispatch = useDispatch();
   const [isEditName, setIsEditName] = useState(false);
@@ -77,15 +81,11 @@ function Profile() {
 
   const handleNameUpdate = () => {
     const payload = {
-       first_name:first_name, 
-       last_name:Last_name, 
-       password:password_for_editing_name}
-    dispatch(
-      userUpdateRequest(
-        payload,
-        accessToken
-      )
-    );
+      first_name: first_name,
+      last_name: Last_name,
+      password: password_for_editing_name,
+    };
+    dispatch(userUpdateRequest(payload, accessToken));
     setfirstName("");
     setLastName("");
     setPasswordForEditingName("");
@@ -95,50 +95,36 @@ function Profile() {
     console.log(email, conformEmail, password_for_editing_email);
     if (email === conformEmail) {
       const payload = {
-        new_email:email, 
-        confirm_email:conformEmail, 
-        password:password_for_editing_email
-      }
-     dispatch(
-       userUpdateRequest(
-         payload,
-         accessToken
-       )
-     );
-     setEmail("");
-    setConformEmail("");
-    setPasswordForEditingEmail("");
+        new_email: email,
+        confirm_email: conformEmail,
+        password: password_for_editing_email,
+      };
+      dispatch(userUpdateRequest(payload, accessToken));
+      setEmail("");
+      setConformEmail("");
+      setPasswordForEditingEmail("");
     }
   };
 
   const handlePasswordChange = () => {
     console.log(current_password, new_password, conform_new_password);
-    if(new_password === conform_new_password){
-    const payload = {
-      new_password:new_password, 
-      confrim_password:conform_new_password, 
-      password:current_password
+    if (new_password === conform_new_password) {
+      const payload = {
+        new_password: new_password,
+        confrim_password: conform_new_password,
+        password: current_password,
+      };
+      dispatch(userUpdateRequest(payload, accessToken));
+      setCurrentPassword("");
+      setNewPassword("");
+      setConformNewPassword("");
     }
-   dispatch(
-     userUpdateRequest(
-       payload,
-       accessToken
-     )
-   );
-    setCurrentPassword("");
-    setNewPassword("");
-    setConformNewPassword("");
-     }
   };
-  const isAuth = useSelector((state) => state.auth.isAuth);
-
-  if(!isAuth){
-    <Redirect to ="/" />
-  }
 
   return (
     <>
       <Bar />
+      <ErrorBar />
       <Grid container>
         <SideBar />
 

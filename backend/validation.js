@@ -11,7 +11,7 @@ const registerValidation = (data) => {
 };
 
 const loginValidation = (data) => {
-  console.log("in login validation ",data)
+  console.log("in login validation ", data);
   const schema = Joi.object({
     email: Joi.string().min(6).required().email(),
     password: Joi.string().min(6).required(),
@@ -19,18 +19,18 @@ const loginValidation = (data) => {
   return schema.validate(data);
 };
 
-const emailValidation = (data) =>{
+const emailValidation = (data) => {
   const schema = Joi.object({
-    email:Joi.string().min(6).required().email()
+    email: Joi.string().min(6).required().email(),
   });
-  return schema.validate({email:data})
-}
-const passwordValidation = (data) =>{
+  return schema.validate({ email: data });
+};
+const passwordValidation = (data) => {
   const schema = Joi.object({
     password: Joi.string().min(6).required(),
   });
-  return schema.validate({password:data})
-}
+  return schema.validate({ password: data });
+};
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
 module.exports.emailValidation = emailValidation;
