@@ -25,6 +25,7 @@ A clone of website [sealmess.com](https://seamless.com).
 - Payment
 - Viewing past orders
 - Logout
+- Currently servers two cities Chennai, Tamilnadu India and Ranchi, Jharkand India.
 
 
 ## About product
