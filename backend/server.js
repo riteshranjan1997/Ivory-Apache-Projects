@@ -11,6 +11,7 @@ dotenv.config()
 mongoose.connect(
   process.env.ATLAS_URI,
   {
+    useCreateIndex: true,
     useUnifiedTopology: true,
     useNewUrlParser: true,
   },

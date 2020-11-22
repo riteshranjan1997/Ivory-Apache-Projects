@@ -50,10 +50,9 @@ small {
   font-family: "Courier New", Courier, monospace;
 }
 
-/* .details small,
-div {
+.details small {
   flex: 1;
-} */
+}
 
 .chip {
   float: left;
@@ -65,13 +64,6 @@ div {
   margin: 30px 30px 25px 25px;
 }
 
-.from {
-  position: relative;
-  width: 50%;
-  height: 50px;
-  overflow: hidden;
-  margin-top: 30px;
-}
 
 .icon {
   position: absolute;

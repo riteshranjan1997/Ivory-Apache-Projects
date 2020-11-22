@@ -54,7 +54,9 @@ const CardArea = styled.div`
   position: relative;
   z-index: -2;
   color: white;
-  box-shadow: 30px 30px 0px 0px rgba(235, 232, 234, 1);
+  box-shadow: 53px 53px 0px 0px rgba(235, 232, 234, 1);
+  margin: auto;
+  margin-top: 100px;
 `;
 
 export default function Card(props) {
@@ -154,13 +156,13 @@ export default function Card(props) {
               style={{ width: "50px" }}
             />
             {cardType === "mastercard" ? (
-              <img className={Style.type} src="../master_logo.png" alt="Company" />
+              <img className={Style.type} src="master_logo.png" alt="Company" />
             ) : cardType === "visa" ? (
-              <img className={Style.type} src="../visa_logo.png" alt="Company" />
+              <img className={Style.type} src="visa_logo.png" alt="Company" />
             ) : cardType === "amex" ? (
-              <img className={Style.type} src="../amex_logo.png" alt="Company" />
+              <img className={Style.type} src="amex_logo.png" alt="Company" />
             ) : cardType === "rupay" ? (
-              <img className={Style.type} src="../rupay_logo.jpg" alt="Company" />
+              <img className={Style.type} src="rupay_logo.jpg" alt="Company" />
             ) : null}
           </div>
           <div className={Style.cardNo}>
@@ -177,17 +179,17 @@ export default function Card(props) {
           </div>
 
           <div className={Style.details}>
-            <div style={{flex:1}}> 
+            <div>
               <p>abc</p>
             </div>
 
-            <div  style={{flex:1}} className={Style.valid}>
+            <div className={Style.valid}>
               <p>{props.expires_on.split("/")[1]}</p>{" "}
               {props.expires_on.split("/")[1] ? <p> / </p> : <p> </p>}{" "}
               <p>{props.expires_on.split("/")[2]}</p>
             </div>
 
-            <div style={{flex:1}}>
+            <div>
               <p>{props.security_code}</p>
             </div>
           </div>
